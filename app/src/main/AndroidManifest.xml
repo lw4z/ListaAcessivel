@@ -9,13 +9,18 @@
         android:theme="@style/AppTheme" >
         <activity
             android:name=".TelaUsuario"
-            android:label="@string/tela_usuario"
-            android:icon="@mipmap/ic_logo_listaacessivel">
+            android:icon="@mipmap/ic_logo_listaacessivel"
+            android:label="@string/tela_usuario" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+        </activity>
+        <activity
+            android:name=".TelaSobre"
+            android:label="@string/title_activity_tela_sobre"
+            android:parentActivityName=".TelaUsuario">
         </activity>
     </application>
 

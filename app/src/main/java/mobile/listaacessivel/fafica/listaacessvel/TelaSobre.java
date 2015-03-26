@@ -1,31 +1,33 @@
 package mobile.listaacessivel.fafica.listaacessvel;
 
-import android.app.ActionBar;
-import android.content.Intent;
-import android.content.pm.ActivityInfo;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
 
 
-public class TelaUsuario extends ActionBarActivity {
+public class TelaSobre extends ActionBarActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_tela_usuario);
+        setContentView(R.layout.activity_tela_sobre);
 
-        //A janela da aplicação deverá ficar apenas no formato vertical
-        this.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
+        //Botão de Voltar na actionBar
+        try{
+            getActionBar().setDisplayHomeAsUpEnabled(true);
+            getActionBar().setIcon(R.mipmap.ic_logo_listaacessivel);
+            getActionBar().setDisplayUseLogoEnabled(true);
+        }catch (Exception e){
+            e.printStackTrace();
+        }
     }
 
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_tela_usuario, menu);
+        getMenuInflater().inflate(R.menu.menu_tela_sobre, menu);
         return true;
     }
 
@@ -37,25 +39,10 @@ public class TelaUsuario extends ActionBarActivity {
         int id = item.getItemId();
 
         //noinspection SimplifiableIfStatement
-        if (id == R.id.action_about) {
-            Intent sobre = new Intent(this,TelaSobre.class);
-            startActivity(sobre);
-        }
+//        if (id == R.id.action_settings) {
+//            return true;
+//        }
 
         return super.onOptionsItemSelected(item);
     }
-
-    //Métodos dos Botoẽs da tela
-    public void getPerfil(View view){
-
-    }
-
-    public void visualizarListas(View view){
-
-    }
-
-    public void criarLista(View view){
-
-    }
 }
-

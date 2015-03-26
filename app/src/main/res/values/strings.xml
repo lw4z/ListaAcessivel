@@ -7,16 +7,21 @@
     <string name="app_name">Lista Acessível</string>
     <string name="tela_usuario">Área do Usuário</string>
     <string name="inicio">Início</string>
-    <string name="action_settings">Propriedades</string>
     <string name="criar_lista">Criar Lista</string>
     <string name="visualizar_listas">Visualizar Listas</string>
     <string name="direitos">\@TechBin. Todos os direitos reservados</string>
     <string name="area_usuario">Área do Usuário</string>
     <string name="categoria">Selecione a categoria do Estabelecimento</string>
     <string name="criarlista1">Criar Lista Passo 1</string>
-    <string name="sobre">Sobre a aplicação</string>
     <string name="cadastro">Cadastro</string>
     <string name="perfil">Perfil do Usuário</string>
+
+
+    <!--Menus-->
+    <string name="action_settings">Propriedades</string>
+    <string name="action_sobre">Sobre</string>
+    <string name="sobre">Sobre a aplicação</string>
+
 
     <!--Nomes de textViews-->
     <string name="hello_world">Hello world!</string>
@@ -94,4 +99,5 @@
     <string name="campo_complemento">campo complemento</string>
     <string name="campo_referencia">campo referência</string>
     <string name="title_activity_visualizar_perfil">Visualizar Perfil</string>
+    <string name="title_activity_tela_sobre">Sobre o aplicativo</string>
 </resources>
