@@ -16,8 +16,6 @@ public class TelaSobre extends ActionBarActivity {
         //Botão de Voltar na actionBar
         try{
             getActionBar().setDisplayHomeAsUpEnabled(true);
-            getActionBar().setIcon(R.mipmap.ic_logo_listaacessivel);
-            getActionBar().setDisplayUseLogoEnabled(true);
         }catch (Exception e){
             e.printStackTrace();
         }
