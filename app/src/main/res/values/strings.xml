@@ -1,15 +1,97 @@
 <resources>
 
+    <!--Versão do aplicativo-->
+    <string name="versao">Versão 0.1</string>
+
     <!--Título das telas-->
     <string name="app_name">Lista Acessível</string>
     <string name="tela_usuario">Área do Usuário</string>
+    <string name="inicio">Início</string>
+    <string name="action_settings">Propriedades</string>
+    <string name="criar_lista">Criar Lista</string>
+    <string name="visualizar_listas">Visualizar Listas</string>
+    <string name="direitos">\@TechBin. Todos os direitos reservados</string>
+    <string name="area_usuario">Área do Usuário</string>
+    <string name="categoria">Selecione a categoria do Estabelecimento</string>
+    <string name="criarlista1">Criar Lista Passo 1</string>
+    <string name="sobre">Sobre a aplicação</string>
+    <string name="cadastro">Cadastro</string>
+    <string name="perfil">Perfil do Usuário</string>
 
     <!--Nomes de textViews-->
     <string name="hello_world">Hello world!</string>
-    <string name="action_settings">Settings</string>
 
     <!--Títulos dos Botões-->
+    <string name="bt_criar_lista">Criar Lista</string>
+    <string name="bt_visualizar_perfil">Visualizar Perfil</string>
+    <string name="bt_visualizar_listas">Visualizar Listas</string>
+    <string name="ic_lista_acessivel">Ícone lista acessível</string>
+    <string name="title_activity_criar_lista_passo1">Criar Lista Passo 1</string>
+    <string name="bt_mercado">Supermercado</string>
+    <string name="bt_padaria">Padaria</string>
+    <string name="bt_farmacia">Farmácia</string>
+    <string name="bt_livraria">Livraria</string>
+    <string name="title_activity_formulario_cadastro_usuario">Formulário cadastro Usuário</string>
+    <string name="bt_salvar_senha">Salvar Senha</string>
+    <string name="bt_salvar_senha_nova">Salvar Nova Senha</string>
+    <string name="bt_editar">Editar</string>
+    <string name="bt_excluir">Excluir</string>
+    <string name="bt_detalhes">Detalhes</string>
+    <string name="bt_editar_senha">Editar Senha</string>
+    <string name="bt_editar_perfil">Editar Perfil</string>
+    <string name="bt_excluir_perfil">Excluir Perfil</string>
+    <string name="bt_filtro_bairro">Filtrar por Bairro</string>
+    <string name="bt_entrar">Entrar</string>
+    <string name="bt_cadastrar">Cadastrar</string>
+    <string name="bt_imprimir">Imprimir</string>
+    <string name="bt_solicitar_entrega">Confirmar Solicitação</string>
+    <string name="bt_confirmar_cadastro">Confirmar Cadastro</string>
+    <string name="bt_limpar">Limpar</string>
+    <string name="bt_finalizar_lista">Finalizar Lista</string>
+    <string name="bt_adicionar_novos_produtos">Adicionar novos Produtos</string>
+    <string name="bt_finalizar_edicao">Finalizar Edição</string>
 
 
+    <!--Nomes báscicos para formulários-->
+    <string name="dados_login">Dados de Login</string>
+    <string name="dados_pessoais">Dados Pessoais</string>
+    <string name="dados_localizacao">Dados de Localização</string>
+    <string name="nome_completo">Nome Completo:</string>
+    <string name="email">E-mail:</string>
+    <string name="ano_nascimento">Ano de Nascimento:</string>
+    <string name="cpf">CPF:</string>
+    <string name="telefones">Telefones para contato:</string>
+    <string name="telefone1">Telefone 1:</string>
+    <string name="telefone2">Telefone 2:</string>
+    <string name="estado">Estado:</string>
+    <string name="cep">CEP:</string>
+    <string name="cidade">Cidade:</string>
+    <string name="rua">Rua:</string>
+    <string name="bairro">Bairro:</string>
+    <string name="numero">Número:</string>
+    <string name="complemento">Complemento:</string>
+    <string name="referencia">Referência:</string>
+    <string name="senha">Senha:</string>
+    <string name="senha_atual">Senha Atual:</string>
+    <string name="senha_nova">Nova Senha:</string>
+    <string name="senha_confirmar">Confirmar Senha:</string>
+    <string name="title_activity_tela_about">TelaAbout</string>
 
+    <!--Campos de edição-->
+    <string name="campo_email">campo e-mail</string>
+    <string name="campo_senha">campo senha</string>
+    <string name="campo_ano_nascimento">campo ano de nascimento</string>
+    <string name="campo_cpf">campo cpf</string>
+    <string name="campo_nome_completo">campo nome completo</string>
+    <string name="campo_telefone1">campo telefone 1</string>
+    <string name="campo_telefone2">campo telefone 2</string>
+    <string name="campo_cep">campo cep</string>
+    <string name="campo_cidade">campo cidade</string>
+    <string name="campo_estado">campo estado</string>
+    <string name="campo_bairro">campo bairro</string>
+    <string name="campo_rua">campo rua</string>
+    <string name="campo_numero">campo número</string>
+    <string name="campo_complemento">campo complemento</string>
+    <string name="campo_referencia">campo referência</string>
+    <string name="title_activity_visualizar_perfil">Visualizar Perfil</string>
 </resources>

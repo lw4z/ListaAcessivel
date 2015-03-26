@@ -5,6 +5,7 @@ import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 
 
 public class TelaUsuario extends ActionBarActivity {
@@ -37,4 +38,18 @@ public class TelaUsuario extends ActionBarActivity {
 
         return super.onOptionsItemSelected(item);
     }
+
+    //Métodos dos Botoẽs da tela
+    public void getPerfil(View view){
+
+    }
+
+    public void visualizarListas(View view){
+
+    }
+
+    public void criarLista(View view){
+
+    }
 }
+

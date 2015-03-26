@@ -1,11 +1,77 @@
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
     android:layout_height="match_parent" android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    android:paddingBottom="@dimen/activity_vertical_margin" tools:context=".TelaUsuario">
+    android:paddingBottom="@dimen/activity_vertical_margin" tools:context=".VisaoCliente"
+    android:orientation="vertical"
 
-    <TextView android:text="@string/hello_world" android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+    >
 
-</RelativeLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="1dp"
+        android:layout_weight="1"
+        android:gravity="center"
+        >
+
+        <!--Botão criar lista-->
+        <Button
+            android:id="@+id/btCriarLista"
+            android:layout_width="128dp"
+            android:layout_height="130dp"
+            android:layout_gravity="center"
+            android:background="@drawable/ic_criar_lista_128"
+            android:onClick="criarLista"
+            android:contentDescription="@string/bt_criar_lista"
+
+            />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_weight="1"
+        android:layout_gravity="center">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="8dp"
+            android:layout_weight="1"
+            android:gravity="center">
+
+            <!--Botão visualizar listas-->
+            <Button
+                android:id="@+id/btVisualizarListas"
+                android:layout_width="128dp"
+                android:layout_height="130dp"
+                android:onClick="visualizarListas"
+                android:contentDescription="@string/bt_visualizar_listas"
+                android:background="@drawable/ic_listas_128"
+
+                />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="8dp"
+            android:layout_weight="1"
+            android:gravity="center">
+
+            <!--Botão visualizar perfil-->
+            <Button
+                android:id="@+id/btVisualizarPerfil"
+                android:layout_width="128dp"
+                android:layout_height="130dp"
+                android:onClick="getPerfil"
+                android:contentDescription="@string/bt_visualizar_perfil"
+                android:background="@drawable/ic_perfil_128"
+                />
+        </LinearLayout>
+    </LinearLayout>
+
+</LinearLayout>
