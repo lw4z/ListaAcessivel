@@ -22,7 +22,7 @@
             android:layout_width="128dp"
             android:layout_height="130dp"
             android:layout_gravity="center"
-            android:background="@drawable/ic_criar_lista_128"
+            android:background="@drawable/efeito_botao_criar_lista"
             android:onClick="criarLista"
             android:contentDescription="@string/bt_criar_lista"
 
@@ -49,7 +49,7 @@
                 android:layout_height="130dp"
                 android:onClick="visualizarListas"
                 android:contentDescription="@string/bt_visualizar_listas"
-                android:background="@drawable/ic_listas_128"
+                android:background="@drawable/efeito_botao_minhas_listas"
 
                 />
 
@@ -69,7 +69,8 @@
                 android:layout_height="130dp"
                 android:onClick="getPerfil"
                 android:contentDescription="@string/bt_visualizar_perfil"
-                android:background="@drawable/ic_perfil_128"
+                android:background="@drawable/efeito_botao_perfil"
+
                 />
         </LinearLayout>
     </LinearLayout>
