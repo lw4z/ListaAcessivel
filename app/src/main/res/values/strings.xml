@@ -1,6 +1,15 @@
 <resources>
-    <string name="app_name">Lista Acessível</string>
 
+    <!--Título das telas-->
+    <string name="app_name">Lista Acessível</string>
+    <string name="tela_usuario">Área do Usuário</string>
+
+    <!--Nomes de textViews-->
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
+
+    <!--Títulos dos Botões-->
+
+
+
 </resources>
