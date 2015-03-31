@@ -47,7 +47,7 @@ public class TelaUsuario extends ActionBarActivity {
 
     //Métodos dos Botoẽs da tela
     public void getPerfil(View view){
-        Intent sobre = new Intent(this,TelaFormularioCadastroUsuario.class);
+        Intent sobre = new Intent(this,TelaPerfilUsuario.class);
         startActivity(sobre);
     }
 

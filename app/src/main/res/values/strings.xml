@@ -101,4 +101,5 @@
     <string name="title_activity_tela_sobre">Sobre o aplicativo</string>
     <string name="title_activity_tela_criar_lista_passo1">Criar Lista Passo 1</string>
     <string name="title_activity_tela_formulario_cadastro_usuario">Cadastro do Usuário</string>
+    <string name="title_activity_tela_perfil_usuario">Perfil do Usuário</string>
 </resources>

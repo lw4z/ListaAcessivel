@@ -9,7 +9,7 @@
         android:paddingRight="@dimen/activity_horizontal_margin"
         android:paddingTop="@dimen/activity_vertical_margin"
         android:paddingBottom="@dimen/activity_vertical_margin"
-        tools:context="listaacessivel.fafica.mobille.Formulario_cadastro_usuario"
+        tools:context="listaacessivel.fafica.mobille.Perfil_usuario"
         android:orientation="vertical"
         >
 
@@ -31,24 +31,25 @@
             android:text="@string/email"
             />
 
-        <EditText
+        <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/editEmail"
+            android:id="@+id/resultEmail"
+            android:text=""
             android:contentDescription="@string/campo_email"/>
 
-        <TextView
-            android:id="@+id/txtSenha"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/senha"
-            />
+        <!--<TextView-->
+            <!--android:id="@+id/txtSenha"-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:text="@string/senha"-->
+            <!--/>-->
 
-        <EditText
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/editSenha"
-            android:contentDescription="@string/campo_senha"/>
+        <!--<TextView-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:id="@+id/resultSenha"-->
+            <!--android:contentDescription="@string/campo_senha"/>-->
 
         <!--Dados Pessoais-->
         <TextView
@@ -68,10 +69,11 @@
             android:text="@string/nome_completo"
             />
 
-        <EditText
+        <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/editNomeCompleto"
+            android:id="@+id/resultNomeCompleto"
+            android:text=""
             android:contentDescription="@string/campo_nome_completo"/>
 
         <TextView
@@ -81,10 +83,11 @@
             android:text="@string/ano_nascimento"
             />
 
-        <EditText
+        <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/editAnoNascimento"
+            android:id="@+id/resultAnoNascimento"
+            android:text=""
             android:contentDescription="@string/campo_ano_nascimento"/>
 
         <TextView
@@ -94,10 +97,11 @@
             android:text="@string/cpf"
             />
 
-        <EditText
+        <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/editCpf"
+            android:id="@+id/resultCpf"
+            android:text=""
             android:contentDescription="@string/campo_cpf"/>
 
         <!--Telefones para contato-->
@@ -118,10 +122,11 @@
             android:text="@string/telefone1"
             />
 
-        <EditText
+        <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/editTelefone1"
+            android:id="@+id/resultTelefone1"
+            android:text=""
             android:contentDescription="@string/campo_telefone1"/>
 
         <TextView
@@ -131,10 +136,11 @@
             android:text="@string/telefone2"
             />
 
-        <EditText
+        <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/editTelefone2"
+            android:id="@+id/resultTelefone2"
+            android:text=""
             android:contentDescription="@string/campo_telefone2"/>
 
         <!--Dados de localização-->
@@ -155,10 +161,11 @@
             android:text="@string/cep"
             />
 
-        <EditText
+        <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/editCep"
+            android:id="@+id/resultCep"
+            android:text=""
             android:contentDescription="@string/campo_cep"/>
 
         <TextView
@@ -168,10 +175,11 @@
             android:text="@string/cidade"
             />
 
-        <EditText
+        <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/editCidade"
+            android:id="@+id/resultCidade"
+            android:text=""
             android:contentDescription="@string/campo_cidade"/>
 
         <TextView
@@ -182,10 +190,11 @@
 
             />
 
-        <EditText
+        <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/editEstado"
+            android:id="@+id/resultEstado"
+            android:text=""
             android:contentDescription="@string/campo_estado"/>
 
         <TextView
@@ -195,10 +204,11 @@
             android:text="@string/bairro"
             />
 
-        <EditText
+        <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/editBairro"
+            android:id="@+id/resultBairro"
+            android:text=""
             android:contentDescription="@string/campo_bairro"/>
 
         <TextView
@@ -208,10 +218,11 @@
             android:text="@string/rua"
             />
 
-        <EditText
+        <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/editRua"
+            android:id="@+id/resultRua"
+            android:text=""
             android:contentDescription="@string/campo_rua"/>
 
         <TextView
@@ -221,10 +232,11 @@
             android:text="@string/numero"
             />
 
-        <EditText
+        <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/editNumero"
+            android:id="@+id/resultNumero"
+            android:text=""
             android:contentDescription="@string/campo_numero"/>
 
         <TextView
@@ -234,10 +246,11 @@
             android:text="@string/complemento"
             />
 
-        <EditText
+        <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/editComplemento"
+            android:id="@+id/resultComplemento"
+            android:text=""
             android:contentDescription="@string/campo_complemento"/>
 
         <TextView
@@ -247,13 +260,14 @@
             android:text="@string/referencia"
             />
 
-        <EditText
+        <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/editReferencia"
+            android:id="@+id/resultReferencia"
+            android:text=""
             android:contentDescription="@string/campo_referencia"/>
 
-        <!--Botão de confirmação do cadastro-->
+        <!--Botão editar Perfil-->
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -263,8 +277,9 @@
             <Button
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/bt_confirmar_cadastro"
-                android:id="@+id/bt_confirmar_cadastro"/>
+                android:text="@string/bt_editar_perfil"
+                android:id="@+id/bt_editar_perfil"
+                android:onClick="editarPerfil"/>
         </LinearLayout>
 
     </LinearLayout>
