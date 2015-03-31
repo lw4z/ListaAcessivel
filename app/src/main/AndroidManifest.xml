@@ -29,12 +29,16 @@
         </activity>
         <activity
             android:name=".TelaFormularioCadastroUsuario"
-            android:label="@string/title_activity_tela_formulario_cadastro_usuario"
-             >
+            android:label="@string/title_activity_tela_formulario_cadastro_usuario" >
         </activity>
         <activity
             android:name=".TelaPerfilUsuario"
             android:label="@string/title_activity_tela_perfil_usuario"
+            android:parentActivityName=".TelaUsuario" >
+        </activity>
+        <activity
+            android:name=".TelaMinhasListas"
+            android:label="@string/title_activity_tela_minhas_listas"
             android:parentActivityName=".TelaUsuario">
         </activity>
     </application>

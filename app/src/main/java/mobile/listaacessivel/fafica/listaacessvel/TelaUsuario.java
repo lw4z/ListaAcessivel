@@ -1,6 +1,5 @@
 package mobile.listaacessivel.fafica.listaacessvel;
 
-import android.app.ActionBar;
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.support.v7.app.ActionBarActivity;
@@ -47,12 +46,13 @@ public class TelaUsuario extends ActionBarActivity {
 
     //Métodos dos Botoẽs da tela
     public void getPerfil(View view){
-        Intent sobre = new Intent(this,TelaPerfilUsuario.class);
-        startActivity(sobre);
+        Intent perfil = new Intent(this,TelaPerfilUsuario.class);
+        startActivity(perfil);
     }
 
     public void visualizarListas(View view){
-
+        Intent listas = new Intent(this,TelaMinhasListas.class);
+        startActivity(listas);
     }
 
     public void criarLista(View view){

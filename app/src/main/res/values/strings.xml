@@ -48,7 +48,9 @@
     <string name="bt_entrar">Entrar</string>
     <string name="bt_cadastrar">Cadastrar</string>
     <string name="bt_imprimir">Imprimir</string>
-    <string name="bt_solicitar_entrega">Confirmar Solicitação</string>
+    <string name="bt_confirmar_solicitar_entrega">Confirmar Solicitação</string>
+    <string name="bt_solicitar_entrega">Solicitar</string>
+    <string name="bt_solicitar_entrega_completo">Solicitar Entrega ao estabelecimento</string>
     <string name="bt_confirmar_cadastro">Confirmar Cadastro</string>
     <string name="bt_limpar">Limpar</string>
     <string name="bt_finalizar_lista">Finalizar Lista</string>
@@ -102,4 +104,6 @@
     <string name="title_activity_tela_criar_lista_passo1">Criar Lista Passo 1</string>
     <string name="title_activity_tela_formulario_cadastro_usuario">Cadastro do Usuário</string>
     <string name="title_activity_tela_perfil_usuario">Perfil do Usuário</string>
+    <string name="title_activity_tela_detalhes_lista">Detalhes da Lista</string>
+    <string name="title_activity_tela_minhas_listas">Minhas Listas</string>
 </resources>
