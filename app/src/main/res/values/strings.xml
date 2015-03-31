@@ -31,7 +31,6 @@
     <string name="bt_visualizar_perfil">Visualizar Perfil</string>
     <string name="bt_visualizar_listas">Visualizar Listas</string>
     <string name="ic_lista_acessivel">Ícone lista acessível</string>
-    <string name="title_activity_criar_lista_passo1">Criar Lista Passo 1</string>
     <string name="bt_mercado">Supermercado</string>
     <string name="bt_padaria">Padaria</string>
     <string name="bt_farmacia">Farmácia</string>
@@ -100,4 +99,6 @@
     <string name="campo_referencia">campo referência</string>
     <string name="title_activity_visualizar_perfil">Visualizar Perfil</string>
     <string name="title_activity_tela_sobre">Sobre o aplicativo</string>
+    <string name="title_activity_tela_criar_lista_passo1">Criar Lista Passo 1</string>
+    <string name="title_activity_tela_formulario_cadastro_usuario">Cadastro do Usuário</string>
 </resources>

@@ -1,0 +1,272 @@
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+        android:layout_height="match_parent" android:paddingLeft="@dimen/activity_horizontal_margin"
+        android:paddingRight="@dimen/activity_horizontal_margin"
+        android:paddingTop="@dimen/activity_vertical_margin"
+        android:paddingBottom="@dimen/activity_vertical_margin"
+        tools:context="listaacessivel.fafica.mobille.Formulario_cadastro_usuario"
+        android:orientation="vertical"
+        >
+
+
+        <!--Dados de Login-->
+        <TextView
+            android:id="@+id/txtDadosLogin"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/dados_login"
+            android:textStyle="bold"
+            android:layout_gravity="center"
+            android:textSize="20dp"
+            />
+
+        <TextView
+            android:id="@+id/txtEmail"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/email"
+            />
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/editEmail"
+            android:contentDescription="@string/campo_email"/>
+
+        <TextView
+            android:id="@+id/txtSenha"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/senha"
+            />
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/editSenha"
+            android:contentDescription="@string/campo_senha"/>
+
+        <!--Dados Pessoais-->
+        <TextView
+            android:id="@+id/txtDadosPessoais"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/dados_pessoais"
+            android:textStyle="bold"
+            android:layout_gravity="center"
+            android:textSize="20dp"
+            />
+
+        <TextView
+            android:id="@+id/txtNome"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/nome_completo"
+            />
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/editNomeCompleto"
+            android:contentDescription="@string/campo_nome_completo"/>
+
+        <TextView
+            android:id="@+id/txtAnoNascimento"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/ano_nascimento"
+            />
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/editAnoNascimento"
+            android:contentDescription="@string/campo_ano_nascimento"/>
+
+        <TextView
+            android:id="@+id/txtCPF"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/cpf"
+            />
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/editCpf"
+            android:contentDescription="@string/campo_cpf"/>
+
+        <!--Telefones para contato-->
+        <TextView
+            android:id="@+id/txtTelefonesParaContao"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/telefones"
+            android:textStyle="bold"
+            android:layout_gravity="center"
+            android:textSize="20dp"
+            />
+
+        <TextView
+            android:id="@+id/txtTelefone1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/telefone1"
+            />
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/editTelefone1"
+            android:contentDescription="@string/campo_telefone1"/>
+
+        <TextView
+            android:id="@+id/txtTelefone2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/telefone2"
+            />
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/editTelefone2"
+            android:contentDescription="@string/campo_telefone2"/>
+
+        <!--Dados de localização-->
+        <TextView
+            android:id="@+id/txtDadosLocalizacao"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/dados_localizacao"
+            android:textStyle="bold"
+            android:layout_gravity="center"
+            android:textSize="20dp"
+            />
+
+        <TextView
+            android:id="@+id/txtCep"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/cep"
+            />
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/editCep"
+            android:contentDescription="@string/campo_cep"/>
+
+        <TextView
+            android:id="@+id/txtCidade"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/cidade"
+            />
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/editCidade"
+            android:contentDescription="@string/campo_cidade"/>
+
+        <TextView
+            android:id="@+id/txtEstado"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/estado"
+
+            />
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/editEstado"
+            android:contentDescription="@string/campo_estado"/>
+
+        <TextView
+            android:id="@+id/txtBairro"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/bairro"
+            />
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/editBairro"
+            android:contentDescription="@string/campo_bairro"/>
+
+        <TextView
+            android:id="@+id/txtRua"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/rua"
+            />
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/editRua"
+            android:contentDescription="@string/campo_rua"/>
+
+        <TextView
+            android:id="@+id/txtNUmero"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/numero"
+            />
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/editNumero"
+            android:contentDescription="@string/campo_numero"/>
+
+        <TextView
+            android:id="@+id/txtComplemento"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/complemento"
+            />
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/editComplemento"
+            android:contentDescription="@string/campo_complemento"/>
+
+        <TextView
+            android:id="@+id/txtReferencia"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/referencia"
+            />
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/editReferencia"
+            android:contentDescription="@string/campo_referencia"/>
+
+        <!--Botão de confirmação do cadastro-->
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:padding="2dp" android:layout_gravity="center">
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/bt_confirmar_cadastro"
+                android:id="@+id/bt_confirmar_cadastro"/>
+        </LinearLayout>
+
+    </LinearLayout>
+</ScrollView>

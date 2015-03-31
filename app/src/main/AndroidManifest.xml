@@ -20,7 +20,17 @@
         <activity
             android:name=".TelaSobre"
             android:label="@string/title_activity_tela_sobre"
-            android:parentActivityName=".TelaUsuario">
+            android:parentActivityName=".TelaUsuario" >
+        </activity>
+        <activity
+            android:name=".TelaCriarListaPasso1"
+            android:label="@string/title_activity_tela_criar_lista_passo1"
+            android:parentActivityName=".TelaUsuario" >
+        </activity>
+        <activity
+            android:name=".TelaFormularioCadastroUsuario"
+            android:label="@string/title_activity_tela_formulario_cadastro_usuario"
+            android:parentActivityName=".TelaUsuario" >
         </activity>
     </application>
 

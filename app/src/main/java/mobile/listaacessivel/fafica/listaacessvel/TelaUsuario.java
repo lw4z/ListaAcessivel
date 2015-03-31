@@ -47,7 +47,8 @@ public class TelaUsuario extends ActionBarActivity {
 
     //Métodos dos Botoẽs da tela
     public void getPerfil(View view){
-
+        Intent sobre = new Intent(this,TelaFormularioCadastroUsuario.class);
+        startActivity(sobre);
     }
 
     public void visualizarListas(View view){
@@ -55,7 +56,8 @@ public class TelaUsuario extends ActionBarActivity {
     }
 
     public void criarLista(View view){
-
+        Intent it = new Intent(this,TelaCriarListaPasso1.class);
+        startActivity(it);
     }
 }
 

@@ -1,0 +1,97 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+    android:layout_height="match_parent" android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="13dp"
+    android:paddingBottom="@dimen/activity_vertical_margin" tools:context=".VisaoCliente"
+    android:orientation="vertical"
+    >
+
+    <!--Conjunto de ícones superior-->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_gravity="center"
+        android:layout_weight="1">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="7dp"
+            android:gravity="center"
+            android:layout_weight="1"
+            android:orientation="horizontal">
+           <!--Botão Categoria Mercado-->
+            <Button
+                android:id="@+id/btMercado"
+                android:layout_width="128dp"
+                android:layout_height="130dp"
+                android:background="@drawable/efeito_botao_categoria_mercado"
+                android:onClick="getCategoriaMercado"
+                android:contentDescription="@string/bt_mercado"
+                />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="7dp"
+            android:gravity="center"
+            android:layout_weight="1">
+            <!--Botão Categoria Padaria-->
+            <Button
+                android:id="@+id/btPadaria"
+                android:layout_width="128dp"
+                android:layout_height="130dp"
+                android:background="@drawable/efeito_botao_categoria_padaria"
+                android:onClick="getCategoriaPadaria"
+                android:contentDescription="@string/bt_padaria"
+                />
+
+        </LinearLayout>
+    </LinearLayout>
+
+    <!--Conjunto de ícones inferior-->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_gravity="center"
+        android:layout_weight="2">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="7dp"
+            android:gravity="center"
+            android:layout_weight="1">
+            <!--Botão Categoria Farmácia-->
+            <Button
+                android:id="@+id/btFarmacia"
+                android:layout_width="128dp"
+                android:layout_height="130dp"
+                android:background="@drawable/efeito_botao_categoria_farmacia"
+                android:onClick="getCategoriaFarmacia"
+                android:contentDescription="@string/bt_farmacia"
+                />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="7dp"
+            android:layout_weight="1"
+            android:gravity="center">
+            <!--Botão Categoria Livraria-->
+            <Button
+                android:id="@+id/btLivraria"
+                android:layout_width="128dp"
+                android:layout_height="130dp"
+                android:background="@drawable/efeito_botao_categoria_livraria"
+                android:onClick="getCategoriaLivraria"
+                android:contentDescription="@string/bt_livraria"
+                />
+        </LinearLayout>
+    </LinearLayout>
+
+</LinearLayout>
