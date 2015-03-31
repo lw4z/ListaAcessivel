@@ -4,6 +4,7 @@ import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.EditText;
 
 
@@ -48,4 +49,9 @@ public class TelaFormularioCadastroUsuario extends ActionBarActivity {
 //
 //        return super.onOptionsItemSelected(item);
 //    }
+
+    //Métodos dos Botoẽs da tela
+    public void cadastrarUsuario(View view){
+
+    }
 }

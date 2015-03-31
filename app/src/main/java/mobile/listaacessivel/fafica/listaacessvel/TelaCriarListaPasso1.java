@@ -47,6 +47,7 @@ public class TelaCriarListaPasso1 extends ActionBarActivity {
 //        return super.onOptionsItemSelected(item);
 //    }
 
+    //Métodos dos Botoẽs da tela
     public void getCategoriaPadaria(View view){
 
     }

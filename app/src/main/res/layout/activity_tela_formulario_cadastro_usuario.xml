@@ -264,7 +264,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/bt_confirmar_cadastro"
-                android:id="@+id/bt_confirmar_cadastro"/>
+                android:id="@+id/bt_confirmar_cadastro"
+                android:onClick="cadastrarUsuario"/>
         </LinearLayout>
 
     </LinearLayout>

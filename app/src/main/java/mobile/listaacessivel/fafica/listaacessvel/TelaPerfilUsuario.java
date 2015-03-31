@@ -5,9 +5,15 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.EditText;
+import android.widget.TextView;
 
 
 public class TelaPerfilUsuario extends ActionBarActivity {
+
+    TextView resultEmail, resultSenha, resultNomeCompleto, resultAnoNascimento, resultCpf, resultTelefone1,
+            resultTelefone2, resultCep, resultCidade, resultEstado, resultBairro, resultRua, resultNumero,
+            resultComplemento, resultReferencia;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,7 +51,12 @@ public class TelaPerfilUsuario extends ActionBarActivity {
 //        return super.onOptionsItemSelected(item);
 //    }
 
+    //Métodos dos Botoẽs da tela
     public void editarPerfil(View view){
+
+    }
+
+    public void editarSenha(View view){
 
     }
 }
