@@ -73,11 +73,7 @@ public class TelaMinhasListas extends ActionBarActivity {
 
     //Métodos dos botões
 
-    public void solicitarEntrega(View view){
-
-    }
-
-    public void editarLista(View view){
+    public void detalhesLista(View view){
 
     }
 }

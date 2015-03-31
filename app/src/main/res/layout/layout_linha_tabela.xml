@@ -23,17 +23,7 @@
             android:layout_alignParentRight="true"
             android:layout_centerVertical="true"
             android:textSize="10dp"
-            android:text="@string/bt_editar"
-            android:contentDescription="@string/bt_editar"
-            android:onClick="editarLista"/>
-
-        <Button
-            android:layout_width="75dp"
-            android:layout_height="50dp"
-            android:layout_alignParentRight="true"
-            android:textSize="10dp"
-            android:layout_centerVertical="true"
-            android:text="@string/bt_solicitar_entrega"
-            android:contentDescription="@string/bt_solicitar_entrega_completo"
-            android:onClick="solicitarEntrega"/>
+            android:text="@string/bt_detalhes"
+            android:contentDescription="@string/bt_detalhes"
+            android:onClick="detalhesLista"/>
 </LinearLayout>
