@@ -47,6 +47,7 @@
     <string name="bt_editar">Editar</string>
     <string name="bt_excluir">Excluir</string>
     <string name="bt_detalhes">Detalhes</string>
+    <string name="bt_detalhes_lista">Visualizar Detalhes da Lista</string>
     <string name="bt_editar_senha">Editar Senha</string>
     <string name="bt_editar_perfil">Editar Perfil</string>
     <string name="bt_excluir_perfil">Excluir Perfil</string>

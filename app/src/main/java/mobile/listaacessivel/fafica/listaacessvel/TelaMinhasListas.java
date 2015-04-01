@@ -14,8 +14,6 @@ import java.util.ArrayList;
 public class TelaMinhasListas extends ActionBarActivity {
 
     ListView listaListas;
-    private ArrayList<String> listas = new ArrayList<String>();
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,24 +28,14 @@ public class TelaMinhasListas extends ActionBarActivity {
             e.printStackTrace();
         }
 
-        //Teste da lista
-
-        listas.add("Lista da segunda feira");
-        listas.add("Lista da terça feira");
-        listas.add("Lista da quarta feira");
-        listas.add("Lista da quinta feira");
-        listas.add("Lista da sexta feira");
-        listas.add("Lista do sábado");
-        listas.add("Lista do domingo");
-
         try {
             MyArrayAdapter adapter = new MyArrayAdapter(this, criarDados());
 
             // 2. Recupera o ListView para o activity_main.xml
-            ListView listView = (ListView) findViewById(R.id.listDetalhesLista);
+            listaListas = (ListView) findViewById(R.id.listDetalhesLista);
 
             // 3. setListAdapter
-            listView.setAdapter(adapter);
+            listaListas.setAdapter(adapter);
         }catch (Exception e){
 
         }
@@ -56,9 +44,9 @@ public class TelaMinhasListas extends ActionBarActivity {
     //Método que recebe os dados para a lista
     private ArrayList<Item> criarDados(){
         ArrayList<Item> items = new ArrayList<Item>();
-        items.add(new Item("Lista 1","atendida"));
-        items.add(new Item("Lista 2","solicitada"));
-        items.add(new Item("Lista 3","criada"));
+        items.add(new Item("Nome da lista: " + "Lista 1","Situação da lista: " + "atendida"));
+        items.add(new Item("Nome da lista: " + "Lista 2","Situação da lista: " + "solicitada"));
+        items.add(new Item("Nome da lista: " + "Lista 3","Situação da lista: " + "criada"));
 
         return items;
     }
