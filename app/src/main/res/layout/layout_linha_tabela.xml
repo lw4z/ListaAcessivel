@@ -4,20 +4,43 @@
     android:layout_height="wrap_content"
     android:orientation="horizontal">
 
+    <!--Ícone do carrinho-->
     <ImageView
         android:layout_width="50dp"
         android:layout_height="50dp"
         android:src="@drawable/ic_carrinho"
         android:contentDescription="@string/ic_carinho"/>
 
-    <TextView
+    <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text=""
-        android:textSize="10dp"
-        android:id="@+id/text1"
-        android:layout_weight="3"/>
+        android:orientation="vertical"
+        android:layout_weight="3"
+        >
+        <!--Título da linha-->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text=""
+            android:textSize="15dp"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentLeft="true"
+            android:id="@+id/text1"
+            android:layout_weight="1"/>
 
+        <!--Subtítulo da linha-->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text=""
+            android:textSize="10dp"
+
+            android:layout_alignParentLeft="true"
+            android:id="@+id/text2"
+            android:layout_weight="1"/>
+    </LinearLayout>
+
+        <!--Botão Detalhes-->
         <Button
             android:layout_width="75dp"
             android:layout_height="50dp"

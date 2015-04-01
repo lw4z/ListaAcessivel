@@ -40,13 +40,27 @@ public class TelaMinhasListas extends ActionBarActivity {
         listas.add("Lista do sábado");
         listas.add("Lista do domingo");
 
-        try{
-            listaListas = (ListView) findViewById(R.id.listDetalhesLista);
-            listaListas.setAdapter(new ArrayAdapter<String>(this, R.layout.layout_linha_tabela,R.id.text1 ,listas));
-        }catch (Exception e){
-            e.printStackTrace();
-        }
+        try {
+            MyArrayAdapter adapter = new MyArrayAdapter(this, criarDados());
 
+            // 2. Recupera o ListView para o activity_main.xml
+            ListView listView = (ListView) findViewById(R.id.listDetalhesLista);
+
+            // 3. setListAdapter
+            listView.setAdapter(adapter);
+        }catch (Exception e){
+
+        }
+    }
+
+    //Método que recebe os dados para a lista
+    private ArrayList<Item> criarDados(){
+        ArrayList<Item> items = new ArrayList<Item>();
+        items.add(new Item("Lista 1","atendida"));
+        items.add(new Item("Lista 2","solicitada"));
+        items.add(new Item("Lista 3","criada"));
+
+        return items;
     }
 
     @Override
