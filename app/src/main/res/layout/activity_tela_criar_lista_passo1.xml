@@ -7,6 +7,17 @@
     android:orientation="vertical"
     >
 
+    <!--Texto inicial da janela-->
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/categoria"
+        android:textColor="#221818"
+        android:textSize="18dp"
+        android:layout_gravity="bottom|center"
+        android:contentDescription="@string/categoria"
+        android:layout_weight="2"/>
+
     <!--Conjunto de ícones superior-->
     <LinearLayout
         android:layout_width="match_parent"
