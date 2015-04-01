@@ -16,6 +16,7 @@ public class TelaMinhasListas extends ActionBarActivity {
     ListView listaListas;
     private ArrayList<String> listas = new ArrayList<String>();
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -42,7 +43,6 @@ public class TelaMinhasListas extends ActionBarActivity {
         try{
             listaListas = (ListView) findViewById(R.id.listDetalhesLista);
             listaListas.setAdapter(new ArrayAdapter<String>(this, R.layout.layout_linha_tabela,R.id.text1 ,listas));
-
         }catch (Exception e){
             e.printStackTrace();
         }
