@@ -5,6 +5,7 @@
     android:orientation="vertical"
     tools:context="listaacessivel.fafica.mobille.Minhas_Listas">
 
+    <!--Lista das listas-->
     <ListView
         android:id="@+id/listDetalhesLista"
         android:layout_width="match_parent"
