@@ -15,6 +15,7 @@
     <string name="criarlista1">Criar Lista Passo 1</string>
     <string name="cadastro">Cadastro</string>
     <string name="perfil">Perfil do Usuário</string>
+    <string name="bt_voltar">Voltar</string>
     <string name="title_activity_tela_sobre">Sobre o aplicativo</string>
     <string name="title_activity_tela_criar_lista_passo1">Criar Lista Passo 1</string>
     <string name="title_activity_tela_formulario_cadastro_usuario">Cadastro do Usuário</string>

@@ -19,12 +19,10 @@ public class TelaFormularioCadastroUsuario extends ActionBarActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_tela_formulario_cadastro_usuario);
-//        //Botão de Voltar na actionBar
-//        try{
-//            getActionBar().setDisplayHomeAsUpEnabled(true);
-//        }catch (Exception e){
-//            e.printStackTrace();
-//        }
+        //Botão da logo na ActionBar
+        getSupportActionBar().setHomeAsUpIndicator(R.mipmap.ic_logo_listaacessivel);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setHomeActionContentDescription(R.string.bt_voltar);
     }
 
 
