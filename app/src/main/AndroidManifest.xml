@@ -45,7 +45,11 @@
         <activity
             android:name=".TelaCriarListaPasso2"
             android:label="@string/title_activity_tela_criar_lista_passo2"
-            android:parentActivityName=".TelaCriarListaPasso1">
+            android:parentActivityName=".TelaCriarListaPasso1" >
+        </activity>
+        <activity
+            android:name=".TelaLogin"
+            android:label="@string/title_activity_tela_login" >
         </activity>
     </application>
 
