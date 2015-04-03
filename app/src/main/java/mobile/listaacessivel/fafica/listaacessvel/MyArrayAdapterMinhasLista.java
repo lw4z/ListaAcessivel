@@ -12,13 +12,13 @@ import java.util.ArrayList;
 /**
  * Created by ivan on 01/04/15.
  */
-public class MyArrayAdapterDestalhesLista extends ArrayAdapter<ItemDetalhesLista>{
+public class MyArrayAdapterMinhasLista extends ArrayAdapter<ItemMinhasListas>{
     private final Context context;
-    private final ArrayList<ItemDetalhesLista> itemsArrayList;
+    private final ArrayList<ItemMinhasListas> itemsArrayList;
 
-    public MyArrayAdapterDestalhesLista(Context context, ArrayList<ItemDetalhesLista> itemsArrayList) {
+    public MyArrayAdapterMinhasLista(Context context, ArrayList<ItemMinhasListas> itemsArrayList) {
 
-        super(context, R.layout.layout_linha_tabela_detalhes_lista, itemsArrayList);
+        super(context, R.layout.layout_linha_tabela_minhas_lista, itemsArrayList);
 
         this.context = context;
         this.itemsArrayList = itemsArrayList;
@@ -32,7 +32,7 @@ public class MyArrayAdapterDestalhesLista extends ArrayAdapter<ItemDetalhesLista
                 .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 
         // 2. Recupera as linhas para o inflater
-        View rowView = inflater.inflate(R.layout.layout_linha_tabela_detalhes_lista, parent, false);
+        View rowView = inflater.inflate(R.layout.layout_linha_tabela_minhas_lista, parent, false);
 
         // 3. Recupera o texto das duas linhas do rowView
         TextView labelView = (TextView) rowView.findViewById(R.id.text1);

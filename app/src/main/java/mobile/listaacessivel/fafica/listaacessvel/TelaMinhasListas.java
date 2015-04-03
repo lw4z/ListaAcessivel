@@ -23,7 +23,7 @@ public class TelaMinhasListas extends ActionBarActivity {
         getSupportActionBar().setHomeActionContentDescription(R.string.bt_voltar);
 
         try {
-            MyArrayAdapterDestalhesLista adapter = new MyArrayAdapterDestalhesLista(this, criarDados());
+            MyArrayAdapterMinhasLista adapter = new MyArrayAdapterMinhasLista(this, criarDados());
 
             // 2. Recupera o ListView para o activity_main.xml
             listaListas = (ListView) findViewById(R.id.listDetalhesLista);
@@ -36,11 +36,11 @@ public class TelaMinhasListas extends ActionBarActivity {
     }
 
     //Método que recebe os dados para a lista
-    private ArrayList<ItemDetalhesLista> criarDados(){
-        ArrayList<ItemDetalhesLista> items = new ArrayList<ItemDetalhesLista>();
-        items.add(new ItemDetalhesLista("Nome da lista: " + "Lista 1","Situação da lista: " + "atendida"));
-        items.add(new ItemDetalhesLista("Nome da lista: " + "Lista 2","Situação da lista: " + "solicitada"));
-        items.add(new ItemDetalhesLista("Nome da lista: " + "Lista 3","Situação da lista: " + "criada"));
+    private ArrayList<ItemMinhasListas> criarDados(){
+        ArrayList<ItemMinhasListas> items = new ArrayList<ItemMinhasListas>();
+        items.add(new ItemMinhasListas("Nome da lista: " + "Lista 1","Situação da lista: " + "atendida"));
+        items.add(new ItemMinhasListas("Nome da lista: " + "Lista 2","Situação da lista: " + "solicitada"));
+        items.add(new ItemMinhasListas("Nome da lista: " + "Lista 3","Situação da lista: " + "criada"));
 
         return items;
     }

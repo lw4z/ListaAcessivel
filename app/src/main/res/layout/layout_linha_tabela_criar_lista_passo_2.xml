@@ -49,6 +49,5 @@
         android:layout_centerHorizontal="true"
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:id="@+id/textCidadeEstabelecimento"
-
         />
 </LinearLayout>
