@@ -3,44 +3,46 @@ package mobile.listaacessivel.fafica.listaacessvel;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.ListView;
 
 import java.util.ArrayList;
 
 
-public class TelaMinhasListas extends ActionBarActivity {
+public class TelaCriarListaPasso2 extends ActionBarActivity {
 
-    ListView listaListas;
+    ListView listaEstabelecimentos;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_tela_minhas_listas);
+        setContentView(R.layout.activity_tela_criar_lista_passo2);
         //Botão da logo na ActionBar
         getSupportActionBar().setHomeAsUpIndicator(R.mipmap.ic_logo_listaacessivel);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setHomeActionContentDescription(R.string.bt_voltar);
 
         try {
-            MyArrayAdapterDestalhesLista adapter = new MyArrayAdapterDestalhesLista(this, criarDados());
+            MyArrayAdapterCriarListaPasso2 adapter = new MyArrayAdapterCriarListaPasso2(this, criarDados());
 
             // 2. Recupera o ListView para o activity_main.xml
-            listaListas = (ListView) findViewById(R.id.listDetalhesLista);
+            listaEstabelecimentos = (ListView) findViewById(R.id.listViewEstabelecimentos);
 
             // 3. setListAdapter
-            listaListas.setAdapter(adapter);
+            listaEstabelecimentos.setAdapter(adapter);
         }catch (Exception e){
 
         }
     }
 
     //Método que recebe os dados para a lista
-    private ArrayList<ItemDetalhesLista> criarDados(){
-        ArrayList<ItemDetalhesLista> items = new ArrayList<ItemDetalhesLista>();
-        items.add(new ItemDetalhesLista("Nome da lista: " + "Lista 1","Situação da lista: " + "atendida"));
-        items.add(new ItemDetalhesLista("Nome da lista: " + "Lista 2","Situação da lista: " + "solicitada"));
-        items.add(new ItemDetalhesLista("Nome da lista: " + "Lista 3","Situação da lista: " + "criada"));
+    private ArrayList<ItemCriarListaPasso2> criarDados(){
+        ArrayList<ItemCriarListaPasso2> items = new ArrayList<ItemCriarListaPasso2>();
+        items.add(new ItemCriarListaPasso2("Bompreço","Bairro: " + "Centro", "Caruaru"));
+        items.add(new ItemCriarListaPasso2("Compre Bem","Bairro: " + "Centro", "Caruaru"));
+        items.add(new ItemCriarListaPasso2("Varejão","Bairro: " + "Vassoural", "Caruaru"));
+        items.add(new ItemCriarListaPasso2("Ponto Frio","Bairro: " + "Cohabe 3", "Caruaru"));
 
         return items;
     }
@@ -48,7 +50,7 @@ public class TelaMinhasListas extends ActionBarActivity {
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_tela_minhas_listas, menu);
+        getMenuInflater().inflate(R.menu.menu_tela_criar_lista_passo2, menu);
         return true;
     }
 
@@ -67,9 +69,8 @@ public class TelaMinhasListas extends ActionBarActivity {
 //        return super.onOptionsItemSelected(item);
 //    }
 
-    //Métodos dos botões
-
-    public void detalhesLista(View view){
+    //Método do botão
+    public void filtrarPorBairro(View view){
 
     }
 }

@@ -4,9 +4,9 @@
 
     <application
         android:allowBackup="true"
-        android:logo="@drawable/ic_carrinho"
         android:icon="@mipmap/ic_logo_listaacessivel"
         android:label="@string/app_name"
+        android:logo="@drawable/ic_carrinho"
         android:theme="@style/AppTheme" >
         <activity
             android:name=".TelaUsuario"
@@ -30,8 +30,7 @@
         </activity>
         <activity
             android:name=".TelaFormularioCadastroUsuario"
-            android:label="@string/title_activity_tela_formulario_cadastro_usuario"
-            >
+            android:label="@string/title_activity_tela_formulario_cadastro_usuario" >
         </activity>
         <activity
             android:name=".TelaPerfilUsuario"
@@ -41,7 +40,12 @@
         <activity
             android:name=".TelaMinhasListas"
             android:label="@string/title_activity_tela_minhas_listas"
-            android:parentActivityName=".TelaUsuario">
+            android:parentActivityName=".TelaUsuario" >
+        </activity>
+        <activity
+            android:name=".TelaCriarListaPasso2"
+            android:label="@string/title_activity_tela_criar_lista_passo2"
+            android:parentActivityName=".TelaCriarListaPasso1">
         </activity>
     </application>
 

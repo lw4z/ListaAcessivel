@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal">
+
+    <!--Ícone do estabelecimento-->
+    <ImageView
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:src="@drawable/ic_estabelecimento"
+        android:contentDescription="@string/ic_estabelecimento"
+        />
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_weight="3"
+        >
+        <!--Título da linha, nome do estabelecimento-->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Bompreço"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentLeft="true"
+            android:id="@+id/textNomeEstabelecimento"
+            android:layout_weight="1"/>
+
+        <!--Subtítulo da linha, texto bairro-->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="centro"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:layout_alignParentLeft="true"
+            android:id="@+id/textBairroEstabelecimento"
+            android:layout_weight="1"/>
+    </LinearLayout>
+
+    <!--Texto da cidade-->
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="caruaru"
+        android:layout_alignParentRight="true"
+        android:layout_centerHorizontal="true"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:id="@+id/textCidadeEstabelecimento"
+
+        />
+</LinearLayout>

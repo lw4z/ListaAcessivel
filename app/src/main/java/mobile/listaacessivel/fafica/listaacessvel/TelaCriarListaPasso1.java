@@ -46,19 +46,23 @@ public class TelaCriarListaPasso1 extends ActionBarActivity {
 
     //Métodos dos Botoẽs da tela
     public void getCategoriaPadaria(View view){
-
+        Intent padaria = new Intent(this,TelaCriarListaPasso2.class);
+        startActivity(padaria);
     }
 
     public void getCategoriaMercado(View view){
-
+        Intent mercado = new Intent(this,TelaCriarListaPasso2.class);
+        startActivity(mercado);
     }
 
     public void getCategoriaFarmacia(View view){
-
+        Intent farmacia = new Intent(this,TelaCriarListaPasso2.class);
+        startActivity(farmacia);
     }
 
     public void getCategoriaLivraria(View view){
-
+        Intent livraria = new Intent(this,TelaCriarListaPasso2.class);
+        startActivity(livraria);
     }
 
 }

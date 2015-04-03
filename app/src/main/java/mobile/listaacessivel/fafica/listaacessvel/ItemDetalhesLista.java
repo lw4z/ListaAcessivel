@@ -3,11 +3,11 @@ package mobile.listaacessivel.fafica.listaacessvel;
 /**
  * Created by ivan on 01/04/15.
  */
-public class Item {
+public class ItemDetalhesLista {
     private String titulo;
     private String descricao;
 
-    public Item(String titulo, String descricao) {
+    public ItemDetalhesLista(String titulo, String descricao) {
         super();
         this.titulo = titulo;
         this.descricao = descricao;

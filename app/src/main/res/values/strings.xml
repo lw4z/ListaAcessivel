@@ -12,6 +12,7 @@
     <string name="direitos">\@TechBin. Todos os direitos reservados</string>
     <string name="area_usuario">Área do Usuário</string>
     <string name="categoria">Selecione a categoria do Estabelecimento</string>
+    <string name="selecione_estabelecimento">Selecione o Estabelecimento</string>
     <string name="criarlista1">Criar Lista Passo 1</string>
     <string name="cadastro">Cadastro</string>
     <string name="perfil">Perfil do Usuário</string>
@@ -22,6 +23,7 @@
     <string name="title_activity_tela_perfil_usuario">Perfil do Usuário</string>
     <string name="title_activity_tela_detalhes_lista">Detalhes da Lista</string>
     <string name="title_activity_tela_minhas_listas">Minhas Listas</string>
+    <string name="title_activity_tela_criar_lista_passo2">Criar Lista Passo 2</string>
 
 
     <!--Menus-->
@@ -110,5 +112,7 @@
 
     <!--Ícones e Imagens-->
     <string name="ic_carinho">Ícone de um carrinho de supermercado</string>
+    <string name="ic_estabelecimento">Ícone de um estabelecimento</string>
     <string name="ic_lista_acessivel">Ícone do programa Lista acessível</string>
+
 </resources>

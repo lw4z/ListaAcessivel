@@ -15,7 +15,7 @@
         android:textColor="#221818"
         android:gravity="center"
         android:textStyle="bold"
-        android:textSize="18dp"
+        android:textSize="20dp"
         android:layout_gravity="bottom|center"
         android:contentDescription="@string/categoria"
         android:layout_weight="2"/>
