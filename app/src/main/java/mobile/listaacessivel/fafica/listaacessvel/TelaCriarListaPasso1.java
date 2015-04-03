@@ -44,7 +44,7 @@ public class TelaCriarListaPasso1 extends ActionBarActivity {
 //        return super.onOptionsItemSelected(item);
 //    }
 
-    //Métodos dos Botoẽs da tela
+    //Métodos dos Botoẽs da tela EM FASE DE TESTE
     public void getCategoriaPadaria(View view){
         Intent padaria = new Intent(this,TelaCriarListaPasso2.class);
         startActivity(padaria);
@@ -61,7 +61,7 @@ public class TelaCriarListaPasso1 extends ActionBarActivity {
     }
 
     public void getCategoriaLivraria(View view){
-        Intent livraria = new Intent(this,TelaCriarListaPasso2.class);
+        Intent livraria = new Intent(this,TelaCriarListaPasso3.class);
         startActivity(livraria);
     }
 

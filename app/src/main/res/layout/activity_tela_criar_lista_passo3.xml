@@ -1,0 +1,75 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+    android:layout_height="match_parent" android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    tools:context="mobile.listaacessivel.fafica.listaacessvel.TelaCriarListaPasso2"
+    android:orientation="vertical">
+
+    <!--Texto inicial da janela-->
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/selecione_produto"
+        android:textColor="#221818"
+        android:gravity="center"
+        android:textStyle="bold"
+        android:textSize="20dp"
+        android:layout_gravity="bottom|center"
+        android:contentDescription="@string/selecione_produto"
+        android:layout_weight="1"/>
+
+    <!--campo de pesquisa do produto-->
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/item_top_wrapper"
+        android:paddingLeft="2dip"
+        android:paddingRight="2dip"
+        android:layout_height="wrap_content"
+        android:layout_width="fill_parent"
+        android:focusable="true"
+        android:focusableInTouchMode="true">
+        <!--Pesquisa do produto-->
+        <EditText android:id="@+id/campoPesquisaProduto"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:contentDescription="@string/pesquisar_produto_nome"
+            android:hint="@string/pesquisar_produto"
+            android:singleLine="true"
+            android:completionThreshold="1"/>
+    </LinearLayout>
+
+    <!--Lista dos estabelecimentos-->
+    <ListView
+        android:id="@+id/listViewProdutos"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="40"></ListView>
+
+    <!--Texto Descrição da lista-->
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/descricao_lista"
+        android:layout_weight="0.5"
+        android:layout_gravity="center"/>
+
+    <!--Campo de descrição da lista-->
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/campoDescricaoLista"
+        android:contentDescription="@string/digite_descricao_lista"
+        android:layout_weight="1"/>
+
+    <!--Botão Finalizar Lista-->
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/bt_FinalizarLista"
+        android:text="@string/bt_finalizar_lista"
+        android:onClick="finalizarLista"
+        android:layout_gravity="center"
+        android:layout_weight="1"/>
+
+</LinearLayout>

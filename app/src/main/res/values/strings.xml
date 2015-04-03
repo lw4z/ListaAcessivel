@@ -13,6 +13,7 @@
     <string name="area_usuario">Área do Usuário</string>
     <string name="categoria">Selecione a categoria do Estabelecimento</string>
     <string name="selecione_estabelecimento">Selecione o Estabelecimento</string>
+    <string name="selecione_produto">Selecione os Produtos</string>
     <string name="criarlista1">Criar Lista Passo 1</string>
     <string name="cadastro">Cadastro</string>
     <string name="perfil">Perfil do Usuário</string>
@@ -24,6 +25,7 @@
     <string name="title_activity_tela_detalhes_lista">Detalhes da Lista</string>
     <string name="title_activity_tela_minhas_listas">Minhas Listas</string>
     <string name="title_activity_tela_criar_lista_passo2">Criar Lista Passo 2</string>
+    <string name="title_activity_tela_criar_lista_passo3">Criar Lista Passo 3</string>
 
 
     <!--Menus-->
@@ -66,6 +68,10 @@
     <string name="bt_adicionar_novos_produtos">Adicionar novos Produtos</string>
     <string name="bt_finalizar_edicao">Finalizar Edição</string>
     <string name="bt_login">Entrar</string>
+    <string name="selecionar_produto">Marque aqui para selecionar o produto</string>
+    <string name="digite_descricao_lista">Digite uma descrição para a lista</string>
+    <string name="pesquisar_produto_nome">Digite um nome para pesquisar por um produto</string>
+    <string name="pesquisar_produto">Pesquisar Produto</string>
 
 
     <!--Nomes báscicos para formulários-->
@@ -113,11 +119,14 @@
     <string name="title_activity_visualizar_perfil">Visualizar Perfil</string>
     <string name="digite_email">Digite seu e-mail</string>
     <string name="digite_senha">Digite sua senha</string>
+    <string name="descricao_lista">Descrição da Lista</string>
 
     <!--Ícones e Imagens-->
     <string name="ic_carinho">Ícone de um carrinho de supermercado</string>
     <string name="ic_estabelecimento">Ícone de um estabelecimento</string>
     <string name="ic_lista_acessivel">Ícone do programa Lista acessível</string>
+    <string name="ic_produto">Ícone de um produto</string>
     <string name="title_activity_tela_login">TelaLogin</string>
+
 
 </resources>

@@ -46,6 +46,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/campoEmail"
+            android:inputType="textEmailAddress"
             android:textAppearance="?android:attr/textAppearanceMedium"
             android:contentDescription="@string/digite_email"/>
 
@@ -60,10 +61,12 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/campoSenha"
+            android:inputType="textPassword"
             android:textAppearance="?android:attr/textAppearanceMedium"
             android:contentDescription="@string/digite_senha"/>
 
-       <LinearLayout
+        <!--Botões da tela-->
+        <LinearLayout
            android:layout_width="match_parent"
            android:layout_height="wrap_content"
            android:orientation="horizontal"
@@ -82,7 +85,7 @@
                 android:onClick="fazerCadastro"
                 android:text="@string/bt_cadastrar"/>
 
-       </LinearLayout>
+        </LinearLayout>
     </LinearLayout>
 
     <!--Direitos-->
