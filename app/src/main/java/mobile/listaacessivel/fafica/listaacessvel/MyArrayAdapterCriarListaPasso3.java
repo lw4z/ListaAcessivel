@@ -39,7 +39,7 @@ public class MyArrayAdapterCriarListaPasso3 extends BaseAdapter{
         TextView nome_produto;
         TextView marca_produto;
         TextView valor_produto;
-        NumberPicker quantidade_produto;
+        EditText quantidade_produto;
     }
 
     @Override
@@ -69,7 +69,7 @@ public class MyArrayAdapterCriarListaPasso3 extends BaseAdapter{
             holder.nome_produto = (TextView) convertView.findViewById(R.id.textNomeProduto);
             holder.marca_produto = (TextView) convertView.findViewById(R.id.textMarcaProduto);
             holder.valor_produto = (TextView) convertView.findViewById(R.id.textValorProduto);
-            holder.quantidade_produto = (NumberPicker) convertView.findViewById(R.id.campoQuantidadeProduto);
+            holder.quantidade_produto = (EditText) convertView.findViewById(R.id.campoQuantidadeProduto);
             convertView.setTag(holder);
         }else{
             holder = (ViewHolder) convertView.getTag();
@@ -78,9 +78,8 @@ public class MyArrayAdapterCriarListaPasso3 extends BaseAdapter{
         holder.nome_produto.setText(listaItemsPasso3.get(position).getNome_produto());
         holder.marca_produto.setText(listaItemsPasso3.get(position).getMarca());
         holder.valor_produto.setText(listaItemsPasso3.get(position).getValor_produto());
-        holder.quantidade_produto.setValue(listaItemsPasso3.get(position).getQuantidade());
-        holder.quantidade_produto.setMinValue(0);
-        holder.quantidade_produto.setMaxValue(99);
+        holder.quantidade_produto.setText(Integer.toString(listaItemsPasso3.get(position).getQuantidade()));
+
 
         convertView.setOnClickListener(new View.OnClickListener() {
             @Override

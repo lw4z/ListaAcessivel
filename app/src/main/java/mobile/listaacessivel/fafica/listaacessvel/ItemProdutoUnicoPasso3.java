@@ -5,16 +5,18 @@ import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.accessibility.AccessibilityEvent;
+import android.widget.EditText;
 import android.widget.NumberPicker;
 import android.widget.TextView;
 
 
 public class ItemProdutoUnicoPasso3 extends ActionBarActivity {
 
-   TextView txtNome;
+    TextView txtNome;
     TextView txtMarca;
     TextView txtValor;
-    NumberPicker campoQuantidade;
+    EditText campoQuantidade;
     String nome_produto;
     String marca;
     String valor;
@@ -39,13 +41,15 @@ public class ItemProdutoUnicoPasso3 extends ActionBarActivity {
         txtNome = (TextView) findViewById(R.id.textNomeProduto);
         txtMarca = (TextView) findViewById(R.id.textMarcaProduto);
         txtValor = (TextView) findViewById(R.id.textValorProduto);
-        campoQuantidade = (NumberPicker)  findViewById(R.id.campoQuantidadeProduto);
+        campoQuantidade = (EditText)  findViewById(R.id.campoQuantidadeProduto);
+
+        campoQuantidade.sendAccessibilityEvent(AccessibilityEvent.TYPE_VIEW_FOCUSED);
 
         // Load the results into the TextViews
         txtNome.setText(nome_produto);
         txtMarca.setText(marca);
         txtValor.setText(valor);
-        campoQuantidade.setValue(quantidade);
+        campoQuantidade.setText(quantidade);
 
     }
 
