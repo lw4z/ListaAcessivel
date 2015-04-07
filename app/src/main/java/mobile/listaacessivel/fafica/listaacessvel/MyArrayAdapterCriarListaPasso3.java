@@ -96,30 +96,6 @@ public class MyArrayAdapterCriarListaPasso3 extends BaseAdapter{
         });
 
         return convertView;
-
-//        // 1. Cria o inflater
-//        LayoutInflater inflater = (LayoutInflater) context
-//                .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-//
-//        // 2. Recupera as linhas para o inflater
-//        View rowView = inflater.inflate(R.layout.layout_linha_tabela_criar_lista_passo_3, parent, false);
-//
-//        // 3. Recupera o texto das duas linhas do rowView
-//        TextView labelNome = (TextView) rowView.findViewById(R.id.textNomeProduto);
-//        TextView valueMarca = (TextView) rowView.findViewById(R.id.textMarcaProduto);
-//        TextView valueValor = (TextView) rowView.findViewById(R.id.textValorProduto);
-//        NumberPicker valueQuantidade = (NumberPicker) rowView.findViewById(R.id.campoQuantidadeProduto);
-//
-
-//
-//        // 4. Define o texto para cada textView
-////        labelNome.setText(produtos.get(position).getNome_produto());
-////        valueMarca.setText(listaProdutos.get(position).getMarca());
-////        valueValor.setText(listaProdutos.get(position).getValor_produto());
-////        valueQuantidade.setValue(listaProdutos.get(position).getQuantidade());
-//
-//        // 5. retorna a rowView
-//        return rowView;
     }
 
     public void filter(String charText) {

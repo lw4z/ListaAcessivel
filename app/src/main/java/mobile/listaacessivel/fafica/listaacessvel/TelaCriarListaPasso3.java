@@ -52,7 +52,7 @@ public class TelaCriarListaPasso3 extends ActionBarActivity {
         for (int i = 0; i < nome.length; i++){
             ItemCriarListaPasso3  p = new ItemCriarListaPasso3(nome[i], marca[i],
                     valor[i], quantidade[i]);
-            // Binds all strings into an array
+            //Colocando todos os itens da string no array
             produtos.add(p);
         }
 

@@ -28,6 +28,7 @@
             android:id="@+id/txtEmail"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:inputType="textEmailAddress"
             android:text="@string/email"
             />
 
@@ -41,6 +42,7 @@
             android:id="@+id/txtSenha"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:inputType="textPassword"
             android:text="@string/senha"
             />
 
@@ -85,6 +87,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/editAnoNascimento"
+            android:inputType="numberSigned"
             android:contentDescription="@string/campo_ano_nascimento"/>
 
         <TextView
@@ -98,6 +101,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/editCpf"
+            android:inputType="numberSigned"
             android:contentDescription="@string/campo_cpf"/>
 
         <!--Telefones para contato-->
@@ -122,6 +126,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/editTelefone1"
+            android:inputType="numberSigned"
             android:contentDescription="@string/campo_telefone1"/>
 
         <TextView
@@ -135,6 +140,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/editTelefone2"
+            android:inputType="numberSigned"
             android:contentDescription="@string/campo_telefone2"/>
 
         <!--Dados de localização-->
@@ -153,6 +159,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/cep"
+            android:inputType="numberSigned"
             />
 
         <EditText
@@ -218,6 +225,7 @@
             android:id="@+id/txtNUmero"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:inputType="numberSigned"
             android:text="@string/numero"
             />
 

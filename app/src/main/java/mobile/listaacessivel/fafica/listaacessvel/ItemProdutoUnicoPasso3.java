@@ -26,26 +26,24 @@ public class ItemProdutoUnicoPasso3 extends ActionBarActivity {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_item_produto_unico_passo3);
-        // Get the intent from ListViewAdapter
+
         Intent i = getIntent();
-        // Get the results of rank
+
         nome_produto = i.getStringExtra("nome_produto");
-        // Get the results of country
         marca = i.getStringExtra("marca_produto");
-        // Get the results of population
         valor = i.getStringExtra("valor_produto");
-        // Get the results of flag
         quantidade = Integer.parseInt(i.getStringExtra("quantidade"));
 
-        // Locate the TextViews in singleitemview.xml
+        // Localizando os TextViews
         txtNome = (TextView) findViewById(R.id.textNomeProduto);
         txtMarca = (TextView) findViewById(R.id.textMarcaProduto);
         txtValor = (TextView) findViewById(R.id.textValorProduto);
         campoQuantidade = (EditText)  findViewById(R.id.campoQuantidadeProduto);
 
+        //Ajustando acessibilidade no editText de quantidade
         campoQuantidade.sendAccessibilityEvent(AccessibilityEvent.TYPE_VIEW_FOCUSED);
 
-        // Load the results into the TextViews
+        // Carregando os resultados nos textViews
         txtNome.setText(nome_produto);
         txtMarca.setText(marca);
         txtValor.setText(valor);
