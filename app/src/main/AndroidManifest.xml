@@ -57,6 +57,10 @@
             android:label="@string/title_activity_tela_criar_lista_passo3"
             android:parentActivityName=".TelaCriarListaPasso2" >
         </activity>
+        <activity
+            android:name=".ItemProdutoUnicoPasso3"
+            android:label="@string/title_activity_item_produto_unico_passo3" >
+        </activity>
     </application>
 
 </manifest>

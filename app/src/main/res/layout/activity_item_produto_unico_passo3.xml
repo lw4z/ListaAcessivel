@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal">
+
+    <!--Ícone do produto-->
+    <ImageView
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_gravity="center_vertical"
+        android:src="@drawable/ic_produto"
+        android:contentDescription="@string/ic_produto"
+        />
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:layout_weight="3">
+        <!--Título da linha, nome do produto-->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Nescau"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+
+            android:layout_alignParentLeft="true"
+            android:id="@+id/textNomeProduto"
+            android:layout_weight="1"/>
+
+        <!--Subtítulo da linha, marca produto-->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Marca: Nestrle"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:layout_alignParentLeft="true"
+            android:id="@+id/textMarcaProduto"
+            android:layout_weight="1"/>
+        <!--Subtítulo da linha, valor produto-->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Valor: R$ 3,00"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:layout_alignParentLeft="true"
+            android:id="@+id/textValorProduto"
+            android:layout_weight="1"/>
+    </LinearLayout>
+
+    <!--CheckBox da seleção do produto-->
+    <CheckBox
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/checkSelecionarProtudo"
+        android:layout_gravity="center_vertical"
+        android:contentDescription="@string/selecionar_produto"
+        android:layout_weight="1"/>
+
+    <!--Texto da quantidade-->
+    <NumberPicker
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/campoQuantidadeProduto"
+        android:orientation="vertical"
+        android:layout_weight="1"
+        />
+
+
+</LinearLayout>

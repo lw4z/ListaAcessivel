@@ -127,6 +127,7 @@
     <string name="ic_lista_acessivel">Ícone do programa Lista acessível</string>
     <string name="ic_produto">Ícone de um produto</string>
     <string name="title_activity_tela_login">TelaLogin</string>
+    <string name="title_activity_item_produto_unico_passo3">ItemProdutoUnicoPasso3</string>
 
 
 </resources>
