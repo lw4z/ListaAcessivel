@@ -26,6 +26,7 @@
     <string name="title_activity_tela_minhas_listas">Minhas Listas</string>
     <string name="title_activity_tela_criar_lista_passo2">Criar Lista Passo 2</string>
     <string name="title_activity_tela_criar_lista_passo3">Criar Lista Passo 3</string>
+    <string name="title_activity_tela_editar_perfil">Editar Perfil</string>
 
 
     <!--Menus-->
@@ -73,6 +74,7 @@
     <string name="pesquisar_produto_nome">Digite um nome para pesquisar por um produto</string>
     <string name="pesquisar_produto">Pesquisar Produto</string>
     <string name="quantidade_produto">Digite aqui a quantidade que desejar do produto selecionado</string>
+    <string name="bt_salvar_perfil">Salvar</string>
 
 
     <!--Nomes báscicos para formulários-->
@@ -129,6 +131,7 @@
     <string name="ic_produto">Ícone de um produto</string>
     <string name="title_activity_tela_login">TelaLogin</string>
     <string name="title_activity_item_produto_unico_passo3">ItemProdutoUnicoPasso3</string>
+
 
 
 </resources>

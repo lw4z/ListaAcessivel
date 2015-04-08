@@ -61,6 +61,11 @@
             android:name=".ItemProdutoUnicoPasso3"
             android:label="@string/title_activity_item_produto_unico_passo3" >
         </activity>
+        <activity
+            android:name=".TelaEditarPerfil"
+            android:label="@string/title_activity_tela_editar_perfil"
+            android:parentActivityName=".TelaPerfilUsuario" >
+        </activity>
     </application>
 
 </manifest>
