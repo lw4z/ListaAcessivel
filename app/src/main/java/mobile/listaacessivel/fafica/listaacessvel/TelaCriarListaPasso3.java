@@ -31,6 +31,7 @@ public class TelaCriarListaPasso3 extends ActionBarActivity {
     String [] marca;
     String [] valor;
     Integer [] quantidade;
+    ArrayList<String> nome2;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,6 +43,15 @@ public class TelaCriarListaPasso3 extends ActionBarActivity {
         getSupportActionBar().setHomeActionContentDescription(R.string.bt_voltar);
 
         //Teste de Busca da lista
+
+        //Com arrayList
+        nome2 = new ArrayList<String>();
+        nome2.add("Nescau");
+        nome2.add("Refrigerante");
+        nome2.add("Carne filé");
+        nome2.add("Macarrão");
+
+        //Com array
         nome = new String[] {"Nescau","Refrigerante","Carne Bovina","Macarrão"};
         marca = new String[] {"Nestle","Jatobá","Friboi","Vitarella"};
         valor = new String[] {"Valor: " + "R$ 3,80","Valor: " + "R$ 2,70","Valor: " + "R$ 13,80","Valor: " + "R$ 1,80"};
@@ -49,8 +59,8 @@ public class TelaCriarListaPasso3 extends ActionBarActivity {
 
         listaProdutos = (ListView) findViewById(R.id.listViewProdutos);
 
-        for (int i = 0; i < nome.length; i++){
-            ItemCriarListaPasso3  p = new ItemCriarListaPasso3(nome[i], marca[i],
+        for (int i = 0; i < nome2.size(); i++){
+            ItemCriarListaPasso3  p = new ItemCriarListaPasso3(nome2.get(i), marca[i],
                     valor[i], quantidade[i]);
             //Colocando todos os itens da string no array
             produtos.add(p);

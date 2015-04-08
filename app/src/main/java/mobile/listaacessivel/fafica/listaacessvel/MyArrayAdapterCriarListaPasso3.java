@@ -2,6 +2,7 @@ package mobile.listaacessivel.fafica.listaacessvel;
 
 import android.content.Context;
 import android.content.Intent;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -81,31 +82,34 @@ public class MyArrayAdapterCriarListaPasso3 extends BaseAdapter{
         holder.quantidade_produto.setText(Integer.toString(listaItemsPasso3.get(position).getQuantidade()));
 
 
-        convertView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(mContext, ItemProdutoUnicoPasso3.class);
-
-                intent.putExtra("nome_produto",(listaItemsPasso3.get(position).getNome_produto()));
-                intent.putExtra("marca_produto",(listaItemsPasso3.get(position).getMarca()));
-                intent.putExtra("valor_produto",(listaItemsPasso3.get(position).getValor_produto()));
-                intent.putExtra("quantidade",(listaItemsPasso3.get(position).getQuantidade()));
-
-                mContext.startActivity(intent);
-            }
-        });
+//        convertView.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                Intent intent = new Intent(mContext, ItemProdutoUnicoPasso3.class);
+//
+//                intent.putExtra("nome_produto",(listaItemsPasso3.get(position).getNome_produto()));
+//                intent.putExtra("marca_produto",(listaItemsPasso3.get(position).getMarca()));
+//                intent.putExtra("valor_produto",(listaItemsPasso3.get(position).getValor_produto()));
+//                intent.putExtra("quantidade",(listaItemsPasso3.get(position).getQuantidade()));
+//
+//                mContext.startActivity(intent);
+//            }
+//        });
 
         return convertView;
     }
 
     public void filter(String charText) {
+        charText = Acentuacao.limparAcentuacao(charText);
         charText = charText.toLowerCase(Locale.getDefault());
+
         listaItemsPasso3.clear();
         if (charText.length() == 0) {
             listaItemsPasso3.addAll(listaProdutos);
         } else {
             for (ItemCriarListaPasso3 p : listaProdutos) {
-                if (p.getNome_produto().toLowerCase(Locale.getDefault())
+                String produto = Acentuacao.limparAcentuacao(p.getNome_produto());
+                if (produto.toLowerCase(Locale.getDefault())
                         .contains(charText)) {
                     listaItemsPasso3.add(p);
                 }
