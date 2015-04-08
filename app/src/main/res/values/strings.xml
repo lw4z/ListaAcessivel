@@ -72,6 +72,7 @@
     <string name="digite_descricao_lista">Digite uma descrição para a lista</string>
     <string name="pesquisar_produto_nome">Digite um nome para pesquisar por um produto</string>
     <string name="pesquisar_produto">Pesquisar Produto</string>
+    <string name="quantidade_produto">Digite aqui a quantidade que desejar do produto selecionado</string>
 
 
     <!--Nomes báscicos para formulários-->

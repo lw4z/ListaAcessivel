@@ -28,7 +28,6 @@
             android:id="@+id/txtEmail"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:inputType="textEmailAddress"
             android:text="@string/email"
             />
 
@@ -36,13 +35,13 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/editEmail"
+            android:inputType="textEmailAddress"
             android:contentDescription="@string/campo_email"/>
 
         <TextView
             android:id="@+id/txtSenha"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:inputType="textPassword"
             android:text="@string/senha"
             />
 
@@ -50,6 +49,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/editSenha"
+            android:inputType="textPassword"
             android:contentDescription="@string/campo_senha"/>
 
         <!--Dados Pessoais-->
