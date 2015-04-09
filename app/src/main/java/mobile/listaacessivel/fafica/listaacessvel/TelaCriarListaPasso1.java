@@ -61,7 +61,7 @@ public class TelaCriarListaPasso1 extends ActionBarActivity {
     }
 
     public void getCategoriaLivraria(View view){
-        Intent livraria = new Intent(this,TelaCriarListaPasso3.class);
+        Intent livraria = new Intent(this,TelaCriarListaPasso2.class);
         startActivity(livraria);
     }
 

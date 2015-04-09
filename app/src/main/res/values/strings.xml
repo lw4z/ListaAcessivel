@@ -106,6 +106,7 @@
     <string name="carregando">Carregando...</string>
     <string name="carregando_acessivel">Carregando o aplicativo lista acessível</string>
     <string name="senha_esquecida">Esqueci minha senha</string>
+    <string name="senha_esquecida_descricao">Clique aqui caso tenha esquecido sua senha</string>
 
     <!--Campos de edição-->
     <string name="campo_email">campo e-mail</string>

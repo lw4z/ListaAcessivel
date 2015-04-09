@@ -1,4 +1,4 @@
-package mobile.listaacessivel.fafica.listaacessvel;
+package mobile.listaacessivel.fafica.listaacessvel.util;
 
 /**
  * Created by ivan on 07/04/15.

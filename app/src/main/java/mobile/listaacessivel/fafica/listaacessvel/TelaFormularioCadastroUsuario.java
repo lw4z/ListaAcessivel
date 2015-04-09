@@ -2,13 +2,10 @@ package mobile.listaacessivel.fafica.listaacessvel;
 
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
-import android.widget.Button;
 import android.widget.EditText;
 
-import javax.xml.validation.Validator;
+import mobile.listaacessivel.fafica.listaacessvel.util.Mask;
 
 
 public class TelaFormularioCadastroUsuario extends ActionBarActivity {

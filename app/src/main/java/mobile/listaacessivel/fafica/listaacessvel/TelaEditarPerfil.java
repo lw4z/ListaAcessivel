@@ -4,9 +4,16 @@ import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.EditText;
+
+import mobile.listaacessivel.fafica.listaacessvel.util.Mask;
 
 
 public class TelaEditarPerfil extends ActionBarActivity {
+
+    EditText editEmail, editSenha, editNomeCompleto, editAnoNascimento, editCpf, editTelefone1,
+            editTelefone2, editCep, editCidade, editEstado, editBairro, editRua, editNumero,
+            editComplemento, editReferencia;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -17,6 +24,25 @@ public class TelaEditarPerfil extends ActionBarActivity {
         getSupportActionBar().setHomeAsUpIndicator(R.mipmap.ic_logo_listaacessivel);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setHomeActionContentDescription(R.string.bt_voltar);
+
+        //Utilização de mascaras para os campos
+        final EditText campo_ano_nascimento = (EditText) findViewById(R.id.editAnoNascimento);
+        campo_ano_nascimento.addTextChangedListener(Mask.insert("##/##/####", campo_ano_nascimento));
+
+        final EditText campo_cpf = (EditText) findViewById(R.id.editCpf);
+        campo_cpf.addTextChangedListener(Mask.insert("###.###.###-##", campo_cpf));
+
+        final EditText campo_telefone1 = (EditText) findViewById(R.id.editTelefone1);
+        campo_telefone1.addTextChangedListener(Mask.insert("(##)####-####", campo_telefone1));
+
+        final EditText campo_telefone2 = (EditText) findViewById(R.id.editTelefone2);
+        campo_telefone1.addTextChangedListener(Mask.insert("(##)####-####", campo_telefone2));
+
+        final EditText campo_cep = (EditText) findViewById(R.id.editCep);
+        campo_cep.addTextChangedListener(Mask.insert("#####-###", campo_cep));
+
+        final EditText campo_email = (EditText) findViewById(R.id.editEmail);
+
     }
 
 

@@ -1,4 +1,4 @@
-package mobile.listaacessivel.fafica.listaacessvel;
+package mobile.listaacessivel.fafica.listaacessvel.util;
 
 import java.text.Normalizer;
 

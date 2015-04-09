@@ -1,10 +1,13 @@
 package mobile.listaacessivel.fafica.listaacessvel;
 
+import android.content.Intent;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ListView;
 
 import java.util.ArrayList;
@@ -13,6 +16,7 @@ import java.util.ArrayList;
 public class TelaCriarListaPasso2 extends ActionBarActivity {
 
     ListView listaEstabelecimentos;
+    ArrayList<ItemCriarListaPasso2> items = new ArrayList<ItemCriarListaPasso2>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -23,14 +27,33 @@ public class TelaCriarListaPasso2 extends ActionBarActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setHomeActionContentDescription(R.string.bt_voltar);
 
+        items.add(new ItemCriarListaPasso2("Bompreço","Bairro: " + "Centro", "Caruaru"));
+        items.add(new ItemCriarListaPasso2("Compre Bem","Bairro: " + "Centro", "Caruaru"));
+        items.add(new ItemCriarListaPasso2("Varejão","Bairro: " + "Vassoural", "Caruaru"));
+        items.add(new ItemCriarListaPasso2("Ponto Frio","Bairro: " + "Cohabe 3", "Caruaru"));
+
         try {
-            MyArrayAdapterCriarListaPasso2 adapter = new MyArrayAdapterCriarListaPasso2(this, criarDados());
+            final MyArrayAdapterCriarListaPasso2 adapter = new MyArrayAdapterCriarListaPasso2(this,items);
 
             // 2. Recupera o ListView para o activity_main.xml
             listaEstabelecimentos = (ListView) findViewById(R.id.listViewEstabelecimentos);
 
             // 3. setListAdapter
             listaEstabelecimentos.setAdapter(adapter);
+
+            //Envio do estabelecimento para a próxima tela
+            listaEstabelecimentos.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                @Override
+                public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                    Bundle dados = new Bundle();
+                    Intent intent = new Intent(view.getContext(), TelaCriarListaPasso3.class);
+
+                    intent.putExtra("nome_produto",(items.get(position).getNome()));
+                    Log.i("ESTABELECIMENTO: ",items.get(position).getNome());
+                    startActivity(intent);
+                }
+            });
+
         }catch (Exception e){
 
         }
@@ -38,12 +61,10 @@ public class TelaCriarListaPasso2 extends ActionBarActivity {
 
     //Método que recebe os dados para a lista
     private ArrayList<ItemCriarListaPasso2> criarDados(){
-        ArrayList<ItemCriarListaPasso2> items = new ArrayList<ItemCriarListaPasso2>();
         items.add(new ItemCriarListaPasso2("Bompreço","Bairro: " + "Centro", "Caruaru"));
         items.add(new ItemCriarListaPasso2("Compre Bem","Bairro: " + "Centro", "Caruaru"));
         items.add(new ItemCriarListaPasso2("Varejão","Bairro: " + "Vassoural", "Caruaru"));
         items.add(new ItemCriarListaPasso2("Ponto Frio","Bairro: " + "Cohabe 3", "Caruaru"));
-
         return items;
     }
 

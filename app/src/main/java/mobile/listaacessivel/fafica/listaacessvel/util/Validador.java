@@ -1,10 +1,8 @@
-package mobile.listaacessivel.fafica.listaacessvel;
+package mobile.listaacessivel.fafica.listaacessvel.util;
 
 /**
  * Created by ivan on 07/04/15.
  */
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
 
 import android.text.Editable;
 import android.text.TextUtils;

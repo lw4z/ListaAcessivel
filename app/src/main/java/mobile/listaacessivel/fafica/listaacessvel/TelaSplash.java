@@ -18,7 +18,7 @@ import java.util.TimerTask;
 public class TelaSplash extends Activity {
 
     // Set Duration of the Splash Screen
-    long Delay = 8000;
+    long Delay = 6000;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

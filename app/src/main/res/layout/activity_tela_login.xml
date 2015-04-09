@@ -97,7 +97,7 @@
         android:layout_gravity="center"
         android:onClick="esqueciMinhaSenha"
         android:id="@+id/textSenhaEsquecida"
-        android:contentDescription="@string/senha_esquecida"
+        android:contentDescription="@string/senha_esquecida_descricao"
         android:linksClickable="true"
         android:clickable="true"
         android:layout_weight="1"/>
