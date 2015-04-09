@@ -29,6 +29,7 @@
     <string name="title_activity_tela_editar_perfil">Editar Perfil</string>
     <string name="title_activity_tela_edicao_senha">Recuperar Senha</string>
     <string name="title_activity_tela_editar_lista_passo1">Editar Lista Passo 1</string>
+    <string name="title_activity_tela_editar_lista_passo2">Editar Lista Passo 2</string>
 
 
     <!--Menus-->
@@ -151,6 +152,7 @@
     <string name="title_activity_tela_login">TelaLogin</string>
     <string name="title_activity_item_produto_unico_passo3">ItemProdutoUnicoPasso3</string>
     <string name="title_activity_tela_splash">TelaSplash</string>
+
 
 
 

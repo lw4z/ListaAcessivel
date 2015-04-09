@@ -15,23 +15,25 @@ import java.util.ArrayList;
 import java.util.Locale;
 
 
-public class TelaEditarListaPasso1 extends ActionBarActivity {
+public class TelaEditarListaPasso2 extends ActionBarActivity {
 
     ListView listaProdutos;
     MyArrayAdapterCriarListaPasso3 adapter;
     EditText editProcurar;
     ArrayList<ItemCriarListaPasso3> produtos = new ArrayList<ItemCriarListaPasso3>();
-    String [] nome;
-    String [] marca;
-    Double [] valor;
-    Integer [] quantidade;
-    ArrayList<String> nome2;
-
+//    String [] nome;
+//    String [] marca;
+//    Double [] valor;
+//    Integer [] quantidade;
+    ArrayList<String> nome;
+    ArrayList<Double> valor;
+    ArrayList<String> marca;
+    ArrayList<Integer> quantidade;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_tela_editar_lista_passo1);
+        setContentView(R.layout.activity_tela_editar_lista_passo2);
 
         //Botão da logo na ActionBar
         getSupportActionBar().setHomeAsUpIndicator(R.mipmap.ic_logo_listaacessivel);
@@ -41,23 +43,35 @@ public class TelaEditarListaPasso1 extends ActionBarActivity {
         //Teste de Busca da lista
 
         //Com arrayList
-        nome2 = new ArrayList<String>();
-        nome2.add("Nescau");
-        nome2.add("Refrigerante");
-        nome2.add("Carne filé");
-        nome2.add("Macarrão");
+        nome = new ArrayList<String>();
+        nome.add("Nescau");
+        nome.add("Refrigerante");
+        nome.add("Carne filé");
+        nome.add("Macarrão");
 
-        //Com array
-        nome = new String[] {"Nescau","Refrigerante","Carne Bovina","Macarrão"};
-        marca = new String[] {"Nestle","Jatobá","Friboi","Vitarella"};
-        valor = new Double[] {3.80,2.70,13.80,1.80};
-        quantidade = new Integer[] {3,8,5,12};
+        marca = new ArrayList<String>();
+        marca.add("Nestlé");
+        marca.add("Jatobá");
+        marca.add("Friboi");
+        marca.add("Vitarella");
+
+        valor = new ArrayList<Double>();
+        valor.add(3.8);
+        valor.add(2.7);
+        valor.add(13.8);
+        valor.add(1.8);
+
+        quantidade = new ArrayList<Integer>();
+        quantidade.add(3);
+        quantidade.add(5);
+        quantidade.add(1);
+        quantidade.add(6);
 
         listaProdutos = (ListView) findViewById(R.id.listViewProdutos);
 
-        for (int i = 0; i < nome2.size(); i++){
-            ItemCriarListaPasso3  p = new ItemCriarListaPasso3(nome2.get(i), marca[i],
-                    valor[i], quantidade[i]);
+        for (int i = 0; i < nome.size(); i++){
+            ItemCriarListaPasso3  p = new ItemCriarListaPasso3(nome.get(i), marca.get(i),
+                    valor.get(i), quantidade.get(i));
             //Colocando todos os itens da string no array
             produtos.add(p);
         }
@@ -91,7 +105,7 @@ public class TelaEditarListaPasso1 extends ActionBarActivity {
 //    @Override
 //    public boolean onCreateOptionsMenu(Menu menu) {
 //        // Inflate the menu; this adds items to the action bar if it is present.
-//        getMenuInflater().inflate(R.menu.menu_tela_editar_lista_passo1, menu);
+//        getMenuInflater().inflate(R.menu.menu_tela_editar_lista_passo2, menu);
 //        return true;
 //    }
 //
@@ -110,15 +124,10 @@ public class TelaEditarListaPasso1 extends ActionBarActivity {
 //        return super.onOptionsItemSelected(item);
 //    }
 
-    //Métodos dos botões
-    public void adicionarMaisProdutos(View view){
-        Intent it = new Intent(this,TelaEditarListaPasso2.class);
-        startActivity(it);
-    }
+    //Métodos dos Botões
 
     public void finalizarEdicao(View view){
         Intent it = new Intent(this,TelaUsuario.class);
         startActivity(it);
     }
-
 }
