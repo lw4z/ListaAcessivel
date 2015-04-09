@@ -8,6 +8,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ListView;
+import android.widget.TextView;
 
 import java.util.ArrayList;
 
@@ -23,6 +24,8 @@ public class TelaDetalhesLista extends ActionBarActivity {
     ArrayList<Double> valor;
     ArrayList<String> marca;
     ArrayList<Integer> quantidade;
+    TextView quantidadeTotal, valorTotal;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,6 +35,10 @@ public class TelaDetalhesLista extends ActionBarActivity {
         getSupportActionBar().setHomeAsUpIndicator(R.mipmap.ic_logo_listaacessivel);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setHomeActionContentDescription(R.string.bt_voltar);
+
+        //Campos de Valores totais das listas
+        quantidadeTotal = (TextView) findViewById(R.id.txtQuantidadeTotalProdutos);
+        valorTotal = (TextView) findViewById(R.id.txtValorTotalLista);
 
         //Teste de Busca da lista
 

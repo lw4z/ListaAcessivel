@@ -1,5 +1,6 @@
 package mobile.listaacessivel.fafica.listaacessvel;
 
+import android.content.Intent;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
@@ -50,10 +51,7 @@ public class TelaPerfilUsuario extends ActionBarActivity {
 
     //Métodos dos Botoẽs da tela
     public void editarPerfil(View view){
-
-    }
-
-    public void editarSenha(View view){
-
+        Intent it = new Intent(this,TelaEditarPerfil.class);
+        startActivity(it);
     }
 }

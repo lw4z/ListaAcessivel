@@ -1,9 +1,11 @@
 package mobile.listaacessivel.fafica.listaacessvel;
 
+import android.content.Intent;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.EditText;
 
 import mobile.listaacessivel.fafica.listaacessvel.util.Mask;
@@ -69,7 +71,8 @@ public class TelaEditarPerfil extends ActionBarActivity {
 //    }
 
     //Métodos dos boõtes
-    public void alterarPerfil(){
-
+    public void alterarPerfil(View view){
+        Intent it = new Intent(this,TelaPerfilUsuario.class);
+        startActivity(it);
     }
 }
