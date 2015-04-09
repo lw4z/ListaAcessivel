@@ -86,7 +86,21 @@
                 android:text="@string/bt_cadastrar"/>
 
         </LinearLayout>
+
+
     </LinearLayout>
+    <!--Link para troca de senha-->
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/senha_esquecida"
+        android:layout_gravity="center"
+        android:onClick="esqueciMinhaSenha"
+        android:id="@+id/textSenhaEsquecida"
+        android:contentDescription="@string/senha_esquecida"
+        android:linksClickable="true"
+        android:clickable="true"
+        android:layout_weight="1"/>
 
     <!--Direitos-->
     <TextView

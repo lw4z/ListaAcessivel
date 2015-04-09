@@ -41,19 +41,19 @@ public class TelaFormularioCadastroUsuario extends ActionBarActivity {
         campo_telefone1.addTextChangedListener(Mask.insert("(##)####-####", campo_telefone2));
 
         final EditText campo_cep = (EditText) findViewById(R.id.editCep);
-        campo_cep.addTextChangedListener(Mask.insert("######-####", campo_cep));
+        campo_cep.addTextChangedListener(Mask.insert("#####-###", campo_cep));
 
         final EditText campo_email = (EditText) findViewById(R.id.editEmail);
 
     }
 
 
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_tela_formulario_cadastro_usuario, menu);
-        return true;
-    }
+//    @Override
+//    public boolean onCreateOptionsMenu(Menu menu) {
+//        // Inflate the menu; this adds items to the action bar if it is present.
+//        getMenuInflater().inflate(R.menu.menu_tela_formulario_cadastro_usuario, menu);
+//        return true;
+//    }
 
 //    @Override
 //    public boolean onOptionsItemSelected(MenuItem item) {

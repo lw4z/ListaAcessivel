@@ -32,6 +32,7 @@
     <!--Menus-->
     <string name="action_settings">Propriedades</string>
     <string name="action_sobre">Sobre</string>
+    <string name="action_logout">Sair</string>
     <string name="sobre">Sobre a aplicação</string>
 
 
@@ -102,6 +103,9 @@
     <string name="senha_nova">Nova Senha:</string>
     <string name="senha_confirmar">Confirmar Senha:</string>
     <string name="title_activity_tela_about">TelaAbout</string>
+    <string name="carregando">Carregando...</string>
+    <string name="carregando_acessivel">Carregando o aplicativo lista acessível</string>
+    <string name="senha_esquecida">Esqueci minha senha</string>
 
     <!--Campos de edição-->
     <string name="campo_email">campo e-mail</string>
@@ -131,6 +135,7 @@
     <string name="ic_produto">Ícone de um produto</string>
     <string name="title_activity_tela_login">TelaLogin</string>
     <string name="title_activity_item_produto_unico_passo3">ItemProdutoUnicoPasso3</string>
+    <string name="title_activity_tela_splash">TelaSplash</string>
 
 
 
