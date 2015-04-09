@@ -15,15 +15,16 @@
         />
 
     <LinearLayout
-        android:layout_width="90dp"
+        android:layout_width="120dp"
         android:layout_height="match_parent"
         android:orientation="vertical"
+        android:gravity="right"
         android:layout_weight="5">
         <!--Título da linha, nome do produto-->
         <TextView
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text=""
+            android:layout_height="match_parent"
+            android:text="Nescau"
             android:textAppearance="?android:attr/textAppearanceMedium"
             android:layout_alignParentLeft="true"
             android:id="@+id/textNomeProduto"
@@ -32,48 +33,43 @@
         <!--Subtítulo da linha, marca produto-->
         <TextView
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text=""
+            android:layout_height="match_parent"
+            android:text="Marca: Nestrle"
             android:textAppearance="?android:attr/textAppearanceSmall"
             android:layout_alignParentLeft="true"
             android:id="@+id/textMarcaProduto"
             android:layout_weight="1"/>
-        <!--Subtítulo da linha, valor produto-->
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text=""
-            android:textAppearance="?android:attr/textAppearanceSmall"
-            android:layout_alignParentLeft="true"
-            android:id="@+id/textValorProduto"
-            android:layout_weight="1"/>
+
     </LinearLayout>
 
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
+        android:gravity="right"
         android:layout_weight="1">
-        <!--CheckBox da seleção do produto-->
-        <CheckBox
-            android:layout_width="wrap_content"
+
+        <!--Subtítulo da linha, valor produto-->
+        <TextView
+            android:layout_width="55dp"
             android:layout_height="match_parent"
-            android:id="@+id/checkSelecionarProtudo"
-            android:layout_gravity="center_vertical"
-            android:contentDescription="@string/selecionar_produto"
+            android:text="Valor: R$ 3,00"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:gravity="center_vertical"
+            android:layout_alignParentLeft="true"
+            android:id="@+id/textValorProduto"
             android:layout_weight="1"/>
 
         <!--Texto da quantidade-->
-        <EditText
+        <TextView
             android:layout_width="20dp"
             android:layout_height="match_parent"
-            android:id="@+id/campoQuantidadeProduto"
-            android:layout_gravity="bottom"
+            android:id="@+id/textQuantidadeProduto"
             android:gravity="center"
-            android:layout_weight="2"
-            android:contentDescription="@string/quantidade_produto"
+            android:layout_weight="1"
+            android:contentDescription="@string/quantidade_produto_detalhes"
             android:inputType="numberSigned"
-            android:text=""
+            android:text="0"
             />
     </LinearLayout>
 

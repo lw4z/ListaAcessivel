@@ -39,14 +39,14 @@
             android:layout_weight="1"/>
     </LinearLayout>
 
-        <!--Botão Detalhes-->
-        <Button
-            android:layout_width="75dp"
-            android:layout_height="50dp"
-            android:layout_alignParentRight="true"
-            android:layout_centerVertical="true"
-            android:textSize="10dp"
-            android:text="@string/bt_detalhes"
-            android:contentDescription="@string/bt_detalhes_lista"
-            android:onClick="detalhesLista"/>
+        <!--&lt;!&ndash;Botão Detalhes&ndash;&gt;-->
+        <!--<Button-->
+            <!--android:layout_width="75dp"-->
+            <!--android:layout_height="50dp"-->
+            <!--android:layout_alignParentRight="true"-->
+            <!--android:layout_centerVertical="true"-->
+            <!--android:textSize="10dp"-->
+            <!--android:text="@string/bt_detalhes"-->
+            <!--android:contentDescription="@string/bt_detalhes_lista"-->
+            <!--android:onClick="detalhesLista"/>-->
 </LinearLayout>

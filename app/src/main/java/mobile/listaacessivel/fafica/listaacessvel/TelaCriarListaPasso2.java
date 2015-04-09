@@ -48,7 +48,7 @@ public class TelaCriarListaPasso2 extends ActionBarActivity {
                     Bundle dados = new Bundle();
                     Intent intent = new Intent(view.getContext(), TelaCriarListaPasso3.class);
 
-                    intent.putExtra("nome_produto",(items.get(position).getNome()));
+                    intent.putExtra("nome_estabelecimento",(items.get(position).getNome()));
                     Log.i("ESTABELECIMENTO: ",items.get(position).getNome());
                     startActivity(intent);
                 }

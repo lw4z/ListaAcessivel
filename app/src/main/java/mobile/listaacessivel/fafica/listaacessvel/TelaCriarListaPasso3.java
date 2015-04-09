@@ -29,7 +29,7 @@ public class TelaCriarListaPasso3 extends ActionBarActivity {
     ArrayList<ItemCriarListaPasso3> produtos = new ArrayList<ItemCriarListaPasso3>();
     String [] nome;
     String [] marca;
-    String [] valor;
+    Double [] valor;
     Integer [] quantidade;
     ArrayList<String> nome2;
 
@@ -54,7 +54,7 @@ public class TelaCriarListaPasso3 extends ActionBarActivity {
         //Com array
         nome = new String[] {"Nescau","Refrigerante","Carne Bovina","Macarrão"};
         marca = new String[] {"Nestle","Jatobá","Friboi","Vitarella"};
-        valor = new String[] {"Valor: " + "R$ 3,80","Valor: " + "R$ 2,70","Valor: " + "R$ 13,80","Valor: " + "R$ 1,80"};
+        valor = new Double[] {3.80,2.70,13.80,1.80};
         quantidade = new Integer[] {3,8,5,12};
 
         listaProdutos = (ListView) findViewById(R.id.listViewProdutos);

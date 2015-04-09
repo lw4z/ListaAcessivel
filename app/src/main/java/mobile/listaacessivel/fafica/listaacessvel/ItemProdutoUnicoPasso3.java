@@ -19,7 +19,7 @@ public class ItemProdutoUnicoPasso3 extends ActionBarActivity {
     EditText campoQuantidade;
     String nome_produto;
     String marca;
-    String valor;
+    Double valor;
     int quantidade;
 
     @Override
@@ -31,7 +31,7 @@ public class ItemProdutoUnicoPasso3 extends ActionBarActivity {
 
         nome_produto = i.getStringExtra("nome_produto");
         marca = i.getStringExtra("marca_produto");
-        valor = i.getStringExtra("valor_produto");
+        valor = Double.parseDouble(i.getStringExtra("valor_produto"));
         quantidade = Integer.parseInt(i.getStringExtra("quantidade"));
 
         // Localizando os TextViews
@@ -46,7 +46,7 @@ public class ItemProdutoUnicoPasso3 extends ActionBarActivity {
         // Carregando os resultados nos textViews
         txtNome.setText(nome_produto);
         txtMarca.setText(marca);
-        txtValor.setText(valor);
+        txtValor.setText(valor.toString());
         campoQuantidade.setText(quantidade);
 
     }

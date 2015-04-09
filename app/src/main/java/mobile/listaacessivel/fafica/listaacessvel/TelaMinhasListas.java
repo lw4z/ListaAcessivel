@@ -1,9 +1,13 @@
 package mobile.listaacessivel.fafica.listaacessvel;
 
+import android.content.Intent;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.Button;
 import android.widget.ListView;
 
 import java.util.ArrayList;
@@ -12,6 +16,7 @@ import java.util.ArrayList;
 public class TelaMinhasListas extends ActionBarActivity {
 
     ListView listaListas;
+    ArrayList<ItemMinhasListas> items = new ArrayList<ItemMinhasListas>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,6 +35,19 @@ public class TelaMinhasListas extends ActionBarActivity {
 
             // 3. setListAdapter
             listaListas.setAdapter(adapter);
+
+            //Envio da lista para a próxima tela
+            listaListas.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                @Override
+                public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                    Bundle dados = new Bundle();
+                    Intent intent = new Intent(view.getContext(), TelaDetalhesLista.class);
+
+                    intent.putExtra("titulo_lista",(items.get(position).getTitulo()));
+                    Log.i("LISTA: ",items.get(position).getTitulo());
+                    startActivity(intent);
+                }
+            });
         }catch (Exception e){
 
         }
@@ -37,7 +55,7 @@ public class TelaMinhasListas extends ActionBarActivity {
 
     //Método que recebe os dados para a lista
     private ArrayList<ItemMinhasListas> criarDados(){
-        ArrayList<ItemMinhasListas> items = new ArrayList<ItemMinhasListas>();
+
         items.add(new ItemMinhasListas("Nome da lista: " + "Lista 1","Situação da lista: " + "atendida"));
         items.add(new ItemMinhasListas("Nome da lista: " + "Lista 2","Situação da lista: " + "solicitada"));
         items.add(new ItemMinhasListas("Nome da lista: " + "Lista 3","Situação da lista: " + "criada"));
@@ -69,7 +87,8 @@ public class TelaMinhasListas extends ActionBarActivity {
 
     //Métodos dos botões
 
-    public void detalhesLista(View view){
-
-    }
+//    public void detalhesLista(View view){
+//
+//
+//    }
 }

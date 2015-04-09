@@ -75,6 +75,7 @@
     <string name="pesquisar_produto_nome">Digite um nome para pesquisar por um produto</string>
     <string name="pesquisar_produto">Pesquisar Produto</string>
     <string name="quantidade_produto">Digite aqui a quantidade que desejar do produto selecionado</string>
+    <string name="quantidade_produto_detalhes">Quantidade selecionada do produto</string>
     <string name="bt_salvar_perfil">Salvar</string>
 
 
@@ -107,6 +108,8 @@
     <string name="carregando_acessivel">Carregando o aplicativo lista acessível</string>
     <string name="senha_esquecida">Esqueci minha senha</string>
     <string name="senha_esquecida_descricao">Clique aqui caso tenha esquecido sua senha</string>
+    <string name="informacoes_lista">Informações da Lista</string>
+    <string name="produtos_lista">Produtos da Lista</string>
 
     <!--Campos de edição-->
     <string name="campo_email">campo e-mail</string>
@@ -127,7 +130,14 @@
     <string name="title_activity_visualizar_perfil">Visualizar Perfil</string>
     <string name="digite_email">Digite seu e-mail</string>
     <string name="digite_senha">Digite sua senha</string>
-    <string name="descricao_lista">Descrição da Lista</string>
+    <string name="descricao_lista">Descrição da Lista:</string>
+    <string name="situacao_lista">Situação da Lista:</string>
+    <string name="data_criacao_lista">Data de criação:</string>
+    <string name="bairro_estabelecimento">Bairro do Estabelecimento:</string>
+    <string name="rua_estabelecimento">Rua do Estabelecimento:</string>
+    <string name="estabelecimento">Estabelecimento:</string>
+    <string name="quantidade_total_produtos">Quantidade total de produtos:</string>
+    <string name="valor_total_lista">Valor total da lista:</string>
 
     <!--Ícones e Imagens-->
     <string name="ic_carinho">Ícone de um carrinho de supermercado</string>

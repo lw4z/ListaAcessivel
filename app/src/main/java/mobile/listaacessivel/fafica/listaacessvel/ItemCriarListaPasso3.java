@@ -7,10 +7,10 @@ public class ItemCriarListaPasso3 {
 
     private String nome_produto;
     private String marca;
-    private String valor_produto;
+    private Double valor_produto;
     private int quantidade;
 
-    public ItemCriarListaPasso3(String nome_produto, String marca, String valor_produto, int quantidade) {
+    public ItemCriarListaPasso3(String nome_produto, String marca, Double valor_produto, int quantidade) {
         super();
         this.nome_produto = nome_produto;
         this.marca = marca;
@@ -42,11 +42,11 @@ public class ItemCriarListaPasso3 {
         this.quantidade = quantidade;
     }
 
-    public String getValor_produto() {
+    public Double getValor_produto() {
         return valor_produto;
     }
 
-    public void setValor_produto(String valor_produto) {
+    public void setValor_produto(Double valor_produto) {
         this.valor_produto = valor_produto;
     }
 }
