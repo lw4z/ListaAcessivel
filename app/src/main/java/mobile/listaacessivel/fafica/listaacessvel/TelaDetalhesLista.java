@@ -1,9 +1,11 @@
 package mobile.listaacessivel.fafica.listaacessvel;
 
+import android.content.Intent;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.EditText;
 import android.widget.ListView;
 
@@ -95,4 +97,18 @@ public class TelaDetalhesLista extends ActionBarActivity {
 //
 //        return super.onOptionsItemSelected(item);
 //    }
+
+    //Métodos dos botões
+    public void imprimirLista(View view){
+
+    }
+
+    public void editarLista(View view){
+        Intent it = new Intent(this,TelaEditarListaPasso1.class);
+        startActivity(it);
+    }
+
+    public void solicitarEntrega(View view){
+
+    }
 }
