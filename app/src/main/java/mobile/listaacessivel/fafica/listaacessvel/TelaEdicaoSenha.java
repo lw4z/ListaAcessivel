@@ -1,34 +1,33 @@
 package mobile.listaacessivel.fafica.listaacessvel;
 
-import android.app.Activity;
-import android.content.Intent;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.Window;
-import android.view.WindowManager;
 
 
-public class TelaLogin extends ActionBarActivity {
+public class TelaEdicaoSenha extends ActionBarActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_tela_login);
+        setContentView(R.layout.activity_tela_edicao_senha);
 
-        //Ocultando actionBar da tela
-        getSupportActionBar().hide();
+        //Botão da logo na ActionBar
+        getSupportActionBar().setHomeAsUpIndicator(R.mipmap.ic_logo_listaacessivel);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setHomeActionContentDescription(R.string.bt_voltar);
     }
+
 
 //    @Override
 //    public boolean onCreateOptionsMenu(Menu menu) {
 //        // Inflate the menu; this adds items to the action bar if it is present.
-//        getMenuInflater().inflate(R.menu.menu_tela_login, menu);
+//        getMenuInflater().inflate(R.menu.menu_tela_edicao_senha, menu);
 //        return true;
 //    }
-
+//
 //    @Override
 //    public boolean onOptionsItemSelected(MenuItem item) {
 //        // Handle action bar item clicks here. The action bar will
@@ -45,20 +44,7 @@ public class TelaLogin extends ActionBarActivity {
 //    }
 
     //Métodos dos botões
-    public void fazerLogin(View view){
-        Intent it = new Intent(this,TelaUsuario.class);
-        startActivity(it);
-        finish();
+    public void recuperarSenha(View view){
+        //Recuperação de senha
     }
-
-    public void fazerCadastro(View view){
-        Intent it = new Intent(this,TelaFormularioCadastroUsuario.class);
-        startActivity(it);
-    }
-
-    public void esqueciMinhaSenha(View view){
-        Intent it = new Intent(this,TelaEdicaoSenha.class);
-        startActivity(it);
-    }
-
 }

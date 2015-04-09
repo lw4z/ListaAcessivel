@@ -27,6 +27,7 @@
     <string name="title_activity_tela_criar_lista_passo2">Criar Lista Passo 2</string>
     <string name="title_activity_tela_criar_lista_passo3">Criar Lista Passo 3</string>
     <string name="title_activity_tela_editar_perfil">Editar Perfil</string>
+    <string name="title_activity_tela_edicao_senha">Recuperar Senha</string>
 
 
     <!--Menus-->
@@ -77,6 +78,7 @@
     <string name="quantidade_produto">Digite aqui a quantidade que desejar do produto selecionado</string>
     <string name="quantidade_produto_detalhes">Quantidade selecionada do produto</string>
     <string name="bt_salvar_perfil">Salvar</string>
+    <string name="bt_recuperar_senha">Recuperar senha</string>
 
 
     <!--Nomes báscicos para formulários-->
@@ -107,9 +109,10 @@
     <string name="carregando">Carregando...</string>
     <string name="carregando_acessivel">Carregando o aplicativo lista acessível</string>
     <string name="senha_esquecida">Esqueci minha senha</string>
-    <string name="senha_esquecida_descricao">Clique aqui caso tenha esquecido sua senha</string>
+    <string name="senha_esquecida_descricao">Esqueci minha senha, clique aqui caso tenha esquecido sua senha</string>
     <string name="informacoes_lista">Informações da Lista</string>
     <string name="produtos_lista">Produtos da Lista</string>
+    <string name="email_recuperacao_senha">Envie seu e-mail que em breve entraremos em contato para a modificação de sua senha</string>
 
     <!--Campos de edição-->
     <string name="campo_email">campo e-mail</string>
@@ -147,6 +150,7 @@
     <string name="title_activity_tela_login">TelaLogin</string>
     <string name="title_activity_item_produto_unico_passo3">ItemProdutoUnicoPasso3</string>
     <string name="title_activity_tela_splash">TelaSplash</string>
+
 
 
 

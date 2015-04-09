@@ -75,6 +75,11 @@
             android:label="@string/title_activity_tela_detalhes_lista"
             android:parentActivityName=".TelaMinhasListas" >
         </activity>
+        <activity
+            android:name=".TelaEdicaoSenha"
+            android:label="@string/title_activity_tela_edicao_senha"
+            android:parentActivityName=".TelaLogin" >
+        </activity>
     </application>
 
 </manifest>
