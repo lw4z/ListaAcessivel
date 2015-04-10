@@ -1,8 +1,10 @@
 package mobile.listaacessivel.fafica.listaacessvel;
 
 import android.content.Intent;
+import android.content.res.Configuration;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
+import android.text.InputType;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.accessibility.AccessibilityEvent;
@@ -42,6 +44,7 @@ public class ItemProdutoUnicoPasso3 extends ActionBarActivity {
 
         //Ajustando acessibilidade no editText de quantidade
         campoQuantidade.sendAccessibilityEvent(AccessibilityEvent.TYPE_VIEW_FOCUSED);
+        campoQuantidade.setRawInputType(Configuration.KEYBOARD_12KEY);
 
         // Carregando os resultados nos textViews
         txtNome.setText(nome_produto);

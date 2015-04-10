@@ -1,9 +1,12 @@
 package mobile.listaacessivel.fafica.listaacessvel;
 
 import android.content.Context;
+import android.content.res.Configuration;
+import android.text.InputType;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.accessibility.AccessibilityEvent;
 import android.widget.BaseAdapter;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -67,6 +70,12 @@ public class MyArrayAdapterCriarListaPasso3 extends BaseAdapter{
             holder.marca_produto = (TextView) convertView.findViewById(R.id.textMarcaProduto);
             holder.valor_produto = (TextView) convertView.findViewById(R.id.textValorProduto);
             holder.quantidade_produto = (EditText) convertView.findViewById(R.id.campoQuantidadeProduto);
+
+            holder.quantidade_produto.sendAccessibilityEvent(AccessibilityEvent.TYPE_VIEW_FOCUSED);
+            holder.quantidade_produto.setRawInputType(Configuration.KEYBOARD_12KEY);
+            holder.quantidade_produto.setSelectAllOnFocus(true);
+
+
             convertView.setTag(holder);
         }else{
             holder = (ViewHolder) convertView.getTag();
@@ -76,7 +85,7 @@ public class MyArrayAdapterCriarListaPasso3 extends BaseAdapter{
         holder.marca_produto.setText("Marca: " + listaItemsPasso3.get(position).getMarca());
         holder.valor_produto.setText("Valor: R$ " + Double.toString(listaItemsPasso3.get(position).getValor_produto()));
         holder.quantidade_produto.setText(Integer.toString(listaItemsPasso3.get(position).getQuantidade()));
-
+        holder.quantidade_produto.setRawInputType(Configuration.KEYBOARD_12KEY);
 
 //        convertView.setOnClickListener(new View.OnClickListener() {
 //            @Override

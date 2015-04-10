@@ -2,6 +2,7 @@ package mobile.listaacessivel.fafica.listaacessvel;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.content.pm.ActivityInfo;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
@@ -17,6 +18,8 @@ public class TelaLogin extends ActionBarActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_tela_login);
+        //A janela da aplicação deverá ficar apenas no formato vertical
+        this.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
 
         //Ocultando actionBar da tela
         getSupportActionBar().hide();

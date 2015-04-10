@@ -71,8 +71,9 @@
             android:layout_gravity="bottom"
             android:gravity="center"
             android:layout_weight="2"
+            android:focusable="true"
             android:contentDescription="@string/quantidade_produto"
-            android:inputType="numberSigned"
+            android:inputType="number"
             android:text=""
             />
     </LinearLayout>

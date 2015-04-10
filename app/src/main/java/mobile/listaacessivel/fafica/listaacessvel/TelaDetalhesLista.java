@@ -3,6 +3,7 @@ package mobile.listaacessivel.fafica.listaacessvel;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.pm.ActivityInfo;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
@@ -37,6 +38,8 @@ public class TelaDetalhesLista extends ActionBarActivity {
         getSupportActionBar().setHomeAsUpIndicator(R.mipmap.ic_logo_listaacessivel);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setHomeActionContentDescription(R.string.bt_voltar);
+        //A janela da aplicação deverá ficar apenas no formato vertical
+        this.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
 
         //Campos de Valores totais das listas
         quantidadeTotal = (TextView) findViewById(R.id.txtQuantidadeTotalProdutos);

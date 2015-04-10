@@ -3,6 +3,7 @@ package mobile.listaacessivel.fafica.listaacessvel;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.pm.ActivityInfo;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.text.Editable;
@@ -39,6 +40,8 @@ public class TelaEditarListaPasso1 extends ActionBarActivity {
         getSupportActionBar().setHomeAsUpIndicator(R.mipmap.ic_logo_listaacessivel);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setHomeActionContentDescription(R.string.bt_voltar);
+        //A janela da aplicação deverá ficar apenas no formato vertical
+        this.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
 
         //Teste de Busca da lista
 
@@ -119,7 +122,7 @@ public class TelaEditarListaPasso1 extends ActionBarActivity {
     }
 
     public void finalizarEdicao(View view){
-        getMessage("Alerta!","Deseja realmente finalizar a edição da lista?");
+        getMessage("Alerta!", "Deseja realmente finalizar a edição da lista?");
     }
 
     //Método de mensagem

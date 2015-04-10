@@ -2,6 +2,7 @@ package mobile.listaacessivel.fafica.listaacessvel;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.content.pm.ActivityInfo;
 import android.os.Handler;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
@@ -25,7 +26,8 @@ public class TelaSplash extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_tela_splash);
         //requestWindowFeature(Window.FEATURE_NO_TITLE);
-
+        //A janela da aplicação deverá ficar apenas no formato vertical
+        this.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
         // Get the view from splash_screen.xml
         setContentView(R.layout.activity_tela_splash);
 
