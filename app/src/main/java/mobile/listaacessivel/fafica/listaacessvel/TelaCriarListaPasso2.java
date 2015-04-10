@@ -45,7 +45,7 @@ public class TelaCriarListaPasso2 extends ActionBarActivity {
             listaEstabelecimentos.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                 @Override
                 public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                    Bundle dados = new Bundle();
+                    //Bundle dados = new Bundle();
                     Intent intent = new Intent(view.getContext(), TelaCriarListaPasso3.class);
 
                     intent.putExtra("nome_estabelecimento",(items.get(position).getNome()));

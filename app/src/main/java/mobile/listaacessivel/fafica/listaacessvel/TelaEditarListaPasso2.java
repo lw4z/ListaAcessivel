@@ -1,5 +1,7 @@
 package mobile.listaacessivel.fafica.listaacessvel;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
@@ -127,7 +129,32 @@ public class TelaEditarListaPasso2 extends ActionBarActivity {
     //Métodos dos Botões
 
     public void finalizarEdicao(View view){
-        Intent it = new Intent(this,TelaUsuario.class);
-        startActivity(it);
+        getMessage("Alerta!","Deseja realmente finalizar a edição da lista?");
+    }
+
+    //Método de mensagem
+    public AlertDialog alerta;
+
+    public void getMessage(String titulo, String mensagem) {
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+
+        builder.setTitle(titulo);
+        builder.setMessage(mensagem);
+        //define um botão como positivo
+        builder.setPositiveButton("Sim", new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface arg0, int arg1) {
+                Intent it = new Intent(TelaEditarListaPasso2.this,TelaMinhasListas.class);
+                startActivity(it);
+            }
+        });
+        //define um botão como negativo.
+        builder.setNegativeButton("Não", new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface arg0, int arg1) {
+                return;
+            }
+        });
+        //cria o AlertDialog e exibe na tela
+        alerta = builder.create();
+        alerta.show();
     }
 }

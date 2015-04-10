@@ -1,5 +1,8 @@
 package mobile.listaacessivel.fafica.listaacessvel;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
+import android.content.Intent;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
@@ -45,6 +48,32 @@ public class TelaEdicaoSenha extends ActionBarActivity {
 
     //Métodos dos botões
     public void recuperarSenha(View view){
-        //Recuperação de senha
+        getMessage("Alerta!","Deseja enviar seu e-mail para solicitar a recuperação de sua senha?");
+    }
+
+    //Método de mensagem
+    public AlertDialog alerta;
+
+    public void getMessage(String titulo, String mensagem) {
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+
+        builder.setTitle(titulo);
+        builder.setMessage(mensagem);
+        //define um botão como positivo
+        builder.setPositiveButton("Sim", new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface arg0, int arg1) {
+                Intent it = new Intent(TelaEdicaoSenha.this,TelaLogin.class);
+                startActivity(it);
+            }
+        });
+        //define um botão como negativo.
+        builder.setNegativeButton("Não", new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface arg0, int arg1) {
+                return;
+            }
+        });
+        //cria o AlertDialog e exibe na tela
+        alerta = builder.create();
+        alerta.show();
     }
 }
