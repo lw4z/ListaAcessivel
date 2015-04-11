@@ -51,7 +51,7 @@ public class TelaEdicaoSenha extends ActionBarActivity {
 
     //Métodos dos botões
     public void recuperarSenha(View view){
-        getMessage("Alerta!","Deseja enviar seu e-mail para solicitar a recuperação de sua senha?");
+        getMessage("Recuperação de senha!","Deseja enviar seu e-mail para solicitar a recuperação de sua senha?");
     }
 
     //Método de mensagem

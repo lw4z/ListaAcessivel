@@ -77,7 +77,7 @@ public class TelaEditarPerfil extends ActionBarActivity {
 
     //Métodos dos boõtes
     public void alterarPerfil(View view){
-        getMessage("Alerta!","Deseja realmente salvar as modificações?");
+        getMessage("Salvar!","Deseja realmente salvar as modificações?");
     }
 
     //Método de mensagem

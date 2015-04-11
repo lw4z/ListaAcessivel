@@ -75,7 +75,7 @@ public class TelaFormularioCadastroUsuario extends ActionBarActivity {
 
     //Métodos dos Botoẽs da tela
     public void cadastrarUsuario(View view){
-        getMessage("Alerta!","Deseja realmente criar o seu cadastro?");
+        getMessage("Criar Cadastro!","Deseja realmente criar o seu cadastro?");
     }
 
     //Método de mensagem

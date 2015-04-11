@@ -121,7 +121,7 @@ public class TelaDetalhesLista extends ActionBarActivity {
     }
 
     public void solicitarEntrega(View view){
-        getMessage("Alerta!","Deseja realmente solicitar a entrega da lista?");
+        getMessage("Solicitar Entrega!","Deseja realmente solicitar a entrega da lista?");
     }
 
 

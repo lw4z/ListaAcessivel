@@ -132,7 +132,7 @@ public class TelaEditarListaPasso2 extends ActionBarActivity {
     //Métodos dos Botões
 
     public void finalizarEdicao(View view){
-        getMessage("Alerta!","Deseja realmente finalizar a edição da lista?");
+        getMessage("Finalizar Edição!","Deseja realmente finalizar a edição da lista?");
     }
 
     //Método de mensagem
