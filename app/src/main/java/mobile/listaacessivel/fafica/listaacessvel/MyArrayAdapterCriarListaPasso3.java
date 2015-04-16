@@ -2,7 +2,9 @@ package mobile.listaacessivel.fafica.listaacessvel;
 
 import android.content.Context;
 import android.content.res.Configuration;
+import android.text.Editable;
 import android.text.InputType;
+import android.text.TextWatcher;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -27,6 +29,7 @@ public class MyArrayAdapterCriarListaPasso3 extends BaseAdapter{
     LayoutInflater inflater;
     private List<ItemCriarListaPasso3> listaItemsPasso3 = null;
     private ArrayList<ItemCriarListaPasso3> listaProdutos;
+    public EditText focuesdEditText;
 
     public MyArrayAdapterCriarListaPasso3(Context context, List<ItemCriarListaPasso3> listaItemsPasso3) {
         mContext = context;
@@ -41,6 +44,7 @@ public class MyArrayAdapterCriarListaPasso3 extends BaseAdapter{
         TextView marca_produto;
         TextView valor_produto;
         EditText quantidade_produto;
+        int ref;
     }
 
     @Override
@@ -72,20 +76,45 @@ public class MyArrayAdapterCriarListaPasso3 extends BaseAdapter{
             holder.valor_produto = (TextView) convertView.findViewById(R.id.textValorProduto);
             holder.quantidade_produto = (EditText) convertView.findViewById(R.id.campoQuantidadeProduto);
 
-            //holder.quantidade_produto.sendAccessibilityEvent(AccessibilityEvent.TYPE_VIEW_FOCUSED);
 
             convertView.setTag(holder);
         }else{
             holder = (ViewHolder) convertView.getTag();
         }
 
+        holder.ref = position;
+
         holder.nome_produto.setText(listaItemsPasso3.get(position).getNome_produto());
         holder.marca_produto.setText("Marca: " + listaItemsPasso3.get(position).getMarca());
         holder.valor_produto.setText("Valor: R$ " + Double.toString(listaItemsPasso3.get(position).getValor_produto()));
+
+        //Log
         String valor = String.valueOf(listaItemsPasso3.get(position).getQuantidade());
         Log.i("VALOR DA QUANTIDADE",valor);
+        Log.i("TAMANHO DA LISTA",String.valueOf(getCount()));
+
         holder.quantidade_produto.setText("" + listaItemsPasso3.get(position).getQuantidade());
 
+        holder.quantidade_produto.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+                try {
+                    listaItemsPasso3.get(holder.ref).setQuantidade(Integer.parseInt(s.toString()));
+                }catch (Exception e){
+
+                }
+            }
+        });
 
 //        convertView.setOnClickListener(new View.OnClickListener() {
 //            @Override
@@ -123,8 +152,6 @@ public class MyArrayAdapterCriarListaPasso3 extends BaseAdapter{
         notifyDataSetChanged();
     }
 
-    public void updateItens(ArrayList<ItemCriarListaPasso3> itens) {
-        this.listaItemsPasso3 = itens;
-        notifyDataSetChanged();
-    }
 }
+
+

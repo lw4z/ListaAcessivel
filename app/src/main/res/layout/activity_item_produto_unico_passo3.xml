@@ -74,7 +74,7 @@
             android:focusable="true"
             android:contentDescription="@string/quantidade_produto"
             android:inputType="number"
-            android:digits="1234567890"
+            android:selectAllOnFocus="true"
             />
     </LinearLayout>
 

@@ -31,7 +31,7 @@ public class TelaCriarListaPasso3 extends ActionBarActivity {
 
     ListView listaProdutos;
     MyArrayAdapterCriarListaPasso3 adapter;
-    EditText editProcurar;
+    EditText editProcurar, quantidadeProduto;
     ArrayList<ItemCriarListaPasso3> produtos = new ArrayList<ItemCriarListaPasso3>();
 //    String [] nome;
 //    String [] marca;
@@ -91,27 +91,22 @@ public class TelaCriarListaPasso3 extends ActionBarActivity {
         valor.add(1.5);
         valor.add(1.9);
 
-        quantidade = new ArrayList<Integer>();
-        quantidade.add(0);
-        quantidade.add(0);
-        quantidade.add(0);
-        quantidade.add(0);
-        quantidade.add(0);
-        quantidade.add(0);
-        quantidade.add(0);
-        quantidade.add(0);
+        //quantidade = new ArrayList<Integer>();
+//        quantidade.add(0);
+//        quantidade.add(0);
+//        quantidade.add(0);
+//        quantidade.add(0);
+//        quantidade.add(0);
+//        quantidade.add(0);
+//        quantidade.add(0);
+//        quantidade.add(0);
 
         listaProdutos = (ListView) findViewById(R.id.listViewProdutos);
-        //final EditText quantidade_produto = (EditText) findViewById(R.id.campoQuantidadeProduto);
+        final EditText quantidade_produto = (EditText) findViewById(R.id.campoQuantidadeProduto);
 
         for (int i = 0; i < nome.size(); i++){
-//            if(quantidade_produto != null){
-//                quantidade.set(i, Integer.parseInt(quantidade_produto.getText().toString()));
-//            }
-
             final ItemCriarListaPasso3  p = new ItemCriarListaPasso3(nome.get(i), marca.get(i),
-                    valor.get(i),quantidade.get(i));
-
+                    valor.get(i));
             //Colocando todos os itens da string no array
             produtos.add(p);
 
@@ -120,6 +115,7 @@ public class TelaCriarListaPasso3 extends ActionBarActivity {
         adapter = new MyArrayAdapterCriarListaPasso3(this,produtos);
 
         listaProdutos.setAdapter(adapter);
+
 
         editProcurar = (EditText) findViewById(R.id.campoPesquisaProduto);
 
@@ -131,21 +127,15 @@ public class TelaCriarListaPasso3 extends ActionBarActivity {
 
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
-//                final EditText quantidade_produto = (EditText) findViewById(R.id.campoQuantidadeProduto);
-//
-//                for (int i = 0; i < nome.size(); i++) {
-//                    if (quantidade_produto != null) {
-//                        quantidade.set(i, Integer.parseInt(quantidade_produto.getText().toString()));
-//                    }
-//                }
+
             }
 
             @Override
             public void afterTextChanged(Editable s) {
                 String text = editProcurar.getText().toString().toLowerCase(Locale.getDefault());
                 adapter.filter(text);
-                scroll.fullScroll(ScrollView.FOCUS_UP);
-                scroll.smoothScrollTo(0, 0);
+                //scroll.fullScroll(ScrollView.FOCUS_UP);
+                //scroll.smoothScrollTo(0, 0);
             }
         });
     }
