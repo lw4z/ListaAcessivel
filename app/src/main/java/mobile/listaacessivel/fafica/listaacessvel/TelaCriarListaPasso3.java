@@ -9,6 +9,7 @@ import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -18,6 +19,7 @@ import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.NumberPicker;
+import android.widget.ScrollView;
 import android.widget.TextView;
 
 import java.util.ArrayList;
@@ -51,6 +53,10 @@ public class TelaCriarListaPasso3 extends ActionBarActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setHomeActionContentDescription(R.string.bt_voltar);
 
+        //Desabilitando barra de rolagem na tela
+        ((ScrollView) findViewById (R.id.scrollTelaListaPasso3)).setVerticalScrollBarEnabled(false);
+        final ScrollView scroll = (ScrollView) findViewById(R.id.scrollTelaListaPasso3);
+
 
         //Teste de Busca da lista
 
@@ -60,32 +66,55 @@ public class TelaCriarListaPasso3 extends ActionBarActivity {
         nome.add("Refrigerante");
         nome.add("Carne filé");
         nome.add("Macarrão");
+        nome.add("Sabão");
+        nome.add("Arroz");
+        nome.add("Sabonete");
+        nome.add("Creme Dental");
 
         marca = new ArrayList<String>();
         marca.add("Nestlé");
         marca.add("Jatobá");
         marca.add("Friboi");
         marca.add("Vitarella");
+        marca.add("Omo");
+        marca.add("Rampinelli");
+        marca.add("Luz");
+        marca.add("Colgate");
 
         valor = new ArrayList<Double>();
         valor.add(3.8);
         valor.add(2.7);
         valor.add(13.8);
         valor.add(1.8);
+        valor.add(1.4);
+        valor.add(2.2);
+        valor.add(1.5);
+        valor.add(1.9);
 
         quantidade = new ArrayList<Integer>();
-        quantidade.add(3);
-        quantidade.add(5);
-        quantidade.add(1);
-        quantidade.add(6);
+        quantidade.add(0);
+        quantidade.add(0);
+        quantidade.add(0);
+        quantidade.add(0);
+        quantidade.add(0);
+        quantidade.add(0);
+        quantidade.add(0);
+        quantidade.add(0);
 
         listaProdutos = (ListView) findViewById(R.id.listViewProdutos);
+        //final EditText quantidade_produto = (EditText) findViewById(R.id.campoQuantidadeProduto);
 
         for (int i = 0; i < nome.size(); i++){
-            ItemCriarListaPasso3  p = new ItemCriarListaPasso3(nome.get(i), marca.get(i),
-                    valor.get(i), quantidade.get(i));
+//            if(quantidade_produto != null){
+//                quantidade.set(i, Integer.parseInt(quantidade_produto.getText().toString()));
+//            }
+
+            final ItemCriarListaPasso3  p = new ItemCriarListaPasso3(nome.get(i), marca.get(i),
+                    valor.get(i),quantidade.get(i));
+
             //Colocando todos os itens da string no array
             produtos.add(p);
+
         }
 
         adapter = new MyArrayAdapterCriarListaPasso3(this,produtos);
@@ -102,13 +131,21 @@ public class TelaCriarListaPasso3 extends ActionBarActivity {
 
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
-
+//                final EditText quantidade_produto = (EditText) findViewById(R.id.campoQuantidadeProduto);
+//
+//                for (int i = 0; i < nome.size(); i++) {
+//                    if (quantidade_produto != null) {
+//                        quantidade.set(i, Integer.parseInt(quantidade_produto.getText().toString()));
+//                    }
+//                }
             }
 
             @Override
             public void afterTextChanged(Editable s) {
                 String text = editProcurar.getText().toString().toLowerCase(Locale.getDefault());
                 adapter.filter(text);
+                scroll.fullScroll(ScrollView.FOCUS_UP);
+                scroll.smoothScrollTo(0, 0);
             }
         });
     }

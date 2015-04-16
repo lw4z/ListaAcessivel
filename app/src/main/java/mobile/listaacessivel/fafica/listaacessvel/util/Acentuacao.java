@@ -10,7 +10,7 @@ public class Acentuacao {
         //palavra = palavra.replaceAll(" ","_");
         palavra = Normalizer.normalize(palavra, Normalizer.Form.NFD);
         palavra = palavra.replaceAll("[^\\p{ASCII}]", "");
-        palavra = palavra.toLowerCase();
+        palavra = palavra.toLowerCase().trim();
         return palavra;
     }
 }

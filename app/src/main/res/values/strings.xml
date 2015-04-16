@@ -81,6 +81,7 @@
     <string name="quantidade_produto_detalhes">Quantidade selecionada do produto</string>
     <string name="bt_salvar_perfil">Salvar</string>
     <string name="bt_recuperar_senha">Recuperar senha</string>
+    <string name="valor_0">"0"</string>
 
 
     <!--Nomes báscicos para formulários-->

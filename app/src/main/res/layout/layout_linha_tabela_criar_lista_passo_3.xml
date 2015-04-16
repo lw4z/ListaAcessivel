@@ -23,30 +23,38 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text=""
+            android:text="titulo"
             android:textAppearance="?android:attr/textAppearanceMedium"
             android:layout_alignParentLeft="true"
             android:id="@+id/textNomeProduto"
             android:layout_weight="1"/>
 
-        <!--Subtítulo da linha, marca produto-->
-        <TextView
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text=""
-            android:textAppearance="?android:attr/textAppearanceSmall"
-            android:layout_alignParentLeft="true"
-            android:id="@+id/textMarcaProduto"
-            android:layout_weight="1"/>
-        <!--Subtítulo da linha, valor produto-->
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text=""
-            android:textAppearance="?android:attr/textAppearanceSmall"
-            android:layout_alignParentLeft="true"
-            android:id="@+id/textValorProduto"
-            android:layout_weight="1"/>
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            android:layout_weight="7">
+
+            <!--Subtítulo da linha, marca produto-->
+            <TextView
+                android:layout_width="140dp"
+                android:layout_height="wrap_content"
+                android:text=""
+                android:textAppearance="?android:attr/textAppearanceSmall"
+                android:layout_alignParentLeft="true"
+                android:id="@+id/textMarcaProduto"
+                />
+            <!--Subtítulo da linha, valor produto-->
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text=""
+                android:gravity="center"
+                android:textAppearance="?android:attr/textAppearanceSmall"
+                android:layout_alignParentRight="true"
+                android:id="@+id/textValorProduto"
+                />
+            </LinearLayout>
     </LinearLayout>
 
     <LinearLayout
@@ -71,10 +79,9 @@
             android:layout_gravity="bottom"
             android:gravity="center"
             android:layout_weight="2"
-            android:focusable="true"
+            android:inputType="numberSigned"
+            android:hint=" "
             android:contentDescription="@string/quantidade_produto"
-            android:inputType="number"
-            android:text=""
             />
     </LinearLayout>
 

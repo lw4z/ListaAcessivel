@@ -1,3 +1,4 @@
+
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
     android:layout_height="match_parent" android:paddingLeft="@dimen/activity_horizontal_margin"
@@ -39,12 +40,31 @@
             android:completionThreshold="1"/>
     </LinearLayout>
 
-    <!--Lista dos estabelecimentos-->
-    <ListView
-        android:id="@+id/listViewProdutos"
-        android:layout_width="match_parent"
+
+    <ScrollView
         android:layout_height="match_parent"
-        android:layout_weight="40"></ListView>
+        android:layout_width="match_parent"
+        android:id="@+id/scrollTelaListaPasso3"
+        android:layout_weight="35"
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:fillViewport="false"
+        >
+
+        <LinearLayout
+
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1">
+
+            <!--Lista dos estabelecimentos-->
+            <ListView
+                android:id="@+id/listViewProdutos"
+                android:layout_width="fill_parent"
+                android:layout_height="355dp"
+                />
+
+        </LinearLayout>
+    </ScrollView>
 
     <!--Texto Descrição da lista-->
     <TextView

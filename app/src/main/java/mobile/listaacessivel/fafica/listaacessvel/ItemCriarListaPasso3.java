@@ -18,6 +18,13 @@ public class ItemCriarListaPasso3 {
         this.quantidade = quantidade;
     }
 
+    public ItemCriarListaPasso3(String nome_produto, String marca, Double valor_produto) {
+        super();
+        this.nome_produto = nome_produto;
+        this.marca = marca;
+        this.valor_produto = valor_produto;
+    }
+
     public String getNome_produto() {
         return nome_produto;
     }
