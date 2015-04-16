@@ -102,7 +102,6 @@ public class TelaCriarListaPasso3 extends ActionBarActivity {
 //        quantidade.add(0);
 
         listaProdutos = (ListView) findViewById(R.id.listViewProdutos);
-        final EditText quantidade_produto = (EditText) findViewById(R.id.campoQuantidadeProduto);
 
         for (int i = 0; i < nome.size(); i++){
             final ItemCriarListaPasso3  p = new ItemCriarListaPasso3(nome.get(i), marca.get(i),

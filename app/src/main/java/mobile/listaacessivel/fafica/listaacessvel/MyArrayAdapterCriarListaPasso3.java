@@ -29,6 +29,7 @@ public class MyArrayAdapterCriarListaPasso3 extends BaseAdapter{
     LayoutInflater inflater;
     private List<ItemCriarListaPasso3> listaItemsPasso3 = null;
     private ArrayList<ItemCriarListaPasso3> listaProdutos;
+
     public EditText focuesdEditText;
 
     public MyArrayAdapterCriarListaPasso3(Context context, List<ItemCriarListaPasso3> listaItemsPasso3) {
@@ -93,8 +94,11 @@ public class MyArrayAdapterCriarListaPasso3 extends BaseAdapter{
         Log.i("VALOR DA QUANTIDADE",valor);
         Log.i("TAMANHO DA LISTA",String.valueOf(getCount()));
 
-        holder.quantidade_produto.setText("" + listaItemsPasso3.get(position).getQuantidade());
-
+        if(listaItemsPasso3.get(position).getQuantidade() != 0) {
+            holder.quantidade_produto.setText("" + listaItemsPasso3.get(position).getQuantidade());
+        }else{
+            holder.quantidade_produto.setText("");
+        }
         holder.quantidade_produto.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
