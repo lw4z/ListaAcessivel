@@ -33,10 +33,6 @@ public class TelaCriarListaPasso3 extends ActionBarActivity {
     MyArrayAdapterCriarListaPasso3 adapter;
     EditText editProcurar, quantidadeProduto;
     ArrayList<ItemCriarListaPasso3> produtos = new ArrayList<ItemCriarListaPasso3>();
-//    String [] nome;
-//    String [] marca;
-//    Double [] valor;
-//    Integer [] quantidade;
     ArrayList<Integer> id_produto;
     ArrayList<String> nome;
     ArrayList<Double> valor;

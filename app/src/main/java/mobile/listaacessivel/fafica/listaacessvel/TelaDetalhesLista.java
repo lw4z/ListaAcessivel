@@ -64,24 +64,41 @@ public class TelaDetalhesLista extends ActionBarActivity {
         nome.add("Refrigerante");
         nome.add("Carne filé");
         nome.add("Macarrão");
+        nome.add("Sabão");
+        nome.add("Arroz");
+        nome.add("Sabonete");
+        nome.add("Creme Dental");
 
         marca = new ArrayList<String>();
         marca.add("Nestlé");
         marca.add("Jatobá");
         marca.add("Friboi");
         marca.add("Vitarella");
+        marca.add("Omo");
+        marca.add("Rampinelli");
+        marca.add("Luz");
+        marca.add("Colgate");
 
         valor = new ArrayList<Double>();
         valor.add(3.8);
         valor.add(2.7);
         valor.add(13.8);
         valor.add(1.8);
+        valor.add(1.4);
+        valor.add(2.2);
+        valor.add(1.5);
+        valor.add(1.9);
 
         quantidade = new ArrayList<Integer>();
         quantidade.add(3);
         quantidade.add(5);
         quantidade.add(1);
         quantidade.add(6);
+        quantidade.add(8);
+        quantidade.add(2);
+        quantidade.add(7);
+        quantidade.add(4);
+
 
         listaProdutos = (ListView) findViewById(R.id.listProdutosListaDetalhes);
 

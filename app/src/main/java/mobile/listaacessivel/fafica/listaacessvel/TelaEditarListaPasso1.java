@@ -24,12 +24,11 @@ public class TelaEditarListaPasso1 extends ActionBarActivity {
     MyArrayAdapterCriarListaPasso3 adapter;
     EditText editProcurar;
     ArrayList<ItemCriarListaPasso3> produtos = new ArrayList<ItemCriarListaPasso3>();
-    String [] nome;
-    String [] marca;
-    Double [] valor;
-    Integer [] quantidade;
-    ArrayList<String> nome2;
     ArrayList<Integer> id_produto;
+    ArrayList<String> nome;
+    ArrayList<Double> valor;
+    ArrayList<String> marca;
+    ArrayList<Integer> quantidade;
 
 
     @Override
@@ -47,7 +46,6 @@ public class TelaEditarListaPasso1 extends ActionBarActivity {
         //Teste de Busca da lista
 
         //Com arrayList
-        //Com arrayList
         id_produto = new ArrayList<Integer>();
         id_produto.add(1);
         id_produto.add(2);
@@ -58,23 +56,51 @@ public class TelaEditarListaPasso1 extends ActionBarActivity {
         id_produto.add(7);
         id_produto.add(8);
 
-        nome2 = new ArrayList<String>();
-        nome2.add("Nescau");
-        nome2.add("Refrigerante");
-        nome2.add("Carne filé");
-        nome2.add("Macarrão");
+        nome = new ArrayList<String>();
+        nome.add("Nescau");
+        nome.add("Refrigerante");
+        nome.add("Carne filé");
+        nome.add("Macarrão");
+        nome.add("Sabão");
+        nome.add("Arroz");
+        nome.add("Sabonete");
+        nome.add("Creme Dental");
 
-        //Com array
-        nome = new String[] {"Nescau","Refrigerante","Carne Bovina","Macarrão"};
-        marca = new String[] {"Nestle","Jatobá","Friboi","Vitarella"};
-        valor = new Double[] {3.80,2.70,13.80,1.80};
-        quantidade = new Integer[] {3,8,5,12};
+        marca = new ArrayList<String>();
+        marca.add("Nestlé");
+        marca.add("Jatobá");
+        marca.add("Friboi");
+        marca.add("Vitarella");
+        marca.add("Omo");
+        marca.add("Rampinelli");
+        marca.add("Luz");
+        marca.add("Colgate");
+
+        valor = new ArrayList<Double>();
+        valor.add(3.8);
+        valor.add(2.7);
+        valor.add(13.8);
+        valor.add(1.8);
+        valor.add(1.4);
+        valor.add(2.2);
+        valor.add(1.5);
+        valor.add(1.9);
+
+        quantidade = new ArrayList<Integer>();
+        quantidade.add(3);
+        quantidade.add(5);
+        quantidade.add(1);
+        quantidade.add(6);
+        quantidade.add(8);
+        quantidade.add(2);
+        quantidade.add(7);
+        quantidade.add(4);
 
         listaProdutos = (ListView) findViewById(R.id.listViewProdutos);
 
-        for (int i = 0; i < nome2.size(); i++){
-            ItemCriarListaPasso3  p = new ItemCriarListaPasso3(id_produto.get(i), nome2.get(i), marca[i],
-                    valor[i], quantidade[i]);
+        for (int i = 0; i < nome.size(); i++){
+            ItemCriarListaPasso3  p = new ItemCriarListaPasso3(id_produto.get(i), nome.get(i), marca.get(i),
+                    valor.get(i), quantidade.get(i));
             //Colocando todos os itens da string no array
             produtos.add(p);
         }

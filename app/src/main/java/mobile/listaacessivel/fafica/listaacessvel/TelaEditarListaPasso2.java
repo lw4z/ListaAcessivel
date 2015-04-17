@@ -24,10 +24,6 @@ public class TelaEditarListaPasso2 extends ActionBarActivity {
     MyArrayAdapterCriarListaPasso3 adapter;
     EditText editProcurar;
     ArrayList<ItemCriarListaPasso3> produtos = new ArrayList<ItemCriarListaPasso3>();
-//    String [] nome;
-//    String [] marca;
-//    Double [] valor;
-//    Integer [] quantidade;
     ArrayList<Integer> id_produto;
     ArrayList<String> nome;
     ArrayList<Double> valor;
@@ -64,30 +60,46 @@ public class TelaEditarListaPasso2 extends ActionBarActivity {
         nome.add("Refrigerante");
         nome.add("Carne filé");
         nome.add("Macarrão");
+        nome.add("Sabão");
+        nome.add("Arroz");
+        nome.add("Sabonete");
+        nome.add("Creme Dental");
 
         marca = new ArrayList<String>();
         marca.add("Nestlé");
         marca.add("Jatobá");
         marca.add("Friboi");
         marca.add("Vitarella");
+        marca.add("Omo");
+        marca.add("Rampinelli");
+        marca.add("Luz");
+        marca.add("Colgate");
 
         valor = new ArrayList<Double>();
         valor.add(3.8);
         valor.add(2.7);
         valor.add(13.8);
         valor.add(1.8);
+        valor.add(1.4);
+        valor.add(2.2);
+        valor.add(1.5);
+        valor.add(1.9);
 
         quantidade = new ArrayList<Integer>();
         quantidade.add(3);
         quantidade.add(5);
         quantidade.add(1);
         quantidade.add(6);
+        quantidade.add(8);
+        quantidade.add(2);
+        quantidade.add(7);
+        quantidade.add(4);
 
         listaProdutos = (ListView) findViewById(R.id.listViewProdutos);
 
         for (int i = 0; i < nome.size(); i++){
             ItemCriarListaPasso3  p = new ItemCriarListaPasso3(id_produto.get(i), nome.get(i), marca.get(i),
-                    valor.get(i), quantidade.get(i));
+                    valor.get(i),quantidade.get(i));
             //Colocando todos os itens da string no array
             produtos.add(p);
         }
