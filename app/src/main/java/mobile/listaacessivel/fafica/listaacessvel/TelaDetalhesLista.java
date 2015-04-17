@@ -23,6 +23,7 @@ public class TelaDetalhesLista extends ActionBarActivity {
     ListView listaProdutos;
     MyArrayAdapterDetalhesLista adapter;
     ArrayList<ItemCriarListaPasso3> produtos = new ArrayList<ItemCriarListaPasso3>();
+    ArrayList<Integer> id_produto;
     ArrayList<String> nome;
     ArrayList<Double> valor;
     ArrayList<String> marca;
@@ -48,6 +49,16 @@ public class TelaDetalhesLista extends ActionBarActivity {
         //Teste de Busca da lista
 
         //Com arrayList
+        id_produto = new ArrayList<Integer>();
+        id_produto.add(1);
+        id_produto.add(2);
+        id_produto.add(3);
+        id_produto.add(4);
+        id_produto.add(5);
+        id_produto.add(6);
+        id_produto.add(7);
+        id_produto.add(8);
+
         nome = new ArrayList<String>();
         nome.add("Nescau");
         nome.add("Refrigerante");
@@ -75,7 +86,7 @@ public class TelaDetalhesLista extends ActionBarActivity {
         listaProdutos = (ListView) findViewById(R.id.listProdutosListaDetalhes);
 
         for (int i = 0; i < nome.size(); i++){
-            ItemCriarListaPasso3  p = new ItemCriarListaPasso3(nome.get(i), marca.get(i),
+            ItemCriarListaPasso3  p = new ItemCriarListaPasso3(id_produto.get(i), nome.get(i), marca.get(i),
                     valor.get(i), quantidade.get(i));
             //Colocando todos os itens no arrayList
             produtos.add(p);

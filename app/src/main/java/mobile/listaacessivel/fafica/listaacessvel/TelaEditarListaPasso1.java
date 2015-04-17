@@ -29,6 +29,7 @@ public class TelaEditarListaPasso1 extends ActionBarActivity {
     Double [] valor;
     Integer [] quantidade;
     ArrayList<String> nome2;
+    ArrayList<Integer> id_produto;
 
 
     @Override
@@ -46,6 +47,17 @@ public class TelaEditarListaPasso1 extends ActionBarActivity {
         //Teste de Busca da lista
 
         //Com arrayList
+        //Com arrayList
+        id_produto = new ArrayList<Integer>();
+        id_produto.add(1);
+        id_produto.add(2);
+        id_produto.add(3);
+        id_produto.add(4);
+        id_produto.add(5);
+        id_produto.add(6);
+        id_produto.add(7);
+        id_produto.add(8);
+
         nome2 = new ArrayList<String>();
         nome2.add("Nescau");
         nome2.add("Refrigerante");
@@ -61,7 +73,7 @@ public class TelaEditarListaPasso1 extends ActionBarActivity {
         listaProdutos = (ListView) findViewById(R.id.listViewProdutos);
 
         for (int i = 0; i < nome2.size(); i++){
-            ItemCriarListaPasso3  p = new ItemCriarListaPasso3(nome2.get(i), marca[i],
+            ItemCriarListaPasso3  p = new ItemCriarListaPasso3(id_produto.get(i), nome2.get(i), marca[i],
                     valor[i], quantidade[i]);
             //Colocando todos os itens da string no array
             produtos.add(p);

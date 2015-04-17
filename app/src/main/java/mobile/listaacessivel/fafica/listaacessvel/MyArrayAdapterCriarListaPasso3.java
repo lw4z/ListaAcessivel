@@ -11,8 +11,10 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.accessibility.AccessibilityEvent;
 import android.widget.BaseAdapter;
+import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -29,6 +31,7 @@ public class MyArrayAdapterCriarListaPasso3 extends BaseAdapter{
     LayoutInflater inflater;
     private List<ItemCriarListaPasso3> listaItemsPasso3 = null;
     private ArrayList<ItemCriarListaPasso3> listaProdutos;
+    private ArrayList<ItemCriarListaPasso3> listaProdutosSelecionados = new ArrayList<ItemCriarListaPasso3>();
 
     public EditText focuesdEditText;
 
@@ -45,6 +48,7 @@ public class MyArrayAdapterCriarListaPasso3 extends BaseAdapter{
         TextView marca_produto;
         TextView valor_produto;
         EditText quantidade_produto;
+        CheckBox selecaoProduto;
         int ref;
     }
 
@@ -76,7 +80,7 @@ public class MyArrayAdapterCriarListaPasso3 extends BaseAdapter{
             holder.marca_produto = (TextView) convertView.findViewById(R.id.textMarcaProduto);
             holder.valor_produto = (TextView) convertView.findViewById(R.id.textValorProduto);
             holder.quantidade_produto = (EditText) convertView.findViewById(R.id.campoQuantidadeProduto);
-
+            holder.selecaoProduto = (CheckBox) convertView.findViewById(R.id.checkSelecionarProtudo);
 
             convertView.setTag(holder);
         }else{
@@ -94,11 +98,14 @@ public class MyArrayAdapterCriarListaPasso3 extends BaseAdapter{
         Log.i("VALOR DA QUANTIDADE",valor);
         Log.i("TAMANHO DA LISTA",String.valueOf(getCount()));
 
+        //Verificando se existe ou não valor no edit
         if(listaItemsPasso3.get(position).getQuantidade() != 0) {
             holder.quantidade_produto.setText("" + listaItemsPasso3.get(position).getQuantidade());
         }else{
             holder.quantidade_produto.setText("");
         }
+
+        //Edit de quantidade de produtos
         holder.quantidade_produto.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
@@ -116,6 +123,33 @@ public class MyArrayAdapterCriarListaPasso3 extends BaseAdapter{
                     listaItemsPasso3.get(holder.ref).setQuantidade(Integer.parseInt(s.toString()));
                 }catch (Exception e){
 
+                }
+            }
+        });
+
+        //CheckBox para selecionar produto
+        ItemCriarListaPasso3 produto = listaItemsPasso3.get(position);
+
+        holder.selecaoProduto.setChecked(produto.isSelecao());
+        holder.selecaoProduto.setTag(produto);
+
+        holder.selecaoProduto.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                CheckBox check = (CheckBox) v;
+
+                ItemCriarListaPasso3 p = (ItemCriarListaPasso3) v.getTag();
+                p.setSelecao(((CheckBox)v).isChecked());
+
+                if(check.isChecked()){
+                    if(!listaProdutosSelecionados.contains(p.getId_produto())){
+                        listaProdutosSelecionados.add(p);
+                    }
+                }else{
+                    if(listaProdutosSelecionados.contains(p.getId_produto())){
+                        listaProdutosSelecionados.add(p);
+                    }
                 }
             }
         });
