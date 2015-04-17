@@ -56,9 +56,9 @@
 
             <ListView
                 android:id="@+id/listViewProdutos"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_weight="40"></ListView>
+                android:layout_width="fill_parent"
+                android:layout_height="355dp"
+                />
 
         </LinearLayout>
     </ScrollView>
