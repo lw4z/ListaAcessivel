@@ -40,11 +40,27 @@
     </LinearLayout>
 
     <!--Lista dos estabelecimentos-->
-    <ListView
-        android:id="@+id/listViewProdutos"
-        android:layout_width="match_parent"
+    <ScrollView
         android:layout_height="match_parent"
-        android:layout_weight="40"></ListView>
+        android:layout_width="match_parent"
+        android:id="@+id/scrollTelaListaPasso3"
+        android:layout_weight="35"
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:fillViewport="false"
+        >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1">
+
+            <ListView
+                android:id="@+id/listViewProdutos"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="40"></ListView>
+        </LinearLayout>
+    </ScrollView>
 
     <!--Texto Descrição da lista-->
     <TextView

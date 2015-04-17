@@ -40,7 +40,7 @@
             android:completionThreshold="1"/>
     </LinearLayout>
 
-
+    <!--Lista dos estabelecimentos-->
     <ScrollView
         android:layout_height="match_parent"
         android:layout_width="match_parent"
@@ -51,12 +51,10 @@
         >
 
         <LinearLayout
-
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_weight="1">
 
-            <!--Lista dos estabelecimentos-->
             <ListView
                 android:id="@+id/listViewProdutos"
                 android:layout_width="fill_parent"
