@@ -71,6 +71,7 @@
     <string name="bt_limpar">Limpar</string>
     <string name="bt_finalizar_lista">Finalizar Lista</string>
     <string name="bt_adicionar_novos_produtos">Adicionar Produtos</string>
+    <string name="bt_adicionar_produto">Adicionar Produto a Lista</string>
     <string name="bt_finalizar_edicao">Finalizar Edição</string>
     <string name="bt_login">Entrar</string>
     <string name="selecionar_produto">Marque aqui para selecionar o produto</string>
@@ -82,6 +83,11 @@
     <string name="bt_salvar_perfil">Salvar</string>
     <string name="bt_recuperar_senha">Recuperar senha</string>
     <string name="valor_0">"0"</string>
+    <string name="bt_proximo">Próximo</string>
+    <string name="bt_anterior">Anterior</string>
+    <string name="bt_pesquisar">Pesquisar</string>
+    <string name="bt_editar_produto">Editar Produto</string>
+    <string name="bt_confirmar_produto">Confirmar Produto</string>
 
 
     <!--Nomes báscicos para formulários-->
@@ -114,8 +120,13 @@
     <string name="senha_esquecida">Esqueci minha senha</string>
     <string name="senha_esquecida_descricao">Esqueci minha senha, clique aqui caso tenha esquecido sua senha</string>
     <string name="informacoes_lista">Informações da Lista</string>
+    <string name="informacoes_produto">Informações do Produto</string>
     <string name="produtos_lista">Produtos da Lista</string>
     <string name="email_recuperacao_senha">Envie seu e-mail que em breve entraremos em contato para a modificação de sua senha</string>
+    <string name="nome_produto">Nome do produto: </string>
+    <string name="marca_produto">Marca do produto: </string>
+    <string name="valor_produto">Valor do produto: </string>
+    <string name="validade_produto">Validade do produto:</string>
 
     <!--Campos de edição-->
     <string name="campo_email">campo e-mail</string>
@@ -133,6 +144,7 @@
     <string name="campo_numero">campo número</string>
     <string name="campo_complemento">campo complemento</string>
     <string name="campo_referencia">campo referência</string>
+    <string name="campo_quantidade_produto">Quantidade do produto: </string>
     <string name="title_activity_visualizar_perfil">Visualizar Perfil</string>
     <string name="digite_email">Digite seu e-mail</string>
     <string name="digite_senha">Digite sua senha</string>
@@ -153,6 +165,9 @@
     <string name="title_activity_tela_login">TelaLogin</string>
     <string name="title_activity_item_produto_unico_passo3">ItemProdutoUnicoPasso3</string>
     <string name="title_activity_tela_splash">TelaSplash</string>
+    <string name="title_activity_detalhes_do_produto">Detalhes do Produto</string>
+    <string name="title_activity_tela_detalhes_do_produto_editar">Detalhes do Produto</string>
+    <string name="title_activity_tela_detalhes_do_produto_editar2">Detalhes do Produto</string>
 
 
 

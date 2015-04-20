@@ -1,20 +1,14 @@
 package mobile.listaacessivel.fafica.listaacessvel;
 
 import android.content.Context;
-import android.content.res.Configuration;
-import android.text.Editable;
-import android.text.InputType;
-import android.text.TextWatcher;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.accessibility.AccessibilityEvent;
 import android.widget.BaseAdapter;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -29,17 +23,17 @@ public class MyArrayAdapterCriarListaPasso3 extends BaseAdapter{
 
     Context mContext;
     LayoutInflater inflater;
-    private List<ItemCriarListaPasso3> listaItemsPasso3 = null;
-    private ArrayList<ItemCriarListaPasso3> listaProdutos;
-    private ArrayList<ItemCriarListaPasso3> listaProdutosSelecionados = new ArrayList<ItemCriarListaPasso3>();
+    private List<Produto> listaItemsPasso3 = null;
+    private ArrayList<Produto> listaProdutos;
+    private ArrayList<Produto> listaProdutosSelecionados = new ArrayList<Produto>();
 
     public EditText focuesdEditText;
 
-    public MyArrayAdapterCriarListaPasso3(Context context, List<ItemCriarListaPasso3> listaItemsPasso3) {
+    public MyArrayAdapterCriarListaPasso3(Context context, List<Produto> listaItemsPasso3) {
         mContext = context;
         this.listaItemsPasso3 = listaItemsPasso3;
         inflater = LayoutInflater.from(mContext);
-        this.listaProdutos = new ArrayList<ItemCriarListaPasso3>();
+        this.listaProdutos = new ArrayList<Produto>();
         this.listaProdutos.addAll(listaItemsPasso3);
     }
 
@@ -47,8 +41,9 @@ public class MyArrayAdapterCriarListaPasso3 extends BaseAdapter{
         TextView nome_produto;
         TextView marca_produto;
         TextView valor_produto;
-        EditText quantidade_produto;
-        CheckBox selecaoProduto;
+        TextView selecao;
+        //EditText quantidade_produto;
+        //CheckBox selecaoProduto;
         int ref;
     }
 
@@ -58,7 +53,7 @@ public class MyArrayAdapterCriarListaPasso3 extends BaseAdapter{
     }
 
     @Override
-    public ItemCriarListaPasso3 getItem(int position){
+    public Produto getItem(int position){
         return listaItemsPasso3.get(position);
     }
 
@@ -67,8 +62,11 @@ public class MyArrayAdapterCriarListaPasso3 extends BaseAdapter{
         return position;
     }
 
+    @SuppressWarnings("static-access")
     @Override
     public View getView(final int position, View convertView, ViewGroup parent) {
+
+        Produto produto = listaProdutos.get(position);
 
         final ViewHolder holder;
         if(convertView == null) {
@@ -79,8 +77,9 @@ public class MyArrayAdapterCriarListaPasso3 extends BaseAdapter{
             holder.nome_produto = (TextView) convertView.findViewById(R.id.textNomeProduto);
             holder.marca_produto = (TextView) convertView.findViewById(R.id.textMarcaProduto);
             holder.valor_produto = (TextView) convertView.findViewById(R.id.textValorProduto);
-            holder.quantidade_produto = (EditText) convertView.findViewById(R.id.campoQuantidadeProduto);
-            holder.selecaoProduto = (CheckBox) convertView.findViewById(R.id.checkSelecionarProtudo);
+            holder.selecao = (TextView) convertView.findViewById(R.id.textSelecaoProduto);
+            //holder.quantidade_produto = (EditText) convertView.findViewById(R.id.campoQuantidadeProduto);
+            //holder.selecaoProduto = (CheckBox) convertView.findViewById(R.id.checkSelecionarProtudo);
 
             convertView.setTag(holder);
         }else{
@@ -89,70 +88,75 @@ public class MyArrayAdapterCriarListaPasso3 extends BaseAdapter{
 
         holder.ref = position;
 
-        holder.nome_produto.setText(listaItemsPasso3.get(position).getNome_produto());
-        holder.marca_produto.setText("Marca: " + listaItemsPasso3.get(position).getMarca());
-        holder.valor_produto.setText("Valor: R$ " + Double.toString(listaItemsPasso3.get(position).getValor_produto()));
+
+        if(produto != null){
+            holder.nome_produto.setText(produto.getNome_produto());
+            holder.marca_produto.setText("Marca: " + produto.getMarca());
+            holder.valor_produto.setText("Valor: R$ " + Double.toString(produto.getValor_produto()));
+            holder.selecao.setText(produto.getSelecao());
+        }
+
 
         //Log
-        String valor = String.valueOf(listaItemsPasso3.get(position).getQuantidade());
+        String valor = String.valueOf(produto.getQuantidade());
         Log.i("VALOR DA QUANTIDADE",valor);
         Log.i("TAMANHO DA LISTA",String.valueOf(getCount()));
 
-        //Verificando se existe ou não valor no edit
-        if(listaItemsPasso3.get(position).getQuantidade() != 0) {
-            holder.quantidade_produto.setText("" + listaItemsPasso3.get(position).getQuantidade());
-        }else{
-            holder.quantidade_produto.setText("");
-        }
-
-        //Edit de quantidade de produtos
-        holder.quantidade_produto.addTextChangedListener(new TextWatcher() {
-            @Override
-            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-
-            }
-
-            @Override
-            public void onTextChanged(CharSequence s, int start, int before, int count) {
-
-            }
-
-            @Override
-            public void afterTextChanged(Editable s) {
-                try {
-                    listaItemsPasso3.get(holder.ref).setQuantidade(Integer.parseInt(s.toString()));
-                }catch (Exception e){
-
-                }
-            }
-        });
-
-        //CheckBox para selecionar produto
-        ItemCriarListaPasso3 produto = listaItemsPasso3.get(position);
-
-        holder.selecaoProduto.setChecked(produto.isSelecao());
-        holder.selecaoProduto.setTag(produto);
-
-        holder.selecaoProduto.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-                CheckBox check = (CheckBox) v;
-
-                ItemCriarListaPasso3 p = (ItemCriarListaPasso3) v.getTag();
-                p.setSelecao(((CheckBox)v).isChecked());
-
-                if(check.isChecked()){
-                    if(!listaProdutosSelecionados.contains(p.getId_produto())){
-                        listaProdutosSelecionados.add(p);
-                    }
-                }else{
-                    if(listaProdutosSelecionados.contains(p.getId_produto())){
-                        listaProdutosSelecionados.add(p);
-                    }
-                }
-            }
-        });
+//        //Verificando se existe ou não valor no edit
+//        if(listaItemsPasso3.get(position).getQuantidade() != 0) {
+//            holder.quantidade_produto.setText("" + listaItemsPasso3.get(position).getQuantidade());
+//        }else{
+//            holder.quantidade_produto.setText("");
+//        }
+//
+//        //Edit de quantidade de produtos
+//        holder.quantidade_produto.addTextChangedListener(new TextWatcher() {
+//            @Override
+//            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+//
+//            }
+//
+//            @Override
+//            public void onTextChanged(CharSequence s, int start, int before, int count) {
+//
+//            }
+//
+//            @Override
+//            public void afterTextChanged(Editable s) {
+//                try {
+//                    listaItemsPasso3.get(holder.ref).setQuantidade(Integer.parseInt(s.toString()));
+//                }catch (Exception e){
+//
+//                }
+//            }
+//        });
+//
+//        //CheckBox para selecionar produto
+//        Produto produto = listaItemsPasso3.get(position);
+//
+//        holder.selecaoProduto.setChecked(produto.isSelecao());
+//        holder.selecaoProduto.setTag(produto);
+//
+//        holder.selecaoProduto.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//
+//                CheckBox check = (CheckBox) v;
+//
+//                Produto p = (Produto) v.getTag();
+//                p.setSelecao(((CheckBox)v).isChecked());
+//
+//                if(check.isChecked()){
+//                    if(!listaProdutosSelecionados.contains(p.getId_produto())){
+//                        listaProdutosSelecionados.add(p);
+//                    }
+//                }else{
+//                    if(listaProdutosSelecionados.contains(p.getId_produto())){
+//                        listaProdutosSelecionados.add(p);
+//                    }
+//                }
+//            }
+//        });
 
 //        convertView.setOnClickListener(new View.OnClickListener() {
 //            @Override
@@ -171,24 +175,24 @@ public class MyArrayAdapterCriarListaPasso3 extends BaseAdapter{
         return convertView;
     }
 
-    public void filter(String charText) {
-        charText = Acentuacao.limparAcentuacao(charText);
-        charText = charText.toLowerCase(Locale.getDefault());
-
-        listaItemsPasso3.clear();
-        if (charText.length() == 0) {
-            listaItemsPasso3.addAll(listaProdutos);
-        } else {
-            for (ItemCriarListaPasso3 p : listaProdutos) {
-                String produto = Acentuacao.limparAcentuacao(p.getNome_produto());
-                if (produto.toLowerCase(Locale.getDefault())
-                        .contains(charText)) {
-                    listaItemsPasso3.add(p);
-                }
-            }
-        }
-        notifyDataSetChanged();
-    }
+//    public void filter(String charText) {
+//        charText = Acentuacao.limparAcentuacao(charText);
+//        charText = charText.toLowerCase(Locale.getDefault());
+//
+//        listaItemsPasso3.clear();
+//        if (charText.length() == 0) {
+//            listaItemsPasso3.addAll(listaProdutos);
+//        } else {
+//            for (Produto p : listaProdutos) {
+//                String produto = Acentuacao.limparAcentuacao(p.getNome_produto());
+//                if (produto.toLowerCase(Locale.getDefault())
+//                        .contains(charText)) {
+//                    listaItemsPasso3.add(p);
+//                }
+//            }
+//        }
+//        notifyDataSetChanged();
+//    }
 
 }
 

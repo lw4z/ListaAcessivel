@@ -1,5 +1,7 @@
 package mobile.listaacessivel.fafica.listaacessvel;
 
+import android.annotation.SuppressLint;
+import android.app.ActionBar;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -8,26 +10,42 @@ import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
-import android.view.Menu;
-import android.view.MenuItem;
+import android.util.Log;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.Button;
 import android.widget.EditText;
+import android.widget.LinearLayout;
 import android.widget.ListView;
+import android.widget.TextView;
 
 import java.util.ArrayList;
 import java.util.Locale;
+
+import mobile.listaacessivel.fafica.listaacessvel.util.Acentuacao;
 
 
 public class TelaEditarListaPasso1 extends ActionBarActivity {
 
     ListView listaProdutos;
     MyArrayAdapterCriarListaPasso3 adapter;
-    EditText editProcurar;
-    ArrayList<ItemCriarListaPasso3> produtos = new ArrayList<ItemCriarListaPasso3>();
+    EditText editProcurar, quantidadeProduto;
+    ArrayList<Produto> produtos = new ArrayList<Produto>();
+    ArrayList<Produto> produtosPesquisa = new ArrayList<Produto>();
+    ArrayList<Produto> produtosTemporarios = new ArrayList<Produto>();
+    TextView txtNomeProduto;
+    Button btPesquisar;
+    LinearLayout layout;
+    private int noOfBtns;
+    private Button[] btns;
+    boolean flag = false;
+    public int TOTAL_LIST_ITEMS = 8;
+    public int NUM_ITEMS_PAGE   = 2;
     ArrayList<Integer> id_produto;
     ArrayList<String> nome;
     ArrayList<Double> valor;
     ArrayList<String> marca;
+    ArrayList<String> selecao;
     ArrayList<Integer> quantidade;
 
 
@@ -42,6 +60,13 @@ public class TelaEditarListaPasso1 extends ActionBarActivity {
         getSupportActionBar().setHomeActionContentDescription(R.string.bt_voltar);
         //A janela da aplicação deverá ficar apenas no formato vertical
         this.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
+
+
+        //Declaração de itens da tela
+        listaProdutos = (ListView) findViewById(R.id.listViewProdutos);
+        txtNomeProduto = (TextView) findViewById(R.id.campoPesquisaProduto);
+        btPesquisar = (Button) findViewById(R.id.btPesquisarProduto);
+        layout = (LinearLayout) findViewById(R.id.buttonLayout);
 
         //Teste de Busca da lista
 
@@ -73,7 +98,7 @@ public class TelaEditarListaPasso1 extends ActionBarActivity {
         marca.add("Vitarella");
         marca.add("Omo");
         marca.add("Rampinelli");
-        marca.add("Luz");
+        marca.add("Lux");
         marca.add("Colgate");
 
         valor = new ArrayList<Double>();
@@ -86,48 +111,123 @@ public class TelaEditarListaPasso1 extends ActionBarActivity {
         valor.add(1.5);
         valor.add(1.9);
 
+        selecao = new ArrayList<String>();
+        selecao.add("Não selecionado");
+        selecao.add("Não selecionado");
+        selecao.add("Não selecionado");
+        selecao.add("Não selecionado");
+        selecao.add("Não selecionado");
+        selecao.add("Não selecionado");
+        selecao.add("Não selecionado");
+        selecao.add("Não selecionado");
+
         quantidade = new ArrayList<Integer>();
-        quantidade.add(3);
-        quantidade.add(5);
-        quantidade.add(1);
-        quantidade.add(6);
-        quantidade.add(8);
-        quantidade.add(2);
-        quantidade.add(7);
-        quantidade.add(4);
+        quantidade.add(0);
+        quantidade.add(0);
+        quantidade.add(0);
+        quantidade.add(0);
+        quantidade.add(0);
+        quantidade.add(0);
+        quantidade.add(0);
+        quantidade.add(0);
 
-        listaProdutos = (ListView) findViewById(R.id.listViewProdutos);
-
-        for (int i = 0; i < nome.size(); i++){
-            ItemCriarListaPasso3  p = new ItemCriarListaPasso3(id_produto.get(i), nome.get(i), marca.get(i),
-                    valor.get(i), quantidade.get(i));
-            //Colocando todos os itens da string no array
+        for(int i = 0; i < id_produto.size(); i++){
+            final Produto p = new Produto(id_produto.get(i), nome.get(i), marca.get(i),
+                    valor.get(i),quantidade.get(i) ,selecao.get(i));
             produtos.add(p);
         }
 
-        adapter = new MyArrayAdapterCriarListaPasso3(this,produtos);
+        Log.i("TAMANHOPRODUTOS", String.valueOf(produtos.size()));
 
-        listaProdutos.setAdapter(adapter);
-
-        editProcurar = (EditText) findViewById(R.id.campoPesquisaProduto);
-
-        editProcurar.addTextChangedListener(new TextWatcher() {
-            @Override
-            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-
+        //Carregamento da lista de produtos inicial
+        if(produtos != null) {
+            for(int i = 0; i < produtos.size(); i++){
+                produtosPesquisa.add(produtos.get(i));
             }
 
-            @Override
-            public void onTextChanged(CharSequence s, int start, int before, int count) {
+            int tamanho = produtosPesquisa.size();
+            TOTAL_LIST_ITEMS = tamanho;
+            layout.removeAllViews();
+            flag = true;
+            produtosTemporarios.clear();
 
+            if(produtosPesquisa.size() < NUM_ITEMS_PAGE){
+                for(int i =0; i < produtosPesquisa.size(); i ++){
+                    produtosTemporarios.add(produtosPesquisa.get(i));
+                }
+                adapter = new MyArrayAdapterCriarListaPasso3(getApplicationContext(),produtosTemporarios);
+                listaProdutos.setAdapter(adapter);
+            }else{
+                for(int i =0 ; i < NUM_ITEMS_PAGE; i++){
+                    produtosTemporarios.add(produtosPesquisa.get(i));
+                }
+                adapter = new MyArrayAdapterCriarListaPasso3(getApplicationContext(),produtosTemporarios);
+                listaProdutos.setAdapter(adapter);
             }
+            setButtonsForPagination();
+        }
+
+        //Métodos do botão pesquisar
+        btPesquisar.setOnClickListener(new View.OnClickListener() {
 
             @Override
-            public void afterTextChanged(Editable s) {
-                String text = editProcurar.getText().toString().toLowerCase(Locale.getDefault());
-                adapter.filter(text);
+            public void onClick(View v) {
+                String nomeProduto = txtNomeProduto.getText().toString();
+
+                String charText = Acentuacao.limparAcentuacao(nomeProduto);
+                produtosPesquisa.clear();
+
+                for (Produto p : produtos) {
+                    String produto = Acentuacao.limparAcentuacao(p.getNome_produto());
+                    if (produto.contains(charText)) {
+                        produtosPesquisa.add(p);
+                    }
+                }
+
+                int tamanho = produtosPesquisa.size();
+                TOTAL_LIST_ITEMS = tamanho;
+                layout.removeAllViews();
+                flag = true;
+                produtosTemporarios.clear();
+
+                if (produtosPesquisa.size() < NUM_ITEMS_PAGE) {
+                    for (int i = 0; i < produtosPesquisa.size(); i++) {
+                        produtosTemporarios.add(produtosPesquisa.get(i));
+                    }
+                    adapter = new MyArrayAdapterCriarListaPasso3(getApplicationContext(), produtosTemporarios);
+                    listaProdutos.setAdapter(adapter);
+                } else {
+                    for (int i = 0; i < NUM_ITEMS_PAGE; i++) {
+                        produtosTemporarios.add(produtosPesquisa.get(i));
+                    }
+                    adapter = new MyArrayAdapterCriarListaPasso3(getApplicationContext(), produtosTemporarios);
+                    listaProdutos.setAdapter(adapter);
+                }
+                setButtonsForPagination();
             }
         });
+
+        try {
+            final MyArrayAdapterCriarListaPasso3 adapter = new MyArrayAdapterCriarListaPasso3(this,produtos);
+
+            listaProdutos.setAdapter(adapter);
+
+            //Envio do estabelecimento para a próxima tela
+            listaProdutos.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                @Override
+                public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+
+                    Intent intent = new Intent(view.getContext(), TelaDetalhesDoProdutoEditar.class);
+
+                    intent.putExtra("id_produto",(produtos.get(position).getId_produto()));
+                    Log.i("PRODUTO: ",String.valueOf(produtos.get(position).getId_produto()));
+                    startActivity(intent);
+                }
+            });
+
+        }catch (Exception e){
+
+        }
     }
 
 
@@ -152,6 +252,112 @@ public class TelaEditarListaPasso1 extends ActionBarActivity {
 //
 //        return super.onOptionsItemSelected(item);
 //    }
+
+    @SuppressLint("InlinedApi")
+    private void setButtonsForPagination() {
+
+        int val = TOTAL_LIST_ITEMS % NUM_ITEMS_PAGE;
+        // val = val == 0 ? 0 : 1;
+        if (val == 0) {
+            val = 0;
+        } else {
+            val = 1;
+        }
+        noOfBtns = TOTAL_LIST_ITEMS / NUM_ITEMS_PAGE + val;
+
+        btns = new Button[noOfBtns];
+
+        for (int i = 0; i < noOfBtns; i++) {
+            btns[i] = new Button(this);
+            btns[i].setBackgroundColor(getResources().getColor(
+                    android.R.color.transparent));
+            btns[i].setText("" + (i + 1));
+
+            LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(
+                    ActionBar.LayoutParams.WRAP_CONTENT, ActionBar.LayoutParams.WRAP_CONTENT);
+            layout.addView(btns[i], lp);
+
+            final int j = i;
+
+
+            // code to perform on click of each button
+            btns[j].setOnClickListener(new View.OnClickListener() {
+
+                public void onClick(View v) {
+                        /*if(flag){
+                            loadList(j);
+                        }
+    */					loadListForSearch(j);
+
+                    CheckBtnBackGroud(j);
+                }
+            });
+        }
+
+    }// end of setButtonsForPagination()
+
+    private void CheckBtnBackGroud(int index) {
+
+        for (int i = 0; i < noOfBtns; i++) {
+            if (i == index) {
+                btns[index].setBackgroundColor(getResources().getColor(
+                        android.R.color.darker_gray));
+                btns[i].setTextColor(getResources().getColor(
+                        android.R.color.white));
+                btns[i].setWidth(2);
+                btns[i].setContentDescription("Página atual de produtos numero: " + (i + 1));
+            } else if(i < index){
+                btns[i].setBackgroundColor(getResources().getColor(
+                        android.R.color.transparent));
+                btns[i].setTextColor(getResources().getColor(
+                        android.R.color.black));
+                btns[i].setWidth(2);
+                btns[i].setContentDescription("Voltar para a página anterior de produtos numero: " + (i + 1));
+            }else{
+                btns[i].setBackgroundColor(getResources().getColor(
+                        android.R.color.transparent));
+                btns[i].setTextColor(getResources().getColor(
+                        android.R.color.black));
+                btns[i].setWidth(2);
+                btns[i].setContentDescription("avançar para próxima página de produtos numero: " + (i + 1));
+            }
+        }
+
+    }
+
+    private void loadListForSearch(int number) {
+        int start = number * NUM_ITEMS_PAGE;
+        produtosTemporarios.clear();
+        for (int i = start; i < (start) + NUM_ITEMS_PAGE; i++) {
+            if (i < produtosPesquisa.size()) {
+                // sort.add(data.get(i));
+                produtosTemporarios.add(produtosPesquisa.get(i));
+            } else {
+                break;
+            }
+        }
+        adapter = new MyArrayAdapterCriarListaPasso3(getApplicationContext(),produtosTemporarios);
+        listaProdutos.setAdapter(adapter);
+    }
+
+
+    private void loadList(int number) {
+
+        int start = number * NUM_ITEMS_PAGE;
+        //tempList.clear();
+        for (int i = start; i < (start) + NUM_ITEMS_PAGE; i++) {
+            if (i < produtos.size()) {
+                // sort.add(data.get(i));
+                produtosTemporarios.add(produtos.get(i));
+            } else {
+                break;
+            }
+
+        }
+        adapter = new MyArrayAdapterCriarListaPasso3(getApplicationContext(),produtosTemporarios);
+        listaProdutos.setAdapter(adapter);
+
+    }
 
     //Métodos dos botões
     public void adicionarMaisProdutos(View view){

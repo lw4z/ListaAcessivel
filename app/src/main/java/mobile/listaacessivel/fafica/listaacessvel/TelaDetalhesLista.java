@@ -6,28 +6,24 @@ import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
-import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.TextView;
 
 import java.util.ArrayList;
-
-import javax.xml.transform.dom.DOMLocator;
 
 
 public class TelaDetalhesLista extends ActionBarActivity {
 
     ListView listaProdutos;
     MyArrayAdapterDetalhesLista adapter;
-    ArrayList<ItemCriarListaPasso3> produtos = new ArrayList<ItemCriarListaPasso3>();
+    ArrayList<Produto> produtos = new ArrayList<Produto>();
     ArrayList<Integer> id_produto;
     ArrayList<String> nome;
     ArrayList<Double> valor;
     ArrayList<String> marca;
     ArrayList<Integer> quantidade;
+    ArrayList<String> selecao;
     TextView quantidadeTotal, valorTotal;
 
 
@@ -99,12 +95,22 @@ public class TelaDetalhesLista extends ActionBarActivity {
         quantidade.add(7);
         quantidade.add(4);
 
+        selecao = new ArrayList<String>();
+        selecao.add("Não selecionado");
+        selecao.add("Não selecionado");
+        selecao.add("Não selecionado");
+        selecao.add("Não selecionado");
+        selecao.add("Não selecionado");
+        selecao.add("Não selecionado");
+        selecao.add("Não selecionado");
+        selecao.add("Não selecionado");
+
 
         listaProdutos = (ListView) findViewById(R.id.listProdutosListaDetalhes);
 
         for (int i = 0; i < nome.size(); i++){
-            ItemCriarListaPasso3  p = new ItemCriarListaPasso3(id_produto.get(i), nome.get(i), marca.get(i),
-                    valor.get(i), quantidade.get(i));
+            Produto p = new Produto(id_produto.get(i), nome.get(i), marca.get(i),
+                    valor.get(i), quantidade.get(i), selecao.get(i));
             //Colocando todos os itens no arrayList
             produtos.add(p);
         }

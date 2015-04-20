@@ -53,10 +53,6 @@
             android:parentActivityName=".TelaCriarListaPasso2" >
         </activity>
         <activity
-            android:name=".ItemProdutoUnicoPasso3"
-            android:label="@string/title_activity_item_produto_unico_passo3" >
-        </activity>
-        <activity
             android:name=".TelaEditarPerfil"
             android:label="@string/title_activity_tela_editar_perfil"
             android:parentActivityName=".TelaPerfilUsuario" >
@@ -89,6 +85,21 @@
             android:name=".TelaEditarListaPasso2"
             android:label="@string/title_activity_tela_editar_lista_passo2"
             android:parentActivityName=".TelaEditarListaPasso1" >
+        </activity>
+        <activity
+            android:name=".TelaDetalhesDoProduto"
+            android:label="@string/title_activity_detalhes_do_produto"
+            android:parentActivityName=".TelaCriarListaPasso3" >
+        </activity>
+        <activity
+            android:name=".TelaDetalhesDoProdutoEditar"
+            android:label="@string/title_activity_tela_detalhes_do_produto_editar"
+            android:parentActivityName=".TelaEditarListaPasso1" >
+        </activity>
+        <activity
+            android:name=".TelaDetalhesDoProdutoEditar2"
+            android:label="@string/title_activity_tela_detalhes_do_produto_editar2"
+            android:parentActivityName=".TelaEditarListaPasso2">
         </activity>
     </application>
 
