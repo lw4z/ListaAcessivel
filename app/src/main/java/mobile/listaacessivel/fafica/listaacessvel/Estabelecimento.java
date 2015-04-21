@@ -3,13 +3,13 @@ package mobile.listaacessivel.fafica.listaacessvel;
 /**
  * Created by ivan on 02/04/15.
  */
-public class ItemCriarListaPasso2 {
+public class Estabelecimento {
 
     private String nome;
     private String bairro;
     private String cidade;
 
-    public ItemCriarListaPasso2(String nome, String bairro, String cidade) {
+    public Estabelecimento(String nome, String bairro, String cidade) {
         super();
         this.nome = nome;
         this.bairro = bairro;

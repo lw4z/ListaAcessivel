@@ -6,7 +6,6 @@ import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
@@ -17,7 +16,7 @@ import java.util.ArrayList;
 public class TelaCriarListaPasso2 extends ActionBarActivity {
 
     ListView listaEstabelecimentos;
-    ArrayList<ItemCriarListaPasso2> items = new ArrayList<ItemCriarListaPasso2>();
+    ArrayList<Estabelecimento> items = new ArrayList<Estabelecimento>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,10 +29,10 @@ public class TelaCriarListaPasso2 extends ActionBarActivity {
         //A janela da aplicação deverá ficar apenas no formato vertical
         this.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
 
-        items.add(new ItemCriarListaPasso2("Bompreço","Bairro: " + "Centro", "Caruaru"));
-        items.add(new ItemCriarListaPasso2("Compre Bem","Bairro: " + "Centro", "Caruaru"));
-        items.add(new ItemCriarListaPasso2("Varejão","Bairro: " + "Vassoural", "Caruaru"));
-        items.add(new ItemCriarListaPasso2("Ponto Frio","Bairro: " + "Cohabe 3", "Caruaru"));
+        items.add(new Estabelecimento("Bompreço","Bairro: " + "Centro", "Caruaru"));
+        items.add(new Estabelecimento("Compre Bem","Bairro: " + "Centro", "Caruaru"));
+        items.add(new Estabelecimento("Varejão","Bairro: " + "Vassoural", "Caruaru"));
+        items.add(new Estabelecimento("Ponto Frio","Bairro: " + "Cohabe 3", "Caruaru"));
 
         try {
             final MyArrayAdapterCriarListaPasso2 adapter = new MyArrayAdapterCriarListaPasso2(this,items);
@@ -63,11 +62,11 @@ public class TelaCriarListaPasso2 extends ActionBarActivity {
     }
 
     //Método que recebe os dados para a lista
-    private ArrayList<ItemCriarListaPasso2> criarDados(){
-        items.add(new ItemCriarListaPasso2("Bompreço","Bairro: " + "Centro", "Caruaru"));
-        items.add(new ItemCriarListaPasso2("Compre Bem","Bairro: " + "Centro", "Caruaru"));
-        items.add(new ItemCriarListaPasso2("Varejão","Bairro: " + "Vassoural", "Caruaru"));
-        items.add(new ItemCriarListaPasso2("Ponto Frio","Bairro: " + "Cohabe 3", "Caruaru"));
+    private ArrayList<Estabelecimento> criarDados(){
+        items.add(new Estabelecimento("Bompreço","Bairro: " + "Centro", "Caruaru"));
+        items.add(new Estabelecimento("Compre Bem","Bairro: " + "Centro", "Caruaru"));
+        items.add(new Estabelecimento("Varejão","Bairro: " + "Vassoural", "Caruaru"));
+        items.add(new Estabelecimento("Ponto Frio","Bairro: " + "Cohabe 3", "Caruaru"));
         return items;
     }
 

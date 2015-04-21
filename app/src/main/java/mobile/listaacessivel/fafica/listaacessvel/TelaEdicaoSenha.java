@@ -67,6 +67,7 @@ public class TelaEdicaoSenha extends ActionBarActivity {
             public void onClick(DialogInterface arg0, int arg1) {
                 Intent it = new Intent(TelaEdicaoSenha.this,TelaLogin.class);
                 startActivity(it);
+                finish();
             }
         });
         //define um botão como negativo.

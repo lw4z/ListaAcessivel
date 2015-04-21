@@ -361,6 +361,7 @@ public class TelaCriarListaPasso3 extends ActionBarActivity {
             public void onClick(DialogInterface arg0, int arg1) {
                 Intent it = new Intent(TelaCriarListaPasso3.this,TelaMinhasListas.class);
                 startActivity(it);
+                finish();
             }
         });
         //define um botão como negativo.

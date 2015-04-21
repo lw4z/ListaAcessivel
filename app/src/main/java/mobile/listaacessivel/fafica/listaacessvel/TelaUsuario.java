@@ -42,6 +42,7 @@ public class TelaUsuario extends ActionBarActivity {
         }else if(id == R.id.action_logout){
             Intent login = new Intent(this,TelaLogin.class);
             startActivity(login);
+            finish();
         }
 
         return super.onOptionsItemSelected(item);

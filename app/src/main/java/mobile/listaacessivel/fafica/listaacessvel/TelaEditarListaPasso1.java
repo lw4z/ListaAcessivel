@@ -378,6 +378,7 @@ public class TelaEditarListaPasso1 extends ActionBarActivity {
             public void onClick(DialogInterface arg0, int arg1) {
                 Intent it = new Intent(TelaEditarListaPasso1.this,TelaMinhasListas.class);
                 startActivity(it);
+                finish();
             }
         });
         //define um botão como negativo.

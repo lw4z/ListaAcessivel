@@ -12,12 +12,12 @@ import java.util.ArrayList;
 /**
  * Created by ivan on 02/04/15.
  */
-public class MyArrayAdapterCriarListaPasso2 extends ArrayAdapter<ItemCriarListaPasso2> {
+public class MyArrayAdapterCriarListaPasso2 extends ArrayAdapter<Estabelecimento> {
 
     private final Context context;
-    private final ArrayList<ItemCriarListaPasso2> listaEstabelecimentos;
+    private final ArrayList<Estabelecimento> listaEstabelecimentos;
 
-    public MyArrayAdapterCriarListaPasso2(Context context, ArrayList<ItemCriarListaPasso2> listaEstabelecimentos) {
+    public MyArrayAdapterCriarListaPasso2(Context context, ArrayList<Estabelecimento> listaEstabelecimentos) {
 
         super(context, R.layout.layout_linha_tabela_criar_lista_passo_2, listaEstabelecimentos);
 

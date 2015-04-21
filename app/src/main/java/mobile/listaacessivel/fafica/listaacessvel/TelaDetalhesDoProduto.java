@@ -53,5 +53,6 @@ public class TelaDetalhesDoProduto extends ActionBarActivity {
     public void adicionarProdutoLista(View view){
         Intent it = new Intent(this,TelaCriarListaPasso3.class);
         startActivity(it);
+        finish();
     }
 }

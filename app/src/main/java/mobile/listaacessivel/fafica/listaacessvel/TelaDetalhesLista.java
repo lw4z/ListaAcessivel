@@ -172,6 +172,7 @@ public class TelaDetalhesLista extends ActionBarActivity {
             public void onClick(DialogInterface arg0, int arg1) {
                 Intent it = new Intent(TelaDetalhesLista.this,TelaMinhasListas.class);
                 startActivity(it);
+                finish();
             }
         });
         //define um botão como negativo.

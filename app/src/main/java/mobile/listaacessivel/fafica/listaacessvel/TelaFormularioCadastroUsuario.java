@@ -91,6 +91,7 @@ public class TelaFormularioCadastroUsuario extends ActionBarActivity {
             public void onClick(DialogInterface arg0, int arg1) {
                 Intent it = new Intent(TelaFormularioCadastroUsuario.this,TelaLogin.class);
                 startActivity(it);
+                finish();
             }
         });
         //define um botão como negativo.

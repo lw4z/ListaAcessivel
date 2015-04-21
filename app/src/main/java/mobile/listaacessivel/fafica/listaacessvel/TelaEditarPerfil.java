@@ -93,6 +93,7 @@ public class TelaEditarPerfil extends ActionBarActivity {
             public void onClick(DialogInterface arg0, int arg1) {
                 Intent it = new Intent(TelaEditarPerfil.this,TelaPerfilUsuario.class);
                 startActivity(it);
+                finish();
             }
         });
         //define um botão como negativo.
