@@ -208,7 +208,7 @@ public class TelaEditarListaPasso1 extends ActionBarActivity {
         });
 
         try {
-            //Envio do estabelecimento para a próxima tela
+            //Envio do produto para a próxima tela
             listaProdutos.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                 @Override
                 public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
