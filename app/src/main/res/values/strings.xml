@@ -88,6 +88,7 @@
     <string name="bt_pesquisar">Pesquisar</string>
     <string name="bt_editar_produto">Editar Produto</string>
     <string name="bt_confirmar_produto">Confirmar Produto</string>
+    <string name="bt_remover_produto">Remover Produto</string>
 
 
     <!--Nomes báscicos para formulários-->

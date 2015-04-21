@@ -1,5 +1,7 @@
 package mobile.listaacessivel.fafica.listaacessvel;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.support.v7.app.ActionBarActivity;
@@ -52,5 +54,36 @@ public class TelaDetalhesDoProdutoEditar extends ActionBarActivity {
         Intent it = new Intent(this,TelaEditarListaPasso1.class);
         startActivity(it);
         finish();
+    }
+    public void removerProdutoLista(View view){
+        //Mensagem na tela
+        getMessage("Remover Produto!", "Deseja remover esse produto da sua lista?");
+    }
+
+    //Método de mensagem
+    public AlertDialog alerta;
+
+    public void getMessage(String titulo, String mensagem) {
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+
+        builder.setTitle(titulo);
+        builder.setMessage(mensagem);
+        //define um botão como positivo
+        builder.setPositiveButton("Sim", new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface arg0, int arg1) {
+                Intent it = new Intent(TelaDetalhesDoProdutoEditar.this,TelaEditarListaPasso1.class);
+                startActivity(it);
+                finish();
+            }
+        });
+        //define um botão como negativo.
+        builder.setNegativeButton("Não", new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface arg0, int arg1) {
+                return;
+            }
+        });
+        //cria o AlertDialog e exibe na tela
+        alerta = builder.create();
+        alerta.show();
     }
 }

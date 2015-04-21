@@ -145,10 +145,6 @@ public class TelaDetalhesLista extends ActionBarActivity {
 //    }
 
     //Métodos dos botões
-    public void imprimirLista(View view){
-
-    }
-
     public void editarLista(View view){
         Intent it = new Intent(this,TelaEditarListaPasso1.class);
         startActivity(it);
