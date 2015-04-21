@@ -154,8 +154,8 @@
     <string name="bairro_estabelecimento">Bairro do Estabelecimento:</string>
     <string name="rua_estabelecimento">Rua do Estabelecimento:</string>
     <string name="estabelecimento">Estabelecimento:</string>
-    <string name="quantidade_total_produtos">Quantidade total de produtos:</string>
-    <string name="valor_total_lista">Valor total da lista:</string>
+    <string name="quantidade_total_produtos">Quantidade total de produtos: </string>
+    <string name="valor_total_lista">Valor total da lista: </string>
 
     <!--Ícones e Imagens-->
     <string name="ic_carinho">Ícone de um carrinho de supermercado</string>

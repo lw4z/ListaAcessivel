@@ -195,10 +195,6 @@ public class TelaCriarListaPasso3 extends ActionBarActivity {
         });
 
         try {
-            final MyArrayAdapterCriarListaPasso3 adapter = new MyArrayAdapterCriarListaPasso3(this,produtos);
-
-           listaProdutos.setAdapter(adapter);
-
             //Envio do estabelecimento para a próxima tela
             listaProdutos.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                 @Override
