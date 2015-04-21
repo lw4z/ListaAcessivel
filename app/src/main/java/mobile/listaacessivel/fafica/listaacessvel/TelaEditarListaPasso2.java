@@ -40,7 +40,7 @@ public class TelaEditarListaPasso2 extends ActionBarActivity {
     private Button[] btns;
     boolean flag = false;
     public int TOTAL_LIST_ITEMS = 8;
-    public int NUM_ITEMS_PAGE   = 2;
+    public int NUM_ITEMS_PAGE   = 3;
     ArrayList<Integer> id_produto;
     ArrayList<String> nome;
     ArrayList<Double> valor;

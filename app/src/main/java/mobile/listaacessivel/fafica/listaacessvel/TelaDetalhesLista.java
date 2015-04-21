@@ -106,20 +106,20 @@ public class TelaDetalhesLista extends ActionBarActivity {
         selecao.add("Não selecionado");
 
 
-        listaProdutos = (ListView) findViewById(R.id.listProdutosListaDetalhes);
-
-        for (int i = 0; i < nome.size(); i++){
-            Produto p = new Produto(id_produto.get(i), nome.get(i), marca.get(i),
-                    valor.get(i), quantidade.get(i), selecao.get(i));
-            //Colocando todos os itens no arrayList
-            produtos.add(p);
-        }
-
-        adapter = new MyArrayAdapterDetalhesLista(this,produtos);
-
-        listaProdutos.setAdapter(adapter);
-
-    }
+//        listaProdutos = (ListView) findViewById(R.id.listProdutosListaDetalhes);
+//
+//        for (int i = 0; i < nome.size(); i++){
+//            Produto p = new Produto(id_produto.get(i), nome.get(i), marca.get(i),
+//                    valor.get(i), quantidade.get(i), selecao.get(i));
+//            //Colocando todos os itens no arrayList
+//            produtos.add(p);
+//        }
+//
+//        adapter = new MyArrayAdapterDetalhesLista(this,produtos);
+//
+//        listaProdutos.setAdapter(adapter);
+//
+      }
 
 
 //    @Override
