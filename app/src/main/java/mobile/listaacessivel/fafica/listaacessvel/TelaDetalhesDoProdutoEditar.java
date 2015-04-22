@@ -75,7 +75,7 @@ public class TelaDetalhesDoProdutoEditar extends ActionBarActivity {
         finish();
     }
 
-    //Método de mensagem
+    //Métodos de mensagem
     public AlertDialog alerta;
 
     public void getMessage(String titulo, String mensagem) {

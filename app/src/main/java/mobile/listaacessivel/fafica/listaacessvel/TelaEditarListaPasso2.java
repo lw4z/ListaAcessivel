@@ -119,6 +119,7 @@ public class TelaEditarListaPasso2 extends ActionBarActivity {
         selecao.add("Não selecionado");
         selecao.add("Não selecionado");
 
+        //Adição dos produtos a lista principal
         for(int i = 0; i < id_produto.size(); i++){
             final Produto p = new Produto(id_produto.get(i), nome.get(i), marca.get(i),
                     valor.get(i), selecao.get(i));
@@ -238,11 +239,12 @@ public class TelaEditarListaPasso2 extends ActionBarActivity {
 //        return super.onOptionsItemSelected(item);
 //    }
 
+    //Método que gera os botões de paginação
     @SuppressLint("InlinedApi")
     private void setButtonsForPagination() {
 
         int val = TOTAL_LIST_ITEMS % NUM_ITEMS_PAGE;
-        // val = val == 0 ? 0 : 1;
+
         if (val == 0) {
             val = 0;
         } else {
@@ -265,22 +267,20 @@ public class TelaEditarListaPasso2 extends ActionBarActivity {
             final int j = i;
 
 
-            // code to perform on click of each button
+            // verificação dos cliques nos botões
             btns[j].setOnClickListener(new View.OnClickListener() {
 
                 public void onClick(View v) {
-                        /*if(flag){
-                            loadList(j);
-                        }
-    */					loadListForSearch(j);
+                        loadListForSearch(j);
 
                     CheckBtnBackGroud(j);
                 }
             });
         }
 
-    }// end of setButtonsForPagination()
+    }
 
+    //Checagem dos cliques dos botões para modificação de cores e geração da assistência
     private void CheckBtnBackGroud(int index) {
 
         for (int i = 0; i < noOfBtns; i++) {
@@ -310,12 +310,13 @@ public class TelaEditarListaPasso2 extends ActionBarActivity {
 
     }
 
+    //Carregamento da lista de busca
     private void loadListForSearch(int number) {
         int start = number * NUM_ITEMS_PAGE;
         produtosTemporarios.clear();
         for (int i = start; i < (start) + NUM_ITEMS_PAGE; i++) {
             if (i < produtosPesquisa.size()) {
-                // sort.add(data.get(i));
+
                 produtosTemporarios.add(produtosPesquisa.get(i));
             } else {
                 break;
@@ -325,14 +326,14 @@ public class TelaEditarListaPasso2 extends ActionBarActivity {
         listaProdutos.setAdapter(adapter);
     }
 
-
+    //Carregamento da lista
     private void loadList(int number) {
 
         int start = number * NUM_ITEMS_PAGE;
-        //tempList.clear();
+
         for (int i = start; i < (start) + NUM_ITEMS_PAGE; i++) {
             if (i < produtos.size()) {
-                // sort.add(data.get(i));
+
                 produtosTemporarios.add(produtos.get(i));
             } else {
                 break;

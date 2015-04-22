@@ -15,7 +15,6 @@ import android.widget.Button;
 public class TelaDetalhesDoProduto extends ActionBarActivity {
 
     Button removerProduto;
-    Produto produto;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
