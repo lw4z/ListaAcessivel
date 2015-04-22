@@ -89,6 +89,7 @@
     <string name="bt_editar_produto">Editar Produto</string>
     <string name="bt_confirmar_produto">Confirmar Produto</string>
     <string name="bt_remover_produto">Remover Produto</string>
+    <string name="bt_alterar_produto">Alterar Produto</string>
 
 
     <!--Nomes báscicos para formulários-->

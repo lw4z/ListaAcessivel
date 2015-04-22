@@ -110,10 +110,10 @@ public class TelaEditarListaPasso2 extends ActionBarActivity {
         valor.add(1.9);
 
         selecao = new ArrayList<String>();
+        selecao.add("selecionado");
         selecao.add("Não selecionado");
         selecao.add("Não selecionado");
-        selecao.add("Não selecionado");
-        selecao.add("Não selecionado");
+        selecao.add("selecionado");
         selecao.add("Não selecionado");
         selecao.add("Não selecionado");
         selecao.add("Não selecionado");
@@ -204,6 +204,7 @@ public class TelaEditarListaPasso2 extends ActionBarActivity {
                     Intent intent = new Intent(view.getContext(), TelaDetalhesDoProdutoEditar2.class);
 
                     intent.putExtra("id_produto",(produtos.get(position).getId_produto()));
+                    intent.putExtra("selecao",(produtos.get(position).getSelecao()));
                     Log.i("PRODUTO: ",String.valueOf(produtos.get(position).getId_produto()));
                     startActivity(intent);
                 }

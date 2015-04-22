@@ -112,14 +112,14 @@ public class TelaEditarListaPasso1 extends ActionBarActivity {
         valor.add(1.9);
 
         selecao = new ArrayList<String>();
-        selecao.add("Não selecionado");
-        selecao.add("Não selecionado");
-        selecao.add("Não selecionado");
-        selecao.add("Não selecionado");
-        selecao.add("Não selecionado");
-        selecao.add("Não selecionado");
-        selecao.add("Não selecionado");
-        selecao.add("Não selecionado");
+        selecao.add("selecionado");
+        selecao.add("selecionado");
+        selecao.add("selecionado");
+        selecao.add("selecionado");
+        selecao.add("selecionado");
+        selecao.add("selecionado");
+        selecao.add("selecionado");
+        selecao.add("selecionado");
 
         quantidade = new ArrayList<Integer>();
         quantidade.add(0);
@@ -216,6 +216,7 @@ public class TelaEditarListaPasso1 extends ActionBarActivity {
                     Intent intent = new Intent(view.getContext(), TelaDetalhesDoProdutoEditar.class);
 
                     intent.putExtra("id_produto",(produtos.get(position).getId_produto()));
+                    intent.putExtra("selecao",(produtos.get(position).getSelecao()));
                     Log.i("PRODUTO: ",String.valueOf(produtos.get(position).getId_produto()));
                     startActivity(intent);
                 }
@@ -391,4 +392,5 @@ public class TelaEditarListaPasso1 extends ActionBarActivity {
         alerta = builder.create();
         alerta.show();
     }
+
 }

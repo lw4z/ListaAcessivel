@@ -121,6 +121,14 @@
     <!--android:layout_height="wrap_content"-->
     <!--android:text=""/>-->
     <!--</LinearLayout>-->
+    <Button
+        android:id="@+id/bt_remover_produto"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:onClick="removerProdutoLista"
+        android:text="@string/bt_remover_produto"
+        android:visibility="invisible"/>
 
     <Button
         android:layout_width="wrap_content"

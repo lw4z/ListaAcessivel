@@ -1,5 +1,7 @@
 package mobile.listaacessivel.fafica.listaacessvel;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.support.v7.app.ActionBarActivity;
@@ -7,9 +9,12 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Button;
 
 
 public class TelaDetalhesDoProdutoEditar2 extends ActionBarActivity {
+
+    Button removerProduto;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -22,6 +27,22 @@ public class TelaDetalhesDoProdutoEditar2 extends ActionBarActivity {
         getSupportActionBar().setHomeAsUpIndicator(R.mipmap.ic_logo_listaacessivel);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setHomeActionContentDescription(R.string.bt_voltar);
+
+        //Botão remover produto
+        removerProduto = (Button) findViewById(R.id.bt_remover_produto);
+        removerProduto.setOnClickListener(new Button.OnClickListener(){
+            public void onClick(View view){
+                //Ação do botão
+                getMessageRemover("Remover Produto!", "Deseja remover esse produto da sua lista?");
+            }
+        });
+
+        //Condição para o botão aparecer
+        String selecao = getIntent().getStringExtra("selecao");
+
+        if(selecao.equals("selecionado")){
+            removerProduto.setVisibility(View.VISIBLE);
+        }
     }
 
 
@@ -52,5 +73,32 @@ public class TelaDetalhesDoProdutoEditar2 extends ActionBarActivity {
         Intent it = new Intent(this,TelaEditarListaPasso2.class);
         startActivity(it);
         finish();
+    }
+
+    //Método de mensagem
+    public AlertDialog alerta;
+
+    public void getMessageRemover(String titulo, String mensagem) {
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+
+        builder.setTitle(titulo);
+        builder.setMessage(mensagem);
+        //define um botão como positivo
+        builder.setPositiveButton("Sim", new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface arg0, int arg1) {
+                Intent it = new Intent(TelaDetalhesDoProdutoEditar2.this,TelaEditarListaPasso2.class);
+                startActivity(it);
+                finish();
+            }
+        });
+        //define um botão como negativo.
+        builder.setNegativeButton("Não", new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface arg0, int arg1) {
+                return;
+            }
+        });
+        //cria o AlertDialog e exibe na tela
+        alerta = builder.create();
+        alerta.show();
     }
 }
