@@ -9,9 +9,12 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.EditText;
 
 
 public class TelaEdicaoSenha extends ActionBarActivity {
+
+    EditText email_usuario;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,6 +27,9 @@ public class TelaEdicaoSenha extends ActionBarActivity {
         getSupportActionBar().setHomeActionContentDescription(R.string.bt_voltar);
         //A janela da aplicação deverá ficar apenas no formato vertical
         this.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
+
+        //Inicialização de campos da tela
+        email_usuario = (EditText) findViewById(R.id.campoEmailRecuperacaoSenha);
     }
 
 
