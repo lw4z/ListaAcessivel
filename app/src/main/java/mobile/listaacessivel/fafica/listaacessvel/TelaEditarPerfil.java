@@ -77,16 +77,16 @@ public class TelaEditarPerfil extends ActionBarActivity {
 
     //Métodos dos boõtes
     public void alterarPerfil(View view){
-        getMessage("Salvar!","Deseja realmente salvar as modificações?");
+        getMessage("Deseja realmente salvar as modificações?");
     }
 
     //Método de mensagem
     public AlertDialog alerta;
 
-    public void getMessage(String titulo, String mensagem) {
+    public void getMessage(String mensagem) {
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
 
-        builder.setTitle(titulo);
+        //builder.setTitle(titulo);
         builder.setMessage(mensagem);
         //define um botão como positivo
         builder.setPositiveButton("Sim", new DialogInterface.OnClickListener() {

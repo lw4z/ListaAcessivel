@@ -38,7 +38,7 @@ public class TelaDetalhesDoProdutoEditar2 extends ActionBarActivity {
         removerProduto.setOnClickListener(new Button.OnClickListener(){
             public void onClick(View view){
                 //Ação do botão
-                getMessageRemover("Remover Produto!", "Deseja remover esse produto da sua lista?");
+                getMessageRemover("Deseja remover esse produto da sua lista?");
             }
         });
 
@@ -83,10 +83,10 @@ public class TelaDetalhesDoProdutoEditar2 extends ActionBarActivity {
     //Métodos de mensagem
     public AlertDialog alerta;
 
-    public void getMessageRemover(String titulo, String mensagem) {
+    public void getMessageRemover(String mensagem) {
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
 
-        builder.setTitle(titulo);
+        //builder.setTitle(titulo);
         builder.setMessage(mensagem);
         //define um botão como positivo
         builder.setPositiveButton("Sim", new DialogInterface.OnClickListener() {

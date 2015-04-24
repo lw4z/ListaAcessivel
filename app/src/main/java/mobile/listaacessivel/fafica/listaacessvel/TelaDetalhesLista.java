@@ -154,17 +154,17 @@ public class TelaDetalhesLista extends ActionBarActivity {
     }
 
     public void solicitarEntrega(View view){
-        getMessage("Solicitar Entrega!","Deseja realmente solicitar a entrega da lista?");
+        getMessage("Deseja realmente solicitar a entrega da lista?");
     }
 
 
     //Método de mensagem
     public AlertDialog alerta;
 
-    public void getMessage(String titulo, String mensagem) {
+    public void getMessage(String mensagem) {
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
 
-        builder.setTitle(titulo);
+        //builder.setTitle(titulo);
         builder.setMessage(mensagem);
         //define um botão como positivo
         builder.setPositiveButton("Sim", new DialogInterface.OnClickListener() {

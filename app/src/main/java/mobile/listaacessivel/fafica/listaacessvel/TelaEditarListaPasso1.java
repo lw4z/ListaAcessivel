@@ -364,16 +364,16 @@ public class TelaEditarListaPasso1 extends ActionBarActivity {
     }
 
     public void finalizarEdicao(View view){
-        getMessage("Finalizar Edição!", "Deseja realmente finalizar a edição da lista?");
+        getMessage("Deseja realmente finalizar a edição da lista?");
     }
 
     //Método de mensagem
     public AlertDialog alerta;
 
-    public void getMessage(String titulo, String mensagem) {
+    public void getMessage(String mensagem) {
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
 
-        builder.setTitle(titulo);
+        //builder.setTitle(titulo);
         builder.setMessage(mensagem);
         //define um botão como positivo
         builder.setPositiveButton("Sim", new DialogInterface.OnClickListener() {

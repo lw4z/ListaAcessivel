@@ -57,17 +57,13 @@ public class TelaCriarListaPasso3 extends ActionBarActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setHomeActionContentDescription(R.string.bt_voltar);
 
-        //Desabilitando barra de rolagem na tela
-        //((ScrollView) findViewById (R.id.scrollTelaListaPasso3)).setVerticalScrollBarEnabled(false);
-        //final ScrollView scroll = (ScrollView) findViewById(R.id.scrollTelaListaPasso3);
-
         //Declaração de itens da tela
         listaProdutos = (ListView) findViewById(R.id.listViewProdutos);
         txtNomeProduto = (TextView) findViewById(R.id.campoPesquisaProduto);
         btPesquisar = (Button) findViewById(R.id.btPesquisarProduto);
         layout = (LinearLayout) findViewById(R.id.buttonLayout);
 
-        //Teste de Busca da lista
+        //Teste de criação da lista
 
         //Com arrayList
         id_produto = new ArrayList<Integer>();
@@ -350,16 +346,16 @@ public class TelaCriarListaPasso3 extends ActionBarActivity {
 
     //Método dos Botões
     public void finalizarLista(View view){
-        getMessage("Finalizar a Lista!","Deseja realmente finalizar a criação da lista?");
+        getMessage("Deseja realmente finalizar a criação da lista?");
     }
 
     //Método de mensagem
     public AlertDialog alerta;
 
-    public void getMessage(String titulo, String mensagem) {
+    public void getMessage(String mensagem) {
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
 
-        builder.setTitle(titulo);
+        //builder.setTitle(titulo);
         builder.setMessage(mensagem);
         //define um botão como positivo
         builder.setPositiveButton("Sim", new DialogInterface.OnClickListener() {

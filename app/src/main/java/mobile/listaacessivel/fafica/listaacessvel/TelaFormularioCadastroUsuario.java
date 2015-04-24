@@ -75,16 +75,16 @@ public class TelaFormularioCadastroUsuario extends ActionBarActivity {
 
     //Métodos dos Botoẽs da tela
     public void cadastrarUsuario(View view){
-        getMessage("Criar Cadastro!","Deseja realmente criar o seu cadastro?");
+        getMessage("Deseja realmente criar o seu cadastro?");
     }
 
     //Método de mensagem
     public AlertDialog alerta;
 
-    public void getMessage(String titulo, String mensagem) {
+    public void getMessage(String mensagem) {
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
 
-        builder.setTitle(titulo);
+        //builder.setTitle(titulo);
         builder.setMessage(mensagem);
         //define um botão como positivo
         builder.setPositiveButton("Sim", new DialogInterface.OnClickListener() {

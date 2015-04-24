@@ -51,16 +51,16 @@ public class TelaEdicaoSenha extends ActionBarActivity {
 
     //Métodos dos botões
     public void recuperarSenha(View view){
-        getMessage("Recuperação de senha!","Deseja enviar seu e-mail para solicitar a recuperação de sua senha?");
+        getMessage("Deseja enviar seu e-mail para solicitar a recuperação de sua senha?");
     }
 
     //Método de mensagem
     public AlertDialog alerta;
 
-    public void getMessage(String titulo, String mensagem) {
+    public void getMessage(String mensagem) {
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
 
-        builder.setTitle(titulo);
+        //builder.setTitle(titulo);
         builder.setMessage(mensagem);
         //define um botão como positivo
         builder.setPositiveButton("Sim", new DialogInterface.OnClickListener() {
