@@ -73,6 +73,26 @@ public class TelaFormularioCadastroUsuario extends ActionBarActivity {
 //        return super.onOptionsItemSelected(item);
 //    }
 
+    //Inicialização de campos da tela
+    public void inicializacaoObjetos(){
+        editEmail = (EditText) findViewById(R.id.editEmail);
+        editSenha = (EditText) findViewById(R.id.campoSenha);
+        editNomeCompleto = (EditText) findViewById(R.id.editNomeCompleto);
+        editAnoNascimento = (EditText) findViewById(R.id.editAnoNascimento);
+        editCpf = (EditText) findViewById(R.id.editCpf);
+        editTelefone1 = (EditText) findViewById(R.id.editTelefone1);
+        editTelefone2 = (EditText) findViewById(R.id.editTelefone2);
+        editCep = (EditText) findViewById(R.id.editCep);
+        editCidade = (EditText) findViewById(R.id.editCidade);
+        editEstado = (EditText) findViewById(R.id.editEstado);
+        editBairro = (EditText) findViewById(R.id.editBairro);
+        editRua = (EditText) findViewById(R.id.editRua);
+        editNumero = (EditText) findViewById(R.id.editNumero);
+        editComplemento = (EditText) findViewById(R.id.editComplemento);
+        editReferencia = (EditText) findViewById(R.id.editReferencia);
+
+    }
+
     //Métodos dos Botoẽs da tela
     public void cadastrarUsuario(View view){
         getMessage("Deseja realmente criar o seu cadastro?");
