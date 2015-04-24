@@ -1,4 +1,4 @@
-package mobile.listaacessivel.fafica.listaacessvel;
+package mobile.listaacessivel.fafica.listaacessvel.adapters;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -8,6 +8,9 @@ import android.widget.ArrayAdapter;
 import android.widget.TextView;
 
 import java.util.ArrayList;
+
+import mobile.listaacessivel.fafica.listaacessvel.R;
+import mobile.listaacessivel.fafica.listaacessvel.entidades.Estabelecimento;
 
 /**
  * Created by ivan on 02/04/15.

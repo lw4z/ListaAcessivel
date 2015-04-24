@@ -12,6 +12,9 @@ import android.widget.TextView;
 
 import java.util.ArrayList;
 
+import mobile.listaacessivel.fafica.listaacessvel.adapters.MyArrayAdapterDetalhesLista;
+import mobile.listaacessivel.fafica.listaacessvel.entidades.Produto;
+
 
 public class TelaDetalhesLista extends ActionBarActivity {
 

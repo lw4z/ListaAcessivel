@@ -8,8 +8,6 @@ import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
-import android.text.Editable;
-import android.text.TextWatcher;
 import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
@@ -20,8 +18,9 @@ import android.widget.ListView;
 import android.widget.TextView;
 
 import java.util.ArrayList;
-import java.util.Locale;
 
+import mobile.listaacessivel.fafica.listaacessvel.adapters.MyArrayAdapterCriarListaPasso3;
+import mobile.listaacessivel.fafica.listaacessvel.entidades.Produto;
 import mobile.listaacessivel.fafica.listaacessvel.util.Acentuacao;
 
 

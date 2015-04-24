@@ -12,6 +12,9 @@ import android.widget.ListView;
 
 import java.util.ArrayList;
 
+import mobile.listaacessivel.fafica.listaacessvel.adapters.MyArrayAdapterCriarListaPasso2;
+import mobile.listaacessivel.fafica.listaacessvel.entidades.Estabelecimento;
+
 
 public class TelaCriarListaPasso2 extends ActionBarActivity {
 

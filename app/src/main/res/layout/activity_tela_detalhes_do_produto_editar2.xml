@@ -101,6 +101,7 @@
             android:layout_width="35dp"
             android:layout_height="wrap_content"
             android:inputType="number"
+            android:id="@+id/campoQuantidadeProduto"
             android:gravity="center"
             android:contentDescription="@string/quantidade_produto"/>
     </LinearLayout>

@@ -10,9 +10,15 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
+import android.widget.EditText;
+
+import org.json.JSONException;
+import org.json.JSONObject;
 
 
 public class TelaLogin extends ActionBarActivity {
+
+    EditText email_usuario, senha_usuario;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -23,6 +29,22 @@ public class TelaLogin extends ActionBarActivity {
 
         //Ocultando actionBar da tela
         getSupportActionBar().hide();
+
+        //Inicialização de campos da tela
+        email_usuario = (EditText) findViewById(R.id.campoEmail);
+        senha_usuario = (EditText)findViewById(R.id.campoSenha);
+
+        //Teste de criação de Objeto JSON
+        JSONObject usuario = new JSONObject();
+        try{
+            usuario.put("email",email_usuario);
+            usuario.put("senha",senha_usuario);
+
+        }catch(JSONException e){
+            e.printStackTrace();
+        }
+
+
     }
 
 //    @Override

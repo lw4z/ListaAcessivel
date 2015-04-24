@@ -10,11 +10,13 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 
 
 public class TelaDetalhesDoProdutoEditar2 extends ActionBarActivity {
 
     Button removerProduto;
+    EditText quantidadeProduto;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,6 +29,9 @@ public class TelaDetalhesDoProdutoEditar2 extends ActionBarActivity {
         getSupportActionBar().setHomeAsUpIndicator(R.mipmap.ic_logo_listaacessivel);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setHomeActionContentDescription(R.string.bt_voltar);
+
+        //Inicialização de campos da tela
+        quantidadeProduto = (EditText) findViewById(R.id.campoQuantidadeProduto);
 
         //Botão remover produto
         removerProduto = (Button) findViewById(R.id.bt_remover_produto);

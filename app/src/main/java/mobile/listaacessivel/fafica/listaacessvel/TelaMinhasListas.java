@@ -8,10 +8,12 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.View;
 import android.widget.AdapterView;
-import android.widget.Button;
 import android.widget.ListView;
 
 import java.util.ArrayList;
+
+import mobile.listaacessivel.fafica.listaacessvel.adapters.MyArrayAdapterMinhasLista;
+import mobile.listaacessivel.fafica.listaacessvel.entidades.ItemMinhasListas;
 
 
 public class TelaMinhasListas extends ActionBarActivity {

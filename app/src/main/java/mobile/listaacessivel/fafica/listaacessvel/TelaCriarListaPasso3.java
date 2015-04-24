@@ -19,6 +19,8 @@ import android.widget.TextView;
 
 import java.util.ArrayList;
 
+import mobile.listaacessivel.fafica.listaacessvel.adapters.MyArrayAdapterCriarListaPasso3;
+import mobile.listaacessivel.fafica.listaacessvel.entidades.Produto;
 import mobile.listaacessivel.fafica.listaacessvel.util.Acentuacao;
 
 
