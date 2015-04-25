@@ -13,7 +13,7 @@ import android.widget.TextView;
 
 public class TelaPerfilUsuario extends ActionBarActivity {
 
-    TextView resultEmail, resultSenha, resultNomeCompleto, resultAnoNascimento, resultCpf, resultTelefone1,
+    TextView resultEmail, resultNomeCompleto, resultAnoNascimento, resultCpf, resultTelefone1,
             resultTelefone2, resultCep, resultCidade, resultEstado, resultBairro, resultRua, resultNumero,
             resultComplemento, resultReferencia;
 
@@ -51,6 +51,24 @@ public class TelaPerfilUsuario extends ActionBarActivity {
 //
 //        return super.onOptionsItemSelected(item);
 //    }
+
+    //Inicialização dos objetos da tela
+    public void inicializacaoObjetos(){
+        resultEmail = (TextView) findViewById(R.id.resultEmail);
+        resultNomeCompleto = (TextView) findViewById(R.id.resultNomeCompleto);
+        resultAnoNascimento = (TextView) findViewById(R.id.resultAnoNascimento);
+        resultCpf = (TextView) findViewById(R.id.resultCpf);
+        resultTelefone1 = (TextView) findViewById(R.id.resultTelefone1);
+        resultTelefone2 = (TextView) findViewById(R.id.resultTelefone2);
+        resultCep = (TextView) findViewById(R.id.resultCep);
+        resultCidade = (TextView) findViewById(R.id.resultCidade);
+        resultEstado = (TextView) findViewById(R.id.resultEstado);
+        resultBairro = (TextView) findViewById(R.id.resultBairro);
+        resultRua = (TextView) findViewById(R.id.resultRua);
+        resultNumero = (TextView) findViewById(R.id.resultNumero);
+        resultComplemento = (TextView) findViewById(R.id.resultComplemento);
+        resultReferencia = (TextView) findViewById(R.id.resultReferencia);
+    }
 
     //Métodos dos Botoẽs da tela
     public void editarPerfil(View view){
