@@ -42,7 +42,7 @@ public class TelaEditarListaPasso2 extends ActionBarActivity {
     public int NUM_ITEMS_PAGE   = 3;
     ArrayList<Integer> id_produto;
     ArrayList<String> nome;
-    ArrayList<Double> valor;
+    ArrayList<Float> valor;
     ArrayList<String> marca;
     ArrayList<String> selecao;
     ArrayList<Integer> quantidade;
@@ -98,15 +98,15 @@ public class TelaEditarListaPasso2 extends ActionBarActivity {
         marca.add("Lux");
         marca.add("Colgate");
 
-        valor = new ArrayList<Double>();
-        valor.add(3.8);
-        valor.add(2.7);
-        valor.add(13.8);
-        valor.add(1.8);
-        valor.add(1.4);
-        valor.add(2.2);
-        valor.add(1.5);
-        valor.add(1.9);
+        valor = new ArrayList<Float>();
+        valor.add(3.8f);
+        valor.add(2.7f);
+        valor.add(13.8f);
+        valor.add(1.8f);
+        valor.add(1.4f);
+        valor.add(2.2f);
+        valor.add(1.5f);
+        valor.add(1.9f);
 
         selecao = new ArrayList<String>();
         selecao.add("selecionado");
@@ -166,7 +166,7 @@ public class TelaEditarListaPasso2 extends ActionBarActivity {
                 produtosPesquisa.clear();
 
                 for(Produto p: produtos){
-                    String produto = Acentuacao.limparAcentuacao(p.getNome_produto());
+                    String produto = Acentuacao.limparAcentuacao(p.getDescricao());
                     if (produto.contains(charText)) {
                         produtosPesquisa.add(p);
                     }
