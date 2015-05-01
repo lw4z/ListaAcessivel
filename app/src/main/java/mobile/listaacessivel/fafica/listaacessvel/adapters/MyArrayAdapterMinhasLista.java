@@ -10,16 +10,16 @@ import android.widget.TextView;
 import java.util.ArrayList;
 
 import mobile.listaacessivel.fafica.listaacessvel.R;
-import mobile.listaacessivel.fafica.listaacessvel.entidades.ItemMinhasListas;
+import mobile.listaacessivel.fafica.listaacessvel.entidades.Lista;
 
 /**
  * Created by ivan on 01/04/15.
  */
-public class MyArrayAdapterMinhasLista extends ArrayAdapter<ItemMinhasListas>{
+public class MyArrayAdapterMinhasLista extends ArrayAdapter<Lista>{
     private final Context context;
-    private final ArrayList<ItemMinhasListas> itemsArrayList;
+    private final ArrayList<Lista> itemsArrayList;
 
-    public MyArrayAdapterMinhasLista(Context context, ArrayList<ItemMinhasListas> itemsArrayList) {
+    public MyArrayAdapterMinhasLista(Context context, ArrayList<Lista> itemsArrayList) {
 
         super(context, R.layout.layout_linha_tabela_minhas_lista, itemsArrayList);
 
@@ -42,8 +42,8 @@ public class MyArrayAdapterMinhasLista extends ArrayAdapter<ItemMinhasListas>{
         TextView valueView = (TextView) rowView.findViewById(R.id.text2);
 
         // 4. Define o texto para cada textView
-        labelView.setText(itemsArrayList.get(position).getTitulo());
-        valueView.setText(itemsArrayList.get(position).getDescricao());
+        labelView.setText(itemsArrayList.get(position).getDescricao());
+        valueView.setText(itemsArrayList.get(position).getSituacao());
 
         // 5. retorna a rowView
         return rowView;

@@ -11,15 +11,22 @@ import android.widget.AdapterView;
 import android.widget.ListView;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import mobile.listaacessivel.fafica.listaacessvel.adapters.MyArrayAdapterMinhasLista;
-import mobile.listaacessivel.fafica.listaacessvel.entidades.ItemMinhasListas;
+import mobile.listaacessivel.fafica.listaacessvel.entidades.Cliente;
+import mobile.listaacessivel.fafica.listaacessvel.entidades.Estabelecimento;
+import mobile.listaacessivel.fafica.listaacessvel.entidades.Lista;
+import mobile.listaacessivel.fafica.listaacessvel.entidades.Produto;
 
 
 public class TelaMinhasListas extends ActionBarActivity {
 
     ListView listaListas;
-    ArrayList<ItemMinhasListas> items = new ArrayList<ItemMinhasListas>();
+    ArrayList<Lista> listas = new ArrayList<Lista>();
+    private ArrayList<Produto> produtos;
+    private Cliente cliente;
+    private Estabelecimento estabelecimento;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,8 +55,9 @@ public class TelaMinhasListas extends ActionBarActivity {
                     Bundle dados = new Bundle();
                     Intent intent = new Intent(view.getContext(), TelaDetalhesLista.class);
 
-                    intent.putExtra("titulo_lista",(items.get(position).getTitulo()));
-                    Log.i("LISTA: ",items.get(position).getTitulo());
+                    intent.putExtra("id_lista",(listas.get(position).getId_lista()));
+                    intent.putExtra("titulo_lista",(listas.get(position).getDescricao()));
+                    Log.i("LISTA: ",listas.get(position).getDescricao());
                     startActivity(intent);
                 }
             });
@@ -59,13 +67,13 @@ public class TelaMinhasListas extends ActionBarActivity {
     }
 
     //Método que recebe os dados para a lista
-    private ArrayList<ItemMinhasListas> criarDados(){
+    private ArrayList<Lista> criarDados(){
 
-        items.add(new ItemMinhasListas("Nome da lista: " + "Lista 1","Situação da lista: " + "atendida"));
-        items.add(new ItemMinhasListas("Nome da lista: " + "Lista 2","Situação da lista: " + "solicitada"));
-        items.add(new ItemMinhasListas("Nome da lista: " + "Lista 3","Situação da lista: " + "criada"));
+        listas.add(new Lista("Nome da lista: " + "Lista 1","Situação da lista: " + "atendida", cliente, estabelecimento,produtos));
+        listas.add(new Lista("Nome da lista: " + "Lista 1","Situação da lista: " + "atendida", cliente, estabelecimento,produtos));
+        listas.add(new Lista("Nome da lista: " + "Lista 1","Situação da lista: " + "atendida", cliente, estabelecimento,produtos));
 
-        return items;
+        return listas;
     }
 
     @Override

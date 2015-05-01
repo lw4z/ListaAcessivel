@@ -17,6 +17,7 @@ import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
 
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 
 import mobile.listaacessivel.fafica.listaacessvel.adapters.MyArrayAdapterCriarListaPasso3;

@@ -11,8 +11,10 @@ import android.widget.AdapterView;
 import android.widget.ListView;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import mobile.listaacessivel.fafica.listaacessvel.adapters.MyArrayAdapterCriarListaPasso2;
+import mobile.listaacessivel.fafica.listaacessvel.entidades.Endereco;
 import mobile.listaacessivel.fafica.listaacessvel.entidades.Estabelecimento;
 
 
@@ -20,6 +22,8 @@ public class TelaCriarListaPasso2 extends ActionBarActivity {
 
     ListView listaEstabelecimentos;
     ArrayList<Estabelecimento> items = new ArrayList<Estabelecimento>();
+    private ArrayList<String> telefones;
+    private Endereco endereco;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,10 +36,12 @@ public class TelaCriarListaPasso2 extends ActionBarActivity {
         //A janela da aplicação deverá ficar apenas no formato vertical
         this.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
 
-        items.add(new Estabelecimento("Bompreço","Bairro: " + "Centro", "Caruaru"));
-        items.add(new Estabelecimento("Compre Bem","Bairro: " + "Centro", "Caruaru"));
-        items.add(new Estabelecimento("Varejão","Bairro: " + "Vassoural", "Caruaru"));
-        items.add(new Estabelecimento("Ponto Frio","Bairro: " + "Cohabe 3", "Caruaru"));
+//        items.add(new Estabelecimento("Bompreço","Bairro: " + "Centro", "Caruaru"));
+//        items.add(new Estabelecimento("Compre Bem","Bairro: " + "Centro", "Caruaru"));
+//        items.add(new Estabelecimento("Varejão","Bairro: " + "Vassoural", "Caruaru"));
+//        items.add(new Estabelecimento("Ponto Frio","Bairro: " + "Cohabe 3", "Caruaru"));
+
+        criarDados();
 
         try {
             final MyArrayAdapterCriarListaPasso2 adapter = new MyArrayAdapterCriarListaPasso2(this,items);
@@ -53,8 +59,8 @@ public class TelaCriarListaPasso2 extends ActionBarActivity {
                     //Bundle dados = new Bundle();
                     Intent intent = new Intent(view.getContext(), TelaCriarListaPasso3.class);
 
-                    intent.putExtra("nome_estabelecimento",(items.get(position).getNome()));
-                    Log.i("ESTABELECIMENTO: ",items.get(position).getNome());
+                    intent.putExtra("nome_estabelecimento",(items.get(position).getNome_fantasia()));
+                    Log.i("ESTABELECIMENTO: ",items.get(position).getNome_fantasia());
                     startActivity(intent);
                 }
             });
@@ -66,10 +72,13 @@ public class TelaCriarListaPasso2 extends ActionBarActivity {
 
     //Método que recebe os dados para a lista
     private ArrayList<Estabelecimento> criarDados(){
-        items.add(new Estabelecimento("Bompreço","Bairro: " + "Centro", "Caruaru"));
-        items.add(new Estabelecimento("Compre Bem","Bairro: " + "Centro", "Caruaru"));
-        items.add(new Estabelecimento("Varejão","Bairro: " + "Vassoural", "Caruaru"));
-        items.add(new Estabelecimento("Ponto Frio","Bairro: " + "Cohabe 3", "Caruaru"));
+
+        endereco = new Endereco("Rua 1","Centro","12","Prédio","Proximo ao centro","Caruaru","PE","5555555555");
+
+        items.add(new Estabelecimento("Bompreço","Bompreço","bompreco@email.com","Supermercado","11111111111",endereco, telefones));
+        items.add(new Estabelecimento("Bompreço","Bompreço","bompreco@email.com","Supermercado","11111111111",endereco, telefones));
+        items.add(new Estabelecimento("Bompreço","Bompreço","bompreco@email.com","Supermercado","11111111111",endereco, telefones));
+        items.add(new Estabelecimento("Bompreço","Bompreço","bompreco@email.com","Supermercado","11111111111",endereco, telefones));
         return items;
     }
 
