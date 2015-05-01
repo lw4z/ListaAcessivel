@@ -104,35 +104,6 @@ public class TelaFormularioCadastroUsuario extends ActionBarActivity {
 
     //Métodos dos Botoẽs da tela
     public void cadastrarUsuario(View view){
-        //Convertendo dados dos campos
-        String nome = editNomeCompleto.getText().toString();
-        String email = editEmail.getText().toString();
-        String cpf = editCpf.getText().toString();
-        String senha = editSenha.getText().toString();
-        String anoNascimento = editAnoNascimento.getText().toString();
-        String rua = editRua.getText().toString();
-        String bairro = editBairro.getText().toString();
-        String numero = editNumero.getText().toString();
-        String complemento = editComplemento.getText().toString();
-        String referencia = editReferencia.getText().toString();
-        String cidade = editCidade.getText().toString();
-        String estado = editEstado.getText().toString();
-        String cep = editCep.getText().toString();
-        String telefone1 = editTelefone1.getText().toString();
-        String telefone2 = editTelefone2.getText().toString();
-
-        endereco = new Endereco(rua,bairro,numero,complemento,referencia,cidade,estado,cep);
-
-        telefones.add(telefone1);
-        telefones.add(telefone2);
-
-        Cliente cliente = new Cliente(nome,cpf,email,senha,anoNascimento,endereco,telefones);
-
-        Gson gson = new Gson();
-        System.out.println(gson.toJson(cliente));
-        String resultado = gson.toJson(cliente);
-        Log.i("USUARIO",resultado);
-
         getMessage("Deseja realmente criar o seu cadastro?");
     }
 
@@ -147,6 +118,36 @@ public class TelaFormularioCadastroUsuario extends ActionBarActivity {
         //define um botão como positivo
         builder.setPositiveButton("Sim", new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface arg0, int arg1) {
+
+                //Convertendo dados dos campos
+                String nome = editNomeCompleto.getText().toString();
+                String email = editEmail.getText().toString();
+                String cpf = editCpf.getText().toString();
+                String senha = editSenha.getText().toString();
+                String anoNascimento = editAnoNascimento.getText().toString();
+                String rua = editRua.getText().toString();
+                String bairro = editBairro.getText().toString();
+                String numero = editNumero.getText().toString();
+                String complemento = editComplemento.getText().toString();
+                String referencia = editReferencia.getText().toString();
+                String cidade = editCidade.getText().toString();
+                String estado = editEstado.getText().toString();
+                String cep = editCep.getText().toString();
+                String telefone1 = editTelefone1.getText().toString();
+                String telefone2 = editTelefone2.getText().toString();
+
+                endereco = new Endereco(rua,bairro,numero,complemento,referencia,cidade,estado,cep);
+
+                telefones.add(telefone1);
+                telefones.add(telefone2);
+
+                Cliente cliente = new Cliente(nome,cpf,email,senha,anoNascimento,endereco,telefones);
+
+                Gson gson = new Gson();
+                System.out.println(gson.toJson(cliente));
+                String resultado = gson.toJson(cliente);
+                Log.i("USUARIO",resultado);
+
                 Intent it = new Intent(TelaFormularioCadastroUsuario.this,TelaLogin.class);
                 startActivity(it);
                 finish();

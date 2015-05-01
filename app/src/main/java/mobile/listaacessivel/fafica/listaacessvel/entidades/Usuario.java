@@ -20,6 +20,12 @@ public abstract class Usuario {
         this.senha = senha;
     }
 
+    public Usuario(String nome, String email) {
+        this.nome = nome;
+        this.email = email;
+        this.senha = senha;
+    }
+
     public Usuario(int id_usuario, String nome, String email, String senha) {
         this.id_usuario = id_usuario;
         this.nome = nome;
