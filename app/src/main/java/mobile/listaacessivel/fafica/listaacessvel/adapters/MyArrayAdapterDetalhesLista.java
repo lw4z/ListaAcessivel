@@ -75,7 +75,7 @@ public class MyArrayAdapterDetalhesLista extends BaseAdapter{
         if(produto != null){
             holder.nome_produto.setText(produto.getDescricao());
             holder.marca_produto.setText("Marca: " + produto.getMarca());
-            holder.valor_produto.setText("Valor: R$ " + Double.toString(produto.getValor()));
+            holder.valor_produto.setText("Valor: R$ " + Float.toString(produto.getValor()));
             //holder.selecao.setText(produto.getSelecao());
             holder.quantidade_produto.setText(Integer.toString(produto.getQuantidade()));
         }
