@@ -6,9 +6,16 @@ import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
+import com.google.gson.Gson;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import mobile.listaacessivel.fafica.listaacessvel.entidades.Cliente;
+import mobile.listaacessivel.fafica.listaacessvel.entidades.Endereco;
 import mobile.listaacessivel.fafica.listaacessvel.util.Mask;
 
 
@@ -17,7 +24,8 @@ public class TelaFormularioCadastroUsuario extends ActionBarActivity {
     EditText editEmail, editSenha, editNomeCompleto, editAnoNascimento, editCpf, editTelefone1,
             editTelefone2, editCep, editCidade, editEstado, editBairro, editRua, editNumero,
             editComplemento, editReferencia;
-
+    Endereco endereco;
+    ArrayList<String> telefones = new ArrayList<String>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,6 +38,8 @@ public class TelaFormularioCadastroUsuario extends ActionBarActivity {
         //A janela da aplicação deverá ficar apenas no formato vertical
         this.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
 
+        inicializacaoObjetos();
+
         //Utilização de mascaras para os campos
         final EditText campo_ano_nascimento = (EditText) findViewById(R.id.editAnoNascimento);
         campo_ano_nascimento.addTextChangedListener(Mask.insert("##/##/####", campo_ano_nascimento));
@@ -41,13 +51,12 @@ public class TelaFormularioCadastroUsuario extends ActionBarActivity {
         campo_telefone1.addTextChangedListener(Mask.insert("(##)####-####", campo_telefone1));
 
         final EditText campo_telefone2 = (EditText) findViewById(R.id.editTelefone2);
-        campo_telefone1.addTextChangedListener(Mask.insert("(##)####-####", campo_telefone2));
+        campo_telefone2.addTextChangedListener(Mask.insert("(##)####-####", campo_telefone2));
 
         final EditText campo_cep = (EditText) findViewById(R.id.editCep);
         campo_cep.addTextChangedListener(Mask.insert("#####-###", campo_cep));
 
-        final EditText campo_email = (EditText) findViewById(R.id.editEmail);
-
+        //final EditText campo_email = (EditText) findViewById(R.id.editEmail);
     }
 
 
@@ -76,7 +85,7 @@ public class TelaFormularioCadastroUsuario extends ActionBarActivity {
     //Inicialização de campos da tela
     public void inicializacaoObjetos(){
         editEmail = (EditText) findViewById(R.id.editEmail);
-        editSenha = (EditText) findViewById(R.id.campoSenha);
+        editSenha = (EditText) findViewById(R.id.editSenha);
         editNomeCompleto = (EditText) findViewById(R.id.editNomeCompleto);
         editAnoNascimento = (EditText) findViewById(R.id.editAnoNascimento);
         editCpf = (EditText) findViewById(R.id.editCpf);
@@ -95,6 +104,35 @@ public class TelaFormularioCadastroUsuario extends ActionBarActivity {
 
     //Métodos dos Botoẽs da tela
     public void cadastrarUsuario(View view){
+        //Convertendo dados dos campos
+        String nome = editNomeCompleto.getText().toString();
+        String email = editEmail.getText().toString();
+        String cpf = editCpf.getText().toString();
+        String senha = editSenha.getText().toString();
+        String anoNascimento = editAnoNascimento.getText().toString();
+        String rua = editRua.getText().toString();
+        String bairro = editBairro.getText().toString();
+        String numero = editNumero.getText().toString();
+        String complemento = editComplemento.getText().toString();
+        String referencia = editReferencia.getText().toString();
+        String cidade = editCidade.getText().toString();
+        String estado = editEstado.getText().toString();
+        String cep = editCep.getText().toString();
+        String telefone1 = editTelefone1.getText().toString();
+        String telefone2 = editTelefone2.getText().toString();
+
+        endereco = new Endereco(rua,bairro,numero,complemento,referencia,cidade,estado,cep);
+
+        telefones.add(telefone1);
+        telefones.add(telefone2);
+
+        Cliente cliente = new Cliente(nome,cpf,email,senha,anoNascimento,endereco,telefones);
+
+        Gson gson = new Gson();
+        System.out.println(gson.toJson(cliente));
+        String resultado = gson.toJson(cliente);
+        Log.i("USUARIO",resultado);
+
         getMessage("Deseja realmente criar o seu cadastro?");
     }
 

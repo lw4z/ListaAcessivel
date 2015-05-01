@@ -89,9 +89,9 @@ public class MyArrayAdapterCriarListaPasso3 extends BaseAdapter{
 
 
         if(produto != null){
-            holder.nome_produto.setText(produto.getNome_produto());
+            holder.nome_produto.setText(produto.getDescricao());
             holder.marca_produto.setText("Marca: " + produto.getMarca());
-            holder.valor_produto.setText("Valor: R$ " + Double.toString(produto.getValor_produto()));
+            holder.valor_produto.setText("Valor: R$ " + Double.toString(produto.getValor()));
             holder.selecao.setText(produto.getSelecao());
         }
 
