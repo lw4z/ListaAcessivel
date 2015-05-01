@@ -26,6 +26,7 @@ public class TelaFormularioCadastroUsuario extends ActionBarActivity {
             editComplemento, editReferencia;
     Endereco endereco;
     ArrayList<String> telefones = new ArrayList<String>();
+    String url="http://localhost:8080/ListaAcessivel/CadastrarClienteServlet";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
