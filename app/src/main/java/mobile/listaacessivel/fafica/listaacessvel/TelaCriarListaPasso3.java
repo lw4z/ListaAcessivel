@@ -17,11 +17,17 @@ import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
 
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+
 import java.text.DecimalFormat;
 import java.util.ArrayList;
 
 import mobile.listaacessivel.fafica.listaacessvel.adapters.MyArrayAdapterCriarListaPasso3;
+import mobile.listaacessivel.fafica.listaacessvel.entidades.GsonRequest;
 import mobile.listaacessivel.fafica.listaacessvel.entidades.Produto;
+import mobile.listaacessivel.fafica.listaacessvel.entidades.Produtos;
+import mobile.listaacessivel.fafica.listaacessvel.entidades.VolleyHelper;
 import mobile.listaacessivel.fafica.listaacessvel.util.Acentuacao;
 
 
@@ -46,6 +52,7 @@ public class TelaCriarListaPasso3 extends ActionBarActivity {
     ArrayList<Float> valor;
     ArrayList<String> marca;
     ArrayList<String> selecao;
+    String url="http://10.0.2.2:8080/ListaAcessivel/CriarListaPasso3MobileServlet";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -68,44 +75,44 @@ public class TelaCriarListaPasso3 extends ActionBarActivity {
 
         //Com arrayList
         id_produto = new ArrayList<Integer>();
-        id_produto.add(1);
-        id_produto.add(2);
-        id_produto.add(3);
-        id_produto.add(4);
-        id_produto.add(5);
-        id_produto.add(6);
-        id_produto.add(7);
-        id_produto.add(8);
+//        id_produto.add(1);
+//        id_produto.add(2);
+//        id_produto.add(3);
+//        id_produto.add(4);
+//        id_produto.add(5);
+//        id_produto.add(6);
+//        id_produto.add(7);
+//        id_produto.add(8);
 
         nome = new ArrayList<String>();
-        nome.add("Nescau");
-        nome.add("Refrigerante");
-        nome.add("Carne filé");
-        nome.add("Macarrão");
-        nome.add("Sabão");
-        nome.add("Arroz");
-        nome.add("Sabonete");
-        nome.add("Creme Dental");
+//        nome.add("Nescau");
+//        nome.add("Refrigerante");
+//        nome.add("Carne filé");
+//        nome.add("Macarrão");
+//        nome.add("Sabão");
+//        nome.add("Arroz");
+//        nome.add("Sabonete");
+//        nome.add("Creme Dental");
 
         marca = new ArrayList<String>();
-        marca.add("Nestlé");
-        marca.add("Jatobá");
-        marca.add("Friboi");
-        marca.add("Vitarella");
-        marca.add("Omo");
-        marca.add("Rampinelli");
-        marca.add("Lux");
-        marca.add("Colgate");
+//        marca.add("Nestlé");
+//        marca.add("Jatobá");
+//        marca.add("Friboi");
+//        marca.add("Vitarella");
+//        marca.add("Omo");
+//        marca.add("Rampinelli");
+//        marca.add("Lux");
+//        marca.add("Colgate");
 
         valor = new ArrayList<Float>();
-        valor.add(3.8f);
-        valor.add(2.7f);
-        valor.add(13.8f);
-        valor.add(1.8f);
-        valor.add(1.4f);
-        valor.add(2.2f);
-        valor.add(1.5f);
-        valor.add(1.9f);
+//        valor.add(3.8f);
+//        valor.add(2.7f);
+//        valor.add(13.8f);
+//        valor.add(1.8f);
+//        valor.add(1.4f);
+//        valor.add(2.2f);
+//        valor.add(1.5f);
+//        valor.add(1.9f);
 
         selecao = new ArrayList<String>();
         selecao.add("selecionado");
@@ -116,6 +123,28 @@ public class TelaCriarListaPasso3 extends ActionBarActivity {
         selecao.add("Não selecionado");
         selecao.add("Não selecionado");
         selecao.add("Não selecionado");
+
+
+        final GsonRequest gsonRequest = new GsonRequest(url, Produtos.class, null, new Response.Listener<Produtos>() {
+
+            @Override
+            public void onResponse(Produtos produtos) {
+                for(int i=0; i<produtos.getProdutos().size(); i++){
+                    Produto productItem = produtos.getProdutos().get(i);
+                    id_produto.add(productItem.getId_produto());
+                    nome.add(productItem.getDescricao());
+                    marca.add(productItem.getMarca());
+                    valor.add(productItem.getValor());
+                }
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError volleyError) {
+                if(volleyError != null) Log.e("Lista passo 3", volleyError.getMessage());
+            }
+        });
+
+        VolleyHelper.getInstance(getApplicationContext()).addToRequestQueue(gsonRequest);
 
         //Adição dos produtos a lista principal
         for(int i = 0; i < id_produto.size(); i++){
