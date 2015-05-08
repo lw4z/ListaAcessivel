@@ -17,6 +17,15 @@ import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
 
+import com.google.gson.Gson;
+
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.net.HttpURLConnection;
+import java.net.URL;
+import java.net.URLEncoder;
 import java.text.DecimalFormat;
 import java.util.ArrayList;
 
@@ -27,30 +36,36 @@ import mobile.listaacessivel.fafica.listaacessvel.util.Acentuacao;
 
 public class TelaCriarListaPasso3 extends ActionBarActivity {
 
-    ListView listaProdutos;
-    MyArrayAdapterCriarListaPasso3 adapter;
+    private ListView listaProdutos;
+    private MyArrayAdapterCriarListaPasso3 adapter;
     EditText editProcurar, quantidadeProduto;
-    ArrayList<Produto> produtos = new ArrayList<Produto>();
-    ArrayList<Produto> produtosPesquisa = new ArrayList<Produto>();
-    ArrayList<Produto> produtosTemporarios = new ArrayList<Produto>();
-    TextView txtNomeProduto;
-    Button btPesquisar;
-    LinearLayout layout;
+    private ArrayList<Produto> produtos;
+    private ArrayList<Produto> produtosPesquisa = new ArrayList<Produto>();
+    private ArrayList<Produto> produtosTemporarios = new ArrayList<Produto>();
+    //private ArrayList<Produto> produtosJson = new ArrayList<Produto>();
+    private TextView txtNomeProduto;
+    private Button btPesquisar;
+    private LinearLayout layout;
     private int noOfBtns;
     private Button[] btns;
     boolean flag = false;
     public int TOTAL_LIST_ITEMS = 8;
     public int NUM_ITEMS_PAGE   = 3;
-    ArrayList<Integer> id_produto;
-    ArrayList<String> nome;
-    ArrayList<Float> valor;
-    ArrayList<String> marca;
-    ArrayList<String> selecao;
+    private ArrayList<Integer> id_produto;
+    private ArrayList<String> nome;
+    private ArrayList<Float> valor;
+    private ArrayList<String> marca;
+    private ArrayList<String> selecao;
+    private Gson gson;
+    private String link;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_tela_criar_lista_passo3);
+
+        instance();
         //A janela da aplicação deverá ficar apenas no formato vertical
         this.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
         //Botão da logo na ActionBar
@@ -66,47 +81,18 @@ public class TelaCriarListaPasso3 extends ActionBarActivity {
 
         //Teste de criação da lista
 
+        int id_estabelecimento = getIntent().getIntExtra("id_estabelecimento", 0);
+        Log.i("IDESTABELECIMENTO: ", String.valueOf(id_estabelecimento));
+
+
+        String json = httpRespost();
+        setJSon(json);
+
         //Com arrayList
         id_produto = new ArrayList<Integer>();
-        id_produto.add(1);
-        id_produto.add(2);
-        id_produto.add(3);
-        id_produto.add(4);
-        id_produto.add(5);
-        id_produto.add(6);
-        id_produto.add(7);
-        id_produto.add(8);
-
         nome = new ArrayList<String>();
-        nome.add("Nescau");
-        nome.add("Refrigerante");
-        nome.add("Carne filé");
-        nome.add("Macarrão");
-        nome.add("Sabão");
-        nome.add("Arroz");
-        nome.add("Sabonete");
-        nome.add("Creme Dental");
-
         marca = new ArrayList<String>();
-        marca.add("Nestlé");
-        marca.add("Jatobá");
-        marca.add("Friboi");
-        marca.add("Vitarella");
-        marca.add("Omo");
-        marca.add("Rampinelli");
-        marca.add("Lux");
-        marca.add("Colgate");
-
         valor = new ArrayList<Float>();
-        valor.add(3.8f);
-        valor.add(2.7f);
-        valor.add(13.8f);
-        valor.add(1.8f);
-        valor.add(1.4f);
-        valor.add(2.2f);
-        valor.add(1.5f);
-        valor.add(1.9f);
-
         selecao = new ArrayList<String>();
         selecao.add("selecionado");
         selecao.add("Não selecionado");
@@ -265,7 +251,6 @@ public class TelaCriarListaPasso3 extends ActionBarActivity {
 
             final int j = i;
 
-
             // verificação dos cliques nos botões
             btns[j].setOnClickListener(new View.OnClickListener() {
 
@@ -277,7 +262,6 @@ public class TelaCriarListaPasso3 extends ActionBarActivity {
                 }
             });
         }
-
     }
 
     //Checagem dos cliques dos botões para modificação de cores e geração da assistência
@@ -316,7 +300,6 @@ public class TelaCriarListaPasso3 extends ActionBarActivity {
         produtosTemporarios.clear();
         for (int i = start; i < (start) + NUM_ITEMS_PAGE; i++) {
             if (i < produtosPesquisa.size()) {
-
                 produtosTemporarios.add(produtosPesquisa.get(i));
             } else {
                 break;
@@ -333,12 +316,10 @@ public class TelaCriarListaPasso3 extends ActionBarActivity {
 
         for (int i = start; i < (start) + NUM_ITEMS_PAGE; i++) {
             if (i < produtos.size()) {
-
                 produtosTemporarios.add(produtos.get(i));
             } else {
                 break;
             }
-
         }
         adapter = new MyArrayAdapterCriarListaPasso3(getApplicationContext(),produtosTemporarios);
         listaProdutos.setAdapter(adapter);
@@ -376,4 +357,63 @@ public class TelaCriarListaPasso3 extends ActionBarActivity {
         alerta = builder.create();
         alerta.show();
     }
+
+    public String httpRespost(){
+        String resposta = null;
+        try {
+            link = "http://192.168.43.64:8080/ListaAcessivel/CriarListaPasso2MobileServlet";
+
+            String queryString = "id_estabelecimento=" + URLEncoder.encode("16","iso-8859-1");
+            URL url = new URL(link + "?" + queryString);
+            HttpURLConnection connection = (HttpURLConnection) url.openConnection();
+
+            // se true indica que enviaremos dados no corpo da requisição (padrão é false)
+            connection.setDoOutput(false);
+            // se true indica que leremos os dados da resposta (padrão é true)
+            connection.setDoInput(true);
+
+            // default é GET
+            connection.setRequestMethod("GET");
+            // verifica o código da reposta
+            if (connection.getResponseCode() == HttpURLConnection.HTTP_OK) {
+                // lê a resposta como String
+                resposta = readString(connection.getInputStream());
+                Log.i("LOGJSON",resposta);
+            }
+
+        }catch (Exception e){
+
+        }
+        return resposta;
+    }
+
+    private String readString(InputStream in) throws IOException {
+        BufferedReader reader = new BufferedReader(new InputStreamReader(in, "iso-8859-1"));
+        String inputLine;
+        StringBuffer response = new StringBuffer();
+        while ((inputLine = reader.readLine()) != null) {
+            response.append(inputLine);
+        }
+        in.close();
+        return response.toString();
+    }
+
+    public void setJSon(String json) {
+        gson = new Gson();
+        if(json != null) {
+            Produto[] produtosArray = gson.fromJson(json, Produto[].class);
+
+            for (Produto p : produtosArray) {
+                produtos.add(p);
+            }
+            Produto p = produtos.get(0);
+            Log.e("Metodo TesteGson", p.getDescricao() + ", " + p.getValidade());
+        }
+    }
+
+    public void instance(){
+
+        produtos = new ArrayList<Produto>();
+    }
+
 }
