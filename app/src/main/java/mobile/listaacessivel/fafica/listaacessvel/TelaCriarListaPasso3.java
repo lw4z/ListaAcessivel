@@ -28,10 +28,12 @@ import java.net.URL;
 import java.net.URLEncoder;
 import java.text.DecimalFormat;
 import java.util.ArrayList;
+import java.util.concurrent.ExecutionException;
 
 import mobile.listaacessivel.fafica.listaacessvel.adapters.MyArrayAdapterCriarListaPasso3;
 import mobile.listaacessivel.fafica.listaacessvel.entidades.Produto;
 import mobile.listaacessivel.fafica.listaacessvel.util.Acentuacao;
+import mobile.listaacessivel.fafica.listaacessvel.util.ConnectionHttp;
 
 
 public class TelaCriarListaPasso3 extends ActionBarActivity {
@@ -57,7 +59,7 @@ public class TelaCriarListaPasso3 extends ActionBarActivity {
     private ArrayList<String> marca;
     private ArrayList<String> selecao;
     private Gson gson;
-    private String link;
+    private String link = "http://192.168.43.64:8080/ListaAcessivel/CriarListaPasso2MobileServlet?id_estabelecimento=16";
 
 
     @Override
@@ -84,9 +86,22 @@ public class TelaCriarListaPasso3 extends ActionBarActivity {
         int id_estabelecimento = getIntent().getIntExtra("id_estabelecimento", 0);
         Log.i("IDESTABELECIMENTO: ", String.valueOf(id_estabelecimento));
 
+        ConnectionHttp conection = new ConnectionHttp(this);
+        conection.execute(link);
 
-        String json = httpRespost();
-        setJSon(json);
+        Log.i("CONECTION",conection.toString());
+
+        try {
+            String json = conection.get();
+            Log.i("RESULTADOJSON",json.toString());
+        }catch (InterruptedException e1) {
+            // TODO Auto-generated catch block
+            e1.printStackTrace();
+        } catch (ExecutionException e1) {
+            // TODO Auto-generated catch block
+            e1.printStackTrace();
+        }
+
 
         //Com arrayList
         id_produto = new ArrayList<Integer>();
@@ -358,62 +373,22 @@ public class TelaCriarListaPasso3 extends ActionBarActivity {
         alerta.show();
     }
 
-    public String httpRespost(){
-        String resposta = null;
-        try {
-            link = "http://192.168.43.64:8080/ListaAcessivel/CriarListaPasso2MobileServlet";
-
-            String queryString = "id_estabelecimento=" + URLEncoder.encode("16","iso-8859-1");
-            URL url = new URL(link + "?" + queryString);
-            HttpURLConnection connection = (HttpURLConnection) url.openConnection();
-
-            // se true indica que enviaremos dados no corpo da requisição (padrão é false)
-            connection.setDoOutput(false);
-            // se true indica que leremos os dados da resposta (padrão é true)
-            connection.setDoInput(true);
-
-            // default é GET
-            connection.setRequestMethod("GET");
-            // verifica o código da reposta
-            if (connection.getResponseCode() == HttpURLConnection.HTTP_OK) {
-                // lê a resposta como String
-                resposta = readString(connection.getInputStream());
-                Log.i("LOGJSON",resposta);
-            }
-
-        }catch (Exception e){
-
-        }
-        return resposta;
-    }
-
-    private String readString(InputStream in) throws IOException {
-        BufferedReader reader = new BufferedReader(new InputStreamReader(in, "iso-8859-1"));
-        String inputLine;
-        StringBuffer response = new StringBuffer();
-        while ((inputLine = reader.readLine()) != null) {
-            response.append(inputLine);
-        }
-        in.close();
-        return response.toString();
-    }
-
-    public void setJSon(String json) {
-        gson = new Gson();
-        if(json != null) {
-            Produto[] produtosArray = gson.fromJson(json, Produto[].class);
-
-            for (Produto p : produtosArray) {
-                produtos.add(p);
-            }
-            Produto p = produtos.get(0);
-            Log.e("Metodo TesteGson", p.getDescricao() + ", " + p.getValidade());
-        }
-    }
-
     public void instance(){
 
         produtos = new ArrayList<Produto>();
     }
 
+    public void setGson(String json) {
+        gson = new Gson();
+
+       if(json != null) {
+           Produto[] produtosArray = gson.fromJson(json, Produto[].class);
+           String teste = "";
+           for (Produto p : produtosArray) {
+               produtos.add(p);
+           }
+           Produto p = produtos.get(0);
+           Log.e("Metodo TesteGson", p.getDescricao() + ", " + p.getValidade());
+       }
+    }
 }
