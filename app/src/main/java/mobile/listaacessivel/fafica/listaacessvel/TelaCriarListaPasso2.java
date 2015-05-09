@@ -10,12 +10,17 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
 
+import com.google.gson.Gson;
+
 import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.ExecutionException;
 
 import mobile.listaacessivel.fafica.listaacessvel.adapters.MyArrayAdapterCriarListaPasso2;
 import mobile.listaacessivel.fafica.listaacessvel.entidades.Endereco;
 import mobile.listaacessivel.fafica.listaacessvel.entidades.Estabelecimento;
+import mobile.listaacessivel.fafica.listaacessvel.entidades.Produto;
+import mobile.listaacessivel.fafica.listaacessvel.util.ConnectionHttp;
 
 
 public class TelaCriarListaPasso2 extends ActionBarActivity {
@@ -24,6 +29,7 @@ public class TelaCriarListaPasso2 extends ActionBarActivity {
     ArrayList<Estabelecimento> items = new ArrayList<Estabelecimento>();
     private ArrayList<String> telefones;
     private Endereco endereco;
+    private String link;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -58,6 +64,28 @@ public class TelaCriarListaPasso2 extends ActionBarActivity {
                 public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                     //Bundle dados = new Bundle();
                     Intent intent = new Intent(view.getContext(), TelaCriarListaPasso3.class);
+                    int id_estabelecimento = items.get(position).getId_estabelecimento();
+                    //link = "http://192.168.0.105:8080/ListaAcessivel/CriarListaPasso2MobileServlet?id_estabelecimento=" + id_estabelecimento;
+                    link = "http://192.168.0.105:8080/ListaAcessivel/CriarListaPasso2MobileServlet?id_estabelecimento=16";
+
+                    ConnectionHttp conection = new ConnectionHttp(TelaCriarListaPasso2.this);
+                    conection.execute(link);
+
+                    Log.i("CONECTION",conection.toString());
+
+                    try {
+                        String json = conection.get();
+                        Log.i("RESULTADOJSON",json.toString());
+                        intent.putExtra("listaProdutos",json);
+
+                    }catch (InterruptedException e1) {
+                        // TODO Auto-generated catch block
+                        e1.printStackTrace();
+                    } catch (ExecutionException e1) {
+                        // TODO Auto-generated catch block
+                        e1.printStackTrace();
+                    }
+
 
                     intent.putExtra("nome_estabelecimento",(items.get(position).getNome_fantasia()));
                     intent.putExtra("id_estabelecimento",(items.get(position).getId_estabelecimento()));

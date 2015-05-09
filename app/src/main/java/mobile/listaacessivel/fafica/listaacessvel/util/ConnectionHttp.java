@@ -60,8 +60,8 @@ public class ConnectionHttp extends AsyncTask<String, String, String> {
             if (connection.getResponseCode() == HttpURLConnection.HTTP_OK) {
                 BufferedReader arquivo = new BufferedReader(
                         new InputStreamReader(connection.getInputStream(),
-                                //"iso-8859-1"));
-                                "utf8"));
+                                "iso-8859-1"));
+                               // "UTF-8"));
                 String linha = "";
 
                 while ((linha = arquivo.readLine()) != null) {

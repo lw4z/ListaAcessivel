@@ -51,7 +51,7 @@ public class TelaCriarListaPasso3 extends ActionBarActivity {
     private int noOfBtns;
     private Button[] btns;
     boolean flag = false;
-    public int TOTAL_LIST_ITEMS = 8;
+    public int TOTAL_LIST_ITEMS;
     public int NUM_ITEMS_PAGE   = 3;
     private ArrayList<Integer> id_produto;
     private ArrayList<String> nome;
@@ -59,7 +59,7 @@ public class TelaCriarListaPasso3 extends ActionBarActivity {
     private ArrayList<String> marca;
     private ArrayList<String> selecao;
     private Gson gson;
-    private String link = "http://192.168.43.64:8080/ListaAcessivel/CriarListaPasso2MobileServlet?id_estabelecimento=16";
+    private String link = "http://192.168.0.105:8080/ListaAcessivel/CriarListaPasso2MobileServlet?id_estabelecimento=16";
 
 
     @Override
@@ -86,44 +86,52 @@ public class TelaCriarListaPasso3 extends ActionBarActivity {
         int id_estabelecimento = getIntent().getIntExtra("id_estabelecimento", 0);
         Log.i("IDESTABELECIMENTO: ", String.valueOf(id_estabelecimento));
 
-        ConnectionHttp conection = new ConnectionHttp(this);
-        conection.execute(link);
+        String json = getIntent().getStringExtra("listaProdutos");
 
-        Log.i("CONECTION",conection.toString());
+//        ConnectionHttp conection = new ConnectionHttp(this);
+//        conection.execute(link);
 
-        try {
-            String json = conection.get();
+        //Log.i("CONECTION",conection.toString());
+
+
+            //String json = conection.get();
             Log.i("RESULTADOJSON",json.toString());
-        }catch (InterruptedException e1) {
-            // TODO Auto-generated catch block
-            e1.printStackTrace();
-        } catch (ExecutionException e1) {
-            // TODO Auto-generated catch block
-            e1.printStackTrace();
-        }
 
+            gson = new Gson();
+
+            if(json != null) {
+                Produto[] produtosArray = gson.fromJson(json, Produto[].class);
+                String teste = "";
+                for (Produto p : produtosArray) {
+                    produtos.add(p);
+                }
+                TOTAL_LIST_ITEMS = produtos.size();
+                Produto p = produtos.get(0);
+                Log.e("Metodo TesteGson", p.getDescricao() + ", " + p.getValidade());
+            }
 
         //Com arrayList
-        id_produto = new ArrayList<Integer>();
-        nome = new ArrayList<String>();
-        marca = new ArrayList<String>();
-        valor = new ArrayList<Float>();
-        selecao = new ArrayList<String>();
-        selecao.add("selecionado");
-        selecao.add("Não selecionado");
-        selecao.add("Não selecionado");
-        selecao.add("Não selecionado");
-        selecao.add("selecionado");
-        selecao.add("Não selecionado");
-        selecao.add("Não selecionado");
-        selecao.add("Não selecionado");
-
-        //Adição dos produtos a lista principal
-        for(int i = 0; i < id_produto.size(); i++){
-            final Produto p = new Produto(id_produto.get(i), nome.get(i), marca.get(i),
-                    valor.get(i), selecao.get(i));
-            produtos.add(p);
-        }
+//        id_produto = new ArrayList<Integer>();
+//        nome = new ArrayList<String>();
+//        marca = new ArrayList<String>();
+//        valor = new ArrayList<Float>();
+//        selecao = new ArrayList<String>();
+//
+//        selecao.add("selecionado");
+//        selecao.add("Não selecionado");
+//        selecao.add("Não selecionado");
+//        selecao.add("Não selecionado");
+//        selecao.add("selecionado");
+//        selecao.add("Não selecionado");
+//        selecao.add("Não selecionado");
+//        selecao.add("Não selecionado");
+//
+//        //Adição dos produtos a lista principal
+//        for(int i = 0; i < id_produto.size(); i++){
+//            final Produto p = new Produto(id_produto.get(i), nome.get(i), marca.get(i),
+//                    valor.get(i), selecao.get(i));
+//            produtos.add(p);
+//        }
 
         Log.i("TAMANHOPRODUTOS",String.valueOf(produtos.size()));
 
