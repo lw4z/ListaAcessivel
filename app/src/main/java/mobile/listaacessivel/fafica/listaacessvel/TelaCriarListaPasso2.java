@@ -30,6 +30,7 @@ public class TelaCriarListaPasso2 extends ActionBarActivity {
     private ArrayList<String> telefones;
     private Endereco endereco;
     private String link;
+    private Gson gson;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,11 +42,6 @@ public class TelaCriarListaPasso2 extends ActionBarActivity {
         getSupportActionBar().setHomeActionContentDescription(R.string.bt_voltar);
         //A janela da aplicação deverá ficar apenas no formato vertical
         this.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
-
-//        items.add(new Estabelecimento("Bompreço","Bairro: " + "Centro", "Caruaru"));
-//        items.add(new Estabelecimento("Compre Bem","Bairro: " + "Centro", "Caruaru"));
-//        items.add(new Estabelecimento("Varejão","Bairro: " + "Vassoural", "Caruaru"));
-//        items.add(new Estabelecimento("Ponto Frio","Bairro: " + "Cohabe 3", "Caruaru"));
 
         criarDados();
 
@@ -101,6 +97,20 @@ public class TelaCriarListaPasso2 extends ActionBarActivity {
 
     //Método que recebe os dados para a lista
     private ArrayList<Estabelecimento> criarDados(){
+
+        String json = getIntent().getStringExtra("listaEstabelecimentos");
+
+        gson = new Gson();
+
+        if(json != null) {
+            Estabelecimento[] estabelecimentosArray = gson.fromJson(json, Estabelecimento[].class);
+
+            for (Estabelecimento p : estabelecimentosArray) {
+                items.add(p);
+            }
+            Estabelecimento e = items.get(0);
+            Log.e("Metodo TesteGson", e.getNome_fantasia() + ", " + e.getCategoria());
+        }
 
         endereco = new Endereco("Rua 1","Centro","12","Prédio","Proximo ao centro","Caruaru","PE","5555555555");
 

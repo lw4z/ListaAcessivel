@@ -9,14 +9,18 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 
+import com.google.gson.Gson;
+
 import java.util.concurrent.ExecutionException;
 
+import mobile.listaacessivel.fafica.listaacessvel.entidades.Cliente;
 import mobile.listaacessivel.fafica.listaacessvel.util.ConnectionHttp;
 
 
 public class TelaUsuario extends ActionBarActivity {
 
     private String link;
+    private Gson gson;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,6 +29,10 @@ public class TelaUsuario extends ActionBarActivity {
 
         //A janela da aplicação deverá ficar apenas no formato vertical
         this.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
+
+        String usuario = getIntent().getStringExtra("usuario");
+
+        Cliente cliente = gson.fromJson(usuario, Cliente.class);
     }
 
 

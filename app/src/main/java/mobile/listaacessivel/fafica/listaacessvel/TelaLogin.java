@@ -24,13 +24,16 @@ import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.net.URLEncoder;
+import java.util.concurrent.ExecutionException;
+
+import mobile.listaacessivel.fafica.listaacessvel.util.ConnectionHttp;
 
 
 public class TelaLogin extends ActionBarActivity {
 
-    EditText email_usuario, senha_usuario;
-    String usuarioJsonString;
-
+    private EditText email_usuario, senha_usuario;
+    private String email, senha;
+    private String link;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -44,60 +47,6 @@ public class TelaLogin extends ActionBarActivity {
         //Inicialização de campos da tela
         email_usuario = (EditText) findViewById(R.id.campoEmail);
         senha_usuario = (EditText) findViewById(R.id.campoSenha);
-
-        //Teste de criação de Objeto JSON
-        final JSONObject usuarioJson = new JSONObject();
-
-        new Thread(){
-            @Override
-            public void run(){
-                try{
-                    String link = "http://10.0.2.2:8080/ListaAcessivel/IndexServlet";
-
-                    URL url = new URL(link);
-                    HttpURLConnection connection = (HttpURLConnection) url.openConnection();
-
-                    // se true indica que enviaremos dados (parâmetros) no corpo da requisição
-                    connection.setDoOutput(true);
-                    connection.setDoInput(true);
-                    connection.setRequestMethod("POST");
-
-                    usuarioJson.put("email",email_usuario);
-                    usuarioJson.put("senha",senha_usuario);
-
-                    usuarioJsonString = usuarioJson.toString();
-
-                    Log.v("Usuario",usuarioJsonString);
-//                    String postParameters = "numero1=" + URLEncoder.encode("5", "iso-8859-1") + "&" +
-//                            "numero2=" + URLEncoder.encode("8", "iso-8859-1");
-
-                    // escreve os parâmetros no corpo da requisição
-                    DataOutputStream dos = new DataOutputStream(connection.getOutputStream());
-                    dos.writeBytes(usuarioJsonString);
-                    dos.flush();
-                    dos.close();
-
-                    if (connection.getResponseCode() == HttpURLConnection.HTTP_OK) {
-                        // lê a resposta como String
-                        String resposta = readString(connection.getInputStream());
-                    }
-                }catch(Exception e){
-                    e.printStackTrace();
-                }
-            }
-        }.start();
-
-    }
-
-    private String readString(InputStream in) throws IOException {
-        BufferedReader reader = new BufferedReader(new InputStreamReader(in, "iso-8859-1"));
-        String inputLine;
-        StringBuffer response = new StringBuffer();
-        while ((inputLine = reader.readLine()) != null) {
-            response.append(inputLine);
-        }
-        in.close();
-        return response.toString();
     }
 
 //    @Override
@@ -125,8 +74,33 @@ public class TelaLogin extends ActionBarActivity {
     //Métodos dos botões
     public void fazerLogin(View view){
         Intent it = new Intent(this,TelaUsuario.class);
-        startActivity(it);
-        finish();
+        email = email_usuario.getText().toString();
+        senha = senha_usuario.getText().toString();
+//        it.putExtra("email",email);
+//        it.putExtra("senha",senha);
+
+        if (email != null && senha != null) {
+            //link = ;
+            ConnectionHttp conection = new ConnectionHttp(TelaLogin.this);
+            conection.execute(link);
+
+            Log.i("CONECTION", conection.toString());
+
+            try {
+                String json = conection.get();
+                Log.i("RESULTADOJSON",json.toString());
+                it.putExtra("usuario", json);
+            }catch (InterruptedException e1) {
+                e1.printStackTrace();
+            } catch (ExecutionException e1) {
+                e1.printStackTrace();
+            }
+            startActivity(it);
+            finish();
+        }else{
+
+        }
+
     }
 
     public void fazerCadastro(View view){
