@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -77,6 +78,9 @@ public class TelaDetalhesDoProduto extends ActionBarActivity {
     //Métodos dos botões
     public void adicionarProdutoLista(View view){
         Intent it = new Intent(this,TelaCriarListaPasso3.class);
+        int quantidade = Integer.parseInt(quantidadeProduto.getText().toString());
+        it.putExtra("quantidade",quantidade);
+        Log.i("QUANTIDADEPRODUTO",String.valueOf(quantidade));
         startActivity(it);
         finish();
     }
@@ -93,6 +97,7 @@ public class TelaDetalhesDoProduto extends ActionBarActivity {
         builder.setPositiveButton("Sim", new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface arg0, int arg1) {
                 Intent it = new Intent(TelaDetalhesDoProduto.this,TelaCriarListaPasso3.class);
+                it.putExtra("selecao","nao_selecionado");
                 startActivity(it);
                 finish();
             }

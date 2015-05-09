@@ -4,12 +4,19 @@ import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 
+import java.util.concurrent.ExecutionException;
+
+import mobile.listaacessivel.fafica.listaacessvel.util.ConnectionHttp;
+
 
 public class TelaCriarListaPasso1 extends ActionBarActivity {
+
+    private String link;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,24 +54,95 @@ public class TelaCriarListaPasso1 extends ActionBarActivity {
 //        return super.onOptionsItemSelected(item);
 //    }
 
-    //Métodos dos Botoẽs da tela EM FASE DE TESTE
+    //Métodos dos Botoẽs da tela
     public void getCategoriaPadaria(View view){
         Intent padaria = new Intent(this,TelaCriarListaPasso2.class);
+        //link = ;
+        ConnectionHttp conection = new ConnectionHttp(TelaCriarListaPasso1.this);
+        conection.execute(link);
+
+        Log.i("CONECTION", conection.toString());
+
+        try {
+            String json = conection.get();
+            Log.i("RESULTADOJSON",json.toString());
+            padaria.putExtra("listaEstabelecimentos", json);
+
+        }catch (InterruptedException e1) {
+            e1.printStackTrace();
+        } catch (ExecutionException e1) {
+            e1.printStackTrace();
+        }
+        padaria.putExtra("categoria","padaria");
         startActivity(padaria);
     }
 
     public void getCategoriaMercado(View view){
+
         Intent mercado = new Intent(this,TelaCriarListaPasso2.class);
+        //link = ;
+        ConnectionHttp conection = new ConnectionHttp(TelaCriarListaPasso1.this);
+        conection.execute(link);
+
+        Log.i("CONECTION", conection.toString());
+
+        try {
+            String json = conection.get();
+            Log.i("RESULTADOJSON",json.toString());
+            mercado.putExtra("listaEstabelecimentos", json);
+
+        }catch (InterruptedException e1) {
+            e1.printStackTrace();
+        } catch (ExecutionException e1) {
+            e1.printStackTrace();
+        }
+        mercado.putExtra("categoria","mercado");
         startActivity(mercado);
     }
 
     public void getCategoriaFarmacia(View view){
+
         Intent farmacia = new Intent(this,TelaCriarListaPasso2.class);
+        //link = ;
+        ConnectionHttp conection = new ConnectionHttp(TelaCriarListaPasso1.this);
+        conection.execute(link);
+
+        Log.i("CONECTION", conection.toString());
+
+        try {
+            String json = conection.get();
+            Log.i("RESULTADOJSON",json.toString());
+            farmacia.putExtra("listaEstabelecimentos", json);
+
+        }catch (InterruptedException e1) {
+            e1.printStackTrace();
+        } catch (ExecutionException e1) {
+            e1.printStackTrace();
+        }
+        farmacia.putExtra("categoria","farmacia");
         startActivity(farmacia);
     }
 
     public void getCategoriaLivraria(View view){
+
         Intent livraria = new Intent(this,TelaCriarListaPasso2.class);
+        //link = ;
+        ConnectionHttp conection = new ConnectionHttp(TelaCriarListaPasso1.this);
+        conection.execute(link);
+
+        Log.i("CONECTION", conection.toString());
+
+        try {
+            String json = conection.get();
+            Log.i("RESULTADOJSON",json.toString());
+            livraria.putExtra("listaEstabelecimentos", json);
+
+        }catch (InterruptedException e1) {
+            e1.printStackTrace();
+        } catch (ExecutionException e1) {
+            e1.printStackTrace();
+        }
+        livraria.putExtra("categoria","livraria");
         startActivity(livraria);
     }
 

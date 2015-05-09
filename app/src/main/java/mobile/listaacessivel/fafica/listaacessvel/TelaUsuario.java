@@ -4,12 +4,19 @@ import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 
+import java.util.concurrent.ExecutionException;
+
+import mobile.listaacessivel.fafica.listaacessvel.util.ConnectionHttp;
+
 
 public class TelaUsuario extends ActionBarActivity {
+
+    private String link;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,11 +58,43 @@ public class TelaUsuario extends ActionBarActivity {
     //Métodos dos Botoẽs da tela
     public void getPerfil(View view){
         Intent perfil = new Intent(this,TelaPerfilUsuario.class);
+        //link = ;
+        ConnectionHttp conection = new ConnectionHttp(TelaUsuario.this);
+        conection.execute(link);
+
+        Log.i("CONECTION", conection.toString());
+
+        try {
+            String json = conection.get();
+            Log.i("RESULTADOJSON",json.toString());
+            perfil.putExtra("perfilUsuario", json);
+
+        }catch (InterruptedException e1) {
+            e1.printStackTrace();
+        } catch (ExecutionException e1) {
+            e1.printStackTrace();
+        }
         startActivity(perfil);
     }
 
     public void visualizarListas(View view){
         Intent listas = new Intent(this,TelaMinhasListas.class);
+        //link = ;
+        ConnectionHttp conection = new ConnectionHttp(TelaUsuario.this);
+        conection.execute(link);
+
+        Log.i("CONECTION", conection.toString());
+
+        try {
+            String json = conection.get();
+            Log.i("RESULTADOJSON",json.toString());
+            listas.putExtra("listaListas", json);
+
+        }catch (InterruptedException e1) {
+            e1.printStackTrace();
+        } catch (ExecutionException e1) {
+            e1.printStackTrace();
+        }
         startActivity(listas);
     }
 

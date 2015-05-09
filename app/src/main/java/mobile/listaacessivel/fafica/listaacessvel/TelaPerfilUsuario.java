@@ -4,18 +4,28 @@ import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import com.google.gson.Gson;
+
+import java.util.ArrayList;
+
+import mobile.listaacessivel.fafica.listaacessvel.entidades.Cliente;
+import mobile.listaacessivel.fafica.listaacessvel.entidades.Endereco;
+import mobile.listaacessivel.fafica.listaacessvel.entidades.Usuario;
+
 
 public class TelaPerfilUsuario extends ActionBarActivity {
 
-    TextView resultEmail, resultNomeCompleto, resultAnoNascimento, resultCpf, resultTelefone1,
+    private TextView resultEmail, resultNomeCompleto, resultAnoNascimento, resultCpf, resultTelefone1,
             resultTelefone2, resultCep, resultCidade, resultEstado, resultBairro, resultRua, resultNumero,
             resultComplemento, resultReferencia;
+    private Gson gson;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,6 +37,54 @@ public class TelaPerfilUsuario extends ActionBarActivity {
         getSupportActionBar().setHomeActionContentDescription(R.string.bt_voltar);
         //A janela da aplicação deverá ficar apenas no formato vertical
         this.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
+        inicializacaoObjetos();
+
+        String json = getIntent().getStringExtra("listaProdutos");
+
+//        ConnectionHttp conection = new ConnectionHttp(this);
+//        conection.execute(link);
+
+        //Log.i("CONECTION",conection.toString());
+
+
+        //String json = conection.get();
+        Log.i("RESULTADOJSON", json.toString());
+
+        gson = new Gson();
+
+        if(json != null) {
+            Cliente cliente = gson.fromJson(json, Cliente.class);
+
+            resultEmail.setText(cliente.getEmail());
+            resultNomeCompleto.setText(cliente.getNome());
+            resultAnoNascimento.setText(cliente.getAno_nascimento());
+            resultCpf.setText(cliente.getCpf());
+
+            ArrayList<String> telefones = new ArrayList<String>();
+            telefones.add(cliente.getTelefones().get(0));
+            telefones.add(cliente.getTelefones().get(1));
+
+            Endereco endereco = new Endereco(cliente.getEndereco().getRua(),
+                    cliente.getEndereco().getBairro(),
+                    cliente.getEndereco().getNumero(),
+                    cliente.getEndereco().getComplemento(),
+                    cliente.getEndereco().getReferencia(),
+                    cliente.getEndereco().getCidade(),
+                    cliente.getEndereco().getEstado(),
+                    cliente.getEndereco().getCep());
+
+            resultTelefone1.setText(telefones.get(0));
+            resultTelefone2.setText(telefones.get(1));
+            resultCep.setText(endereco.getCep());
+            resultCidade.setText(endereco.getCidade());
+            resultEstado.setText(endereco.getEstado());
+            resultBairro.setText(endereco.getBairro());
+            resultRua.setText(endereco.getRua());
+            resultNumero.setText(endereco.getNumero());
+            resultComplemento.setText(endereco.getComplemento());
+            resultReferencia.setText(endereco.getReferencia());
+        }
+
     }
 
 
