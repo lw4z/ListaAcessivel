@@ -68,62 +68,117 @@ public class TelaEditarListaPasso2 extends ActionBarActivity {
         //Teste de Busca da lista
 
         //Com arrayList
-        id_produto = new ArrayList<Integer>();
-        id_produto.add(1);
-        id_produto.add(2);
-        id_produto.add(3);
-        id_produto.add(4);
-        id_produto.add(5);
-        id_produto.add(6);
-        id_produto.add(7);
-        id_produto.add(8);
-
-        nome = new ArrayList<String>();
-        nome.add("Nescau");
-        nome.add("Refrigerante");
-        nome.add("Carne filé");
-        nome.add("Macarrão");
-        nome.add("Sabão");
-        nome.add("Arroz");
-        nome.add("Sabonete");
-        nome.add("Creme Dental");
-
-        marca = new ArrayList<String>();
-        marca.add("Nestlé");
-        marca.add("Jatobá");
-        marca.add("Friboi");
-        marca.add("Vitarella");
-        marca.add("Omo");
-        marca.add("Rampinelli");
-        marca.add("Lux");
-        marca.add("Colgate");
-
-        valor = new ArrayList<Float>();
-        valor.add(3.8f);
-        valor.add(2.7f);
-        valor.add(13.8f);
-        valor.add(1.8f);
-        valor.add(1.4f);
-        valor.add(2.2f);
-        valor.add(1.5f);
-        valor.add(1.9f);
-
-        selecao = new ArrayList<String>();
-        selecao.add("selecionado");
-        selecao.add("Não selecionado");
-        selecao.add("Não selecionado");
-        selecao.add("selecionado");
-        selecao.add("Não selecionado");
-        selecao.add("Não selecionado");
-        selecao.add("Não selecionado");
-        selecao.add("Não selecionado");
-
-        //Adição dos produtos a lista principal
-        for(int i = 0; i < id_produto.size(); i++){
-            final Produto p = new Produto(id_produto.get(i), nome.get(i), marca.get(i),
-                    valor.get(i), selecao.get(i));
-            produtos.add(p);
-        }
+//        id_produto = new ArrayList<Integer>();
+//        id_produto.add(1);
+//        id_produto.add(2);
+//        id_produto.add(3);
+//        id_produto.add(4);
+//        id_produto.add(5);
+//        id_produto.add(6);
+//        id_produto.add(7);
+//        id_produto.add(8);
+//
+//        nome = new ArrayList<String>();
+//        nome.add("Nescau");
+//        nome.add("Refrigerante");
+//        nome.add("Carne filé");
+//        nome.add("Macarrão");
+//        nome.add("Sabão");
+//        nome.add("Arroz");
+//        nome.add("Sabonete");
+//        nome.add("Creme Dental");
+//
+//        marca = new ArrayList<String>();
+//        marca.add("Nestlé");
+//        marca.add("Jatobá");
+//        marca.add("Friboi");
+//        marca.add("Vitarella");
+//        marca.add("Omo");
+//        marca.add("Rampinelli");
+//        marca.add("Lux");
+//        marca.add("Colgate");
+//
+//        valor = new ArrayList<Float>();
+//        valor.add(3.8f);
+//        valor.add(2.7f);
+//        valor.add(13.8f);
+//        valor.add(1.8f);
+//        valor.add(1.4f);
+//        valor.add(2.2f);
+//        valor.add(1.5f);
+//        valor.add(1.9f);
+//
+//        selecao = new ArrayList<String>();
+//        selecao.add("selecionado");
+//        selecao.add("Não selecionado");
+//        selecao.add("Não selecionado");
+//        selecao.add("selecionado");
+//        selecao.add("Não selecionado");
+//        selecao.add("Não selecionado");
+//        selecao.add("Não selecionado");
+//        selecao.add("Não selecionado");
+//
+//        //Adição dos produtos a lista principal
+//        for(int i = 0; i < id_produto.size(); i++){
+//            final Produto p = new Produto(id_produto.get(i), nome.get(i), marca.get(i),
+//                    valor.get(i), selecao.get(i));
+//            produtos.add(p);
+//        } id_produto = new ArrayList<Integer>();
+//        id_produto.add(1);
+//        id_produto.add(2);
+//        id_produto.add(3);
+//        id_produto.add(4);
+//        id_produto.add(5);
+//        id_produto.add(6);
+//        id_produto.add(7);
+//        id_produto.add(8);
+//
+//        nome = new ArrayList<String>();
+//        nome.add("Nescau");
+//        nome.add("Refrigerante");
+//        nome.add("Carne filé");
+//        nome.add("Macarrão");
+//        nome.add("Sabão");
+//        nome.add("Arroz");
+//        nome.add("Sabonete");
+//        nome.add("Creme Dental");
+//
+//        marca = new ArrayList<String>();
+//        marca.add("Nestlé");
+//        marca.add("Jatobá");
+//        marca.add("Friboi");
+//        marca.add("Vitarella");
+//        marca.add("Omo");
+//        marca.add("Rampinelli");
+//        marca.add("Lux");
+//        marca.add("Colgate");
+//
+//        valor = new ArrayList<Float>();
+//        valor.add(3.8f);
+//        valor.add(2.7f);
+//        valor.add(13.8f);
+//        valor.add(1.8f);
+//        valor.add(1.4f);
+//        valor.add(2.2f);
+//        valor.add(1.5f);
+//        valor.add(1.9f);
+//
+//        selecao = new ArrayList<String>();
+//        selecao.add("selecionado");
+//        selecao.add("Não selecionado");
+//        selecao.add("Não selecionado");
+//        selecao.add("selecionado");
+//        selecao.add("Não selecionado");
+//        selecao.add("Não selecionado");
+//        selecao.add("Não selecionado");
+//        selecao.add("Não selecionado");
+//
+//        //Adição dos produtos a lista principal
+//        for(int i = 0; i < id_produto.size(); i++){
+//            final Produto p = new Produto(id_produto.get(i), nome.get(i), marca.get(i),
+//                    valor.get(i), selecao.get(i));
+//            produtos.add(p);
+//        }
 
         Log.i("TAMANHOPRODUTOS",String.valueOf(produtos.size()));
 
@@ -204,7 +259,7 @@ public class TelaEditarListaPasso2 extends ActionBarActivity {
                     Intent intent = new Intent(view.getContext(), TelaDetalhesDoProdutoEditar2.class);
 
                     intent.putExtra("id_produto",(produtos.get(position).getId_produto()));
-                    intent.putExtra("selecao",(produtos.get(position).getSelecao()));
+                    intent.putExtra("selecao",(produtos.get(position).isSelecionado()));
                     Log.i("PRODUTO: ",String.valueOf(produtos.get(position).getId_produto()));
                     startActivity(intent);
                 }
