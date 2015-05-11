@@ -44,9 +44,9 @@ public class TelaDetalhesDoProduto extends ActionBarActivity {
         });
 
         //Condição para o botão aparecer
-        String selecao = getIntent().getStringExtra("selecao");
+        Boolean selecao = getIntent().getBooleanExtra("selecao",false);
 
-        if(selecao.equals("selecionado")){
+        if(selecao == true){
             removerProduto.setVisibility(View.VISIBLE);
         }
 
@@ -97,7 +97,7 @@ public class TelaDetalhesDoProduto extends ActionBarActivity {
         builder.setPositiveButton("Sim", new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface arg0, int arg1) {
                 Intent it = new Intent(TelaDetalhesDoProduto.this,TelaCriarListaPasso3.class);
-                it.putExtra("selecao","nao_selecionado");
+                it.putExtra("selecao",true);
                 startActivity(it);
                 finish();
             }

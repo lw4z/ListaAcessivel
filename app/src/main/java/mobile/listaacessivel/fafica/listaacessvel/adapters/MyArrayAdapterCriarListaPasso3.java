@@ -25,6 +25,7 @@ public class MyArrayAdapterCriarListaPasso3 extends BaseAdapter{
     private List<Produto> listaItemsPasso3 = null;
     private ArrayList<Produto> listaProdutos;
     private ArrayList<Produto> listaProdutosSelecionados = new ArrayList<Produto>();
+    private String resultado;
 
     public EditText focuesdEditText;
 
@@ -87,14 +88,19 @@ public class MyArrayAdapterCriarListaPasso3 extends BaseAdapter{
 
         holder.ref = position;
 
-
         if(produto != null){
+
+            if(produto.isSelecionado() == true){
+                resultado = "selecionado";
+            }else{
+                resultado = "não selecionado";
+            }
+
             holder.nome_produto.setText(produto.getDescricao());
             holder.marca_produto.setText("Marca: " + produto.getMarca());
             holder.valor_produto.setText("Valor: R$ " + Float.toString(produto.getValor()));
-            holder.selecao.setText(produto.getSelecao());
+            holder.selecao.setText(resultado);
         }
-
 
         //Log
         String valor = String.valueOf(produto.getQuantidade());

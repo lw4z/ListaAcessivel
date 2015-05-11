@@ -57,7 +57,7 @@ public class TelaCriarListaPasso3 extends ActionBarActivity {
     private ArrayList<String> nome;
     private ArrayList<Float> valor;
     private ArrayList<String> marca;
-    private ArrayList<String> selecao;
+    private ArrayList<Boolean> selecao;
     private Gson gson;
     private String link = "http://192.168.0.105:8080/ListaAcessivel/CriarListaPasso2MobileServlet?id_estabelecimento=16";
 
@@ -212,7 +212,7 @@ public class TelaCriarListaPasso3 extends ActionBarActivity {
                     Intent intent = new Intent(view.getContext(), TelaDetalhesDoProduto.class);
 
                     intent.putExtra("id_produto",(produtos.get(position).getId_produto()));
-                    intent.putExtra("selecao",(produtos.get(position).getSelecao()));
+                    intent.putExtra("selecao",produtos.get(position).isSelecionado());
                     Log.i("PRODUTO: ",String.valueOf(produtos.get(position).getId_produto()));
                     startActivity(intent);
                 }

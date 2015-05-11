@@ -16,11 +16,9 @@ public class Produto {
     private String codigo_barra;
     private String disponibilidade;
     private Estabelecimento estabelecimento;
-    private String selecao;
+    private boolean selecionado = false; //Atributo utilizado para o projeto Android
 
-    public Produto() {
-
-    }
+    public Produto() { }
 
     public Produto(String descricao, String categoria,
                    float peso, int quantidade, float valor,
@@ -55,25 +53,6 @@ public class Produto {
         this.codigo_barra = codigo_barra;
         this.disponibilidade = disponibilidade;
         this.estabelecimento = estabelecimento;
-    }
-
-    public Produto(int id_produto, String descricao, String marca, Float valor, int quantidade, String selecao) {
-        super();
-        this.descricao = descricao;
-        this.marca = marca;
-        this.valor = valor;
-        this.quantidade = quantidade;
-        this.id_produto = id_produto;
-        this.selecao = selecao;
-    }
-
-    public Produto(int id_produto, String descricao, String marca, Float valor, String selecao) {
-        super();
-        this.id_produto = id_produto;
-        this.descricao = descricao;
-        this.marca = marca;
-        this.valor = valor;
-        this.selecao = selecao;
     }
 
     public int getId_produto() {
@@ -164,18 +143,14 @@ public class Produto {
         this.estabelecimento = estabelecimento;
     }
 
-    public String getSelecao() {
-        return selecao;
+    public boolean isSelecionado() {
+        return selecionado;
     }
 
-    public void setSelecao(String selecao) {
-        this.selecao = selecao;
+    public void setSelecionado(boolean selecionado) {
+        this.selecionado = selecionado;
     }
 
-    @Override
-    public String toString() {
-        return "Nome: " + descricao + " Marca: " + marca + " Valor: " + valor;
-    }
+
 
 }
-
