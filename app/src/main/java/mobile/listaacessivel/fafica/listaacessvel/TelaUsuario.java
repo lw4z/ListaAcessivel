@@ -32,7 +32,16 @@ public class TelaUsuario extends ActionBarActivity {
 
         String usuario = getIntent().getStringExtra("usuario");
 
-        Cliente cliente = gson.fromJson(usuario, Cliente.class);
+        if(usuario != null) {
+            Cliente cliente = gson.fromJson(usuario, Cliente.class);
+        }else{
+            Intent login = new Intent(this,TelaLogin.class);
+            startActivity(login);
+            finish();
+        }
+
+
+
     }
 
 
@@ -66,22 +75,25 @@ public class TelaUsuario extends ActionBarActivity {
     //Métodos dos Botoẽs da tela
     public void getPerfil(View view){
         Intent perfil = new Intent(this,TelaPerfilUsuario.class);
-        //link = ;
-        ConnectionHttp conection = new ConnectionHttp(TelaUsuario.this);
-        conection.execute(link);
+//        //link = ;
+//        ConnectionHttp conection = new ConnectionHttp(TelaUsuario.this);
+//        conection.execute(link);
+//
+//        Log.i("CONECTION", conection.toString());
+//
+//        try {
+//            String json = conection.get();
+//            Log.i("RESULTADOJSON",json.toString());
+//            perfil.putExtra("perfilUsuario", json);
+//
+//        }catch (InterruptedException e1) {
+//            e1.printStackTrace();
+//        } catch (ExecutionException e1) {
+//            e1.printStackTrace();
+//        }
 
-        Log.i("CONECTION", conection.toString());
-
-        try {
-            String json = conection.get();
-            Log.i("RESULTADOJSON",json.toString());
-            perfil.putExtra("perfilUsuario", json);
-
-        }catch (InterruptedException e1) {
-            e1.printStackTrace();
-        } catch (ExecutionException e1) {
-            e1.printStackTrace();
-        }
+        String usuario = getIntent().getStringExtra("usuario");
+        perfil.putExtra("perfilUsuario",usuario);
         startActivity(perfil);
     }
 
