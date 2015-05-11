@@ -80,7 +80,7 @@ public class TelaLogin extends ActionBarActivity {
 //        it.putExtra("senha",senha);
 
         if (email != null && senha != null) {
-            //link = ;
+            link = "http://192.168.0.105:8080/ListaAcessivel/LoginMobileServlet?email=" + email + "&senha=" + senha;
             ConnectionHttp conection = new ConnectionHttp(TelaLogin.this);
             conection.execute(link);
 
@@ -98,7 +98,8 @@ public class TelaLogin extends ActionBarActivity {
             startActivity(it);
             finish();
         }else{
-
+            Intent it2 = new Intent(this,TelaLogin.class);
+            startActivity(it2);
         }
 
     }

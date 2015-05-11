@@ -382,7 +382,6 @@ public class TelaCriarListaPasso3 extends ActionBarActivity {
     }
 
     public void instance(){
-
         produtos = new ArrayList<Produto>();
     }
 
