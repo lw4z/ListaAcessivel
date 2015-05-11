@@ -13,19 +13,22 @@ import com.google.gson.Gson;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.ExecutionException;
 
 import mobile.listaacessivel.fafica.listaacessvel.entidades.Cliente;
 import mobile.listaacessivel.fafica.listaacessvel.entidades.Endereco;
+import mobile.listaacessivel.fafica.listaacessvel.util.ConnectionHttp;
 import mobile.listaacessivel.fafica.listaacessvel.util.Mask;
 
 
 public class TelaFormularioCadastroUsuario extends ActionBarActivity {
 
-    EditText editEmail, editSenha, editNomeCompleto, editAnoNascimento, editCpf, editTelefone1,
+    private EditText editEmail, editSenha, editNomeCompleto, editAnoNascimento, editCpf, editTelefone1,
             editTelefone2, editCep, editCidade, editEstado, editBairro, editRua, editNumero,
             editComplemento, editReferencia;
-    Endereco endereco;
-    ArrayList<String> telefones = new ArrayList<String>();
+    private Endereco endereco;
+    private ArrayList<String> telefones = new ArrayList<String>();
+    private String link;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -145,8 +148,18 @@ public class TelaFormularioCadastroUsuario extends ActionBarActivity {
 
                 Gson gson = new Gson();
                 System.out.println(gson.toJson(cliente));
-                String resultado = gson.toJson(cliente);
-                Log.i("USUARIO",resultado);
+                String json_cliente = gson.toJson(cliente);
+                Log.i("USUARIO",json_cliente);
+
+                if (json_cliente != null) {
+                    //link = ;
+                    ConnectionHttp conection = new ConnectionHttp(TelaFormularioCadastroUsuario.this);
+                    conection.execute(link);
+
+                    Log.i("CONECTION", conection.toString());
+                }else{
+
+                }
 
                 Intent it = new Intent(TelaFormularioCadastroUsuario.this,TelaLogin.class);
                 startActivity(it);
