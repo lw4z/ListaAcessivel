@@ -9,6 +9,8 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.Toast;
+
 import com.google.gson.Gson;
 
 import java.util.ArrayList;
@@ -139,6 +141,11 @@ public class TelaFormularioCadastroUsuario extends ActionBarActivity {
                 String telefone1 = editTelefone1.getText().toString();
                 String telefone2 = editTelefone2.getText().toString();
 
+                String[] campos = new String[]
+                        {nome,email,cpf,senha,anoNascimento,rua,bairro,numero,
+                                complemento,referencia,cidade,estado,cep,telefone1,telefone2};
+                validaCampos(campos);
+
                 endereco = new Endereco(rua,bairro,numero,complemento,referencia,cidade,estado,cep);
 
                 telefones.add(telefone1);
@@ -151,11 +158,10 @@ public class TelaFormularioCadastroUsuario extends ActionBarActivity {
                 String jsonCadastro = gson.toJson(cliente);
                 Log.i("USUARIO",jsonCadastro);
 
-                if (jsonCadastro != null) {
+                if (!cliente.getNome().equals("")) {
                     link = "http://192.168.0.105:8080/ListaAcessivel/CadastrarClienteMobileServlet?jsonCadastro=" + jsonCadastro;
                     ConnectionHttp conection = new ConnectionHttp(TelaFormularioCadastroUsuario.this);
                     conection.execute(link);
-
                     Log.i("CONECTION", conection.toString());
                 }else{
                     return;
@@ -175,5 +181,15 @@ public class TelaFormularioCadastroUsuario extends ActionBarActivity {
         //cria o AlertDialog e exibe na tela
         alerta = builder.create();
         alerta.show();
+    }
+
+    public void validaCampos(String[] variavel){
+        for(int i = 0; i < variavel.length; i++){
+            if(variavel[i] == null || variavel[i].equals("")){
+                Toast.makeText(this,"Existem campos vazios no formulário, favor preencher",Toast.LENGTH_LONG).show();
+                return;
+            }
+        }
+
     }
 }

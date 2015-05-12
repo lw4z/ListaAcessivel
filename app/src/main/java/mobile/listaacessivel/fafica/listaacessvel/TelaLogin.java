@@ -83,8 +83,6 @@ public class TelaLogin extends ActionBarActivity {
         Intent it = new Intent(this,TelaUsuario.class);
         email = email_usuario.getText().toString();
         senha = senha_usuario.getText().toString();
-//        it.putExtra("email",email);
-//        it.putExtra("senha",senha);
 
         if (email != "" && senha != "") {
             try {

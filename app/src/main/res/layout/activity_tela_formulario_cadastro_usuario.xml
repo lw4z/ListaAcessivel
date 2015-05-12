@@ -227,14 +227,12 @@
             android:id="@+id/txtNUmero"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-
             android:text="@string/numero"
             />
 
         <EditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:inputType="numberSigned"
             android:id="@+id/editNumero"
             android:contentDescription="@string/campo_numero"/>
 

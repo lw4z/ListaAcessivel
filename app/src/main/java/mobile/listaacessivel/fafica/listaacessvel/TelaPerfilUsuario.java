@@ -40,21 +40,8 @@ public class TelaPerfilUsuario extends ActionBarActivity {
         this.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
         inicializacaoObjetos();
 
-        //String json = getIntent().getStringExtra("perfilUsuario");
-
-//        ConnectionHttp conection = new ConnectionHttp(this);
-//        conection.execute(link);
-
-        //Log.i("CONECTION",conection.toString());
-
-
-        //String json = conection.get();
-        //Log.i("RESULTADOJSON", json.toString());
-
         gson = new Gson();
 
-        //if(json != null) {
-            //Cliente cliente = gson.fromJson(json, Cliente.class);
         ClienteSession clienteSession = new ClienteSession();
         Cliente cliente = clienteSession.getCliente();
 
@@ -86,7 +73,6 @@ public class TelaPerfilUsuario extends ActionBarActivity {
             resultNumero.setText(endereco.getNumero());
             resultComplemento.setText(endereco.getComplemento());
             resultReferencia.setText(endereco.getReferencia());
-        //}
 
     }
 
