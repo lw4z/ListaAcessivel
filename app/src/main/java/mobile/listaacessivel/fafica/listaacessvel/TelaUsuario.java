@@ -78,10 +78,6 @@ public class TelaUsuario extends ActionBarActivity {
 //            }
 //        }
 
-
-
-
-
     }
 
 
