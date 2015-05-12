@@ -159,7 +159,7 @@ public class TelaFormularioCadastroUsuario extends ActionBarActivity {
                 Log.i("USUARIO",jsonCadastro);
 
                 if (!cliente.getNome().equals("")) {
-                    link = "http://192.168.0.105:8080/ListaAcessivel/CadastrarClienteMobileServlet?jsonCadastro=" + jsonCadastro;
+                    link = "http://192.168.0.105:8080/ListaAcessivel/CadastrarClienteMobileServlet?json_cadastro=" + jsonCadastro;
                     ConnectionHttp conection = new ConnectionHttp(TelaFormularioCadastroUsuario.this);
                     conection.execute(link);
                     Log.i("CONECTION", conection.toString());

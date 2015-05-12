@@ -72,7 +72,7 @@ public class TelaCriarListaPasso1 extends ActionBarActivity {
         String categoria = "padaria";
 
         Intent padaria = new Intent(this,TelaCriarListaPasso2.class);
-        link = "http://localhost:8080/ListaAcessivel/CriarListaPasso1MobileServlet?categoria=" + categoria + "&id_cliente=" + id_cliente;
+        link = "http://192.168.0.105:8080/ListaAcessivel/CriarListaPasso1MobileServlet?categoria=" + categoria + "&id_cliente=" + id_cliente;
         ConnectionHttp conection = new ConnectionHttp(TelaCriarListaPasso1.this);
         conection.execute(link);
 
@@ -97,7 +97,7 @@ public class TelaCriarListaPasso1 extends ActionBarActivity {
         String categoria = "mercado";
 
         Intent mercado = new Intent(this,TelaCriarListaPasso2.class);
-        link = "http://localhost:8080/ListaAcessivel/CriarListaPasso1MobileServlet?categoria=" + categoria + "&id_cliente=" + id_cliente;
+        link = "http://192.168.0.105:8080/ListaAcessivel/CriarListaPasso1MobileServlet?categoria=" + categoria + "&id_cliente=" + id_cliente;
         ConnectionHttp conection = new ConnectionHttp(TelaCriarListaPasso1.this);
         conection.execute(link);
 
@@ -122,7 +122,7 @@ public class TelaCriarListaPasso1 extends ActionBarActivity {
         String categoria = "farmacia";
 
         Intent farmacia = new Intent(this,TelaCriarListaPasso2.class);
-        link = "http://localhost:8080/ListaAcessivel/CriarListaPasso1MobileServlet?categoria=" + categoria + "&id_cliente=" + id_cliente;
+        link = "http://192.168.0.105:8080/ListaAcessivel/CriarListaPasso1MobileServlet?categoria=" + categoria + "&id_cliente=" + id_cliente;
         ConnectionHttp conection = new ConnectionHttp(TelaCriarListaPasso1.this);
         conection.execute(link);
 
@@ -147,7 +147,7 @@ public class TelaCriarListaPasso1 extends ActionBarActivity {
         String categoria = "livraria";
 
         Intent livraria = new Intent(this,TelaCriarListaPasso2.class);
-        link = "http://localhost:8080/ListaAcessivel/CriarListaPasso1MobileServlet?categoria=" + categoria + "&id_cliente=" + id_cliente;
+        link = "http://192.168.0.105:8080/ListaAcessivel/CriarListaPasso1MobileServlet?categoria=" + categoria + "&id_cliente=" + id_cliente;
         ConnectionHttp conection = new ConnectionHttp(TelaCriarListaPasso1.this);
         conection.execute(link);
 
