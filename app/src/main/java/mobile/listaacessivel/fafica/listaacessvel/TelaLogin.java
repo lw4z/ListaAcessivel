@@ -13,6 +13,8 @@ import android.view.Window;
 import android.view.WindowManager;
 import android.widget.EditText;
 
+import com.google.gson.Gson;
+
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -26,6 +28,8 @@ import java.net.URL;
 import java.net.URLEncoder;
 import java.util.concurrent.ExecutionException;
 
+import mobile.listaacessivel.fafica.listaacessvel.entidades.Cliente;
+import mobile.listaacessivel.fafica.listaacessvel.util.ClienteSession;
 import mobile.listaacessivel.fafica.listaacessvel.util.ConnectionHttp;
 
 
@@ -34,6 +38,8 @@ public class TelaLogin extends ActionBarActivity {
     private EditText email_usuario, senha_usuario;
     private String email, senha;
     private String link;
+    private Gson gson;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -88,8 +94,12 @@ public class TelaLogin extends ActionBarActivity {
 
             try {
                 String json = conection.get();
-                Log.i("RESULTADOJSON",json.toString());
-                it.putExtra("usuario", json);
+                Log.i("RESULTADOJSON", json.toString());
+                //it.putExtra("usuario", json);
+                gson = new Gson();
+                Cliente clienteJson = gson.fromJson(json, Cliente.class);
+                //Objeto da sessão
+                ClienteSession clienteSession = new ClienteSession(clienteJson);
             }catch (InterruptedException e1) {
                 e1.printStackTrace();
             } catch (ExecutionException e1) {

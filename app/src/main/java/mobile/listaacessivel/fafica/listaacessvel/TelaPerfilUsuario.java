@@ -18,6 +18,7 @@ import java.util.ArrayList;
 import mobile.listaacessivel.fafica.listaacessvel.entidades.Cliente;
 import mobile.listaacessivel.fafica.listaacessvel.entidades.Endereco;
 import mobile.listaacessivel.fafica.listaacessvel.entidades.Usuario;
+import mobile.listaacessivel.fafica.listaacessvel.util.ClienteSession;
 
 
 public class TelaPerfilUsuario extends ActionBarActivity {
@@ -39,7 +40,7 @@ public class TelaPerfilUsuario extends ActionBarActivity {
         this.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
         inicializacaoObjetos();
 
-        String json = getIntent().getStringExtra("listaProdutos");
+        //String json = getIntent().getStringExtra("perfilUsuario");
 
 //        ConnectionHttp conection = new ConnectionHttp(this);
 //        conection.execute(link);
@@ -48,12 +49,14 @@ public class TelaPerfilUsuario extends ActionBarActivity {
 
 
         //String json = conection.get();
-        Log.i("RESULTADOJSON", json.toString());
+        //Log.i("RESULTADOJSON", json.toString());
 
         gson = new Gson();
 
-        if(json != null) {
-            Cliente cliente = gson.fromJson(json, Cliente.class);
+        //if(json != null) {
+            //Cliente cliente = gson.fromJson(json, Cliente.class);
+        ClienteSession clienteSession = new ClienteSession();
+        Cliente cliente = clienteSession.getCliente();
 
             resultEmail.setText(cliente.getEmail());
             resultNomeCompleto.setText(cliente.getNome());
@@ -83,7 +86,7 @@ public class TelaPerfilUsuario extends ActionBarActivity {
             resultNumero.setText(endereco.getNumero());
             resultComplemento.setText(endereco.getComplemento());
             resultReferencia.setText(endereco.getReferencia());
-        }
+        //}
 
     }
 

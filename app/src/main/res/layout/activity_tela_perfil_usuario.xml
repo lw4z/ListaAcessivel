@@ -31,6 +31,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/email"
+            android:textStyle="bold"
             />
 
         <TextView
@@ -69,6 +70,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/nome_completo"
+            android:textStyle="bold"
             />
 
         <TextView
@@ -83,6 +85,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/ano_nascimento"
+            android:textStyle="bold"
             />
 
         <TextView
@@ -97,6 +100,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/cpf"
+            android:textStyle="bold"
             />
 
         <TextView
@@ -122,6 +126,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/telefone1"
+            android:textStyle="bold"
             />
 
         <TextView
@@ -136,6 +141,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/telefone2"
+            android:textStyle="bold"
             />
 
         <TextView
@@ -161,6 +167,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/cep"
+            android:textStyle="bold"
             />
 
         <TextView
@@ -175,6 +182,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/cidade"
+            android:textStyle="bold"
             />
 
         <TextView
@@ -189,6 +197,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/estado"
+            android:textStyle="bold"
 
             />
 
@@ -204,6 +213,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/bairro"
+            android:textStyle="bold"
             />
 
         <TextView
@@ -218,6 +228,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/rua"
+            android:textStyle="bold"
             />
 
         <TextView
@@ -232,6 +243,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/numero"
+            android:textStyle="bold"
             />
 
         <TextView
@@ -246,6 +258,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/complemento"
+            android:textStyle="bold"
             />
 
         <TextView
@@ -260,6 +273,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/referencia"
+            android:textStyle="bold"
             />
 
         <TextView
