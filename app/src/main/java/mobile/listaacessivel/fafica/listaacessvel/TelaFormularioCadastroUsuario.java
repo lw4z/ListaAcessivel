@@ -45,7 +45,7 @@ public class TelaFormularioCadastroUsuario extends ActionBarActivity {
 
         //Utilização de mascaras para os campos
         final EditText campo_ano_nascimento = (EditText) findViewById(R.id.editAnoNascimento);
-        campo_ano_nascimento.addTextChangedListener(Mask.insert("##/##/####", campo_ano_nascimento));
+        campo_ano_nascimento.addTextChangedListener(Mask.insert("####", campo_ano_nascimento));
 
         final EditText campo_cpf = (EditText) findViewById(R.id.editCpf);
         campo_cpf.addTextChangedListener(Mask.insert("###.###.###-##", campo_cpf));
@@ -148,11 +148,11 @@ public class TelaFormularioCadastroUsuario extends ActionBarActivity {
 
                 Gson gson = new Gson();
                 System.out.println(gson.toJson(cliente));
-                String usuario = gson.toJson(cliente);
-                Log.i("USUARIO",usuario);
+                String jsonCadastro = gson.toJson(cliente);
+                Log.i("USUARIO",jsonCadastro);
 
-                if (usuario != null) {
-                    link = "http://localhost:8080/ListaAcessivel/CadastrarClienteMobileServlet?usuario=" + usuario;
+                if (jsonCadastro != null) {
+                    link = "http://192.168.0.105:8080/ListaAcessivel/CadastrarClienteMobileServlet?jsonCadastro=" + jsonCadastro;
                     ConnectionHttp conection = new ConnectionHttp(TelaFormularioCadastroUsuario.this);
                     conection.execute(link);
 
