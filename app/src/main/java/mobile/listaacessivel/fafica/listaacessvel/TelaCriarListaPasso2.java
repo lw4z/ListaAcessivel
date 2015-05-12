@@ -20,6 +20,7 @@ import mobile.listaacessivel.fafica.listaacessvel.adapters.MyArrayAdapterCriarLi
 import mobile.listaacessivel.fafica.listaacessvel.entidades.Endereco;
 import mobile.listaacessivel.fafica.listaacessvel.entidades.Estabelecimento;
 import mobile.listaacessivel.fafica.listaacessvel.entidades.Produto;
+import mobile.listaacessivel.fafica.listaacessvel.util.ArrayListEstabelecimentosSession;
 import mobile.listaacessivel.fafica.listaacessvel.util.ConnectionHttp;
 
 
@@ -98,26 +99,30 @@ public class TelaCriarListaPasso2 extends ActionBarActivity {
     //Método que recebe os dados para a lista
     private ArrayList<Estabelecimento> criarDados(){
 
-        String json = getIntent().getStringExtra("listaEstabelecimentos");
+//        String json = getIntent().getStringExtra("listaEstabelecimentos");
+//
+//        gson = new Gson();
+//
+//        if(json != null) {
+//            Estabelecimento[] estabelecimentosArray = gson.fromJson(json, Estabelecimento[].class);
+//
+//            for (Estabelecimento p : estabelecimentosArray) {
+//                items.add(p);
+//            }
+//            Estabelecimento e = items.get(0);
+//            Log.e("Metodo TesteGson", e.getNome_fantasia() + ", " + e.getCategoria());
+//        }
 
-        gson = new Gson();
+        ArrayListEstabelecimentosSession estabelecimentosSession = new ArrayListEstabelecimentosSession();
+        items = estabelecimentosSession.getListaEstabelecimentos();
 
-        if(json != null) {
-            Estabelecimento[] estabelecimentosArray = gson.fromJson(json, Estabelecimento[].class);
 
-            for (Estabelecimento p : estabelecimentosArray) {
-                items.add(p);
-            }
-            Estabelecimento e = items.get(0);
-            Log.e("Metodo TesteGson", e.getNome_fantasia() + ", " + e.getCategoria());
-        }
-
-        endereco = new Endereco("Rua 1","Centro","12","Prédio","Proximo ao centro","Caruaru","PE","5555555555");
-
-        items.add(new Estabelecimento("Bompreço","Bompreço","bompreco@email.com","Supermercado","11111111111",endereco, telefones));
-        items.add(new Estabelecimento("Bompreço","Bompreço","bompreco@email.com","Supermercado","11111111111",endereco, telefones));
-        items.add(new Estabelecimento("Bompreço","Bompreço","bompreco@email.com","Supermercado","11111111111",endereco, telefones));
-        items.add(new Estabelecimento("Bompreço","Bompreço","bompreco@email.com","Supermercado","11111111111",endereco, telefones));
+//        endereco = new Endereco("Rua 1","Centro","12","Prédio","Proximo ao centro","Caruaru","PE","5555555555");
+//
+//        items.add(new Estabelecimento("Bompreço","Bompreço","bompreco@email.com","Supermercado","11111111111",endereco, telefones));
+//        items.add(new Estabelecimento("Bompreço","Bompreço","bompreco@email.com","Supermercado","11111111111",endereco, telefones));
+//        items.add(new Estabelecimento("Bompreço","Bompreço","bompreco@email.com","Supermercado","11111111111",endereco, telefones));
+//        items.add(new Estabelecimento("Bompreço","Bompreço","bompreco@email.com","Supermercado","11111111111",endereco, telefones));
         return items;
     }
 

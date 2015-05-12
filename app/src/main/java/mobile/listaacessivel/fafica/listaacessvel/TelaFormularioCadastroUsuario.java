@@ -148,17 +148,17 @@ public class TelaFormularioCadastroUsuario extends ActionBarActivity {
 
                 Gson gson = new Gson();
                 System.out.println(gson.toJson(cliente));
-                String json_cliente = gson.toJson(cliente);
-                Log.i("USUARIO",json_cliente);
+                String usuario = gson.toJson(cliente);
+                Log.i("USUARIO",usuario);
 
-                if (json_cliente != null) {
-                    //link = ;
+                if (usuario != null) {
+                    link = "http://localhost:8080/ListaAcessivel/CadastrarClienteMobileServlet?usuario=" + usuario;
                     ConnectionHttp conection = new ConnectionHttp(TelaFormularioCadastroUsuario.this);
                     conection.execute(link);
 
                     Log.i("CONECTION", conection.toString());
                 }else{
-
+                    return;
                 }
 
                 Intent it = new Intent(TelaFormularioCadastroUsuario.this,TelaLogin.class);
