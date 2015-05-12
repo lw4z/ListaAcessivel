@@ -24,7 +24,7 @@ public class ConnectionHttp extends AsyncTask<String, String, String> {
     // Aqui ainda está na Thread principal
     @Override
     protected void onPreExecute() {
-        this.progressDialog = ProgressDialog.show(context, "Aguarde...",
+        this.progressDialog = ProgressDialog.show(context, "Aguarde,",
                 "Buscando Informações");
         super.onPreExecute();
     }

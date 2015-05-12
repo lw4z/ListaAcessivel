@@ -39,7 +39,7 @@
             android:layout_height="wrap_content"
             android:id="@+id/resultEmail"
             android:text=""
-            android:contentDescription="@string/campo_email"/>
+            />
 
         <!--<TextView-->
             <!--android:id="@+id/txtSenha"-->
@@ -78,7 +78,7 @@
             android:layout_height="wrap_content"
             android:id="@+id/resultNomeCompleto"
             android:text=""
-            android:contentDescription="@string/campo_nome_completo"/>
+            />
 
         <TextView
             android:id="@+id/txtAnoNascimento"
@@ -93,7 +93,7 @@
             android:layout_height="wrap_content"
             android:id="@+id/resultAnoNascimento"
             android:text=""
-            android:contentDescription="@string/campo_ano_nascimento"/>
+            />
 
         <TextView
             android:id="@+id/txtCPF"
@@ -108,7 +108,7 @@
             android:layout_height="wrap_content"
             android:id="@+id/resultCpf"
             android:text=""
-            android:contentDescription="@string/campo_cpf"/>
+            />
 
         <!--Telefones para contato-->
         <TextView
@@ -134,7 +134,7 @@
             android:layout_height="wrap_content"
             android:id="@+id/resultTelefone1"
             android:text=""
-            android:contentDescription="@string/campo_telefone1"/>
+            />
 
         <TextView
             android:id="@+id/txtTelefone2"
@@ -149,7 +149,7 @@
             android:layout_height="wrap_content"
             android:id="@+id/resultTelefone2"
             android:text=""
-            android:contentDescription="@string/campo_telefone2"/>
+            />
 
         <!--Dados de localização-->
         <TextView
@@ -175,7 +175,7 @@
             android:layout_height="wrap_content"
             android:id="@+id/resultCep"
             android:text=""
-            android:contentDescription="@string/campo_cep"/>
+            />
 
         <TextView
             android:id="@+id/txtCidade"
@@ -190,7 +190,7 @@
             android:layout_height="wrap_content"
             android:id="@+id/resultCidade"
             android:text=""
-            android:contentDescription="@string/campo_cidade"/>
+            />
 
         <TextView
             android:id="@+id/txtEstado"
@@ -206,7 +206,7 @@
             android:layout_height="wrap_content"
             android:id="@+id/resultEstado"
             android:text=""
-            android:contentDescription="@string/campo_estado"/>
+            />
 
         <TextView
             android:id="@+id/txtBairro"
@@ -221,7 +221,7 @@
             android:layout_height="wrap_content"
             android:id="@+id/resultBairro"
             android:text=""
-            android:contentDescription="@string/campo_bairro"/>
+            />
 
         <TextView
             android:id="@+id/txtRua"
@@ -236,7 +236,7 @@
             android:layout_height="wrap_content"
             android:id="@+id/resultRua"
             android:text=""
-            android:contentDescription="@string/campo_rua"/>
+            />
 
         <TextView
             android:id="@+id/txtNUmero"
@@ -251,7 +251,7 @@
             android:layout_height="wrap_content"
             android:id="@+id/resultNumero"
             android:text=""
-            android:contentDescription="@string/campo_numero"/>
+            />
 
         <TextView
             android:id="@+id/txtComplemento"
@@ -266,7 +266,7 @@
             android:layout_height="wrap_content"
             android:id="@+id/resultComplemento"
             android:text=""
-            android:contentDescription="@string/campo_complemento"/>
+            />
 
         <TextView
             android:id="@+id/txtReferencia"
@@ -281,7 +281,7 @@
             android:layout_height="wrap_content"
             android:id="@+id/resultReferencia"
             android:text=""
-            android:contentDescription="@string/campo_referencia"/>
+            />
 
         <!--Botão editar Perfil-->
         <LinearLayout

@@ -12,6 +12,7 @@ import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import com.google.gson.Gson;
 
@@ -85,31 +86,37 @@ public class TelaLogin extends ActionBarActivity {
 //        it.putExtra("email",email);
 //        it.putExtra("senha",senha);
 
-        if (email != null && senha != null) {
-            link = "http://192.168.0.105:8080/ListaAcessivel/LoginMobileServlet?email=" + email + "&senha=" + senha;
-            ConnectionHttp conection = new ConnectionHttp(TelaLogin.this);
-            conection.execute(link);
-
-            Log.i("CONECTION", conection.toString());
-
+        if (email != "" && senha != "") {
             try {
+                link = "http://192.168.0.105:8080/ListaAcessivel/LoginMobileServlet?email=" + email + "&senha=" + senha;
+                ConnectionHttp conection = new ConnectionHttp(TelaLogin.this);
+                conection.execute(link);
+
+                Log.i("CONECTION", conection.toString());
                 String json = conection.get();
                 Log.i("RESULTADOJSON", json.toString());
                 //it.putExtra("usuario", json);
                 gson = new Gson();
                 Cliente clienteJson = gson.fromJson(json, Cliente.class);
-                //Objeto da sessão
-                ClienteSession clienteSession = new ClienteSession(clienteJson);
+                if(clienteJson == null){
+                    Toast.makeText(this,"O usuário ou a senha estão incorretos",Toast.LENGTH_LONG).show();
+                }else{
+                    //Objeto da sessão
+                    ClienteSession clienteSession = new ClienteSession(clienteJson);
+                    Log.i("CLIENTELOGIN",String.valueOf(clienteJson));
+                    startActivity(it);
+                    finish();
+                }
+
             }catch (InterruptedException e1) {
                 e1.printStackTrace();
             } catch (ExecutionException e1) {
                 e1.printStackTrace();
             }
-            startActivity(it);
-            finish();
         }else{
-            Intent it2 = new Intent(this,TelaLogin.class);
-            startActivity(it2);
+            Toast.makeText(this,"Preencha o email e a senha para prosseguir",Toast.LENGTH_LONG).show();
+//            Intent it2 = new Intent(this,TelaLogin.class);
+//            startActivity(it2);
         }
 
     }
