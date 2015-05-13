@@ -10,14 +10,20 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
 
+import com.google.gson.Gson;
+
 import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.ExecutionException;
 
 import mobile.listaacessivel.fafica.listaacessvel.adapters.MyArrayAdapterMinhasLista;
 import mobile.listaacessivel.fafica.listaacessvel.entidades.Cliente;
 import mobile.listaacessivel.fafica.listaacessvel.entidades.Estabelecimento;
 import mobile.listaacessivel.fafica.listaacessvel.entidades.Lista;
 import mobile.listaacessivel.fafica.listaacessvel.entidades.Produto;
+import mobile.listaacessivel.fafica.listaacessvel.util.ClienteSession;
+import mobile.listaacessivel.fafica.listaacessvel.util.ConnectionHttp;
+import mobile.listaacessivel.fafica.listaacessvel.util.ipConection;
 
 
 public class TelaMinhasListas extends ActionBarActivity {
@@ -27,6 +33,8 @@ public class TelaMinhasListas extends ActionBarActivity {
     private ArrayList<Produto> produtos;
     private Cliente cliente;
     private Estabelecimento estabelecimento;
+    private String link;
+    private Gson gson;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,6 +46,9 @@ public class TelaMinhasListas extends ActionBarActivity {
         getSupportActionBar().setHomeActionContentDescription(R.string.bt_voltar);
         //A janela da aplicação deverá ficar apenas no formato vertical
         this.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
+
+        ClienteSession clienteSession = new ClienteSession();
+        cliente = clienteSession.getCliente();
 
         try {
             MyArrayAdapterMinhasLista adapter = new MyArrayAdapterMinhasLista(this, criarDados());
@@ -68,10 +79,29 @@ public class TelaMinhasListas extends ActionBarActivity {
 
     //Método que recebe os dados para a lista
     private ArrayList<Lista> criarDados(){
+    Lista[] listasArray;
+    String json;
+    try{
+        link = "http://"+ ipConection.IP.toString()+":8080/ListaAcessivel/MinhasListasMobileServlet?id_cliente=" + cliente.getId_usuario();
+        ConnectionHttp conection = new ConnectionHttp(TelaMinhasListas.this);
+        conection.execute(link);
+        json = conection.get();
 
+        gson = new Gson();
+        listasArray = gson.fromJson(json,Lista[].class);
+        for(Lista l : listasArray){
+            listas.add(l);
+        }
+    }catch (InterruptedException e1) {
+        e1.printStackTrace();
+    }catch (ExecutionException e1) {
+        e1.printStackTrace();
+    }
+
+    /*    listas.add(new Lista("Nome da lista: " + "Lista 1","Situação da lista: " + "atendida", cliente, estabelecimento,produtos));
         listas.add(new Lista("Nome da lista: " + "Lista 1","Situação da lista: " + "atendida", cliente, estabelecimento,produtos));
         listas.add(new Lista("Nome da lista: " + "Lista 1","Situação da lista: " + "atendida", cliente, estabelecimento,produtos));
-        listas.add(new Lista("Nome da lista: " + "Lista 1","Situação da lista: " + "atendida", cliente, estabelecimento,produtos));
+    */
 
         return listas;
     }
