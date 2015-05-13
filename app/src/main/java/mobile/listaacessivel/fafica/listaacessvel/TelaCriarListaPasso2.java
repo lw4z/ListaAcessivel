@@ -9,6 +9,7 @@ import android.view.Menu;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import com.google.gson.Gson;
 
@@ -21,6 +22,7 @@ import mobile.listaacessivel.fafica.listaacessvel.entidades.Endereco;
 import mobile.listaacessivel.fafica.listaacessvel.entidades.Estabelecimento;
 import mobile.listaacessivel.fafica.listaacessvel.entidades.Produto;
 import mobile.listaacessivel.fafica.listaacessvel.util.ArrayListEstabelecimentosSession;
+import mobile.listaacessivel.fafica.listaacessvel.util.ArrayListProdutosSession;
 import mobile.listaacessivel.fafica.listaacessvel.util.ConnectionHttp;
 
 
@@ -63,7 +65,7 @@ public class TelaCriarListaPasso2 extends ActionBarActivity {
                     Intent intent = new Intent(view.getContext(), TelaCriarListaPasso3.class);
                     int id_estabelecimento = items.get(position).getId_estabelecimento();
                     //link = "http://192.168.0.105:8080/ListaAcessivel/CriarListaPasso2MobileServlet?id_estabelecimento=" + id_estabelecimento;
-                    link = "http://192.168.0.105:8080/ListaAcessivel/CriarListaPasso2MobileServlet?id_estabelecimento=16";
+                    link = "http://192.168.43.64:8080/ListaAcessivel/CriarListaPasso2MobileServlet?id_estabelecimento=" + id_estabelecimento;
 
                     ConnectionHttp conection = new ConnectionHttp(TelaCriarListaPasso2.this);
                     conection.execute(link);
@@ -73,20 +75,16 @@ public class TelaCriarListaPasso2 extends ActionBarActivity {
                     try {
                         String json = conection.get();
                         Log.i("RESULTADOJSON",json.toString());
-                        intent.putExtra("listaProdutos",json);
+                        ArrayListProdutosSession listaProdutos = new ArrayListProdutosSession(converteArray(json));
 
                     }catch (InterruptedException e1) {
-                        // TODO Auto-generated catch block
                         e1.printStackTrace();
                     } catch (ExecutionException e1) {
-                        // TODO Auto-generated catch block
                         e1.printStackTrace();
                     }
-
-
-                    intent.putExtra("nome_estabelecimento",(items.get(position).getNome_fantasia()));
-                    intent.putExtra("id_estabelecimento",(items.get(position).getId_estabelecimento()));
-                    Log.i("ESTABELECIMENTO: ",items.get(position).getNome_fantasia());
+//                    intent.putExtra("nome_estabelecimento",(items.get(position).getNome_fantasia()));
+//                    intent.putExtra("id_estabelecimento",(items.get(position).getId_estabelecimento()));
+//                    Log.i("ESTABELECIMENTO: ",items.get(position).getNome_fantasia());
                     startActivity(intent);
                 }
             });
@@ -151,5 +149,21 @@ public class TelaCriarListaPasso2 extends ActionBarActivity {
     //Método do botão
     public void filtrarPorBairro(View view){
 
+    }
+
+    public ArrayList<Produto> converteArray(String json){
+
+        ArrayList<Produto> produtos = new ArrayList<Produto>();
+        Gson gson = new Gson();
+
+        Produto[] produtosArray = gson.fromJson(json,Produto[].class);
+        if(produtosArray != null){
+            for(Produto p : produtosArray){
+                produtos.add(p);
+            }
+        }else{
+            Toast.makeText(this, "Não foram encontrados produtos", Toast.LENGTH_LONG).show();
+        }
+        return produtos;
     }
 }

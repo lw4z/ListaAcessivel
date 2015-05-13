@@ -8,6 +8,7 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Toast;
 
 import com.google.gson.Gson;
 
@@ -72,7 +73,7 @@ public class TelaCriarListaPasso1 extends ActionBarActivity {
         String categoria = "padaria";
 
         Intent padaria = new Intent(this,TelaCriarListaPasso2.class);
-        link = "http://192.168.0.105:8080/ListaAcessivel/CriarListaPasso1MobileServlet?categoria=" + categoria + "&id_cliente=" + id_cliente;
+        link = "http://192.168.43.64:8080/ListaAcessivel/CriarListaPasso1MobileServlet?categoria=" + categoria + "&id_cliente=" + id_cliente;
         ConnectionHttp conection = new ConnectionHttp(TelaCriarListaPasso1.this);
         conection.execute(link);
 
@@ -94,10 +95,10 @@ public class TelaCriarListaPasso1 extends ActionBarActivity {
     }
 
     public void getCategoriaMercado(View view){
-        String categoria = "mercado";
+        String categoria = "supermercado";
 
         Intent mercado = new Intent(this,TelaCriarListaPasso2.class);
-        link = "http://192.168.0.105:8080/ListaAcessivel/CriarListaPasso1MobileServlet?categoria=" + categoria + "&id_cliente=" + id_cliente;
+        link = "http://192.168.43.64:8080/ListaAcessivel/CriarListaPasso1MobileServlet?categoria=" + categoria + "&id_cliente=" + id_cliente;
         ConnectionHttp conection = new ConnectionHttp(TelaCriarListaPasso1.this);
         conection.execute(link);
 
@@ -122,7 +123,7 @@ public class TelaCriarListaPasso1 extends ActionBarActivity {
         String categoria = "farmacia";
 
         Intent farmacia = new Intent(this,TelaCriarListaPasso2.class);
-        link = "http://192.168.0.105:8080/ListaAcessivel/CriarListaPasso1MobileServlet?categoria=" + categoria + "&id_cliente=" + id_cliente;
+        link = "http://192.168.43.64:8080/ListaAcessivel/CriarListaPasso1MobileServlet?categoria=" + categoria + "&id_cliente=" + id_cliente;
         ConnectionHttp conection = new ConnectionHttp(TelaCriarListaPasso1.this);
         conection.execute(link);
 
@@ -147,7 +148,7 @@ public class TelaCriarListaPasso1 extends ActionBarActivity {
         String categoria = "livraria";
 
         Intent livraria = new Intent(this,TelaCriarListaPasso2.class);
-        link = "http://192.168.0.105:8080/ListaAcessivel/CriarListaPasso1MobileServlet?categoria=" + categoria + "&id_cliente=" + id_cliente;
+        link = "http://192.168.43.64:8080/ListaAcessivel/CriarListaPasso1MobileServlet?categoria=" + categoria + "&id_cliente=" + id_cliente;
         ConnectionHttp conection = new ConnectionHttp(TelaCriarListaPasso1.this);
         conection.execute(link);
 
@@ -158,7 +159,7 @@ public class TelaCriarListaPasso1 extends ActionBarActivity {
             Log.i("RESULTADOJSON", json.toString());
             //livraria.putExtra("listaEstabelecimentos", json);
             ArrayListEstabelecimentosSession listaEstabelecimentos = new ArrayListEstabelecimentosSession(converteArray(json));
-
+            Log.i("LOGESTABELECIMENTOS", String.valueOf(converteArray(json)));
         }catch (InterruptedException e1) {
             e1.printStackTrace();
         } catch (ExecutionException e1) {
@@ -174,8 +175,12 @@ public class TelaCriarListaPasso1 extends ActionBarActivity {
         Gson gson = new Gson();
 
         Estabelecimento[] estabelecimentosArray = gson.fromJson(json,Estabelecimento[].class);
-        for(Estabelecimento e : estabelecimentosArray){
-            estabelecimentos.add(e);
+        if(estabelecimentosArray != null){
+            for(Estabelecimento e : estabelecimentosArray){
+                estabelecimentos.add(e);
+            }
+        }else{
+            Toast.makeText(this,"Não foram encontrados estabelecimentos",Toast.LENGTH_LONG).show();
         }
         return estabelecimentos;
     }

@@ -31,6 +31,8 @@ public class TelaFormularioCadastroUsuario extends ActionBarActivity {
     private Endereco endereco;
     private ArrayList<String> telefones = new ArrayList<String>();
     private String link;
+    private String jsonCadastro = "";
+    private Gson gson;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -144,6 +146,7 @@ public class TelaFormularioCadastroUsuario extends ActionBarActivity {
                 String[] campos = new String[]
                         {nome,email,cpf,senha,anoNascimento,rua,bairro,numero,
                                 complemento,referencia,cidade,estado,cep,telefone1,telefone2};
+
                 validaCampos(campos);
 
                 endereco = new Endereco(rua,bairro,numero,complemento,referencia,cidade,estado,cep);
@@ -151,22 +154,29 @@ public class TelaFormularioCadastroUsuario extends ActionBarActivity {
                 telefones.add(telefone1);
                 telefones.add(telefone2);
 
-                Cliente cliente = new Cliente(nome,cpf,email,senha,anoNascimento,endereco,telefones);
+                try {
+                    Cliente cliente = new Cliente(nome,cpf,email,senha,anoNascimento,endereco,telefones);
 
-                Gson gson = new Gson();
-                System.out.println(gson.toJson(cliente));
-                String jsonCadastro = gson.toJson(cliente);
-                Log.i("USUARIO",jsonCadastro);
+                    gson = new Gson();
+                    //System.out.println(gson.toJson(cliente));
+                    jsonCadastro = gson.toJson(cliente);
+                    Log.i("USUARIO",jsonCadastro);
 
-                if (!cliente.getNome().equals("")) {
-                    link = "http://192.168.0.105:8080/ListaAcessivel/CadastrarClienteMobileServlet?json_cadastro=" + jsonCadastro;
-                    ConnectionHttp conection = new ConnectionHttp(TelaFormularioCadastroUsuario.this);
-                    conection.execute(link);
-                    Log.i("CONECTION", conection.toString());
-                }else{
-                    return;
+                        if (!cliente.getNome().equals("")) {
+                            link = "http://192.168.43.64:8080/ListaAcessivel/CadastrarClienteMobileServlet?json_cadastro=" + jsonCadastro;
+                            ConnectionHttp conection = new ConnectionHttp(TelaFormularioCadastroUsuario.this);
+                            conection.execute(link);
+                            Log.i("CONECTION", conection.toString());
+                            conection.get();
+                            Log.i("RESULTADOCADASTRO",String.valueOf(conection.get()));
+                        }else{
+                            return;
+                        }
+                }catch (InterruptedException e1) {
+                    e1.printStackTrace();
+                }catch (ExecutionException e1) {
+                    e1.printStackTrace();
                 }
-
                 Intent it = new Intent(TelaFormularioCadastroUsuario.this,TelaLogin.class);
                 startActivity(it);
                 finish();

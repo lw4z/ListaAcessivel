@@ -33,6 +33,7 @@ import java.util.concurrent.ExecutionException;
 import mobile.listaacessivel.fafica.listaacessvel.adapters.MyArrayAdapterCriarListaPasso3;
 import mobile.listaacessivel.fafica.listaacessvel.entidades.Produto;
 import mobile.listaacessivel.fafica.listaacessvel.util.Acentuacao;
+import mobile.listaacessivel.fafica.listaacessvel.util.ArrayListProdutosSession;
 import mobile.listaacessivel.fafica.listaacessvel.util.ConnectionHttp;
 
 
@@ -59,7 +60,7 @@ public class TelaCriarListaPasso3 extends ActionBarActivity {
     private ArrayList<String> marca;
     private ArrayList<Boolean> selecao;
     private Gson gson;
-    private String link = "http://192.168.0.105:8080/ListaAcessivel/CriarListaPasso2MobileServlet?id_estabelecimento=16";
+    //private String link = "http://192.168.0.105:8080/ListaAcessivel/CriarListaPasso2MobileServlet?id_estabelecimento=16";
 
 
     @Override
@@ -88,27 +89,24 @@ public class TelaCriarListaPasso3 extends ActionBarActivity {
 
         String json = getIntent().getStringExtra("listaProdutos");
 
-//        ConnectionHttp conection = new ConnectionHttp(this);
-//        conection.execute(link);
 
-        //Log.i("CONECTION",conection.toString());
+        ArrayListProdutosSession listaProdutosJson = new ArrayListProdutosSession();
 
-
-            //String json = conection.get();
-            Log.i("RESULTADOJSON",json.toString());
-
-            gson = new Gson();
-
-            if(json != null) {
-                Produto[] produtosArray = gson.fromJson(json, Produto[].class);
-                String teste = "";
-                for (Produto p : produtosArray) {
-                    produtos.add(p);
-                }
+        produtos = listaProdutosJson.getListaProdutos();
+//            Log.i("RESULTADOJSON",json.toString());
+//
+//            gson = new Gson();
+//
+//            if(json != null) {
+//                Produto[] produtosArray = gson.fromJson(json, Produto[].class);
+//                String teste = "";
+//                for (Produto p : produtosArray) {
+//                    produtos.add(p);
+//                }
                 TOTAL_LIST_ITEMS = produtos.size();
                 Produto p = produtos.get(0);
                 Log.e("Metodo TesteGson", p.getDescricao() + ", " + p.getValidade());
-            }
+            //}
 
         //Com arrayList
 //        id_produto = new ArrayList<Integer>();

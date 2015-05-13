@@ -86,14 +86,14 @@ public class TelaLogin extends ActionBarActivity {
 
         if (email != "" && senha != "") {
             try {
-                link = "http://192.168.0.105:8080/ListaAcessivel/LoginMobileServlet?email=" + email + "&senha=" + senha;
+                link = "http://192.168.43.64:8080/ListaAcessivel/LoginMobileServlet?email=" + email + "&senha=" + senha;
                 ConnectionHttp conection = new ConnectionHttp(TelaLogin.this);
                 conection.execute(link);
 
                 Log.i("CONECTION", conection.toString());
                 String json = conection.get();
                 Log.i("RESULTADOJSON", json.toString());
-                //it.putExtra("usuario", json);
+
                 gson = new Gson();
                 Cliente clienteJson = gson.fromJson(json, Cliente.class);
                 if(clienteJson == null){
