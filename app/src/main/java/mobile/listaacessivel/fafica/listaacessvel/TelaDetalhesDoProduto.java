@@ -26,6 +26,8 @@ public class TelaDetalhesDoProduto extends ActionBarActivity {
     Button removerProduto;
     EditText quantidadeProduto;
     TextView txtNomeProduto, txtMarcaProduto, txtValidadeProduto, txtValorProduto, txtNomeEstabelecimento;
+    ProdutoSession produtoSession = new ProdutoSession();
+    //Produto produto;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -110,7 +112,16 @@ public class TelaDetalhesDoProduto extends ActionBarActivity {
     public void adicionarProdutoLista(View view){
         Intent it = new Intent(this,TelaCriarListaPasso3.class);
         int quantidade = Integer.parseInt(quantidadeProduto.getText().toString());
-        it.putExtra("quantidade",quantidade);
+
+        ProdutoSession produtoSession = new ProdutoSession();
+        Produto produto = produtoSession.getProduto();
+
+        produto.setSelecionado(true);
+        produto.setQuantidade(quantidade);
+
+        setProduto(produto);
+
+        //it.putExtra("quantidade",quantidade);
         Log.i("QUANTIDADEPRODUTO",String.valueOf(quantidade));
         startActivity(it);
         finish();
@@ -128,7 +139,12 @@ public class TelaDetalhesDoProduto extends ActionBarActivity {
         builder.setPositiveButton("Sim", new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface arg0, int arg1) {
                 Intent it = new Intent(TelaDetalhesDoProduto.this,TelaCriarListaPasso3.class);
-                it.putExtra("selecao",true);
+                ProdutoSession produtoSession = new ProdutoSession();
+                Produto produto = produtoSession.getProduto();
+                produto.setSelecionado(false);
+                produto.setQuantidade(0);
+                setProduto(produto);
+                //it.putExtra("selecao",true);
                 startActivity(it);
                 finish();
             }
@@ -151,5 +167,17 @@ public class TelaDetalhesDoProduto extends ActionBarActivity {
         txtMarcaProduto = (TextView) findViewById(R.id.txtMarcaProduto);
         txtValorProduto = (TextView) findViewById(R.id.txtValorProduto);
         txtNomeEstabelecimento = (TextView) findViewById(R.id.txtNomeEstabelecimento);
+    }
+
+    public void setProduto(Produto produto){
+        ArrayListProdutosSession listaProdutosJson = new ArrayListProdutosSession();
+        ArrayList<Produto> lista = listaProdutosJson.getListaProdutos();
+
+        for(int i = 0; i < lista.size(); i++){
+            if(produto.getId_produto() == lista.get(i).getId_produto()){
+                lista.set(i,produto);
+            }
+        }
+        listaProdutosJson = new ArrayListProdutosSession(lista);
     }
 }

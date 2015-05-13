@@ -21,6 +21,7 @@ import mobile.listaacessivel.fafica.listaacessvel.entidades.Cliente;
 import mobile.listaacessivel.fafica.listaacessvel.entidades.Endereco;
 import mobile.listaacessivel.fafica.listaacessvel.util.ConnectionHttp;
 import mobile.listaacessivel.fafica.listaacessvel.util.Mask;
+import mobile.listaacessivel.fafica.listaacessvel.util.ipConection;
 
 
 public class TelaFormularioCadastroUsuario extends ActionBarActivity {
@@ -33,6 +34,7 @@ public class TelaFormularioCadastroUsuario extends ActionBarActivity {
     private String link;
     private String jsonCadastro = "";
     private Gson gson;
+    private String ip = ipConection.IP.toString();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -163,7 +165,7 @@ public class TelaFormularioCadastroUsuario extends ActionBarActivity {
                     Log.i("USUARIO",jsonCadastro);
 
                         if (!cliente.getNome().equals("")) {
-                            link = "http://192.168.43.64:8080/ListaAcessivel/CadastrarClienteMobileServlet?json_cadastro=" + jsonCadastro;
+                            link = "http://" + ip + ":8080/ListaAcessivel/CadastrarClienteMobileServlet?json_cadastro=" + jsonCadastro;
                             ConnectionHttp conection = new ConnectionHttp(TelaFormularioCadastroUsuario.this);
                             conection.execute(link);
                             Log.i("CONECTION", conection.toString());
