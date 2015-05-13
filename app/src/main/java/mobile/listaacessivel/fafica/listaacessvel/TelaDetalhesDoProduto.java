@@ -67,6 +67,7 @@ public class TelaDetalhesDoProduto extends ActionBarActivity {
         txtValidadeProduto.setText(produto.getValidade());
         txtNomeEstabelecimento.setText(produto.getEstabelecimento().getNome_fantasia());
 
+
         //Botão remover produto
         removerProduto = (Button) findViewById(R.id.bt_remover_produto);
         removerProduto.setOnClickListener(new Button.OnClickListener(){
@@ -77,10 +78,11 @@ public class TelaDetalhesDoProduto extends ActionBarActivity {
         });
 
         //Condição para o botão aparecer
-        Boolean selecao = getIntent().getBooleanExtra("selecao",false);
+        //Boolean selecao = getIntent().getBooleanExtra("selecao",false);
 
-        if(selecao == true){
+        if(produto.isSelecionado() == true){
             removerProduto.setVisibility(View.VISIBLE);
+            quantidadeProduto.setText(String.valueOf(produto.getQuantidade()));
         }
 
     }
