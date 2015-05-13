@@ -20,11 +20,9 @@ public class Lista {
     private Estabelecimento estabelecimento;
     private List<Produto> produtos;
 
-    private SimpleDateFormat dmy = new SimpleDateFormat("d/M/y");;
+    //private SimpleDateFormat dmy = new SimpleDateFormat("d/M/y");
 
-    public Lista(){
-
-    }
+    public Lista() { }
 
     public Lista(String descricao, String situacao, Cliente cliente, Estabelecimento estabelecimento, List<Produto> produtos) {
         this.descricao = descricao;
@@ -32,12 +30,7 @@ public class Lista {
         this.cliente = cliente;
         this.estabelecimento = estabelecimento;
         this.produtos = produtos;
-        this.data_criacao = dmy.format(new Date());
-
-/*		if(produtos != null){
-			this.quantidade_total = calcularQuantidadeTotal();
-			this.valor_total = calcularValorTotal();
-		}*/
+        //this.data_criacao = dmy.format(new Date());
     }
 
     public Lista(int id_lista, String descricao, String situacao,
@@ -50,12 +43,7 @@ public class Lista {
         this.cliente = cliente;
         this.estabelecimento = estabelecimento;
         this.produtos = produtos;
-        this.data_alteracao = dmy.format(new Date());
-
-/*		if(produtos != null){
-			this.quantidade_total = calcularQuantidadeTotal();
-			this.valor_total = calcularValorTotal();
-		}*/
+        //this.data_alteracao = dmy.format(new Date());
 
     }
 
@@ -75,22 +63,6 @@ public class Lista {
         this.estabelecimento = estabelecimento;
         this.produtos = produtos;
     }
-
-/*	private int calcularQuantidadeTotal(){
-		int quantidade = 0;
-		for(Produto produto : this.produtos){
-			quantidade += produto.getQuantidade();
-		}
-		return quantidade;
-	}
-
-	private float calcularValorTotal(){
-		float valor = 0.0f;
-		for(Produto produto : this.produtos){
-			valor += (produto.getValor() * produto.getQuantidade());
-		}
-		return valor;
-	}*/
 
     public int getId_lista() {
         return id_lista;
@@ -171,14 +143,5 @@ public class Lista {
     public void setProdutos(List<Produto> produtos) {
         this.produtos = produtos;
     }
-
-    public SimpleDateFormat getDmy() {
-        return dmy;
-    }
-
-    public void setDmy(SimpleDateFormat dmy) {
-        this.dmy = dmy;
-    }
-
 
 }
