@@ -24,6 +24,7 @@ import mobile.listaacessivel.fafica.listaacessvel.entidades.Produto;
 import mobile.listaacessivel.fafica.listaacessvel.util.ArrayListEstabelecimentosSession;
 import mobile.listaacessivel.fafica.listaacessvel.util.ArrayListProdutosSession;
 import mobile.listaacessivel.fafica.listaacessvel.util.ConnectionHttp;
+import mobile.listaacessivel.fafica.listaacessvel.util.ipConection;
 
 
 public class TelaCriarListaPasso2 extends ActionBarActivity {
@@ -34,6 +35,7 @@ public class TelaCriarListaPasso2 extends ActionBarActivity {
     private Endereco endereco;
     private String link;
     private Gson gson;
+    private String ip = ipConection.IP.toString();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -65,7 +67,7 @@ public class TelaCriarListaPasso2 extends ActionBarActivity {
                     Intent intent = new Intent(view.getContext(), TelaCriarListaPasso3.class);
                     int id_estabelecimento = items.get(position).getId_estabelecimento();
                     //link = "http://192.168.0.105:8080/ListaAcessivel/CriarListaPasso2MobileServlet?id_estabelecimento=" + id_estabelecimento;
-                    link = "http://192.168.43.64:8080/ListaAcessivel/CriarListaPasso2MobileServlet?id_estabelecimento=" + id_estabelecimento;
+                    link = "http://" + ip + ":8080/ListaAcessivel/CriarListaPasso2MobileServlet?id_estabelecimento=" + id_estabelecimento;
 
                     ConnectionHttp conection = new ConnectionHttp(TelaCriarListaPasso2.this);
                     conection.execute(link);

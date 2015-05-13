@@ -12,12 +12,20 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
+
+import java.util.ArrayList;
+
+import mobile.listaacessivel.fafica.listaacessvel.entidades.Produto;
+import mobile.listaacessivel.fafica.listaacessvel.util.ArrayListProdutosSession;
+import mobile.listaacessivel.fafica.listaacessvel.util.ProdutoSession;
 
 
 public class TelaDetalhesDoProduto extends ActionBarActivity {
 
     Button removerProduto;
     EditText quantidadeProduto;
+    TextView txtNomeProduto, txtMarcaProduto, txtValidadeProduto, txtValorProduto, txtNomeEstabelecimento;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,7 +40,30 @@ public class TelaDetalhesDoProduto extends ActionBarActivity {
         getSupportActionBar().setHomeActionContentDescription(R.string.bt_voltar);
 
         //Inicialização de campos da tela
-        quantidadeProduto = (EditText) findViewById(R.id.campoQuantidadeProduto);
+        inicializaObjetos();
+
+//        ArrayListProdutosSession produtosSession = new ArrayListProdutosSession();
+//        ArrayList<Produto> listaProdutos = new ArrayList<Produto>();
+//
+//        listaProdutos = produtosSession.getListaProdutos();
+//
+//        int id_produto = getIntent().getIntExtra("id_produto",0);
+//
+//        for(Produto produto: listaProdutos){
+//            if(produto.getId_produto() == id_produto){
+//                ProdutoSession produtoSession = new ProdutoSession(produto);
+//            }
+//        }
+
+        ProdutoSession produtoSession = new ProdutoSession();
+        Produto produto = produtoSession.getProduto();
+
+
+        txtNomeProduto.setText(produto.getDescricao());
+        txtValorProduto.setText(String.valueOf(produto.getValor()));
+        txtMarcaProduto.setText(produto.getMarca());
+        txtValidadeProduto.setText(produto.getValidade());
+        txtNomeEstabelecimento.setText(produto.getEstabelecimento().getNome_fantasia());
 
         //Botão remover produto
         removerProduto = (Button) findViewById(R.id.bt_remover_produto);
@@ -111,5 +142,14 @@ public class TelaDetalhesDoProduto extends ActionBarActivity {
         //cria o AlertDialog e exibe na tela
         alerta = builder.create();
         alerta.show();
+    }
+
+    public void inicializaObjetos(){
+        quantidadeProduto = (EditText) findViewById(R.id.campoQuantidadeProduto);
+        txtNomeProduto = (TextView) findViewById(R.id.txtNomeProduto);
+        txtValidadeProduto = (TextView) findViewById(R.id.txtValidadeProduto);
+        txtMarcaProduto = (TextView) findViewById(R.id.txtMarcaProduto);
+        txtValorProduto = (TextView) findViewById(R.id.txtValorProduto);
+        txtNomeEstabelecimento = (TextView) findViewById(R.id.txtNomeEstabelecimento);
     }
 }

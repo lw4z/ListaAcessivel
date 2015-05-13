@@ -32,6 +32,7 @@ import java.util.concurrent.ExecutionException;
 import mobile.listaacessivel.fafica.listaacessvel.entidades.Cliente;
 import mobile.listaacessivel.fafica.listaacessvel.util.ClienteSession;
 import mobile.listaacessivel.fafica.listaacessvel.util.ConnectionHttp;
+import mobile.listaacessivel.fafica.listaacessvel.util.ipConection;
 
 
 public class TelaLogin extends ActionBarActivity {
@@ -40,6 +41,8 @@ public class TelaLogin extends ActionBarActivity {
     private String email, senha;
     private String link;
     private Gson gson;
+    private String ip = ipConection.IP.toString();
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -86,7 +89,7 @@ public class TelaLogin extends ActionBarActivity {
 
         if (email != "" && senha != "") {
             try {
-                link = "http://192.168.43.64:8080/ListaAcessivel/LoginMobileServlet?email=" + email + "&senha=" + senha;
+                link = "http://" + ip + ":8080/ListaAcessivel/LoginMobileServlet?email=" + email + "&senha=" + senha;
                 ConnectionHttp conection = new ConnectionHttp(TelaLogin.this);
                 conection.execute(link);
 

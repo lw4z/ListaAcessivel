@@ -35,6 +35,7 @@ import mobile.listaacessivel.fafica.listaacessvel.entidades.Produto;
 import mobile.listaacessivel.fafica.listaacessvel.util.Acentuacao;
 import mobile.listaacessivel.fafica.listaacessvel.util.ArrayListProdutosSession;
 import mobile.listaacessivel.fafica.listaacessvel.util.ConnectionHttp;
+import mobile.listaacessivel.fafica.listaacessvel.util.ProdutoSession;
 
 
 public class TelaCriarListaPasso3 extends ActionBarActivity {
@@ -53,15 +54,7 @@ public class TelaCriarListaPasso3 extends ActionBarActivity {
     private Button[] btns;
     boolean flag = false;
     public int TOTAL_LIST_ITEMS;
-    public int NUM_ITEMS_PAGE   = 3;
-    private ArrayList<Integer> id_produto;
-    private ArrayList<String> nome;
-    private ArrayList<Float> valor;
-    private ArrayList<String> marca;
-    private ArrayList<Boolean> selecao;
-    private Gson gson;
-    //private String link = "http://192.168.0.105:8080/ListaAcessivel/CriarListaPasso2MobileServlet?id_estabelecimento=16";
-
+    public int NUM_ITEMS_PAGE = 3;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -93,43 +86,11 @@ public class TelaCriarListaPasso3 extends ActionBarActivity {
         ArrayListProdutosSession listaProdutosJson = new ArrayListProdutosSession();
 
         produtos = listaProdutosJson.getListaProdutos();
-//            Log.i("RESULTADOJSON",json.toString());
-//
-//            gson = new Gson();
-//
-//            if(json != null) {
-//                Produto[] produtosArray = gson.fromJson(json, Produto[].class);
-//                String teste = "";
-//                for (Produto p : produtosArray) {
-//                    produtos.add(p);
-//                }
+
                 TOTAL_LIST_ITEMS = produtos.size();
                 Produto p = produtos.get(0);
                 Log.e("Metodo TesteGson", p.getDescricao() + ", " + p.getValidade());
-            //}
 
-        //Com arrayList
-//        id_produto = new ArrayList<Integer>();
-//        nome = new ArrayList<String>();
-//        marca = new ArrayList<String>();
-//        valor = new ArrayList<Float>();
-//        selecao = new ArrayList<String>();
-//
-//        selecao.add("selecionado");
-//        selecao.add("Não selecionado");
-//        selecao.add("Não selecionado");
-//        selecao.add("Não selecionado");
-//        selecao.add("selecionado");
-//        selecao.add("Não selecionado");
-//        selecao.add("Não selecionado");
-//        selecao.add("Não selecionado");
-//
-//        //Adição dos produtos a lista principal
-//        for(int i = 0; i < id_produto.size(); i++){
-//            final Produto p = new Produto(id_produto.get(i), nome.get(i), marca.get(i),
-//                    valor.get(i), selecao.get(i));
-//            produtos.add(p);
-//        }
 
         Log.i("TAMANHOPRODUTOS",String.valueOf(produtos.size()));
 
@@ -209,9 +170,13 @@ public class TelaCriarListaPasso3 extends ActionBarActivity {
 
                     Intent intent = new Intent(view.getContext(), TelaDetalhesDoProduto.class);
 
-                    intent.putExtra("id_produto",(produtos.get(position).getId_produto()));
-                    intent.putExtra("selecao",produtos.get(position).isSelecionado());
-                    Log.i("PRODUTO: ",String.valueOf(produtos.get(position).getId_produto()));
+                    Produto produto = produtosTemporarios.get(position);
+
+                    ProdutoSession produtoSession = new ProdutoSession(produto);
+
+                    //intent.putExtra("id_produto",(produtosTemporarios.get(position).getId_produto()));
+//                    intent.putExtra("selecao",produtos.get(position).isSelecionado());
+//                    Log.i("PRODUTO: ",String.valueOf(produtos.get(position).getId_produto()));
                     startActivity(intent);
                 }
             });
@@ -222,29 +187,6 @@ public class TelaCriarListaPasso3 extends ActionBarActivity {
 
     }
 
-
-//    @Override
-//    public boolean onCreateOptionsMenu(Menu menu) {
-//        // Inflate the menu; this adds items to the action bar if it is present.
-//        getMenuInflater().inflate(R.menu.menu_tela_criar_lista_passo3, menu);
-//        return true;
-//    }
-//
-////    @Override
-////    public boolean onOptionsItemSelected(MenuItem item) {
-////        // Handle action bar item clicks here. The action bar will
-////        // automatically handle clicks on the Home/Up button, so long
-////        // as you specify a parent activity in AndroidManifest.xml.
-////        int id = item.getItemId();
-////
-////        //noinspection SimplifiableIfStatement
-////        if (id == R.id.action_settings) {
-////            return true;
-////        }
-////
-////        return super.onOptionsItemSelected(item);
-////    }
-//
     //Método que gera os botões de paginação
     @SuppressLint("InlinedApi")
     private void setButtonsForPagination() {
@@ -383,17 +325,18 @@ public class TelaCriarListaPasso3 extends ActionBarActivity {
         produtos = new ArrayList<Produto>();
     }
 
-    public void setGson(String json) {
-        gson = new Gson();
+//    public void setGson(String json) {
+//        gson = new Gson();
+//
+//       if(json != null) {
+//           Produto[] produtosArray = gson.fromJson(json, Produto[].class);
+//           String teste = "";
+//           for (Produto p : produtosArray) {
+//               produtos.add(p);
+//           }
+//           Produto p = produtos.get(0);
+//           Log.e("Metodo TesteGson", p.getDescricao() + ", " + p.getValidade());
+//       }
+//    }
 
-       if(json != null) {
-           Produto[] produtosArray = gson.fromJson(json, Produto[].class);
-           String teste = "";
-           for (Produto p : produtosArray) {
-               produtos.add(p);
-           }
-           Produto p = produtos.get(0);
-           Log.e("Metodo TesteGson", p.getDescricao() + ", " + p.getValidade());
-       }
-    }
 }
