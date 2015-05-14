@@ -24,6 +24,7 @@ import mobile.listaacessivel.fafica.listaacessvel.entidades.Produto;
 import mobile.listaacessivel.fafica.listaacessvel.util.ArrayListEstabelecimentosSession;
 import mobile.listaacessivel.fafica.listaacessvel.util.ArrayListProdutosSession;
 import mobile.listaacessivel.fafica.listaacessvel.util.ConnectionHttp;
+import mobile.listaacessivel.fafica.listaacessvel.util.EstabelecimentoSession;
 import mobile.listaacessivel.fafica.listaacessvel.util.ipConection;
 
 
@@ -66,8 +67,9 @@ public class TelaCriarListaPasso2 extends ActionBarActivity {
                     //Bundle dados = new Bundle();
                     Intent intent = new Intent(view.getContext(), TelaCriarListaPasso3.class);
                     int id_estabelecimento = items.get(position).getId_estabelecimento();
-                    //link = "http://192.168.0.105:8080/ListaAcessivel/CriarListaPasso2MobileServlet?id_estabelecimento=" + id_estabelecimento;
                     link = "http://" + ip + ":8080/ListaAcessivel/CriarListaPasso2MobileServlet?id_estabelecimento=" + id_estabelecimento;
+
+                    EstabelecimentoSession estabelecimentoSession = new EstabelecimentoSession(items.get(position));
 
                     ConnectionHttp conection = new ConnectionHttp(TelaCriarListaPasso2.this);
                     conection.execute(link);
