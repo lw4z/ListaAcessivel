@@ -174,9 +174,6 @@ public class TelaCriarListaPasso3 extends ActionBarActivity {
 
                     ProdutoSession produtoSession = new ProdutoSession(produto);
 
-                    //intent.putExtra("id_produto",(produtosTemporarios.get(position).getId_produto()));
-//                    intent.putExtra("selecao",produtos.get(position).isSelecionado());
-//                    Log.i("PRODUTO: ",String.valueOf(produtos.get(position).getId_produto()));
                     startActivity(intent);
                 }
             });

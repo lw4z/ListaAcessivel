@@ -86,14 +86,17 @@ public class TelaFinalizarLista extends ActionBarActivity {
                 try {
                     Lista lista = new Lista(descricao, situacao, cliente, estabelecimento, listaProdutos);
 
-                    ListaSession listaSession = new ListaSession(lista);
-
                     jsonLista = gson.toJson(lista);
                     link = "http://" + ip + ":8080/ListaAcessivel/CriarListaPasso3MobileServlet?jsonLista=" + jsonLista;
                     ConnectionHttp conection = new ConnectionHttp(TelaFinalizarLista.this);
                     conection.execute(link);
                     Log.i("CONECTION", conection.toString());
-                    conection.get();
+
+                    int id_lista = Integer.parseInt(conection.get());
+
+                    lista.setId_lista(id_lista);
+                    ListaSession listaSession = new ListaSession(lista);
+
                     Log.i("RESULTADOCADASTRO",String.valueOf(conection.get()));
                 }catch (InterruptedException e1) {
                     e1.printStackTrace();
