@@ -95,7 +95,7 @@ public class TelaFinalizarLista extends ActionBarActivity {
                     Lista lista = new Lista(descricao, situacao, cliente, estabelecimento, listaProdutosSelecionados);
 
                     jsonLista = gson.toJson(lista);
-                    link = "http://" + ip + ":8080/ListaAcessivel/CriarListaPasso3MobileServlet?jsonLista=" + jsonLista;
+                    link = "http://" + ip + ":8080/ListaAcessivel/CriarListaPasso3MobileServlet?json_lista=" + jsonLista;
                     ConnectionHttp conection = new ConnectionHttp(TelaFinalizarLista.this);
                     conection.execute(link);
                     Log.i("CONECTION", conection.toString());
