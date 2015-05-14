@@ -1,16 +1,21 @@
 package mobile.listaacessivel.fafica.listaacessvel;
 
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.Handler;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.Window;
 import android.widget.ProgressBar;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.Timer;
 import java.util.TimerTask;
@@ -20,6 +25,7 @@ public class TelaSplash extends Activity {
 
     // Set Duration of the Splash Screen
     long Delay = 1000;
+    Handler messageHandler = new Handler();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,7 +49,13 @@ public class TelaSplash extends Activity {
 
                 // Start MainActivity.class
                 Intent myIntent = new Intent(TelaSplash.this,TelaLogin.class);
-                startActivity(myIntent);
+
+                if(isOnline(TelaSplash.this)) {
+                    startActivity(myIntent);
+                }else{
+                    displayError("A conexão com a internet não foi encontrada!");
+                    finish();
+                }
             }
         };
 
@@ -52,12 +64,23 @@ public class TelaSplash extends Activity {
 
     }
 
-    public void run(){
-        startActivity(new Intent(this, TelaLogin.class));
-        finish();
+    public static boolean isOnline(Context contexto) {
+        ConnectivityManager cm = (ConnectivityManager) contexto.getSystemService(Context.CONNECTIVITY_SERVICE);// Pego a conectividade do contexto
+        NetworkInfo netInfo = cm.getActiveNetworkInfo();// Crio o objeto netInfo que recebe as informacoes da Network
+        if ((netInfo != null) && (netInfo.isConnectedOrConnecting()) && (netInfo.isAvailable())) { // Se nao tem conectividade retorna false
+            return true;
+        }
+        return false;
     }
 
-
+    public void displayError(final String errorText) {
+        Runnable doDisplayError = new Runnable() {
+            public void run() {
+                Toast.makeText(getApplicationContext(), errorText, Toast.LENGTH_LONG).show();
+            }
+        };
+        messageHandler.post(doDisplayError);
+    }
 
 
 //    @Override
