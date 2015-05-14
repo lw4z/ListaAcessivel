@@ -103,9 +103,9 @@ public class TelaFinalizarLista extends ActionBarActivity {
 
                     String resultado = conection.get();
 
-                    int id_lista = gson.fromJson(resultado, Integer.class);
+                    lista = gson.fromJson(resultado, Lista.class);
 
-                    lista.setId_lista(id_lista);
+                    //lista.setId_lista(id_lista);
                     ListaSession listaSession = new ListaSession(lista);
 
                     Log.i("RESULTADOCADASTRO",String.valueOf(conection.get()));
