@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -41,6 +42,7 @@ public class TelaDetalhesLista extends ActionBarActivity {
         inicializacao();
 
         ListaSession listaSession = new ListaSession();
+        Log.i("LISTASESSAO2",String.valueOf(listaSession));
         Lista lista = listaSession.getLista();
 
         txtDescricaoLista.setText(lista.getDescricao());

@@ -90,32 +90,33 @@ public class TelaFinalizarLista extends ActionBarActivity {
                     }
                 }
 
-                gson = new Gson();
                 try {
+                    gson = new Gson();
                     Lista lista = new Lista(descricao, situacao, cliente, estabelecimento, listaProdutosSelecionados);
 
                     jsonLista = gson.toJson(lista);
+                    Log.i("LISTA",String.valueOf(jsonLista));
+
                     link = "http://" + ip + ":8080/ListaAcessivel/CriarListaPasso3MobileServlet?json_lista=" + jsonLista;
                     ConnectionHttp conection = new ConnectionHttp(TelaFinalizarLista.this);
                     conection.execute(link);
                     Log.i("CONECTION", conection.toString());
-                    Log.i("LISTA",String.valueOf(jsonLista));
+                    String json = conection.get();
+                    Log.i("RESULTADOJSON", json.toString());
+//
+//                    Gson gson2 = new Gson();
+//                    Lista listaJson = gson2.fromJson(json,Lista.class);
+//
+//                    ListaSession listaSession = new ListaSession(listaJson);
+//                    Log.i("LISTASESSAO1",String.valueOf(listaSession));
 
-                    String resultado = conection.get();
-
-                    lista = gson.fromJson(resultado, Lista.class);
-
-                    //lista.setId_lista(id_lista);
-                    ListaSession listaSession = new ListaSession(lista);
-
-                    Log.i("RESULTADOCADASTRO",String.valueOf(conection.get()));
+//                    startActivity(it);
+//                    finish();
                 }catch (InterruptedException e1) {
                     e1.printStackTrace();
                 }catch (ExecutionException e1) {
                     e1.printStackTrace();
                 }
-                startActivity(it);
-                finish();
             }
         });
         //define um botão como negativo.

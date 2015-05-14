@@ -26,7 +26,6 @@ public class TelaPerfilUsuario extends ActionBarActivity {
     private TextView resultEmail, resultNomeCompleto, resultAnoNascimento, resultCpf, resultTelefone1,
             resultTelefone2, resultCep, resultCidade, resultEstado, resultBairro, resultRua, resultNumero,
             resultComplemento, resultReferencia;
-    private Gson gson;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,8 +38,6 @@ public class TelaPerfilUsuario extends ActionBarActivity {
         //A janela da aplicação deverá ficar apenas no formato vertical
         this.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
         inicializacaoObjetos();
-
-        gson = new Gson();
 
         ClienteSession clienteSession = new ClienteSession();
         Cliente cliente = clienteSession.getCliente();
