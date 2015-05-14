@@ -1,5 +1,7 @@
 package mobile.listaacessivel.fafica.listaacessvel;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.os.AsyncTask;
@@ -54,13 +56,8 @@ public class TelaUsuario extends ActionBarActivity {
             Intent sobre = new Intent(this,TelaSobre.class);
             startActivity(sobre);
         }else if(id == R.id.action_logout){
-            Intent login = new Intent(this,TelaLogin.class);
-            ConnectionHttp conexao = new ConnectionHttp(TelaUsuario.this);
-            conexao.cancel(true);
-            startActivity(login);
-            finish();
+            getMessage("Deseja realmente fazer Logout de sua conta no aplicativo?");
         }
-
         return super.onOptionsItemSelected(item);
     }
 
@@ -94,6 +91,33 @@ public class TelaUsuario extends ActionBarActivity {
     public void criarLista(View view){
         Intent it = new Intent(this,TelaCriarListaPasso1.class);
         startActivity(it);
+    }
+
+    //Método de mensagem
+    public AlertDialog alerta;
+
+    public void getMessage(String mensagem) {
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+
+        //builder.setTitle(titulo);
+        builder.setMessage(mensagem);
+        //define um botão como positivo
+        builder.setPositiveButton("Sim", new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface arg0, int arg1) {
+                Intent it = new Intent(TelaUsuario.this,TelaLogin.class);
+                startActivity(it);
+                finish();
+            }
+        });
+        //define um botão como negativo.
+        builder.setNegativeButton("Não", new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface arg0, int arg1) {
+                return;
+            }
+        });
+        //cria o AlertDialog e exibe na tela
+        alerta = builder.create();
+        alerta.show();
     }
 }
 

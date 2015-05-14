@@ -24,6 +24,7 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:textStyle="bold"
         android:text="@string/descricao_lista" />
 
     <TextView
@@ -35,6 +36,7 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:textStyle="bold"
         android:text="@string/situacao_lista" />
 
     <TextView
@@ -46,6 +48,7 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:textStyle="bold"
         android:text="@string/data_criacao_lista" />
 
     <TextView
@@ -57,6 +60,7 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:textStyle="bold"
         android:text="@string/estabelecimento" />
 
     <TextView
@@ -68,6 +72,7 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:textStyle="bold"
         android:text="@string/bairro_estabelecimento" />
 
     <TextView
@@ -79,6 +84,7 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:textStyle="bold"
         android:text="@string/rua_estabelecimento" />
 
     <TextView
@@ -90,6 +96,7 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:textStyle="bold"
         android:text="@string/telefone1" />
 
     <TextView
@@ -101,6 +108,7 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:textStyle="bold"
         android:text="@string/telefone2" />
 
     <TextView
@@ -136,6 +144,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:textStyle="bold"
             android:text="@string/quantidade_total_produtos" />
 
         <TextView
@@ -157,13 +166,14 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:textStyle="bold"
             android:text="@string/valor_total_lista" />
 
         <TextView
             android:id="@+id/txtValorTotalLista"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="R$ 50.00" />
+            android:text="50.00" />
 
     </LinearLayout>
 

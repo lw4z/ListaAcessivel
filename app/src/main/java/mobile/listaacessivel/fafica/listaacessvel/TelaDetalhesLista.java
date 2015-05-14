@@ -13,21 +13,17 @@ import android.widget.TextView;
 import java.util.ArrayList;
 
 import mobile.listaacessivel.fafica.listaacessvel.adapters.MyArrayAdapterDetalhesLista;
+import mobile.listaacessivel.fafica.listaacessvel.entidades.Lista;
 import mobile.listaacessivel.fafica.listaacessvel.entidades.Produto;
+import mobile.listaacessivel.fafica.listaacessvel.util.ListaSession;
 
 
 public class TelaDetalhesLista extends ActionBarActivity {
 
-    ListView listaProdutos;
-    MyArrayAdapterDetalhesLista adapter;
-    ArrayList<Produto> produtos = new ArrayList<Produto>();
-    ArrayList<Integer> id_produto;
-    ArrayList<String> nome;
-    ArrayList<Double> valor;
-    ArrayList<String> marca;
-    ArrayList<Integer> quantidade;
-    ArrayList<String> selecao;
-    TextView quantidadeTotal, valorTotal;
+    TextView  txtDescricaoLista,
+            txtSituacaoLista, txtDataCriacaoLista, txtNomeEstabelecimento,
+            txtBairroEstabelecimento, txtRuaEstabelecimento, txtTelefone1Estabelecimento,
+            txtTelefone2Estabelecimento, txtQuantidadeTotalProdutos, txtValorTotalLista;
 
 
     @Override
@@ -41,87 +37,22 @@ public class TelaDetalhesLista extends ActionBarActivity {
         //A janela da aplicação deverá ficar apenas no formato vertical
         this.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
 
-        //Campos de Valores totais das listas
-        quantidadeTotal = (TextView) findViewById(R.id.txtQuantidadeTotalProdutos);
-        valorTotal = (TextView) findViewById(R.id.txtValorTotalLista);
+        inicializacao();
 
-        //Teste de Busca da lista
+        ListaSession listaSession = new ListaSession();
+        Lista lista = listaSession.getLista();
 
-        //Com arrayList
-        id_produto = new ArrayList<Integer>();
-        id_produto.add(1);
-        id_produto.add(2);
-        id_produto.add(3);
-        id_produto.add(4);
-        id_produto.add(5);
-        id_produto.add(6);
-        id_produto.add(7);
-        id_produto.add(8);
+        txtDescricaoLista.setText(lista.getDescricao());
+        txtSituacaoLista.setText(lista.getSituacao());
+        txtDataCriacaoLista.setText(lista.getData_criacao());
+        txtNomeEstabelecimento.setText(lista.getEstabelecimento().getNome_fantasia());
+        txtBairroEstabelecimento.setText(lista.getEstabelecimento().getEndereco().getBairro());
+        txtRuaEstabelecimento.setText(lista.getEstabelecimento().getEndereco().getRua());
+        txtTelefone1Estabelecimento.setText(lista.getEstabelecimento().getTelefones().get(0));
+        txtTelefone2Estabelecimento.setText(lista.getEstabelecimento().getTelefones().get(1));
+        txtQuantidadeTotalProdutos.setText(String.valueOf(lista.getQuantidade_total()) + " produtos");
+        txtValorTotalLista.setText("R$ " + String.valueOf(lista.getValor_total()));
 
-        nome = new ArrayList<String>();
-        nome.add("Nescau");
-        nome.add("Refrigerante");
-        nome.add("Carne filé");
-        nome.add("Macarrão");
-        nome.add("Sabão");
-        nome.add("Arroz");
-        nome.add("Sabonete");
-        nome.add("Creme Dental");
-
-        marca = new ArrayList<String>();
-        marca.add("Nestlé");
-        marca.add("Jatobá");
-        marca.add("Friboi");
-        marca.add("Vitarella");
-        marca.add("Omo");
-        marca.add("Rampinelli");
-        marca.add("Luz");
-        marca.add("Colgate");
-
-        valor = new ArrayList<Double>();
-        valor.add(3.8);
-        valor.add(2.7);
-        valor.add(13.8);
-        valor.add(1.8);
-        valor.add(1.4);
-        valor.add(2.2);
-        valor.add(1.5);
-        valor.add(1.9);
-
-        quantidade = new ArrayList<Integer>();
-        quantidade.add(3);
-        quantidade.add(5);
-        quantidade.add(1);
-        quantidade.add(6);
-        quantidade.add(8);
-        quantidade.add(2);
-        quantidade.add(7);
-        quantidade.add(4);
-
-        selecao = new ArrayList<String>();
-        selecao.add("Não selecionado");
-        selecao.add("Não selecionado");
-        selecao.add("Não selecionado");
-        selecao.add("Não selecionado");
-        selecao.add("Não selecionado");
-        selecao.add("Não selecionado");
-        selecao.add("Não selecionado");
-        selecao.add("Não selecionado");
-
-
-//        listaProdutos = (ListView) findViewById(R.id.listProdutosListaDetalhes);
-//
-//        for (int i = 0; i < nome.size(); i++){
-//            Produto p = new Produto(id_produto.get(i), nome.get(i), marca.get(i),
-//                    valor.get(i), quantidade.get(i), selecao.get(i));
-//            //Colocando todos os itens no arrayList
-//            produtos.add(p);
-//        }
-//
-//        adapter = new MyArrayAdapterDetalhesLista(this,produtos);
-//
-//        listaProdutos.setAdapter(adapter);
-//
       }
 
 
@@ -147,6 +78,19 @@ public class TelaDetalhesLista extends ActionBarActivity {
 //        return super.onOptionsItemSelected(item);
 //    }
 
+    public void inicializacao(){
+        txtDescricaoLista = (TextView) findViewById(R.id.txtDescricaoLista);
+        txtSituacaoLista = (TextView) findViewById(R.id.txtSituacaoLista);
+        txtDataCriacaoLista = (TextView) findViewById(R.id.txtDataCriacaoLista);
+        txtNomeEstabelecimento = (TextView) findViewById(R.id.txtNomeEstabelecimento);
+        txtBairroEstabelecimento = (TextView) findViewById(R.id.txtBairroEstabelecimento);
+        txtRuaEstabelecimento = (TextView) findViewById(R.id.txtRuaEstabelecimento);
+        txtTelefone1Estabelecimento = (TextView) findViewById(R.id.txtTelefone1Estabelecimento);
+        txtTelefone2Estabelecimento = (TextView) findViewById(R.id.txtTelefone2Estabelecimento);
+        txtQuantidadeTotalProdutos = (TextView) findViewById(R.id.txtQuantidadeTotalProdutos);
+        txtValorTotalLista = (TextView) findViewById(R.id.txtValorTotalLista);
+    }
+
     //Métodos dos botões
     public void editarLista(View view){
         Intent it = new Intent(this,TelaEditarListaPasso1.class);
@@ -156,7 +100,6 @@ public class TelaDetalhesLista extends ActionBarActivity {
     public void solicitarEntrega(View view){
         getMessage("Deseja realmente solicitar a entrega da lista?");
     }
-
 
     //Método de mensagem
     public AlertDialog alerta;

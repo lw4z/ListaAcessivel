@@ -23,6 +23,7 @@ import mobile.listaacessivel.fafica.listaacessvel.entidades.Lista;
 import mobile.listaacessivel.fafica.listaacessvel.entidades.Produto;
 import mobile.listaacessivel.fafica.listaacessvel.util.ClienteSession;
 import mobile.listaacessivel.fafica.listaacessvel.util.ConnectionHttp;
+import mobile.listaacessivel.fafica.listaacessvel.util.ListaSession;
 import mobile.listaacessivel.fafica.listaacessvel.util.ipConection;
 
 
@@ -63,12 +64,11 @@ public class TelaMinhasListas extends ActionBarActivity {
             listaListas.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                 @Override
                 public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                    Bundle dados = new Bundle();
+
                     Intent intent = new Intent(view.getContext(), TelaDetalhesLista.class);
 
-                    intent.putExtra("id_lista",(listas.get(position).getId_lista()));
-                    intent.putExtra("titulo_lista",(listas.get(position).getDescricao()));
-                    Log.i("LISTA: ",listas.get(position).getDescricao());
+                    ListaSession lista = new ListaSession(listas.get(position));
+
                     startActivity(intent);
                 }
             });
@@ -97,12 +97,6 @@ public class TelaMinhasListas extends ActionBarActivity {
     }catch (ExecutionException e1) {
         e1.printStackTrace();
     }
-
-    /*    listas.add(new Lista("Nome da lista: " + "Lista 1","Situação da lista: " + "atendida", cliente, estabelecimento,produtos));
-        listas.add(new Lista("Nome da lista: " + "Lista 1","Situação da lista: " + "atendida", cliente, estabelecimento,produtos));
-        listas.add(new Lista("Nome da lista: " + "Lista 1","Situação da lista: " + "atendida", cliente, estabelecimento,produtos));
-    */
-
         return listas;
     }
 
