@@ -60,7 +60,7 @@ public class TelaDetalhesDoProduto extends ActionBarActivity {
         ProdutoSession produtoSession = new ProdutoSession();
         Produto produto = produtoSession.getProduto();
 
-
+        //Definição dos valores na tela
         txtNomeProduto.setText(produto.getDescricao());
         txtValorProduto.setText(String.valueOf(produto.getValor()));
         txtMarcaProduto.setText(produto.getMarca());
@@ -78,8 +78,6 @@ public class TelaDetalhesDoProduto extends ActionBarActivity {
         });
 
         //Condição para o botão aparecer
-        //Boolean selecao = getIntent().getBooleanExtra("selecao",false);
-
         if(produto.isSelecionado() == true){
             removerProduto.setVisibility(View.VISIBLE);
             quantidadeProduto.setText(String.valueOf(produto.getQuantidade()));

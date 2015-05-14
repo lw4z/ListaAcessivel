@@ -15,6 +15,7 @@ import java.util.ArrayList;
 import mobile.listaacessivel.fafica.listaacessvel.adapters.MyArrayAdapterDetalhesLista;
 import mobile.listaacessivel.fafica.listaacessvel.entidades.Lista;
 import mobile.listaacessivel.fafica.listaacessvel.entidades.Produto;
+import mobile.listaacessivel.fafica.listaacessvel.util.ArrayListProdutosEditarSession;
 import mobile.listaacessivel.fafica.listaacessvel.util.ListaSession;
 
 
@@ -94,6 +95,15 @@ public class TelaDetalhesLista extends ActionBarActivity {
     //Métodos dos botões
     public void editarLista(View view){
         Intent it = new Intent(this,TelaEditarListaPasso1.class);
+        ListaSession listaSession = new ListaSession();
+        Lista lista = listaSession.getLista();
+
+        ArrayList<Produto> arrayProdutos = new ArrayList<Produto>();
+        for(Produto p: lista.getProdutos()){
+            arrayProdutos.add(p);
+        }
+
+        ArrayListProdutosEditarSession listaProdutosSession = new ArrayListProdutosEditarSession(arrayProdutos);
         startActivity(it);
     }
 

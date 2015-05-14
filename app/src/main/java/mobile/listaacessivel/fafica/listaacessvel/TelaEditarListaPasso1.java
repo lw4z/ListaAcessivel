@@ -22,6 +22,8 @@ import java.util.ArrayList;
 import mobile.listaacessivel.fafica.listaacessvel.adapters.MyArrayAdapterCriarListaPasso3;
 import mobile.listaacessivel.fafica.listaacessvel.entidades.Produto;
 import mobile.listaacessivel.fafica.listaacessvel.util.Acentuacao;
+import mobile.listaacessivel.fafica.listaacessvel.util.ArrayListProdutosEditarSession;
+import mobile.listaacessivel.fafica.listaacessvel.util.ProdutoSession;
 
 
 public class TelaEditarListaPasso1 extends ActionBarActivity {
@@ -40,13 +42,6 @@ public class TelaEditarListaPasso1 extends ActionBarActivity {
     boolean flag = false;
     public int TOTAL_LIST_ITEMS = 8;
     public int NUM_ITEMS_PAGE   = 3;
-    ArrayList<Integer> id_produto;
-    ArrayList<String> nome;
-    ArrayList<Float> valor;
-    ArrayList<String> marca;
-    ArrayList<String> selecao;
-    ArrayList<Integer> quantidade;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -67,75 +62,13 @@ public class TelaEditarListaPasso1 extends ActionBarActivity {
         btPesquisar = (Button) findViewById(R.id.btPesquisarProduto);
         layout = (LinearLayout) findViewById(R.id.buttonLayout);
 
-        //Teste de Busca da lista
+        ArrayListProdutosEditarSession listaProdutosSession = new ArrayListProdutosEditarSession();
 
-        //Com arrayList
-//        id_produto = new ArrayList<Integer>();
-//        id_produto.add(1);
-//        id_produto.add(2);
-//        id_produto.add(3);
-//        id_produto.add(4);
-//        id_produto.add(5);
-//        id_produto.add(6);
-//        id_produto.add(7);
-//        id_produto.add(8);
-//
-//        nome = new ArrayList<String>();
-//        nome.add("Nescau");
-//        nome.add("Refrigerante");
-//        nome.add("Carne filé");
-//        nome.add("Macarrão");
-//        nome.add("Sabão");
-//        nome.add("Arroz");
-//        nome.add("Sabonete");
-//        nome.add("Creme Dental");
-//
-//        marca = new ArrayList<String>();
-//        marca.add("Nestlé");
-//        marca.add("Jatobá");
-//        marca.add("Friboi");
-//        marca.add("Vitarella");
-//        marca.add("Omo");
-//        marca.add("Rampinelli");
-//        marca.add("Lux");
-//        marca.add("Colgate");
-//
-//        valor = new ArrayList<Float>();
-//        valor.add(3.8f);
-//        valor.add(2.7f);
-//        valor.add(13.8f);
-//        valor.add(1.8f);
-//        valor.add(1.4f);
-//        valor.add(2.2f);
-//        valor.add(1.5f);
-//        valor.add(1.9f);
-//
-//        selecao = new ArrayList<String>();
-//        selecao.add("selecionado");
-//        selecao.add("selecionado");
-//        selecao.add("selecionado");
-//        selecao.add("selecionado");
-//        selecao.add("selecionado");
-//        selecao.add("selecionado");
-//        selecao.add("selecionado");
-//        selecao.add("selecionado");
-//
-//        quantidade = new ArrayList<Integer>();
-//        quantidade.add(0);
-//        quantidade.add(0);
-//        quantidade.add(0);
-//        quantidade.add(0);
-//        quantidade.add(0);
-//        quantidade.add(0);
-//        quantidade.add(0);
-//        quantidade.add(0);
+        produtos = listaProdutosSession.getListaProdutos();
 
-        //Adição dos produtos a lista principal
-//        for(int i = 0; i < id_produto.size(); i++){
-//            final Produto p = new Produto(id_produto.get(i), nome.get(i), marca.get(i),
-//                    valor.get(i),quantidade.get(i) ,selecao.get(i));
-//            produtos.add(p);
-//        }
+        TOTAL_LIST_ITEMS = produtos.size();
+        Produto p = produtos.get(0);
+        Log.e("Metodo TesteGson", p.getDescricao() + ", " + p.getValidade());
 
         Log.i("TAMANHOPRODUTOS", String.valueOf(produtos.size()));
 
@@ -215,9 +148,10 @@ public class TelaEditarListaPasso1 extends ActionBarActivity {
 
                     Intent intent = new Intent(view.getContext(), TelaDetalhesDoProdutoEditar.class);
 
-                    intent.putExtra("id_produto",(produtos.get(position).getId_produto()));
-                    intent.putExtra("selecao",(produtos.get(position).isSelecionado()));
-                    Log.i("PRODUTO: ",String.valueOf(produtos.get(position).getId_produto()));
+                    Produto produto = produtosTemporarios.get(position);
+
+                    ProdutoSession produtoSession = new ProdutoSession(produto);
+
                     startActivity(intent);
                 }
             });
