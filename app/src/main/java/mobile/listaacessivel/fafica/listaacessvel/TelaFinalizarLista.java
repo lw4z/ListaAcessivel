@@ -99,8 +99,11 @@ public class TelaFinalizarLista extends ActionBarActivity {
                     ConnectionHttp conection = new ConnectionHttp(TelaFinalizarLista.this);
                     conection.execute(link);
                     Log.i("CONECTION", conection.toString());
+                    Log.i("LISTA",String.valueOf(jsonLista));
 
-                    int id_lista = Integer.parseInt(conection.get());
+                    String resultado = conection.get();
+
+                    int id_lista = gson.fromJson(resultado, Integer.class);
 
                     lista.setId_lista(id_lista);
                     ListaSession listaSession = new ListaSession(lista);
