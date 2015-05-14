@@ -69,7 +69,6 @@ public class TelaUsuario extends ActionBarActivity {
 
     public void visualizarListas(View view){
         Intent listas = new Intent(this,TelaMinhasListas.class);
-        //link = ;
         ConnectionHttp conection = new ConnectionHttp(TelaUsuario.this);
         conection.execute(link);
 

@@ -80,11 +80,19 @@ public class TelaFinalizarLista extends ActionBarActivity {
                 Estabelecimento estabelecimento = estabelecimentoSession.getEstabelecimento();
 
                 ArrayListProdutosSession listaProdutosJson = new ArrayListProdutosSession();
+
                 ArrayList<Produto> listaProdutos = listaProdutosJson.getListaProdutos();
+                ArrayList<Produto> listaProdutosSelecionados = new ArrayList<Produto>();
+
+                for(Produto p : listaProdutos){
+                    if(p.isSelecionado()){
+                        listaProdutosSelecionados.add(p);
+                    }
+                }
 
                 gson = new Gson();
                 try {
-                    Lista lista = new Lista(descricao, situacao, cliente, estabelecimento, listaProdutos);
+                    Lista lista = new Lista(descricao, situacao, cliente, estabelecimento, listaProdutosSelecionados);
 
                     jsonLista = gson.toJson(lista);
                     link = "http://" + ip + ":8080/ListaAcessivel/CriarListaPasso3MobileServlet?jsonLista=" + jsonLista;

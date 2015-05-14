@@ -303,6 +303,7 @@ public class TelaCriarListaPasso3 extends ActionBarActivity {
         builder.setPositiveButton("Sim", new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface arg0, int arg1) {
                 Intent it = new Intent(TelaCriarListaPasso3.this,TelaFinalizarLista.class);
+                ArrayListProdutosSession listProdutosSession = new ArrayListProdutosSession(produtosTemporarios);
                 startActivity(it);
                 finish();
             }
