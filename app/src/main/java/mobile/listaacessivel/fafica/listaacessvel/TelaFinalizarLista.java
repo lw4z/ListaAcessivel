@@ -11,6 +11,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import com.google.gson.Gson;
 
@@ -33,9 +34,10 @@ import mobile.listaacessivel.fafica.listaacessvel.util.ipConection;
 public class TelaFinalizarLista extends ActionBarActivity {
 
     private EditText campoDescricao;
-    private String link, jsonLista;
+    private String json_lista = "";
     private String ip = ipConection.IP.toString();
     private Gson gson;
+    private String link;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -69,54 +71,8 @@ public class TelaFinalizarLista extends ActionBarActivity {
         //define um botão como positivo
         builder.setPositiveButton("Sim", new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface arg0, int arg1) {
-                Intent it = new Intent(TelaFinalizarLista.this,TelaDetalhesLista.class);
-                String descricao = campoDescricao.getText().toString();
-                String situacao = SituacaoLista.CRIADA.toString();
+            enviarJson();
 
-                ClienteSession clienteSession = new ClienteSession();
-                Cliente cliente = clienteSession.getCliente();
-
-                EstabelecimentoSession estabelecimentoSession = new EstabelecimentoSession();
-                Estabelecimento estabelecimento = estabelecimentoSession.getEstabelecimento();
-
-                ArrayListProdutosSession listaProdutosJson = new ArrayListProdutosSession();
-
-                ArrayList<Produto> listaProdutos = listaProdutosJson.getListaProdutos();
-                ArrayList<Produto> listaProdutosSelecionados = new ArrayList<Produto>();
-
-                for(Produto p : listaProdutos){
-                    if(p.isSelecionado()){
-                        listaProdutosSelecionados.add(p);
-                    }
-                }
-
-                try {
-                    gson = new Gson();
-                    Lista lista = new Lista(descricao, situacao, cliente, estabelecimento, listaProdutosSelecionados);
-
-                    jsonLista = gson.toJson(lista);
-                    Log.i("LISTA",String.valueOf(jsonLista));
-
-                    link = "http://" + ip + ":8080/ListaAcessivel/CriarListaPasso3MobileServlet?json_lista=" + jsonLista;
-                    ConnectionHttp conection = new ConnectionHttp(TelaFinalizarLista.this);
-                    conection.execute(link);
-                    Log.i("CONECTION", conection.toString());
-                    String json = conection.get();
-                    Log.i("RESULTADOJSON", json.toString());
-//
-//                    Gson gson2 = new Gson();
-//                    Lista listaJson = gson2.fromJson(json,Lista.class);
-//
-//                    ListaSession listaSession = new ListaSession(listaJson);
-//                    Log.i("LISTASESSAO1",String.valueOf(listaSession));
-
-//                    startActivity(it);
-//                    finish();
-                }catch (InterruptedException e1) {
-                    e1.printStackTrace();
-                }catch (ExecutionException e1) {
-                    e1.printStackTrace();
-                }
             }
         });
         //define um botão como negativo.
@@ -128,5 +84,71 @@ public class TelaFinalizarLista extends ActionBarActivity {
         //cria o AlertDialog e exibe na tela
         alerta = builder.create();
         alerta.show();
+    }
+
+    public Lista converteJson(String json){
+        Gson gson = new Gson();
+        Lista lista = gson.fromJson(json,Lista.class);
+
+        return lista;
+    }
+
+    public void enviarJson(){
+
+            Intent it = new Intent(TelaFinalizarLista.this,TelaDetalhesLista.class);
+            String descricao = campoDescricao.getText().toString();
+            String situacao = SituacaoLista.CRIADA.toString();
+
+            ClienteSession clienteSession = new ClienteSession();
+            Cliente cliente = clienteSession.getCliente();
+
+            EstabelecimentoSession estabelecimentoSession = new EstabelecimentoSession();
+            Estabelecimento estabelecimento = estabelecimentoSession.getEstabelecimento();
+
+            ArrayListProdutosSession listaProdutosJson = new ArrayListProdutosSession();
+
+            ArrayList<Produto> listaProdutos = listaProdutosJson.getListaProdutos();
+            ArrayList<Produto> listaProdutosSelecionados = new ArrayList<Produto>();
+
+            for(Produto p : listaProdutos){
+                if(p.isSelecionado()){
+                    listaProdutosSelecionados.add(p);
+                }
+            }
+
+        try {
+            gson = new Gson();
+            Lista lista = new Lista(descricao, situacao, cliente, estabelecimento, listaProdutosSelecionados);
+
+            json_lista = gson.toJson(lista);
+            Log.i("LISTA",String.valueOf(json_lista));
+
+            if(listaProdutosSelecionados.size() != 0){
+                link = "http://" + ip + ":8080/ListaAcessivel/CriarListaPasso3MobileServlet?json_lista=" + json_lista;
+
+                ConnectionHttp conection = new ConnectionHttp(this);
+                conection.execute(link);
+                Log.i("CONECTION", conection.toString());
+
+                String json = conection.get();
+                Log.i("RESULTADOJSON", json.toString());
+//
+//                    Gson gson2 = new Gson();
+//                    Lista listaJson = gson2.fromJson(json,Lista.class);
+//
+//                    ListaSession listaSession = new ListaSession(listaJson);
+//                    Log.i("LISTASESSAO1",String.valueOf(listaSession));
+
+//                    startActivity(it);
+//                    finish();
+            }else{
+                Toast.makeText(this,"Não foi selecionado nenhum produto!", Toast.LENGTH_LONG).show();
+                return;
+            }
+        }catch (InterruptedException e1) {
+            e1.printStackTrace();
+        }catch (ExecutionException e1) {
+            e1.printStackTrace();
+        }
     }
 }
