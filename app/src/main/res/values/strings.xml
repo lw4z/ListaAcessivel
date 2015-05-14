@@ -70,6 +70,7 @@
     <string name="bt_confirmar_cadastro">Confirmar Cadastro</string>
     <string name="bt_limpar">Limpar</string>
     <string name="bt_finalizar_lista">Finalizar Lista</string>
+    <string name="bt_concluir_lista">Concluir Lista</string>
     <string name="bt_adicionar_novos_produtos">Adicionar Produtos</string>
     <string name="bt_adicionar_produto">Adicionar Produto a Lista</string>
     <string name="bt_finalizar_edicao">Finalizar Edição</string>
@@ -170,6 +171,7 @@
     <string name="title_activity_detalhes_do_produto">Detalhes do Produto</string>
     <string name="title_activity_tela_detalhes_do_produto_editar">Detalhes do Produto</string>
     <string name="title_activity_tela_detalhes_do_produto_editar2">Detalhes do Produto</string>
+    <string name="title_activity_tela_finalizar_lista">Finalizar Lista</string>
 
 
 

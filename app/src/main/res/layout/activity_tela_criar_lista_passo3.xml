@@ -67,23 +67,6 @@
         </LinearLayout>
     </HorizontalScrollView>
 
-
-    <!--Texto Descrição da lista-->
-    <!--<TextView-->
-    <!--android:layout_width="wrap_content"-->
-    <!--android:layout_height="wrap_content"-->
-    <!--android:text="@string/descricao_lista"-->
-    <!--android:layout_weight="0"-->
-    <!--android:layout_gravity="center"/>-->
-
-    <!--&lt;!&ndash;Campo de descrição da lista&ndash;&gt;-->
-    <!--<EditText-->
-    <!--android:layout_width="match_parent"-->
-    <!--android:layout_height="wrap_content"-->
-    <!--android:id="@+id/campoDescricaoLista"-->
-    <!--android:contentDescription="@string/digite_descricao_lista"-->
-    <!--android:layout_weight="0"/>-->
-
     <!--Botão Finalizar Lista-->
     <Button
         android:id="@+id/bt_FinalizarLista"
@@ -91,7 +74,7 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:layout_weight="0"
-        android:onClick="finalizarLista"
-        android:text="@string/bt_finalizar_lista" />
+        android:onClick="concluirLista"
+        android:text="@string/bt_concluir_lista" />
 
 </LinearLayout>

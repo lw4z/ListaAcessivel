@@ -2,8 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="mobile.listaacessivel.fafica.listaacessvel" >
 
-    <uses-permission android:name="android.permission.INTERNET"/>
-    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 
     <application
         android:allowBackup="true"
@@ -102,7 +102,12 @@
         <activity
             android:name=".TelaDetalhesDoProdutoEditar2"
             android:label="@string/title_activity_tela_detalhes_do_produto_editar2"
-            android:parentActivityName=".TelaEditarListaPasso2">
+            android:parentActivityName=".TelaEditarListaPasso2" >
+        </activity>
+        <activity
+            android:name=".TelaFinalizarLista"
+            android:label="@string/title_activity_tela_finalizar_lista"
+            android:parentActivityName=".TelaCriarListaPasso3" >
         </activity>
     </application>
 

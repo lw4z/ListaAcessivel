@@ -31,22 +31,22 @@ import java.util.ArrayList;
 import java.util.concurrent.ExecutionException;
 
 import mobile.listaacessivel.fafica.listaacessvel.adapters.MyArrayAdapterCriarListaPasso3;
+import mobile.listaacessivel.fafica.listaacessvel.entidades.Lista;
 import mobile.listaacessivel.fafica.listaacessvel.entidades.Produto;
 import mobile.listaacessivel.fafica.listaacessvel.util.Acentuacao;
 import mobile.listaacessivel.fafica.listaacessvel.util.ArrayListProdutosSession;
 import mobile.listaacessivel.fafica.listaacessvel.util.ConnectionHttp;
 import mobile.listaacessivel.fafica.listaacessvel.util.ProdutoSession;
+import mobile.listaacessivel.fafica.listaacessvel.util.ipConection;
 
 
 public class TelaCriarListaPasso3 extends ActionBarActivity {
 
     private ListView listaProdutos;
     private MyArrayAdapterCriarListaPasso3 adapter;
-    EditText editProcurar, quantidadeProduto;
     private ArrayList<Produto> produtos;
     private ArrayList<Produto> produtosPesquisa = new ArrayList<Produto>();
     private ArrayList<Produto> produtosTemporarios = new ArrayList<Produto>();
-    //private ArrayList<Produto> produtosJson = new ArrayList<Produto>();
     private TextView txtNomeProduto;
     private Button btPesquisar;
     private LinearLayout layout;
@@ -290,7 +290,7 @@ public class TelaCriarListaPasso3 extends ActionBarActivity {
     }
 
     //Método dos Botões
-    public void finalizarLista(View view){
+    public void concluirLista(View view){
         getMessage("Deseja realmente finalizar a criação da lista?");
     }
 
@@ -305,7 +305,7 @@ public class TelaCriarListaPasso3 extends ActionBarActivity {
         //define um botão como positivo
         builder.setPositiveButton("Sim", new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface arg0, int arg1) {
-                Intent it = new Intent(TelaCriarListaPasso3.this,TelaMinhasListas.class);
+                Intent it = new Intent(TelaCriarListaPasso3.this,TelaFinalizarLista.class);
                 startActivity(it);
                 finish();
             }
@@ -324,19 +324,5 @@ public class TelaCriarListaPasso3 extends ActionBarActivity {
     public void instance(){
         produtos = new ArrayList<Produto>();
     }
-
-//    public void setGson(String json) {
-//        gson = new Gson();
-//
-//       if(json != null) {
-//           Produto[] produtosArray = gson.fromJson(json, Produto[].class);
-//           String teste = "";
-//           for (Produto p : produtosArray) {
-//               produtos.add(p);
-//           }
-//           Produto p = produtos.get(0);
-//           Log.e("Metodo TesteGson", p.getDescricao() + ", " + p.getValidade());
-//       }
-//    }
 
 }
