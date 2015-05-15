@@ -120,12 +120,14 @@ public class TelaFinalizarLista extends ActionBarActivity {
 
         try {
             gson = new Gson();
+            cliente.setSenha("");
             Lista lista = new Lista(descricao, situacao, cliente, estabelecimento, listaProdutosSelecionados);
            // Lista lista = new Lista();
             //lista.setId_lista(900);
 
             json_lista = gson.toJson(lista);
-            json_lista = json_lista.replaceAll(" ",";");
+            Log.i("LISTA ANTES REPLACE",json_lista);
+            json_lista = json_lista.replaceAll(" ","<;>");
             Log.i("LISTA",json_lista);
 
             if(listaProdutosSelecionados.size() != 0){
