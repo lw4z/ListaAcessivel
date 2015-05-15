@@ -6,17 +6,28 @@ import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
+
+import java.util.ArrayList;
+
+import mobile.listaacessivel.fafica.listaacessvel.entidades.Produto;
+import mobile.listaacessivel.fafica.listaacessvel.util.ArrayListProdutosSelecionadosSession;
+import mobile.listaacessivel.fafica.listaacessvel.util.ArrayListProdutosSession;
+import mobile.listaacessivel.fafica.listaacessvel.util.ProdutoSession;
 
 
 public class TelaDetalhesDoProdutoEditar2 extends ActionBarActivity {
 
     Button removerProduto;
     EditText quantidadeProduto;
+    TextView txtNomeProduto, txtMarcaProduto, txtValidadeProduto, txtValorProduto, txtNomeEstabelecimento;
+    ProdutoSession produtoSession = new ProdutoSession();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,7 +42,18 @@ public class TelaDetalhesDoProdutoEditar2 extends ActionBarActivity {
         getSupportActionBar().setHomeActionContentDescription(R.string.bt_voltar);
 
         //Inicialização de campos da tela
-        quantidadeProduto = (EditText) findViewById(R.id.campoQuantidadeProduto);
+        inicializaObjetos();
+
+        ProdutoSession produtoSession = new ProdutoSession();
+        Produto produto = produtoSession.getProduto();
+
+        //Definição dos valores na tela
+        txtNomeProduto.setText(produto.getDescricao());
+        txtValorProduto.setText(String.valueOf(produto.getValor()));
+        txtMarcaProduto.setText(produto.getMarca());
+        txtValidadeProduto.setText(produto.getValidade());
+        txtNomeEstabelecimento.setText(produto.getEstabelecimento().getNome_fantasia());
+
 
         //Botão remover produto
         removerProduto = (Button) findViewById(R.id.bt_remover_produto);
@@ -43,11 +65,11 @@ public class TelaDetalhesDoProdutoEditar2 extends ActionBarActivity {
         });
 
         //Condição para o botão aparecer
-        String selecao = getIntent().getStringExtra("selecao");
-
-        if(selecao.equals("selecionado")){
+        if(produto.isSelecionado() == true){
             removerProduto.setVisibility(View.VISIBLE);
+            quantidadeProduto.setText(String.valueOf(produto.getQuantidade()));
         }
+
     }
 
 
@@ -76,6 +98,15 @@ public class TelaDetalhesDoProdutoEditar2 extends ActionBarActivity {
     //Métodos dos Botões
     public void adicionarProdutoLista(View view){
         Intent it = new Intent(this,TelaEditarListaPasso2.class);
+        int quantidade = Integer.parseInt(quantidadeProduto.getText().toString());
+
+        ProdutoSession produtoSession = new ProdutoSession();
+        Produto produto = produtoSession.getProduto();
+        produto.setSelecionado(true);
+        produto.setQuantidade(quantidade);
+
+        setProduto(produto);
+        Log.i("QUANTIDADEPRODUTO", String.valueOf(quantidade));
         startActivity(it);
         finish();
     }
@@ -92,6 +123,12 @@ public class TelaDetalhesDoProdutoEditar2 extends ActionBarActivity {
         builder.setPositiveButton("Sim", new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface arg0, int arg1) {
                 Intent it = new Intent(TelaDetalhesDoProdutoEditar2.this,TelaEditarListaPasso2.class);
+                ProdutoSession produtoSession = new ProdutoSession();
+                Produto produto = produtoSession.getProduto();
+                produto.setSelecionado(false);
+                produto.setQuantidade(0);
+                setProduto(produto);
+
                 startActivity(it);
                 finish();
             }
@@ -105,5 +142,27 @@ public class TelaDetalhesDoProdutoEditar2 extends ActionBarActivity {
         //cria o AlertDialog e exibe na tela
         alerta = builder.create();
         alerta.show();
+    }
+
+    public void inicializaObjetos(){
+        quantidadeProduto = (EditText) findViewById(R.id.campoQuantidadeProduto);
+        txtNomeProduto = (TextView) findViewById(R.id.txtNomeProduto);
+        txtValidadeProduto = (TextView) findViewById(R.id.txtValidadeProduto);
+        txtMarcaProduto = (TextView) findViewById(R.id.txtMarcaProduto);
+        txtValorProduto = (TextView) findViewById(R.id.txtValorProduto);
+        txtNomeEstabelecimento = (TextView) findViewById(R.id.txtNomeEstabelecimento);
+    }
+
+    public void setProduto(Produto produto){
+        ArrayListProdutosSession listaProdutosJson = new ArrayListProdutosSession();
+        ArrayList<Produto> lista = listaProdutosJson.getListaProdutos();
+
+        for(int i = 0; i < lista.size(); i++){
+            if(produto.getId_produto() == lista.get(i).getId_produto()){
+                lista.set(i,produto);
+            }
+        }
+        listaProdutosJson = new ArrayListProdutosSession(lista);
+        ArrayListProdutosSelecionadosSession listProdutosSession = new ArrayListProdutosSelecionadosSession(lista);
     }
 }

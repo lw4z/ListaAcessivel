@@ -85,46 +85,18 @@ public class TelaDetalhesDoProduto extends ActionBarActivity {
 
     }
 
-
-//    @Override
-//    public boolean onCreateOptionsMenu(Menu menu) {
-//        // Inflate the menu; this adds items to the action bar if it is present.
-//        getMenuInflater().inflate(R.menu.menu_detalhes_do_produto, menu);
-//        return true;
-//    }
-//
-//    @Override
-//    public boolean onOptionsItemSelected(MenuItem item) {
-//        // Handle action bar item clicks here. The action bar will
-//        // automatically handle clicks on the Home/Up button, so long
-//        // as you specify a parent activity in AndroidManifest.xml.
-//        int id = item.getItemId();
-//
-//        //noinspection SimplifiableIfStatement
-//        if (id == R.id.action_settings) {
-//            return true;
-//        }
-//
-//        return super.onOptionsItemSelected(item);
-//    }
-
     //Métodos dos botões
     public void adicionarProdutoLista(View view){
         Intent it = new Intent(this,TelaCriarListaPasso3.class);
         int quantidade = Integer.parseInt(quantidadeProduto.getText().toString());
-
-
 
         ProdutoSession produtoSession = new ProdutoSession();
         Produto produto = produtoSession.getProduto();
         produto.setSelecionado(true);
         produto.setQuantidade(quantidade);
 
-
-
         setProduto(produto);
 
-        //it.putExtra("quantidade",quantidade);
         Log.i("QUANTIDADEPRODUTO",String.valueOf(quantidade));
         startActivity(it);
         finish();

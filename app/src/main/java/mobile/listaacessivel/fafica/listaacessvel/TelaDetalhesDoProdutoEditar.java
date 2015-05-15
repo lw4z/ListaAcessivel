@@ -16,6 +16,7 @@ import android.widget.TextView;
 import java.util.ArrayList;
 
 import mobile.listaacessivel.fafica.listaacessvel.entidades.Produto;
+import mobile.listaacessivel.fafica.listaacessvel.util.ArrayListProdutosSelecionadosSession;
 import mobile.listaacessivel.fafica.listaacessvel.util.ArrayListProdutosSession;
 import mobile.listaacessivel.fafica.listaacessvel.util.ProdutoSession;
 
@@ -148,5 +149,6 @@ public class TelaDetalhesDoProdutoEditar extends ActionBarActivity {
             }
         }
         listaProdutosJson = new ArrayListProdutosSession(lista);
+        ArrayListProdutosSelecionadosSession listProdutosSession = new ArrayListProdutosSelecionadosSession(lista);
     }
 }
