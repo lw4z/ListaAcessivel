@@ -32,13 +32,14 @@ public class ConnectionHttp extends AsyncTask<String, String, String> {
     // Começa a nova Thread e realiza a tarefa;
     @Override
     protected String doInBackground(String... params) {
+        HttpURLConnection connection = null;
         String linha2 = "";
         try {
             String link = params[0];
 
             URL url = new URL(link);
 
-            HttpURLConnection connection = (HttpURLConnection) url
+            connection = (HttpURLConnection) url
                     .openConnection();
             connection.setConnectTimeout(10000);
             connection.setReadTimeout(10000);
@@ -73,7 +74,12 @@ public class ConnectionHttp extends AsyncTask<String, String, String> {
         } catch (IOException e) {
             publishProgress("Problema ao tentar se conectar...");
             e.printStackTrace();
+        }finally {
+            if(connection != null){
+                connection.disconnect();
+            }
         }
+
         return linha2;
     }
 
