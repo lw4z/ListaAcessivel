@@ -190,7 +190,7 @@ public class TelaEditarPerfil extends ActionBarActivity {
                     Log.i("USUARIO",json_edicao);
 
                     if (!cliente.getNome().equals("")) {
-                        link = "http://" + ip + ":8080/ListaAcessivel/EditarPerfilMobileServlet?json_edicao=" + URLEncoder.encode(json_edicao, "iso-8859-1");
+                        link = "http://" + ip + ":8080/ListaAcessivel/EditarPerfilMobileServlet?json_edicao=" + URLEncoder.encode(json_edicao, "UTF-8");
                         ConnectionHttp conection = new ConnectionHttp(TelaEditarPerfil.this);
                         conection.execute(link);
                         Log.i("CONECTION", conection.toString());

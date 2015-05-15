@@ -8,6 +8,7 @@ import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
@@ -19,6 +20,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.ExecutionException;
 
+import mobile.listaacessivel.fafica.listaacessvel.entidades.Cep;
 import mobile.listaacessivel.fafica.listaacessvel.entidades.Cliente;
 import mobile.listaacessivel.fafica.listaacessvel.entidades.Endereco;
 import mobile.listaacessivel.fafica.listaacessvel.util.ConnectionHttp;
@@ -37,6 +39,7 @@ public class TelaFormularioCadastroUsuario extends ActionBarActivity {
     private String jsonCadastro = "";
     private Gson gson;
     private String ip = ipConection.IP.toString();
+    private Cep cepAutomatico;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -70,7 +73,22 @@ public class TelaFormularioCadastroUsuario extends ActionBarActivity {
         final EditText campo_estado = (EditText) findViewById(R.id.editEstado);
         campo_estado.addTextChangedListener(Mask.insert("##", campo_estado));
 
-        //final EditText campo_email = (EditText) findViewById(R.id.editEmail);
+        Button bt_cep = (Button) findViewById(R.id.bt_buscar_cep);
+
+        bt_cep.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Cep cepPesquisa = buscarCep(campo_cep.getText().toString());
+                if(cepPesquisa != null){
+                    editCidade.setText(cepPesquisa.getCity());
+                    editEstado.setText(cepPesquisa.getState());
+                    editBairro.setText(cepPesquisa.getDistrict());
+                    editRua.setText(cepPesquisa.getAddress());
+                }
+            }
+        });
+
+
     }
 
 
@@ -139,6 +157,8 @@ public class TelaFormularioCadastroUsuario extends ActionBarActivity {
                 String cpf = editCpf.getText().toString();
                 String senha = editSenha.getText().toString();
                 String anoNascimento = editAnoNascimento.getText().toString();
+
+                String cep = editCep.getText().toString();
                 String rua = editRua.getText().toString();
                 String bairro = editBairro.getText().toString();
                 String numero = editNumero.getText().toString();
@@ -146,7 +166,7 @@ public class TelaFormularioCadastroUsuario extends ActionBarActivity {
                 String referencia = editReferencia.getText().toString();
                 String cidade = editCidade.getText().toString();
                 String estado = editEstado.getText().toString();
-                String cep = editCep.getText().toString();
+
                 String telefone1 = editTelefone1.getText().toString();
                 String telefone2 = editTelefone2.getText().toString();
 
@@ -170,7 +190,7 @@ public class TelaFormularioCadastroUsuario extends ActionBarActivity {
                     Log.i("USUARIO",jsonCadastro);
 
                         if (!cliente.getNome().equals("")) {
-                            link = "http://" + ip + ":8080/ListaAcessivel/CadastrarClienteMobileServlet?json_cadastro=" + URLEncoder.encode(jsonCadastro, "iso-8859-1");
+                            link = "http://" + ip + ":8080/ListaAcessivel/CadastrarClienteMobileServlet?json_cadastro=" + URLEncoder.encode(jsonCadastro, "UTF-8");
                             ConnectionHttp conection = new ConnectionHttp(TelaFormularioCadastroUsuario.this);
                             conection.execute(link);
                             Log.i("CONECTION", conection.toString());
@@ -210,4 +230,31 @@ public class TelaFormularioCadastroUsuario extends ActionBarActivity {
             }
         }
     }
+
+    public Cep buscarCep(String cep){
+
+        try {
+            gson = new Gson();
+
+            if (!cep.equals("")) {
+                link = "http://apps.widenet.com.br/busca-cep/api/cep/" + cep + ".json";
+                ConnectionHttp conection = new ConnectionHttp(TelaFormularioCadastroUsuario.this);
+                conection.execute(link);
+                Log.i("CONECTION", conection.toString());
+                String json = conection.get();
+                Cep cepJson = gson.fromJson(json,Cep.class);
+
+                cepAutomatico = new Cep(cepJson.getStatus(),cepJson.getCode(),cepJson.getState(),cepJson.getCity(),cepJson.getDistrict(),cepJson.getAddress());
+
+                Log.i("RESULTADOCADASTRO",String.valueOf(conection.get()));
+                Log.i("CEP",String.valueOf(cepJson));
+            }
+        }catch (InterruptedException e1) {
+            e1.printStackTrace();
+        }catch (ExecutionException e1) {
+            e1.printStackTrace();
+        }
+        return cepAutomatico;
+    }
+
 }
