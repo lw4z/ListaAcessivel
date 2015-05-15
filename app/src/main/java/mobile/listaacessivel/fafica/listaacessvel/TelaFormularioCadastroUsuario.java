@@ -209,6 +209,5 @@ public class TelaFormularioCadastroUsuario extends ActionBarActivity {
                 return;
             }
         }
-
     }
 }

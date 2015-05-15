@@ -11,14 +11,21 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import com.google.gson.Gson;
 
+import java.io.UnsupportedEncodingException;
+import java.net.URLEncoder;
 import java.util.ArrayList;
+import java.util.concurrent.ExecutionException;
 
 import mobile.listaacessivel.fafica.listaacessvel.entidades.Cliente;
 import mobile.listaacessivel.fafica.listaacessvel.entidades.Endereco;
+import mobile.listaacessivel.fafica.listaacessvel.util.ClienteSession;
+import mobile.listaacessivel.fafica.listaacessvel.util.ConnectionHttp;
 import mobile.listaacessivel.fafica.listaacessvel.util.Mask;
+import mobile.listaacessivel.fafica.listaacessvel.util.ipConection;
 
 
 public class TelaEditarPerfil extends ActionBarActivity {
@@ -26,6 +33,11 @@ public class TelaEditarPerfil extends ActionBarActivity {
     EditText editEmail, editNomeCompleto, editAnoNascimento, editCpf, editTelefone1,
             editTelefone2, editCep, editCidade, editEstado, editBairro, editRua, editNumero,
             editComplemento, editReferencia;
+    private int id_cliente;
+    private String link, senha;
+    private String ip = ipConection.IP.toString();
+    private Gson gson;
+    private String json_edicao;
     Endereco endereco;
     ArrayList<String> telefones = new ArrayList<String>();
 
@@ -45,7 +57,7 @@ public class TelaEditarPerfil extends ActionBarActivity {
 
         //Utilização de mascaras para os campos
         final EditText campo_ano_nascimento = (EditText) findViewById(R.id.editAnoNascimento);
-        campo_ano_nascimento.addTextChangedListener(Mask.insert("##/##/####", campo_ano_nascimento));
+        campo_ano_nascimento.addTextChangedListener(Mask.insert("####", campo_ano_nascimento));
 
         final EditText campo_cpf = (EditText) findViewById(R.id.editCpf);
         campo_cpf.addTextChangedListener(Mask.insert("###.###.###-##", campo_cpf));
@@ -61,30 +73,46 @@ public class TelaEditarPerfil extends ActionBarActivity {
 
         final EditText campo_email = (EditText) findViewById(R.id.editEmail);
 
+        final EditText campo_estado = (EditText) findViewById(R.id.editEstado);
+        campo_estado.addTextChangedListener(Mask.insert("##", campo_estado));
+
+        ClienteSession clienteSession = new ClienteSession();
+        Cliente cliente = clienteSession.getCliente();
+
+        id_cliente = cliente.getId_usuario();
+        senha = cliente.getSenha();
+
+        editEmail.setText(cliente.getEmail());
+        editNomeCompleto.setText(cliente.getNome());
+        editAnoNascimento.setText(cliente.getAno_nascimento());
+        editCpf.setText(cliente.getCpf());
+
+        ArrayList<String> telefones = new ArrayList<String>();
+        telefones.add(cliente.getTelefones().get(0));
+        telefones.add(cliente.getTelefones().get(1));
+
+        Endereco endereco = new Endereco(cliente.getEndereco().getRua(),
+                cliente.getEndereco().getBairro(),
+                cliente.getEndereco().getNumero(),
+                cliente.getEndereco().getComplemento(),
+                cliente.getEndereco().getReferencia(),
+                cliente.getEndereco().getCidade(),
+                cliente.getEndereco().getEstado(),
+                cliente.getEndereco().getCep());
+
+        editTelefone1.setText(telefones.get(0));
+        editTelefone2.setText(telefones.get(1));
+        editCep.setText(endereco.getCep());
+        editCidade.setText(endereco.getCidade());
+        editEstado.setText(endereco.getEstado());
+        editBairro.setText(endereco.getBairro());
+        editRua.setText(endereco.getRua());
+        editNumero.setText(endereco.getNumero());
+        editComplemento.setText(endereco.getComplemento());
+        editReferencia.setText(endereco.getReferencia());
+
+
     }
-
-
-//    @Override
-//    public boolean onCreateOptionsMenu(Menu menu) {
-//        // Inflate the menu; this adds items to the action bar if it is present.
-//        getMenuInflater().inflate(R.menu.menu_tela_editar_perfil, menu);
-//        return true;
-//    }
-//
-//    @Override
-//    public boolean onOptionsItemSelected(MenuItem item) {
-//        // Handle action bar item clicks here. The action bar will
-//        // automatically handle clicks on the Home/Up button, so long
-//        // as you specify a parent activity in AndroidManifest.xml.
-//        int id = item.getItemId();
-//
-//        //noinspection SimplifiableIfStatement
-//        if (id == R.id.action_settings) {
-//            return true;
-//        }
-//
-//        return super.onOptionsItemSelected(item);
-//    }
 
     //Inicialização de campos da tela
     public void inicializacaoObjetos(){
@@ -123,6 +151,7 @@ public class TelaEditarPerfil extends ActionBarActivity {
             public void onClick(DialogInterface arg0, int arg1) {
 
                 //Convertendo dados dos campos
+
                 String nome = editNomeCompleto.getText().toString();
                 String email = editEmail.getText().toString();
                 String cpf = editCpf.getText().toString();
@@ -143,12 +172,38 @@ public class TelaEditarPerfil extends ActionBarActivity {
                 telefones.add(telefone1);
                 telefones.add(telefone2);
 
-                Cliente cliente = new Cliente(nome,cpf,email,anoNascimento,endereco,telefones);
+                String[] campos = new String[]
+                        {nome,email,cpf,anoNascimento,rua,bairro,numero,
+                                complemento,referencia,cidade,estado,cep,telefone1,telefone2};
 
-                Gson gson = new Gson();
-                System.out.println(gson.toJson(cliente));
-                String resultado = gson.toJson(cliente);
-                Log.i("USUARIO", resultado);
+                validaCampos(campos);
+
+                try {
+                    Cliente cliente = new Cliente(nome,cpf,email,anoNascimento,endereco,telefones);
+                    cliente.setId_usuario(id_cliente);
+                    cliente.setSenha(senha);
+                    ClienteSession clienteSession = new ClienteSession(cliente);
+
+                    gson = new Gson();
+                    json_edicao = gson.toJson(cliente);
+                    json_edicao = json_edicao.replaceAll(" ","<;>");
+                    Log.i("USUARIO",json_edicao);
+
+                    if (!cliente.getNome().equals("")) {
+                        link = "http://" + ip + ":8080/ListaAcessivel/EditarPerfilMobileServlet?json_edicao=" + json_edicao;
+                        ConnectionHttp conection = new ConnectionHttp(TelaEditarPerfil.this);
+                        conection.execute(link);
+                        Log.i("CONECTION", conection.toString());
+                        conection.get();
+                        Log.i("RESULTADOCADASTRO",String.valueOf(conection.get()));
+                    }else{
+                        return;
+                    }
+                }catch (InterruptedException e1) {
+                    e1.printStackTrace();
+                }catch (ExecutionException e1) {
+                    e1.printStackTrace();
+                }
 
                 Intent it = new Intent(TelaEditarPerfil.this,TelaPerfilUsuario.class);
                 startActivity(it);
@@ -164,5 +219,14 @@ public class TelaEditarPerfil extends ActionBarActivity {
         //cria o AlertDialog e exibe na tela
         alerta = builder.create();
         alerta.show();
+    }
+
+    public void validaCampos(String[] variavel){
+        for(int i = 0; i < variavel.length; i++){
+            if(variavel[i] == null || variavel[i].equals("")){
+                Toast.makeText(this, "Existem campos vazios no formulário, favor preencher", Toast.LENGTH_LONG).show();
+                return;
+            }
+        }
     }
 }
