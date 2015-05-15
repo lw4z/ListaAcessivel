@@ -9,6 +9,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.SurfaceHolder;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
@@ -119,19 +120,22 @@ public class TelaFinalizarLista extends ActionBarActivity {
         try {
             gson = new Gson();
             Lista lista = new Lista(descricao, situacao, cliente, estabelecimento, listaProdutosSelecionados);
+           // Lista lista = new Lista();
+            //lista.setId_lista(900);
 
             json_lista = gson.toJson(lista);
-            Log.i("LISTA",String.valueOf(json_lista));
+            Log.i("LISTA",json_lista);
 
             if(listaProdutosSelecionados.size() != 0){
                 link = "http://" + ip + ":8080/ListaAcessivel/CriarListaPasso3MobileServlet?json_lista=" + json_lista;
+                Log.i("LINK",link);
 
-                ConnectionHttp conection = new ConnectionHttp(this);
+                ConnectionHttp conection = new ConnectionHttp(TelaFinalizarLista.this);
                 conection.execute(link);
                 Log.i("CONECTION", conection.toString());
 
                 String json = conection.get();
-                Log.i("RESULTADOJSON", json.toString());
+                Log.i("RESULTADOJSON", json);
 //
 //                    Gson gson2 = new Gson();
 //                    Lista listaJson = gson2.fromJson(json,Lista.class);
@@ -149,6 +153,8 @@ public class TelaFinalizarLista extends ActionBarActivity {
             e1.printStackTrace();
         }catch (ExecutionException e1) {
             e1.printStackTrace();
+        }catch (Exception e){
+            e.printStackTrace();
         }
     }
 }

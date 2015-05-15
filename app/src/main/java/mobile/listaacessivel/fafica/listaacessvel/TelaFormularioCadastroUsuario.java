@@ -13,6 +13,8 @@ import android.widget.Toast;
 
 import com.google.gson.Gson;
 
+import java.io.UnsupportedEncodingException;
+import java.net.URLEncoder;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.ExecutionException;
@@ -64,6 +66,9 @@ public class TelaFormularioCadastroUsuario extends ActionBarActivity {
 
         final EditText campo_cep = (EditText) findViewById(R.id.editCep);
         campo_cep.addTextChangedListener(Mask.insert("#####-###", campo_cep));
+
+        final EditText campo_estado = (EditText) findViewById(R.id.editEstado);
+        campo_estado.addTextChangedListener(Mask.insert("##", campo_estado));
 
         //final EditText campo_email = (EditText) findViewById(R.id.editEmail);
     }
@@ -165,7 +170,7 @@ public class TelaFormularioCadastroUsuario extends ActionBarActivity {
                     Log.i("USUARIO",jsonCadastro);
 
                         if (!cliente.getNome().equals("")) {
-                            link = "http://" + ip + ":8080/ListaAcessivel/CadastrarClienteMobileServlet?json_cadastro=" + jsonCadastro;
+                            link = "http://" + ip + ":8080/ListaAcessivel/CadastrarClienteMobileServlet?json_cadastro=" + URLEncoder.encode(jsonCadastro, "iso-8859-1");
                             ConnectionHttp conection = new ConnectionHttp(TelaFormularioCadastroUsuario.this);
                             conection.execute(link);
                             Log.i("CONECTION", conection.toString());
@@ -178,6 +183,8 @@ public class TelaFormularioCadastroUsuario extends ActionBarActivity {
                     e1.printStackTrace();
                 }catch (ExecutionException e1) {
                     e1.printStackTrace();
+                }catch (UnsupportedEncodingException e){
+                    e.printStackTrace();
                 }
                 Intent it = new Intent(TelaFormularioCadastroUsuario.this,TelaLogin.class);
                 startActivity(it);
