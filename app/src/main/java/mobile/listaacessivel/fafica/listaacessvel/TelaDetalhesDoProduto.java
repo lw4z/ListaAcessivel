@@ -17,6 +17,7 @@ import android.widget.TextView;
 import java.util.ArrayList;
 
 import mobile.listaacessivel.fafica.listaacessvel.entidades.Produto;
+import mobile.listaacessivel.fafica.listaacessvel.util.ArrayListProdutosSelecionadosSession;
 import mobile.listaacessivel.fafica.listaacessvel.util.ArrayListProdutosSession;
 import mobile.listaacessivel.fafica.listaacessvel.util.ProdutoSession;
 
@@ -27,7 +28,6 @@ public class TelaDetalhesDoProduto extends ActionBarActivity {
     EditText quantidadeProduto;
     TextView txtNomeProduto, txtMarcaProduto, txtValidadeProduto, txtValorProduto, txtNomeEstabelecimento;
     ProdutoSession produtoSession = new ProdutoSession();
-    //Produto produto;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -113,11 +113,14 @@ public class TelaDetalhesDoProduto extends ActionBarActivity {
         Intent it = new Intent(this,TelaCriarListaPasso3.class);
         int quantidade = Integer.parseInt(quantidadeProduto.getText().toString());
 
+
+
         ProdutoSession produtoSession = new ProdutoSession();
         Produto produto = produtoSession.getProduto();
-
         produto.setSelecionado(true);
         produto.setQuantidade(quantidade);
+
+
 
         setProduto(produto);
 
@@ -144,7 +147,7 @@ public class TelaDetalhesDoProduto extends ActionBarActivity {
                 produto.setSelecionado(false);
                 produto.setQuantidade(0);
                 setProduto(produto);
-                //it.putExtra("selecao",true);
+
                 startActivity(it);
                 finish();
             }
@@ -179,5 +182,6 @@ public class TelaDetalhesDoProduto extends ActionBarActivity {
             }
         }
         listaProdutosJson = new ArrayListProdutosSession(lista);
+        ArrayListProdutosSelecionadosSession listProdutosSession = new ArrayListProdutosSelecionadosSession(lista);
     }
 }

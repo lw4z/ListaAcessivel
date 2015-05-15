@@ -23,6 +23,7 @@ import mobile.listaacessivel.fafica.listaacessvel.entidades.Cliente;
 import mobile.listaacessivel.fafica.listaacessvel.entidades.Estabelecimento;
 import mobile.listaacessivel.fafica.listaacessvel.entidades.Lista;
 import mobile.listaacessivel.fafica.listaacessvel.entidades.Produto;
+import mobile.listaacessivel.fafica.listaacessvel.util.ArrayListProdutosSelecionadosSession;
 import mobile.listaacessivel.fafica.listaacessvel.util.ArrayListProdutosSession;
 import mobile.listaacessivel.fafica.listaacessvel.util.ClienteSession;
 import mobile.listaacessivel.fafica.listaacessvel.util.ConnectionHttp;
@@ -106,7 +107,7 @@ public class TelaFinalizarLista extends ActionBarActivity {
             EstabelecimentoSession estabelecimentoSession = new EstabelecimentoSession();
             Estabelecimento estabelecimento = estabelecimentoSession.getEstabelecimento();
 
-            ArrayListProdutosSession listaProdutosJson = new ArrayListProdutosSession();
+            ArrayListProdutosSelecionadosSession listaProdutosJson = new ArrayListProdutosSelecionadosSession();
 
             ArrayList<Produto> listaProdutos = listaProdutosJson.getListaProdutos();
             ArrayList<Produto> listaProdutosSelecionados = new ArrayList<Produto>();
@@ -124,6 +125,7 @@ public class TelaFinalizarLista extends ActionBarActivity {
             //lista.setId_lista(900);
 
             json_lista = gson.toJson(lista);
+            json_lista = json_lista.replaceAll(" ",";");
             Log.i("LISTA",json_lista);
 
             if(listaProdutosSelecionados.size() != 0){
@@ -136,15 +138,15 @@ public class TelaFinalizarLista extends ActionBarActivity {
 
                 String json = conection.get();
                 Log.i("RESULTADOJSON", json);
-//
-//                    Gson gson2 = new Gson();
-//                    Lista listaJson = gson2.fromJson(json,Lista.class);
-//
-//                    ListaSession listaSession = new ListaSession(listaJson);
-//                    Log.i("LISTASESSAO1",String.valueOf(listaSession));
 
-//                    startActivity(it);
-//                    finish();
+                    Gson gson2 = new Gson();
+                    Lista listaJson = gson2.fromJson(json,Lista.class);
+
+                    ListaSession listaSession = new ListaSession(listaJson);
+                    Log.i("LISTASESSAO1",String.valueOf(listaSession));
+
+                    startActivity(it);
+                    finish();
             }else{
                 Toast.makeText(this,"Não foi selecionado nenhum produto!", Toast.LENGTH_LONG).show();
                 return;
