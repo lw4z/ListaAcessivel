@@ -120,7 +120,7 @@ public class TelaFinalizarLista extends ActionBarActivity {
 
         try {
             gson = new Gson();
-            cliente.setSenha("");
+
             Lista lista = new Lista(descricao, situacao, cliente, estabelecimento, listaProdutosSelecionados);
            // Lista lista = new Lista();
             //lista.setId_lista(900);
