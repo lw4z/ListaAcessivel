@@ -288,7 +288,7 @@ public class TelaCriarListaPasso3 extends ActionBarActivity {
 
     //Método dos Botões
     public void concluirLista(View view){
-        getMessage("Deseja realmente finalizar a criação da lista?");
+        getMessage("Deseja realmente concluir a criação da lista?");
     }
 
     //Método de mensagem
