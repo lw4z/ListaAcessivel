@@ -119,7 +119,6 @@ public class TelaDetalhesDoProduto extends ActionBarActivity {
                 produto.setSelecionado(false);
                 produto.setQuantidade(0);
                 setProduto(produto);
-
                 startActivity(it);
                 finish();
             }

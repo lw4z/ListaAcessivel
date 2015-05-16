@@ -80,8 +80,7 @@ public class TelaCriarListaPasso3 extends ActionBarActivity {
         int id_estabelecimento = getIntent().getIntExtra("id_estabelecimento", 0);
         Log.i("IDESTABELECIMENTO: ", String.valueOf(id_estabelecimento));
 
-        String json = getIntent().getStringExtra("listaProdutos");
-
+        //String json = getIntent().getStringExtra("listaProdutos");
 
         ArrayListProdutosSession listaProdutosJson = new ArrayListProdutosSession();
 

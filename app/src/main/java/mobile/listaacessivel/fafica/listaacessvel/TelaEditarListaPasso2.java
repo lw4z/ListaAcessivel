@@ -16,19 +16,34 @@ import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
+
+import com.google.gson.Gson;
 
 import java.util.ArrayList;
+import java.util.concurrent.ExecutionException;
 
 import mobile.listaacessivel.fafica.listaacessvel.adapters.MyArrayAdapterCriarListaPasso3;
+import mobile.listaacessivel.fafica.listaacessvel.entidades.Cliente;
+import mobile.listaacessivel.fafica.listaacessvel.entidades.Estabelecimento;
+import mobile.listaacessivel.fafica.listaacessvel.entidades.Lista;
 import mobile.listaacessivel.fafica.listaacessvel.entidades.Produto;
 import mobile.listaacessivel.fafica.listaacessvel.util.Acentuacao;
+import mobile.listaacessivel.fafica.listaacessvel.util.ArrayListProdutosSelecionadosSession;
+import mobile.listaacessivel.fafica.listaacessvel.util.ArrayListProdutosSession;
+import mobile.listaacessivel.fafica.listaacessvel.util.ClienteSession;
+import mobile.listaacessivel.fafica.listaacessvel.util.ConnectionHttp;
+import mobile.listaacessivel.fafica.listaacessvel.util.EstabelecimentoSession;
+import mobile.listaacessivel.fafica.listaacessvel.util.ListaSession;
+import mobile.listaacessivel.fafica.listaacessvel.util.ProdutoSession;
+import mobile.listaacessivel.fafica.listaacessvel.util.SituacaoLista;
+import mobile.listaacessivel.fafica.listaacessvel.util.ipConection;
 
 
 public class TelaEditarListaPasso2 extends ActionBarActivity {
 
     ListView listaProdutos;
     MyArrayAdapterCriarListaPasso3 adapter;
-    EditText editProcurar, quantidadeProduto;
     ArrayList<Produto> produtos = new ArrayList<Produto>();
     ArrayList<Produto> produtosPesquisa = new ArrayList<Produto>();
     ArrayList<Produto> produtosTemporarios = new ArrayList<Produto>();
@@ -38,8 +53,11 @@ public class TelaEditarListaPasso2 extends ActionBarActivity {
     private int noOfBtns;
     private Button[] btns;
     boolean flag = false;
-    public int TOTAL_LIST_ITEMS = 8;
+    public int TOTAL_LIST_ITEMS;
     public int NUM_ITEMS_PAGE   = 3;
+    private String link, json_lista;
+    private String ip = ipConection.IP.toString();
+    Gson gson;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -54,12 +72,18 @@ public class TelaEditarListaPasso2 extends ActionBarActivity {
         this.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
 
         //Declaração de itens da tela
-        listaProdutos = (ListView) findViewById(R.id.listViewProdutos);
-        txtNomeProduto = (TextView) findViewById(R.id.campoPesquisaProduto);
-        btPesquisar = (Button) findViewById(R.id.btPesquisarProduto);
-        layout = (LinearLayout) findViewById(R.id.buttonLayout);
+        inicializacao();
 
-         Log.i("TAMANHOPRODUTOS",String.valueOf(produtos.size()));
+        ArrayListProdutosSession listaProdutosJson = new ArrayListProdutosSession();
+
+        produtos = listaProdutosJson.getListaProdutos();
+
+        TOTAL_LIST_ITEMS = produtos.size();
+        Produto p = produtos.get(0);
+        Log.e("Metodo TesteGson", p.getDescricao() + ", " + p.getValidade());
+
+
+        Log.i("TAMANHOPRODUTOS",String.valueOf(produtos.size()));
 
         //Carregamento da lista de produtos inicial
         if(produtos != null) {
@@ -137,9 +161,10 @@ public class TelaEditarListaPasso2 extends ActionBarActivity {
 
                     Intent intent = new Intent(view.getContext(), TelaDetalhesDoProdutoEditar2.class);
 
-                    intent.putExtra("id_produto",(produtos.get(position).getId_produto()));
-                    intent.putExtra("selecao",(produtos.get(position).isSelecionado()));
-                    Log.i("PRODUTO: ",String.valueOf(produtos.get(position).getId_produto()));
+                    Produto produto = produtosTemporarios.get(position);
+
+                    ProdutoSession produtoSession = new ProdutoSession(produto);
+
                     startActivity(intent);
                 }
             });
@@ -273,8 +298,70 @@ public class TelaEditarListaPasso2 extends ActionBarActivity {
         builder.setPositiveButton("Sim", new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface arg0, int arg1) {
                 Intent it = new Intent(TelaEditarListaPasso2.this,TelaMinhasListas.class);
-                startActivity(it);
-                finish();
+
+                ListaSession listaSession = new ListaSession();
+                Lista lista = listaSession.getLista();
+
+                String descricao = lista.getDescricao();
+                String situacao = SituacaoLista.CRIADA.toString();
+
+                ClienteSession clienteSession = new ClienteSession();
+                Cliente cliente = clienteSession.getCliente();
+
+                EstabelecimentoSession estabelecimentoSession = new EstabelecimentoSession();
+                Estabelecimento estabelecimento = estabelecimentoSession.getEstabelecimento();
+
+                ArrayListProdutosSelecionadosSession listaProdutosJson = new ArrayListProdutosSelecionadosSession();
+
+                ArrayList<Produto> listaProdutos = listaProdutosJson.getListaProdutos();
+                ArrayList<Produto> listaProdutosSelecionados = new ArrayList<Produto>();
+
+                for(Produto p : listaProdutos){
+                    if(p.isSelecionado()){
+                        listaProdutosSelecionados.add(p);
+                    }
+                }
+
+                try {
+                    gson = new Gson();
+
+                    Lista listaAtualizada = new Lista(descricao, situacao, cliente, estabelecimento, listaProdutosSelecionados);
+
+                    json_lista = gson.toJson(listaAtualizada);
+                    Log.i("LISTA ANTES REPLACE",json_lista);
+                    json_lista = json_lista.replaceAll(" ","<;>");
+                    Log.i("LISTA",json_lista);
+
+                    if(listaProdutosSelecionados.size() != 0){
+                        link = "http://" + ip + ":8080/ListaAcessivel/EditarListaPasso1MobileServlet?json_lista=" + json_lista;
+                        Log.i("LINK",link);
+
+                        ConnectionHttp conection = new ConnectionHttp(TelaEditarListaPasso2.this);
+                        conection.execute(link);
+                        Log.i("CONECTION", conection.toString());
+
+                        String json = conection.get();
+                        Log.i("RESULTADOJSON", json);
+
+                        Gson gson2 = new Gson();
+                        Lista listaJson = gson2.fromJson(json,Lista.class);
+
+                        ListaSession listaSessionAtualizada = new ListaSession(listaJson);
+                        Log.i("LISTASESSAO1",String.valueOf(listaSessionAtualizada));
+                        startActivity(it);
+                        finish();
+                    }else{
+                        Toast.makeText(TelaEditarListaPasso2.this, "Não foi selecionado nenhum produto!", Toast.LENGTH_LONG).show();
+                        return;
+                    }
+                }catch (InterruptedException e1) {
+                    e1.printStackTrace();
+                }catch (ExecutionException e1) {
+                    e1.printStackTrace();
+                }catch (Exception e){
+                    e.printStackTrace();
+                }
+
             }
         });
         //define um botão como negativo.
@@ -286,5 +373,12 @@ public class TelaEditarListaPasso2 extends ActionBarActivity {
         //cria o AlertDialog e exibe na tela
         alerta = builder.create();
         alerta.show();
+    }
+
+    public void inicializacao(){
+        listaProdutos = (ListView) findViewById(R.id.listViewProdutos);
+        txtNomeProduto = (TextView) findViewById(R.id.campoPesquisaProduto);
+        btPesquisar = (Button) findViewById(R.id.btPesquisarProduto);
+        layout = (LinearLayout) findViewById(R.id.buttonLayout);
     }
 }

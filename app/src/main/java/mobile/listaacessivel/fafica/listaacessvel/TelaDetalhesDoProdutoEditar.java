@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -16,6 +17,7 @@ import android.widget.TextView;
 import java.util.ArrayList;
 
 import mobile.listaacessivel.fafica.listaacessvel.entidades.Produto;
+import mobile.listaacessivel.fafica.listaacessvel.util.ArrayListProdutosEditarSession;
 import mobile.listaacessivel.fafica.listaacessvel.util.ArrayListProdutosSelecionadosSession;
 import mobile.listaacessivel.fafica.listaacessvel.util.ArrayListProdutosSession;
 import mobile.listaacessivel.fafica.listaacessvel.util.ProdutoSession;
@@ -75,6 +77,16 @@ public class TelaDetalhesDoProdutoEditar extends ActionBarActivity {
     //Métodos dos botões
     public void adicionarProdutoLista(View view){
         Intent it = new Intent(this,TelaEditarListaPasso1.class);
+        int quantidade = Integer.parseInt(quantidadeProduto.getText().toString());
+
+        ProdutoSession produtoSession = new ProdutoSession();
+        Produto produto = produtoSession.getProduto();
+        produto.setSelecionado(true);
+        produto.setQuantidade(quantidade);
+
+        setProduto(produto);
+
+        Log.i("QUANTIDADEPRODUTO", String.valueOf(quantidade));
         startActivity(it);
         finish();
     }
@@ -82,29 +94,29 @@ public class TelaDetalhesDoProdutoEditar extends ActionBarActivity {
     //Métodos de mensagem
     public AlertDialog alerta;
 
-    public void getMessage(String mensagem) {
-        AlertDialog.Builder builder = new AlertDialog.Builder(this);
-
-        //builder.setTitle(titulo);
-        builder.setMessage(mensagem);
-        //define um botão como positivo
-        builder.setPositiveButton("Sim", new DialogInterface.OnClickListener() {
-            public void onClick(DialogInterface arg0, int arg1) {
-                Intent it = new Intent(TelaDetalhesDoProdutoEditar.this,TelaEditarListaPasso1.class);
-                startActivity(it);
-                finish();
-            }
-        });
-        //define um botão como negativo.
-        builder.setNegativeButton("Não", new DialogInterface.OnClickListener() {
-            public void onClick(DialogInterface arg0, int arg1) {
-                return;
-            }
-        });
-        //cria o AlertDialog e exibe na tela
-        alerta = builder.create();
-        alerta.show();
-    }
+//    public void getMessage(String mensagem) {
+//        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+//
+//        //builder.setTitle(titulo);
+//        builder.setMessage(mensagem);
+//        //define um botão como positivo
+//        builder.setPositiveButton("Sim", new DialogInterface.OnClickListener() {
+//            public void onClick(DialogInterface arg0, int arg1) {
+//                Intent it = new Intent(TelaDetalhesDoProdutoEditar.this,TelaEditarListaPasso1.class);
+//                startActivity(it);
+//                finish();
+//            }
+//        });
+//        //define um botão como negativo.
+//        builder.setNegativeButton("Não", new DialogInterface.OnClickListener() {
+//            public void onClick(DialogInterface arg0, int arg1) {
+//                return;
+//            }
+//        });
+//        //cria o AlertDialog e exibe na tela
+//        alerta = builder.create();
+//        alerta.show();
+//    }
 
     public void getMessageRemover(String mensagem) {
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
@@ -115,6 +127,15 @@ public class TelaDetalhesDoProdutoEditar extends ActionBarActivity {
         builder.setPositiveButton("Sim", new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface arg0, int arg1) {
                 Intent it = new Intent(TelaDetalhesDoProdutoEditar.this,TelaEditarListaPasso1.class);
+                ProdutoSession produtoSession = new ProdutoSession();
+                Produto produto = produtoSession.getProduto();
+
+                Log.i("PRODUTO",String.valueOf(produto.isSelecionado()));
+                Log.i("PRODUTO",produto.getDescricao());
+
+                produto.setSelecionado(false);
+                produto.setQuantidade(0);
+                setProduto(produto);
                 startActivity(it);
                 finish();
             }
@@ -140,15 +161,19 @@ public class TelaDetalhesDoProdutoEditar extends ActionBarActivity {
     }
 
     public void setProduto(Produto produto){
-        ArrayListProdutosSession listaProdutosJson = new ArrayListProdutosSession();
-        ArrayList<Produto> lista = listaProdutosJson.getListaProdutos();
+        ArrayListProdutosEditarSession listaProdutosSession = new ArrayListProdutosEditarSession();
+        ArrayList<Produto> lista = listaProdutosSession.getListaProdutos();
+
+        Log.i("LISTA",String.valueOf(lista.size()));
+        Log.i("PRODUTO",produto.getDescricao());
+
 
         for(int i = 0; i < lista.size(); i++){
             if(produto.getId_produto() == lista.get(i).getId_produto()){
                 lista.set(i,produto);
             }
         }
-        listaProdutosJson = new ArrayListProdutosSession(lista);
+        listaProdutosSession = new ArrayListProdutosEditarSession(lista);
         ArrayListProdutosSelecionadosSession listProdutosSession = new ArrayListProdutosSelecionadosSession(lista);
     }
 }
