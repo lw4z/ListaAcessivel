@@ -55,12 +55,8 @@ public class TelaEditarListaPasso1 extends ActionBarActivity {
         //A janela da aplicação deverá ficar apenas no formato vertical
         this.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
 
-
         //Declaração de itens da tela
-        listaProdutos = (ListView) findViewById(R.id.listViewProdutos);
-        txtNomeProduto = (TextView) findViewById(R.id.campoPesquisaProduto);
-        btPesquisar = (Button) findViewById(R.id.btPesquisarProduto);
-        layout = (LinearLayout) findViewById(R.id.buttonLayout);
+        inicializacao();
 
         ArrayListProdutosEditarSession listaProdutosSession = new ArrayListProdutosEditarSession();
 
@@ -326,6 +322,13 @@ public class TelaEditarListaPasso1 extends ActionBarActivity {
         //cria o AlertDialog e exibe na tela
         alerta = builder.create();
         alerta.show();
+    }
+
+    public void inicializacao(){
+        listaProdutos = (ListView) findViewById(R.id.listViewProdutos);
+        txtNomeProduto = (TextView) findViewById(R.id.campoPesquisaProduto);
+        btPesquisar = (Button) findViewById(R.id.btPesquisarProduto);
+        layout = (LinearLayout) findViewById(R.id.buttonLayout);
     }
 
 }

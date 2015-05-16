@@ -66,6 +66,7 @@
     <string name="bt_imprimir">Imprimir</string>
     <string name="bt_confirmar_solicitar_entrega">Confirmar Solicitação</string>
     <string name="bt_solicitar_entrega">Solicitar</string>
+    <string name="bt_remover_lista">Remover</string>
     <string name="bt_solicitar_entrega_completo">Solicitar Entrega ao estabelecimento</string>
     <string name="bt_confirmar_cadastro">Confirmar Cadastro</string>
     <string name="bt_limpar">Limpar</string>

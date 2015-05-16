@@ -206,6 +206,13 @@
             android:onClick="solicitarEntrega"
             android:text="@string/bt_solicitar_entrega" />
 
+        <Button
+            android:id="@+id/btRemoverLista"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="removerLista"
+            android:text="@string/bt_remover_lista" />
+
     </LinearLayout>
 
 </LinearLayout>

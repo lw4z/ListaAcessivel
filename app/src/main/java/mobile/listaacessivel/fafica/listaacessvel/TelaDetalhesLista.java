@@ -90,10 +90,38 @@ public class TelaDetalhesLista extends ActionBarActivity {
         getMessage("Deseja realmente solicitar a entrega da lista?");
     }
 
+    public void removerLista(View view){
+        getMessageRemover("Deseja realmente remover esta lista?");
+    }
+
     //Método de mensagem
     public AlertDialog alerta;
 
     public void getMessage(String mensagem) {
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+
+        //builder.setTitle(titulo);
+        builder.setMessage(mensagem);
+        //define um botão como positivo
+        builder.setPositiveButton("Sim", new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface arg0, int arg1) {
+                Intent it = new Intent(TelaDetalhesLista.this,TelaMinhasListas.class);
+                startActivity(it);
+                finish();
+            }
+        });
+        //define um botão como negativo.
+        builder.setNegativeButton("Não", new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface arg0, int arg1) {
+                return;
+            }
+        });
+        //cria o AlertDialog e exibe na tela
+        alerta = builder.create();
+        alerta.show();
+    }
+
+    public void getMessageRemover(String mensagem) {
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
 
         //builder.setTitle(titulo);
