@@ -359,7 +359,7 @@ public class TelaEditarListaPasso1 extends ActionBarActivity {
                     json_lista = json_lista.replaceAll(" ","<;>");
                     Log.i("LISTA",json_lista);
 
-                    link = "http://" + ip + ":8080/ListaAcessivel/EditarListaPasso1?json_lista=" + URLEncoder.encode(json_lista, "UTF-8");
+                    link = "http://" + ip + ":8080/ListaAcessivel/EditarListaPasso1MobileServlet?json_lista=" + URLEncoder.encode(json_lista, "UTF-8");
                     Log.i("LINK",link);
 
                     ConnectionHttp conection = new ConnectionHttp(TelaEditarListaPasso1.this);
@@ -456,7 +456,7 @@ public class TelaEditarListaPasso1 extends ActionBarActivity {
             Log.i("LISTA",json_lista);
 
             if(listaProdutosSelecionados.size() != 0){
-                link = "http://" + ip + ":8080/ListaAcessivel/EditarListaPasso1?json_lista=" + URLEncoder.encode(json_lista, "UTF-8");
+                link = "http://" + ip + ":8080/ListaAcessivel/EditarListaPasso1MobileServlet?json_lista=" + URLEncoder.encode(json_lista, "UTF-8");
                 Log.i("LINK",link);
 
                 ConnectionHttp conection = new ConnectionHttp(TelaEditarListaPasso1.this);
@@ -493,7 +493,7 @@ public class TelaEditarListaPasso1 extends ActionBarActivity {
         id_lista = lista.getId_lista();
 
         try {
-            link = "http://" + ip + ":8080/ListaAcessivel/EditarListaPasso2?id_lista=" + id_lista;
+            link = "http://" + ip + ":8080/ListaAcessivel/EditarListaPasso2MobileServlet?id_lista=" + id_lista;
 
             ConnectionHttp conection = new ConnectionHttp(TelaEditarListaPasso1.this);
             conection.execute(link);

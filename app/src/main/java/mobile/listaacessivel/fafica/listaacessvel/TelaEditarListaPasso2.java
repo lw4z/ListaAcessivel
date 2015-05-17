@@ -379,7 +379,7 @@ public class TelaEditarListaPasso2 extends ActionBarActivity {
                 json_lista = json_lista.replaceAll(" ", "<;>");
                 Log.i("LISTA",json_lista);
 
-                link = "http://" + ip + ":8080/ListaAcessivel/EditarListaPasso1?json_lista=" + URLEncoder.encode(json_lista, "UTF-8");
+                link = "http://" + ip + ":8080/ListaAcessivel/EditarListaPasso1MobileServlet?json_lista=" + URLEncoder.encode(json_lista, "UTF-8");
                 Log.i("LINK",link);
 
                 ConnectionHttp conection = new ConnectionHttp(TelaEditarListaPasso2.this);
