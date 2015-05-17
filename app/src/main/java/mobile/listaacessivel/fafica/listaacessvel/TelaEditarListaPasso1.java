@@ -30,6 +30,7 @@ import mobile.listaacessivel.fafica.listaacessvel.entidades.Estabelecimento;
 import mobile.listaacessivel.fafica.listaacessvel.entidades.Lista;
 import mobile.listaacessivel.fafica.listaacessvel.entidades.Produto;
 import mobile.listaacessivel.fafica.listaacessvel.util.Acentuacao;
+import mobile.listaacessivel.fafica.listaacessvel.util.ArrayListProdutosAdicionados;
 import mobile.listaacessivel.fafica.listaacessvel.util.ArrayListProdutosEditarSession;
 import mobile.listaacessivel.fafica.listaacessvel.util.ArrayListProdutosSelecionadosSession;
 import mobile.listaacessivel.fafica.listaacessvel.util.ArrayListProdutosSession;
@@ -56,7 +57,7 @@ public class TelaEditarListaPasso1 extends ActionBarActivity {
     private Button[] btns;
     boolean flag = false;
     public int TOTAL_LIST_ITEMS;
-    public int NUM_ITEMS_PAGE   = 3;
+    public int NUM_ITEMS_PAGE = 3;
     private int id_lista;
     private String link, json_lista;
     private String ip = ipConection.IP.toString();
@@ -304,7 +305,7 @@ public class TelaEditarListaPasso1 extends ActionBarActivity {
         //define um botão como positivo
         builder.setPositiveButton("Sim", new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface arg0, int arg1) {
-                Intent it = new Intent(TelaEditarListaPasso1.this,TelaMinhasListas.class);
+                Intent it = new Intent(TelaEditarListaPasso1.this,TelaDetalhesLista.class);
                 ListaSession listaSession = new ListaSession();
                 Lista lista = listaSession.getLista();
 
@@ -323,26 +324,29 @@ public class TelaEditarListaPasso1 extends ActionBarActivity {
                 ArrayListProdutosSelecionadosSession listaProdutosJson = new ArrayListProdutosSelecionadosSession();
                 ArrayList<Produto> listaProdutosModificados = listaProdutosJson.getListaProdutos();
 
-                //Produtos da lista da sessão
-//                ArrayListProdutosEditarSession listaProdutosJsonSessao = new ArrayListProdutosEditarSession();
-//                ArrayList<Produto> listaProdutosSessao = listaProdutosJsonSessao.getListaProdutos();
-
                 //Lista de produtos final
                 ArrayList<Produto> listaProdutosSelecionados = new ArrayList<Produto>();
 
+                Log.i("TAMANHOSELECIONADOS",String.valueOf(listaProdutosSelecionados.size()));
+                Log.i("TAMANHOTEMPORARIOS",String.valueOf(produtosTemporarios.size()));
+               // Log.i("TAMANHOMODIFICADOS",String.valueOf(listaProdutosModificados.size()));
 
                 //Comparação de diferencas entre as listas de produtos
-                for(int i = 0; i < produtos.size(); i++){
-                    if(produtosTemporarios.get(i).getId_produto() == listaProdutosModificados.get(i).getId_produto() && listaProdutosModificados.get(i).isSelecionado() == true){
-                        listaProdutosSelecionados.add(listaProdutosModificados.get(i));
-                        if(produtosTemporarios.get(i).getId_produto() != listaProdutosModificados.get(i).getId_produto()){
+                for(int i = 0; i < produtosTemporarios.size(); i++){
+                    if(listaProdutosModificados != null) {
+                        if (produtosTemporarios.get(i).getId_produto() == listaProdutosModificados.get(i).getId_produto() && listaProdutosModificados.get(i).isSelecionado() == true) {
+                            listaProdutosSelecionados.add(listaProdutosModificados.get(i));
+                        }
+                        if (produtosTemporarios.get(i).getId_produto() != listaProdutosModificados.get(i).getId_produto()) {
                             listaProdutosSelecionados.add(produtosTemporarios.get(i));
                         }
+                    }else{
+                        listaProdutosSelecionados.add(produtosTemporarios.get(i));
                     }
                 }
 
                 Log.i("TAMANHOSELECIONADOS",String.valueOf(listaProdutosSelecionados.size()));
-
+                Log.i("TAMANHOTEMPORARIOS",String.valueOf(produtosTemporarios.size()));
 
                 try {
                     gson = new Gson();
@@ -354,28 +358,24 @@ public class TelaEditarListaPasso1 extends ActionBarActivity {
                     json_lista = json_lista.replaceAll(" ","<;>");
                     Log.i("LISTA",json_lista);
 
-                    if(listaProdutosSelecionados.size() != 0){
-                        link = "http://" + ip + ":8080/ListaAcessivel/EditarListaPasso1?json_lista=" + URLEncoder.encode(json_lista, "UTF-8");
-                        Log.i("LINK",link);
+                    link = "http://" + ip + ":8080/ListaAcessivel/EditarListaPasso1?json_lista=" + URLEncoder.encode(json_lista, "UTF-8");
+                    Log.i("LINK",link);
 
-                        ConnectionHttp conection = new ConnectionHttp(TelaEditarListaPasso1.this);
-                        conection.execute(link);
-                        Log.i("CONECTION", conection.toString());
+                    ConnectionHttp conection = new ConnectionHttp(TelaEditarListaPasso1.this);
+                    conection.execute(link);
+                    Log.i("CONECTION", conection.toString());
 
-                        String json = conection.get();
-                        Log.i("RESULTADOJSON", json);
+                    String json = conection.get();
+                    Log.i("RESULTADOJSON", json);
 
-                        Gson gson2 = new Gson();
-                        Lista listaJson = gson2.fromJson(json,Lista.class);
+                    Gson gson2 = new Gson();
+                    Lista listaJson = gson2.fromJson(json,Lista.class);
 
-                        ListaSession listaSessionAtualizada = new ListaSession(listaJson);
-                        Log.i("LISTASESSAO1",String.valueOf(listaSessionAtualizada));
-                        startActivity(it);
-                        finish();
-                    }else{
-                        Toast.makeText(TelaEditarListaPasso1.this, "Não foi selecionado nenhum produto!", Toast.LENGTH_LONG).show();
-                        return;
-                    }
+                    ListaSession listaSessionAtualizada = new ListaSession(listaJson);
+                    Log.i("LISTASESSAO1",String.valueOf(listaSessionAtualizada));
+                    startActivity(it);
+                    finish();
+
                 }catch (InterruptedException e1) {
                     e1.printStackTrace();
                 }catch (ExecutionException e1) {
@@ -409,6 +409,8 @@ public class TelaEditarListaPasso1 extends ActionBarActivity {
         ListaSession listaSession = new ListaSession();
         Lista lista = listaSession.getLista();
 
+        int id_lista = lista.getId_lista();
+
         String descricao = lista.getDescricao();
         String situacao = SituacaoLista.CRIADA.toString();
 
@@ -418,21 +420,34 @@ public class TelaEditarListaPasso1 extends ActionBarActivity {
         //EstabelecimentoSession estabelecimentoSession = new EstabelecimentoSession();
         Estabelecimento estabelecimento = lista.getEstabelecimento();
 
+        //Produtos modificados na tela de detalhes
         ArrayListProdutosSelecionadosSession listaProdutosJson = new ArrayListProdutosSelecionadosSession();
+        ArrayList<Produto> listaProdutosModificados = listaProdutosJson.getListaProdutos();
 
-        ArrayList<Produto> listaProdutos = listaProdutosJson.getListaProdutos();
+        //Lista de produtos final
         ArrayList<Produto> listaProdutosSelecionados = new ArrayList<Produto>();
 
-        for(Produto p : listaProdutos){
-            if(p.isSelecionado()){
-                listaProdutosSelecionados.add(p);
+        for(int i = 0; i < produtosTemporarios.size(); i++){
+            if(listaProdutosModificados != null) {
+                if (produtosTemporarios.get(i).getId_produto() == listaProdutosModificados.get(i).getId_produto() && listaProdutosModificados.get(i).isSelecionado() == true) {
+                    listaProdutosSelecionados.add(listaProdutosModificados.get(i));
+                }
+                if (produtosTemporarios.get(i).getId_produto() != listaProdutosModificados.get(i).getId_produto()) {
+                    listaProdutosSelecionados.add(produtosTemporarios.get(i));
+                }
+            }else{
+                listaProdutosSelecionados.add(produtosTemporarios.get(i));
             }
         }
+
+        Log.i("TAMANHOSELECIONADOS",String.valueOf(listaProdutosSelecionados.size()));
+
+        ArrayListProdutosAdicionados produtosAdicionados = new ArrayListProdutosAdicionados(listaProdutosSelecionados);
 
         try {
             gson = new Gson();
 
-            Lista listaAtualizada = new Lista(descricao, situacao, cliente, estabelecimento, listaProdutosSelecionados);
+            Lista listaAtualizada = new Lista(id_lista, descricao, situacao, cliente, estabelecimento, listaProdutosSelecionados);
 
             json_lista = gson.toJson(listaAtualizada);
             Log.i("LISTA ANTES REPLACE",json_lista);
@@ -440,7 +455,7 @@ public class TelaEditarListaPasso1 extends ActionBarActivity {
             Log.i("LISTA",json_lista);
 
             if(listaProdutosSelecionados.size() != 0){
-                link = "http://" + ip + ":8080/ListaAcessivel/EditarListaPasso1MobileServlet?json_lista=" + json_lista;
+                link = "http://" + ip + ":8080/ListaAcessivel/EditarListaPasso1?json_lista=" + URLEncoder.encode(json_lista, "UTF-8");
                 Log.i("LINK",link);
 
                 ConnectionHttp conection = new ConnectionHttp(TelaEditarListaPasso1.this);
@@ -448,16 +463,15 @@ public class TelaEditarListaPasso1 extends ActionBarActivity {
                 Log.i("CONECTION", conection.toString());
 
                 String json = conection.get();
-                Log.i("RESULTADOJSON", json);
+                Log.i("RESULTADOJSONPasso1", json);
 
                 Gson gson2 = new Gson();
                 Lista listaJson = gson2.fromJson(json,Lista.class);
 
                 ListaSession listaSessionAtualizada = new ListaSession(listaJson);
                 Log.i("LISTASESSAO1",String.valueOf(listaSessionAtualizada));
-
             }else{
-                Toast.makeText(this, "Não foi selecionado nenhum produto!", Toast.LENGTH_LONG).show();
+                Toast.makeText(TelaEditarListaPasso1.this, "Não foi selecionado nenhum produto!", Toast.LENGTH_LONG).show();
                 return;
             }
         }catch (InterruptedException e1) {
@@ -477,16 +491,17 @@ public class TelaEditarListaPasso1 extends ActionBarActivity {
 
         id_lista = lista.getId_lista();
 
-        link = "http://" + ip + ":8080/ListaAcessivel/EditarListaPasso2MobileServlet?id_lista=" + id_lista;
-
-        ConnectionHttp conection = new ConnectionHttp(TelaEditarListaPasso1.this);
-        conection.execute(link);
-
-        Log.i("CONECTION",conection.toString());
-
         try {
+            link = "http://" + ip + ":8080/ListaAcessivel/EditarListaPasso2?id_lista=" + id_lista;
+
+            ConnectionHttp conection = new ConnectionHttp(TelaEditarListaPasso1.this);
+            conection.execute(link);
+
+            Log.i("CONECTION",conection.toString());
+
+
             String json = conection.get();
-            Log.i("RESULTADOJSON",json.toString());
+            Log.i("RESULTADOListaPasso2",json.toString());
             ArrayListProdutosSession listaProdutos = new ArrayListProdutosSession(converteArray(json));
 
             startActivity(it);

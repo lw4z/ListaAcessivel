@@ -17,6 +17,7 @@ import android.widget.TextView;
 import java.util.ArrayList;
 
 import mobile.listaacessivel.fafica.listaacessvel.entidades.Produto;
+import mobile.listaacessivel.fafica.listaacessvel.util.ArrayListProdutosEditarSession;
 import mobile.listaacessivel.fafica.listaacessvel.util.ArrayListProdutosSelecionadosSession;
 import mobile.listaacessivel.fafica.listaacessvel.util.ArrayListProdutosSession;
 import mobile.listaacessivel.fafica.listaacessvel.util.ProdutoSession;
@@ -71,29 +72,6 @@ public class TelaDetalhesDoProdutoEditar2 extends ActionBarActivity {
         }
 
     }
-
-
-//    @Override
-//    public boolean onCreateOptionsMenu(Menu menu) {
-//        // Inflate the menu; this adds items to the action bar if it is present.
-//        getMenuInflater().inflate(R.menu.menu_tela_detalhes_do_produto_editar2, menu);
-//        return true;
-//    }
-//
-//    @Override
-//    public boolean onOptionsItemSelected(MenuItem item) {
-//        // Handle action bar item clicks here. The action bar will
-//        // automatically handle clicks on the Home/Up button, so long
-//        // as you specify a parent activity in AndroidManifest.xml.
-//        int id = item.getItemId();
-//
-//        //noinspection SimplifiableIfStatement
-//        if (id == R.id.action_settings) {
-//            return true;
-//        }
-//
-//        return super.onOptionsItemSelected(item);
-//    }
 
     //Métodos dos Botões
     public void adicionarProdutoLista(View view){
@@ -154,15 +132,19 @@ public class TelaDetalhesDoProdutoEditar2 extends ActionBarActivity {
     }
 
     public void setProduto(Produto produto){
-        ArrayListProdutosSession listaProdutosJson = new ArrayListProdutosSession();
-        ArrayList<Produto> lista = listaProdutosJson.getListaProdutos();
+        ArrayListProdutosEditarSession listaProdutosSession = new ArrayListProdutosEditarSession();
+        ArrayList<Produto> lista = listaProdutosSession.getListaProdutos();
+
+        Log.i("LISTA",String.valueOf(lista.size()));
+        Log.i("PRODUTO",produto.getDescricao());
+
 
         for(int i = 0; i < lista.size(); i++){
             if(produto.getId_produto() == lista.get(i).getId_produto()){
                 lista.set(i,produto);
             }
         }
-        listaProdutosJson = new ArrayListProdutosSession(lista);
+        listaProdutosSession = new ArrayListProdutosEditarSession(lista);
         ArrayListProdutosSelecionadosSession listProdutosSession = new ArrayListProdutosSelecionadosSession(lista);
     }
 }

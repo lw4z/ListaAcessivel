@@ -86,9 +86,6 @@ public class TelaCriarListaPasso2 extends ActionBarActivity {
                     } catch (ExecutionException e1) {
                         e1.printStackTrace();
                     }
-//                    intent.putExtra("nome_estabelecimento",(items.get(position).getNome_fantasia()));
-//                    intent.putExtra("id_estabelecimento",(items.get(position).getId_estabelecimento()));
-//                    Log.i("ESTABELECIMENTO: ",items.get(position).getNome_fantasia());
                     startActivity(intent);
                 }
             });
@@ -101,30 +98,8 @@ public class TelaCriarListaPasso2 extends ActionBarActivity {
     //Método que recebe os dados para a lista
     private ArrayList<Estabelecimento> criarDados(){
 
-//        String json = getIntent().getStringExtra("listaEstabelecimentos");
-//
-//        gson = new Gson();
-//
-//        if(json != null) {
-//            Estabelecimento[] estabelecimentosArray = gson.fromJson(json, Estabelecimento[].class);
-//
-//            for (Estabelecimento p : estabelecimentosArray) {
-//                items.add(p);
-//            }
-//            Estabelecimento e = items.get(0);
-//            Log.e("Metodo TesteGson", e.getNome_fantasia() + ", " + e.getCategoria());
-//        }
-
         ArrayListEstabelecimentosSession estabelecimentosSession = new ArrayListEstabelecimentosSession();
         items = estabelecimentosSession.getListaEstabelecimentos();
-
-
-//        endereco = new Endereco("Rua 1","Centro","12","Prédio","Proximo ao centro","Caruaru","PE","5555555555");
-//
-//        items.add(new Estabelecimento("Bompreço","Bompreço","bompreco@email.com","Supermercado","11111111111",endereco, telefones));
-//        items.add(new Estabelecimento("Bompreço","Bompreço","bompreco@email.com","Supermercado","11111111111",endereco, telefones));
-//        items.add(new Estabelecimento("Bompreço","Bompreço","bompreco@email.com","Supermercado","11111111111",endereco, telefones));
-//        items.add(new Estabelecimento("Bompreço","Bompreço","bompreco@email.com","Supermercado","11111111111",endereco, telefones));
         return items;
     }
 
@@ -134,21 +109,6 @@ public class TelaCriarListaPasso2 extends ActionBarActivity {
         getMenuInflater().inflate(R.menu.menu_tela_criar_lista_passo2, menu);
         return true;
     }
-
-//    @Override
-//    public boolean onOptionsItemSelected(MenuItem item) {
-//        // Handle action bar item clicks here. The action bar will
-//        // automatically handle clicks on the Home/Up button, so long
-//        // as you specify a parent activity in AndroidManifest.xml.
-//        int id = item.getItemId();
-//
-//        //noinspection SimplifiableIfStatement
-//        if (id == R.id.action_settings) {
-//            return true;
-//        }
-//
-//        return super.onOptionsItemSelected(item);
-//    }
 
     //Método do botão
     public void filtrarPorBairro(View view){

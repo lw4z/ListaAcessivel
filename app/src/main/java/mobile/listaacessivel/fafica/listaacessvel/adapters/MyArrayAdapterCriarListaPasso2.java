@@ -45,7 +45,7 @@ public class MyArrayAdapterCriarListaPasso2 extends ArrayAdapter<Estabelecimento
 
         // 4. Define o texto para cada textView
         labelNome.setText(listaEstabelecimentos.get(position).getNome_fantasia());
-        valueBairro.setText(listaEstabelecimentos.get(position).getEndereco().getBairro());
+        valueBairro.setText("Bairro: " + listaEstabelecimentos.get(position).getEndereco().getBairro());
         valueCidade.setText(listaEstabelecimentos.get(position).getEndereco().getCidade());
 
         // 5. retorna a rowView

@@ -20,6 +20,7 @@ import android.widget.Toast;
 
 import com.google.gson.Gson;
 
+import java.net.URLEncoder;
 import java.util.ArrayList;
 import java.util.concurrent.ExecutionException;
 
@@ -29,6 +30,7 @@ import mobile.listaacessivel.fafica.listaacessvel.entidades.Estabelecimento;
 import mobile.listaacessivel.fafica.listaacessvel.entidades.Lista;
 import mobile.listaacessivel.fafica.listaacessvel.entidades.Produto;
 import mobile.listaacessivel.fafica.listaacessvel.util.Acentuacao;
+import mobile.listaacessivel.fafica.listaacessvel.util.ArrayListProdutosAdicionados;
 import mobile.listaacessivel.fafica.listaacessvel.util.ArrayListProdutosSelecionadosSession;
 import mobile.listaacessivel.fafica.listaacessvel.util.ArrayListProdutosSession;
 import mobile.listaacessivel.fafica.listaacessvel.util.ClienteSession;
@@ -281,7 +283,6 @@ public class TelaEditarListaPasso2 extends ActionBarActivity {
     }
 
     //Métodos dos Botões
-
     public void finalizarEdicao(View view){
         getMessage("Deseja realmente finalizar a edição da lista?");
     }
@@ -297,43 +298,80 @@ public class TelaEditarListaPasso2 extends ActionBarActivity {
         //define um botão como positivo
         builder.setPositiveButton("Sim", new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface arg0, int arg1) {
-                Intent it = new Intent(TelaEditarListaPasso2.this,TelaMinhasListas.class);
+                Intent it = new Intent(TelaEditarListaPasso2.this,TelaDetalhesLista.class);
 
                 ListaSession listaSession = new ListaSession();
                 Lista lista = listaSession.getLista();
 
+                int id_lista = lista.getId_lista();
+
                 String descricao = lista.getDescricao();
                 String situacao = SituacaoLista.CRIADA.toString();
 
-                ClienteSession clienteSession = new ClienteSession();
-                Cliente cliente = clienteSession.getCliente();
+                //ClienteSession clienteSession = new ClienteSession();
+                Cliente cliente = lista.getCliente();
 
-                EstabelecimentoSession estabelecimentoSession = new EstabelecimentoSession();
-                Estabelecimento estabelecimento = estabelecimentoSession.getEstabelecimento();
+                //EstabelecimentoSession estabelecimentoSession = new EstabelecimentoSession();
+                Estabelecimento estabelecimento = lista.getEstabelecimento();
 
+                //Produtos da sessao
+                ArrayListProdutosAdicionados listaProdutosSession = new ArrayListProdutosAdicionados();
+                ArrayList<Produto> produtosJaAdicionados = listaProdutosSession.getListaProdutos();
+
+                //Produtos modificados na tela de detalhes
                 ArrayListProdutosSelecionadosSession listaProdutosJson = new ArrayListProdutosSelecionadosSession();
+                ArrayList<Produto> listaProdutosModificados = listaProdutosJson.getListaProdutos();
 
-                ArrayList<Produto> listaProdutos = listaProdutosJson.getListaProdutos();
+                Log.i("TAMANHOTEMPORARIOS",String.valueOf(produtosTemporarios.size()));
+
+//                for(int i = 0; i < produtosTemporarios.size(); i++){
+//                    if(listaProdutosModificados != null) {
+//                        if (produtosTemporarios.get(i).getId_produto() == listaProdutosModificados.get(i).getId_produto() && listaProdutosModificados.get(i).isSelecionado() == true) {
+//                            listaProdutosSelecionados.add(listaProdutosModificados.get(i));
+//                        }
+//                        if (produtosTemporarios.get(i).getId_produto() != listaProdutosModificados.get(i).getId_produto()) {
+//                            listaProdutosSelecionados.add(produtosTemporarios.get(i));
+//                        }
+//                    }else{
+//                        if (produtosTemporarios.get(i).getId_produto() != listaProdutosModificados.get(i).getId_produto()) {
+//                            listaProdutosSelecionados.add(produtosTemporarios.get(i));
+//                        }
+//                    }
+//                }
+
+                //Lista de produtos final
                 ArrayList<Produto> listaProdutosSelecionados = new ArrayList<Produto>();
 
-                for(Produto p : listaProdutos){
-                    if(p.isSelecionado()){
+                if(produtosJaAdicionados != null){
+                    for(Produto p : produtosJaAdicionados) {
                         listaProdutosSelecionados.add(p);
                     }
                 }
 
+                Log.i("TAMANHOSELECIONADOS",String.valueOf(listaProdutosSelecionados.size()));
+
+                if(listaProdutosModificados != null){
+                    for(Produto p : listaProdutosModificados){
+                        if(p.isSelecionado()){
+                            listaProdutosSelecionados.add(p);
+                        }
+                    }
+                }
+
+                Log.i("TAMANHOSELECIONADOS",String.valueOf(listaProdutosSelecionados.size()));
+
                 try {
                     gson = new Gson();
 
-                    Lista listaAtualizada = new Lista(descricao, situacao, cliente, estabelecimento, listaProdutosSelecionados);
-
-                    json_lista = gson.toJson(listaAtualizada);
-                    Log.i("LISTA ANTES REPLACE",json_lista);
-                    json_lista = json_lista.replaceAll(" ","<;>");
-                    Log.i("LISTA",json_lista);
-
                     if(listaProdutosSelecionados.size() != 0){
-                        link = "http://" + ip + ":8080/ListaAcessivel/EditarListaPasso1MobileServlet?json_lista=" + json_lista;
+                        Lista listaAtualizada = new Lista(id_lista, descricao, situacao, cliente, estabelecimento, listaProdutosSelecionados);
+
+                        json_lista = gson.toJson(listaAtualizada);
+                        Log.i("LISTA ANTES REPLACE",json_lista);
+                        json_lista = json_lista.replaceAll(" ", "<;>");
+                        Log.i("LISTA",json_lista);
+
+                        link = "http://" + ip + ":8080/ListaAcessivel/EditarListaPasso1?json_lista=" + URLEncoder.encode(json_lista, "UTF-8");
                         Log.i("LINK",link);
 
                         ConnectionHttp conection = new ConnectionHttp(TelaEditarListaPasso2.this);
@@ -347,7 +385,8 @@ public class TelaEditarListaPasso2 extends ActionBarActivity {
                         Lista listaJson = gson2.fromJson(json,Lista.class);
 
                         ListaSession listaSessionAtualizada = new ListaSession(listaJson);
-                        Log.i("LISTASESSAO1",String.valueOf(listaSessionAtualizada));
+                        Log.i("LISTASESSAO1", String.valueOf(listaSessionAtualizada));
+
                         startActivity(it);
                         finish();
                     }else{

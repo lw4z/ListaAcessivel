@@ -66,7 +66,6 @@ public class TelaDetalhesDoProdutoEditar extends ActionBarActivity {
         });
 
         //Condição para o botão aparecer
-
         if(produto.isSelecionado() == true){
             removerProduto.setVisibility(View.VISIBLE);
             quantidadeProduto.setText(String.valueOf(produto.getQuantidade()));
@@ -93,30 +92,6 @@ public class TelaDetalhesDoProdutoEditar extends ActionBarActivity {
 
     //Métodos de mensagem
     public AlertDialog alerta;
-
-//    public void getMessage(String mensagem) {
-//        AlertDialog.Builder builder = new AlertDialog.Builder(this);
-//
-//        //builder.setTitle(titulo);
-//        builder.setMessage(mensagem);
-//        //define um botão como positivo
-//        builder.setPositiveButton("Sim", new DialogInterface.OnClickListener() {
-//            public void onClick(DialogInterface arg0, int arg1) {
-//                Intent it = new Intent(TelaDetalhesDoProdutoEditar.this,TelaEditarListaPasso1.class);
-//                startActivity(it);
-//                finish();
-//            }
-//        });
-//        //define um botão como negativo.
-//        builder.setNegativeButton("Não", new DialogInterface.OnClickListener() {
-//            public void onClick(DialogInterface arg0, int arg1) {
-//                return;
-//            }
-//        });
-//        //cria o AlertDialog e exibe na tela
-//        alerta = builder.create();
-//        alerta.show();
-//    }
 
     public void getMessageRemover(String mensagem) {
         AlertDialog.Builder builder = new AlertDialog.Builder(this);

@@ -112,18 +112,20 @@ public class TelaFinalizarLista extends ActionBarActivity {
             ArrayList<Produto> listaProdutos = listaProdutosJson.getListaProdutos();
             ArrayList<Produto> listaProdutosSelecionados = new ArrayList<Produto>();
 
+        if(listaProdutos != null){
             for(Produto p : listaProdutos){
                 if(p.isSelecionado()){
                     listaProdutosSelecionados.add(p);
                 }
             }
+        }
+
+
 
         try {
             gson = new Gson();
 
             Lista lista = new Lista(descricao, situacao, cliente, estabelecimento, listaProdutosSelecionados);
-           // Lista lista = new Lista();
-            //lista.setId_lista(900);
 
             json_lista = gson.toJson(lista);
             Log.i("LISTA ANTES REPLACE",json_lista);
