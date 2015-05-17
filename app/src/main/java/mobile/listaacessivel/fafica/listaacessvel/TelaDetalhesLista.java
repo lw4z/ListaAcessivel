@@ -149,9 +149,7 @@ public class TelaDetalhesLista extends ActionBarActivity {
         //define um botão como positivo
         builder.setPositiveButton("Sim", new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface arg0, int arg1) {
-                Intent it = new Intent(TelaDetalhesLista.this,TelaMinhasListas.class);
-                startActivity(it);
-                finish();
+                remover();
             }
         });
         //define um botão como negativo.
@@ -166,7 +164,7 @@ public class TelaDetalhesLista extends ActionBarActivity {
     }
 
     public void solicitarLista(){
-        Intent it = new Intent(TelaDetalhesLista.this,TelaMinhasListas.class);
+        Intent it = new Intent(TelaDetalhesLista.this,TelaDetalhesLista.class);
 
         ListaSession listaSession = new ListaSession();
         Lista lista = listaSession.getLista();
@@ -183,7 +181,7 @@ public class TelaDetalhesLista extends ActionBarActivity {
 
             Log.i("CONECTION", conection.toString());
 
-            String json = gson.fromJson(conection.get(), String.class);
+            String json = conection.get();
             Log.i("RESULTADOSolicitada", json.toString());
 
             if(json.equals("sucesso")){
@@ -192,6 +190,41 @@ public class TelaDetalhesLista extends ActionBarActivity {
                 finish();
             }else{
                 Toast.makeText(this,"Ocorreu um erro ao solicitar a lista!", Toast.LENGTH_LONG);
+                return;
+            }
+        }catch (InterruptedException e1) {
+            e1.printStackTrace();
+        } catch (ExecutionException e1) {
+            e1.printStackTrace();
+        }
+    }
+
+    public void remover(){
+        Intent it = new Intent(TelaDetalhesLista.this,TelaMinhasListas.class);
+
+        ListaSession listaSession = new ListaSession();
+        Lista lista = listaSession.getLista();
+
+        int id_lista = lista.getId_lista();
+        Log.i("IDLISTA", String.valueOf(id_lista));
+
+        try {
+            link = "http://" + ip + ":8080/ListaAcessivel/ExcluirListaMobileServlet?id_lista=" + id_lista;
+
+            ConnectionHttp conection = new ConnectionHttp(TelaDetalhesLista.this);
+            conection.execute(link);
+
+            Log.i("CONECTION", conection.toString());
+
+            String json = conection.get();
+            Log.i("RESULTADORemovida", json.toString());
+
+            if(json.equals("sucesso")){
+                Toast.makeText(this,"Lista excluida com sucesso!", Toast.LENGTH_LONG);
+                startActivity(it);
+                finish();
+            }else{
+                Toast.makeText(this,"Ocorreu um erro ao excluir a lista!", Toast.LENGTH_LONG);
                 return;
             }
         }catch (InterruptedException e1) {
