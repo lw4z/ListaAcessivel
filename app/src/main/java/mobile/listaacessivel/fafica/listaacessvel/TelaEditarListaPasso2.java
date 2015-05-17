@@ -341,14 +341,12 @@ public class TelaEditarListaPasso2 extends ActionBarActivity {
         //Produtos modificados na tela de detalhes
         ArrayListProdutosSelecionadosEditarPasso2Session listaProdutosJson = new ArrayListProdutosSelecionadosEditarPasso2Session();
 
-
-
-
-
         ArrayList<Produto> listaProdutosModificados = listaProdutosJson.getListaProdutos();
         ArrayList<Produto> listaProdutosSelecionados = new ArrayList<Produto>();
 
         Log.i("TAMANHOSELECIONADOS",String.valueOf(listaProdutosSelecionados.size()));
+
+        //Log.i("TAMANHOSELECIONADOS",String.valueOf(listaProdutosModificados.size()));
 
         if(listaProdutosModificados != null){
             for(Produto p : listaProdutosModificados){
@@ -368,28 +366,12 @@ public class TelaEditarListaPasso2 extends ActionBarActivity {
 
         Log.i("TAMANHOTEMPORARIOS",String.valueOf(produtosTemporarios.size()));
 
-//                for(int i = 0; i < produtosTemporarios.size(); i++){
-//                    if(listaProdutosModificados != null) {
-//                        if (produtosTemporarios.get(i).getId_produto() == listaProdutosModificados.get(i).getId_produto() && listaProdutosModificados.get(i).isSelecionado() == true) {
-//                            listaProdutosSelecionados.add(listaProdutosModificados.get(i));
-//                        }
-//                        if (produtosTemporarios.get(i).getId_produto() != listaProdutosModificados.get(i).getId_produto()) {
-//                            listaProdutosSelecionados.add(produtosTemporarios.get(i));
-//                        }
-//                    }else{
-//                        if (produtosTemporarios.get(i).getId_produto() != listaProdutosModificados.get(i).getId_produto()) {
-//                            listaProdutosSelecionados.add(produtosTemporarios.get(i));
-//                        }
-//                    }
-//                }
-
-
         Log.i("TAMANHOSELECIONADOS",String.valueOf(listaProdutosSelecionados.size()));
 
         try {
             gson = new Gson();
 
-            if(listaProdutosSelecionados.size() != 0){
+            if(listaProdutosModificados != null){
                 Lista listaAtualizada = new Lista(id_lista, descricao, situacao, cliente, estabelecimento, listaProdutosSelecionados);
 
                 json_lista = gson.toJson(listaAtualizada);
