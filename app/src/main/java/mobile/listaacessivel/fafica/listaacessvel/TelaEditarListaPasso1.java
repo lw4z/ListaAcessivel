@@ -346,6 +346,13 @@ public class TelaEditarListaPasso1 extends ActionBarActivity {
                     }
                 }
 
+                //Removendo possíveis produtos não selecionados
+                for(int i = 0; i < listaProdutosSelecionados.size(); i ++){
+                    if(listaProdutosSelecionados.get(i).isSelecionado() == false){
+                        listaProdutosSelecionados.remove(listaProdutosSelecionados.get(i));
+                    }
+                }
+
                 Log.i("TAMANHOSELECIONADOS",String.valueOf(listaProdutosSelecionados.size()));
                 Log.i("TAMANHOTEMPORARIOS",String.valueOf(produtosTemporarios.size()));
 
