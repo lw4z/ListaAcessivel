@@ -32,6 +32,7 @@ import mobile.listaacessivel.fafica.listaacessvel.entidades.Produto;
 import mobile.listaacessivel.fafica.listaacessvel.util.Acentuacao;
 import mobile.listaacessivel.fafica.listaacessvel.util.ArrayListProdutosAdicionados;
 import mobile.listaacessivel.fafica.listaacessvel.util.ArrayListProdutosEditarSession;
+import mobile.listaacessivel.fafica.listaacessvel.util.ArrayListProdutosNaoSelecionadosEditarPasso2;
 import mobile.listaacessivel.fafica.listaacessvel.util.ArrayListProdutosSelecionadosSession;
 import mobile.listaacessivel.fafica.listaacessvel.util.ArrayListProdutosSession;
 import mobile.listaacessivel.fafica.listaacessvel.util.ClienteSession;
@@ -502,7 +503,7 @@ public class TelaEditarListaPasso1 extends ActionBarActivity {
 
             String json = conection.get();
             Log.i("RESULTADOListaPasso2",json.toString());
-            ArrayListProdutosSession listaProdutos = new ArrayListProdutosSession(converteArray(json));
+            ArrayListProdutosNaoSelecionadosEditarPasso2 listaProdutos = new ArrayListProdutosNaoSelecionadosEditarPasso2(converteArray(json));
 
             startActivity(it);
             finish();

@@ -18,6 +18,8 @@ import java.util.ArrayList;
 
 import mobile.listaacessivel.fafica.listaacessvel.entidades.Produto;
 import mobile.listaacessivel.fafica.listaacessvel.util.ArrayListProdutosEditarSession;
+import mobile.listaacessivel.fafica.listaacessvel.util.ArrayListProdutosNaoSelecionadosEditarPasso2;
+import mobile.listaacessivel.fafica.listaacessvel.util.ArrayListProdutosSelecionadosEditarPasso2Session;
 import mobile.listaacessivel.fafica.listaacessvel.util.ArrayListProdutosSelecionadosSession;
 import mobile.listaacessivel.fafica.listaacessvel.util.ArrayListProdutosSession;
 import mobile.listaacessivel.fafica.listaacessvel.util.ProdutoSession;
@@ -132,7 +134,7 @@ public class TelaDetalhesDoProdutoEditar2 extends ActionBarActivity {
     }
 
     public void setProduto(Produto produto){
-        ArrayListProdutosEditarSession listaProdutosSession = new ArrayListProdutosEditarSession();
+        ArrayListProdutosNaoSelecionadosEditarPasso2 listaProdutosSession = new ArrayListProdutosNaoSelecionadosEditarPasso2();
         ArrayList<Produto> lista = listaProdutosSession.getListaProdutos();
 
         Log.i("LISTA",String.valueOf(lista.size()));
@@ -144,7 +146,10 @@ public class TelaDetalhesDoProdutoEditar2 extends ActionBarActivity {
                 lista.set(i,produto);
             }
         }
-        listaProdutosSession = new ArrayListProdutosEditarSession(lista);
-        ArrayListProdutosSelecionadosSession listProdutosSession = new ArrayListProdutosSelecionadosSession(lista);
+
+        Log.i("LISTAMODIFICADA", String.valueOf(lista.size()));
+        Log.i("LISTAMODPRO",produto.getDescricao());
+        listaProdutosSession = new ArrayListProdutosNaoSelecionadosEditarPasso2(lista);
+        ArrayListProdutosSelecionadosEditarPasso2Session listProdutosSession = new ArrayListProdutosSelecionadosEditarPasso2Session(lista);
     }
 }

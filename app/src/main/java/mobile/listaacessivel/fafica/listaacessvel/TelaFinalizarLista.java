@@ -120,8 +120,6 @@ public class TelaFinalizarLista extends ActionBarActivity {
             }
         }
 
-
-
         try {
             gson = new Gson();
 
