@@ -11,14 +11,22 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
+
+import com.google.gson.Gson;
 
 import java.util.ArrayList;
+import java.util.concurrent.ExecutionException;
 
 import mobile.listaacessivel.fafica.listaacessvel.adapters.MyArrayAdapterDetalhesLista;
 import mobile.listaacessivel.fafica.listaacessvel.entidades.Lista;
 import mobile.listaacessivel.fafica.listaacessvel.entidades.Produto;
 import mobile.listaacessivel.fafica.listaacessvel.util.ArrayListProdutosEditarSession;
+import mobile.listaacessivel.fafica.listaacessvel.util.ArrayListProdutosNaoSelecionadosEditarPasso2;
+import mobile.listaacessivel.fafica.listaacessvel.util.ConnectionHttp;
 import mobile.listaacessivel.fafica.listaacessvel.util.ListaSession;
+import mobile.listaacessivel.fafica.listaacessvel.util.SituacaoLista;
+import mobile.listaacessivel.fafica.listaacessvel.util.ipConection;
 
 
 public class TelaDetalhesLista extends ActionBarActivity {
@@ -29,6 +37,9 @@ public class TelaDetalhesLista extends ActionBarActivity {
             txtTelefone2Estabelecimento, txtQuantidadeTotalProdutos, txtValorTotalLista;
 
     Button bt_editar, bt_solicitar;
+    private String link, json_lista;
+    private String ip = ipConection.IP.toString();
+    Gson gson;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -115,9 +126,8 @@ public class TelaDetalhesLista extends ActionBarActivity {
         //define um botão como positivo
         builder.setPositiveButton("Sim", new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface arg0, int arg1) {
-                Intent it = new Intent(TelaDetalhesLista.this,TelaMinhasListas.class);
-                startActivity(it);
-                finish();
+
+                solicitarLista();
             }
         });
         //define um botão como negativo.
@@ -153,5 +163,41 @@ public class TelaDetalhesLista extends ActionBarActivity {
         //cria o AlertDialog e exibe na tela
         alerta = builder.create();
         alerta.show();
+    }
+
+    public void solicitarLista(){
+        Intent it = new Intent(TelaDetalhesLista.this,TelaMinhasListas.class);
+
+        ListaSession listaSession = new ListaSession();
+        Lista lista = listaSession.getLista();
+
+        lista.setSituacao(SituacaoLista.SOLICITADA.toString());
+
+        int id_lista = lista.getId_lista();
+
+        try {
+            link = "http://" + ip + ":8080/ListaAcessivel/SolicitarListaMobileServlet?id_lista=" + id_lista;
+
+            ConnectionHttp conection = new ConnectionHttp(TelaDetalhesLista.this);
+            conection.execute(link);
+
+            Log.i("CONECTION", conection.toString());
+
+            String json = gson.fromJson(conection.get(), String.class);
+            Log.i("RESULTADOSolicitada", json.toString());
+
+            if(json.equals("sucesso")){
+                Toast.makeText(this,"Lista solicitada com sucesso!", Toast.LENGTH_LONG);
+                startActivity(it);
+                finish();
+            }else{
+                Toast.makeText(this,"Ocorreu um erro ao solicitar a lista!", Toast.LENGTH_LONG);
+                return;
+            }
+        }catch (InterruptedException e1) {
+            e1.printStackTrace();
+        } catch (ExecutionException e1) {
+            e1.printStackTrace();
+        }
     }
 }

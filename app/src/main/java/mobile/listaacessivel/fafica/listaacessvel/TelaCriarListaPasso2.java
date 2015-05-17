@@ -8,8 +8,11 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.Button;
+import android.widget.CompoundButton;
 import android.widget.ListView;
 import android.widget.Toast;
+import android.widget.ToggleButton;
 
 import com.google.gson.Gson;
 
@@ -18,11 +21,13 @@ import java.util.List;
 import java.util.concurrent.ExecutionException;
 
 import mobile.listaacessivel.fafica.listaacessvel.adapters.MyArrayAdapterCriarListaPasso2;
+import mobile.listaacessivel.fafica.listaacessvel.entidades.Cliente;
 import mobile.listaacessivel.fafica.listaacessvel.entidades.Endereco;
 import mobile.listaacessivel.fafica.listaacessvel.entidades.Estabelecimento;
 import mobile.listaacessivel.fafica.listaacessvel.entidades.Produto;
 import mobile.listaacessivel.fafica.listaacessvel.util.ArrayListEstabelecimentosSession;
 import mobile.listaacessivel.fafica.listaacessvel.util.ArrayListProdutosSession;
+import mobile.listaacessivel.fafica.listaacessvel.util.ClienteSession;
 import mobile.listaacessivel.fafica.listaacessvel.util.ConnectionHttp;
 import mobile.listaacessivel.fafica.listaacessvel.util.EstabelecimentoSession;
 import mobile.listaacessivel.fafica.listaacessvel.util.ipConection;
@@ -32,11 +37,13 @@ public class TelaCriarListaPasso2 extends ActionBarActivity {
 
     ListView listaEstabelecimentos;
     ArrayList<Estabelecimento> items = new ArrayList<Estabelecimento>();
+    ArrayList<Estabelecimento> estabelecimentosFiltrados = new ArrayList<Estabelecimento>();
     private ArrayList<String> telefones;
     private Endereco endereco;
     private String link;
     private Gson gson;
     private String ip = ipConection.IP.toString();
+    private int state = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,10 +56,41 @@ public class TelaCriarListaPasso2 extends ActionBarActivity {
         //A janela da aplicação deverá ficar apenas no formato vertical
         this.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
 
-        criarDados();
+        //criarDados();
+
+        final ArrayListEstabelecimentosSession estabelecimentosSession = new ArrayListEstabelecimentosSession();
+        //final ArrayList<Estabelecimento> filtro = new ArrayList<Estabelecimento>();
+        items = estabelecimentosSession.getListaEstabelecimentos();
+
+        ClienteSession clienteSession = new ClienteSession();
+        final Cliente cliente = clienteSession.getCliente();
+
+        for(int i = 0; i < items.size();i++) {
+            estabelecimentosFiltrados.add(items.get(i));
+        }
+
+        ToggleButton toggle = (ToggleButton) findViewById(R.id.btFiltrarPorBairro);
+        toggle.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if (isChecked) {
+                    estabelecimentosFiltrados.clear();
+                    for(int i = 0; i < items.size();i++){
+                        if(cliente.getEndereco().getBairro().equals(items.get(i).getEndereco().getBairro())){
+                            estabelecimentosFiltrados.add(items.get(i));
+                        }
+                    }
+                } else {
+                    estabelecimentosFiltrados.clear();
+                    for(int i = 0; i < items.size();i++) {
+                        estabelecimentosFiltrados.add(items.get(i));
+                    }
+                }
+            }
+        });
+
 
         try {
-            final MyArrayAdapterCriarListaPasso2 adapter = new MyArrayAdapterCriarListaPasso2(this,items);
+            final MyArrayAdapterCriarListaPasso2 adapter = new MyArrayAdapterCriarListaPasso2(this,estabelecimentosFiltrados);
 
             // 2. Recupera o ListView para o activity_main.xml
             listaEstabelecimentos = (ListView) findViewById(R.id.listViewEstabelecimentos);
@@ -66,10 +104,10 @@ public class TelaCriarListaPasso2 extends ActionBarActivity {
                 public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                     //Bundle dados = new Bundle();
                     Intent intent = new Intent(view.getContext(), TelaCriarListaPasso3.class);
-                    int id_estabelecimento = items.get(position).getId_estabelecimento();
+                    int id_estabelecimento = estabelecimentosFiltrados.get(position).getId_estabelecimento();
                     link = "http://" + ip + ":8080/ListaAcessivel/CriarListaPasso2MobileServlet?id_estabelecimento=" + id_estabelecimento;
 
-                    EstabelecimentoSession estabelecimentoSession = new EstabelecimentoSession(items.get(position));
+                    EstabelecimentoSession estabelecimentoSession = new EstabelecimentoSession(estabelecimentosFiltrados.get(position));
 
                     ConnectionHttp conection = new ConnectionHttp(TelaCriarListaPasso2.this);
                     conection.execute(link);
@@ -95,14 +133,6 @@ public class TelaCriarListaPasso2 extends ActionBarActivity {
         }
     }
 
-    //Método que recebe os dados para a lista
-    private ArrayList<Estabelecimento> criarDados(){
-
-        ArrayListEstabelecimentosSession estabelecimentosSession = new ArrayListEstabelecimentosSession();
-        items = estabelecimentosSession.getListaEstabelecimentos();
-        return items;
-    }
-
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
@@ -110,11 +140,7 @@ public class TelaCriarListaPasso2 extends ActionBarActivity {
         return true;
     }
 
-    //Método do botão
-    public void filtrarPorBairro(View view){
-
-    }
-
+    //Método para sessão
     public ArrayList<Produto> converteArray(String json){
 
         ArrayList<Produto> produtos = new ArrayList<Produto>();
@@ -130,4 +156,6 @@ public class TelaCriarListaPasso2 extends ActionBarActivity {
         }
         return produtos;
     }
+
+
 }
