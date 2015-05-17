@@ -197,14 +197,16 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:onClick="editarLista"
-            android:text="@string/bt_editar" />
+            android:text="@string/bt_editar"
+            android:visibility="invisible"/>
 
         <Button
             android:id="@+id/btSolicitarEntrega"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:onClick="solicitarEntrega"
-            android:text="@string/bt_solicitar_entrega" />
+            android:text="@string/bt_solicitar_entrega"
+            android:visibility="invisible"/>
 
         <Button
             android:id="@+id/btRemoverLista"

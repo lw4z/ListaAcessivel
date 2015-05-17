@@ -8,6 +8,7 @@ import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
 
@@ -27,6 +28,7 @@ public class TelaDetalhesLista extends ActionBarActivity {
             txtBairroEstabelecimento, txtRuaEstabelecimento, txtTelefone1Estabelecimento,
             txtTelefone2Estabelecimento, txtQuantidadeTotalProdutos, txtValorTotalLista;
 
+    Button bt_editar, bt_solicitar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,6 +46,12 @@ public class TelaDetalhesLista extends ActionBarActivity {
         ListaSession listaSession = new ListaSession();
         Log.i("LISTASESSAO2",String.valueOf(listaSession));
         Lista lista = listaSession.getLista();
+
+        //Condição para botoes editar e solicitar
+        if(lista.getSituacao().equals("atendida") || lista.getSituacao().equals("criada")){
+            bt_editar.setVisibility(View.VISIBLE);
+            bt_solicitar.setVisibility(View.VISIBLE);
+        }
 
         txtDescricaoLista.setText(lista.getDescricao());
         txtSituacaoLista.setText(lista.getSituacao());
@@ -69,6 +77,8 @@ public class TelaDetalhesLista extends ActionBarActivity {
         txtTelefone2Estabelecimento = (TextView) findViewById(R.id.txtTelefone2Estabelecimento);
         txtQuantidadeTotalProdutos = (TextView) findViewById(R.id.txtQuantidadeTotalProdutos);
         txtValorTotalLista = (TextView) findViewById(R.id.txtValorTotalLista);
+        bt_editar = (Button) findViewById(R.id.btEditarLista);
+        bt_solicitar = (Button) findViewById(R.id.btSolicitarEntrega);
     }
 
     //Métodos dos botões
