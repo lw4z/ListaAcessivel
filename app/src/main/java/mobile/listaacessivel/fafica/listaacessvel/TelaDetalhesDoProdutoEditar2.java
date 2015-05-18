@@ -13,6 +13,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 
@@ -85,10 +86,15 @@ public class TelaDetalhesDoProdutoEditar2 extends ActionBarActivity {
         produto.setSelecionado(true);
         produto.setQuantidade(quantidade);
 
-        setProduto(produto);
-        Log.i("QUANTIDADEPRODUTO", String.valueOf(quantidade));
-        startActivity(it);
-        finish();
+        if(quantidade >= 1){
+            setProduto(produto);
+            Log.i("QUANTIDADEPRODUTO",String.valueOf(quantidade));
+            startActivity(it);
+            finish();
+        }else{
+            Toast.makeText(this, "A quantidade do produto precisa ser mais que 0", Toast.LENGTH_LONG).show();
+            return;
+        }
     }
 
     //Métodos de mensagem
