@@ -10,6 +10,7 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
@@ -20,6 +21,7 @@ import java.net.URLEncoder;
 import java.util.ArrayList;
 import java.util.concurrent.ExecutionException;
 
+import mobile.listaacessivel.fafica.listaacessvel.entidades.Cep;
 import mobile.listaacessivel.fafica.listaacessvel.entidades.Cliente;
 import mobile.listaacessivel.fafica.listaacessvel.entidades.Endereco;
 import mobile.listaacessivel.fafica.listaacessvel.util.ClienteSession;
@@ -40,6 +42,7 @@ public class TelaEditarPerfil extends ActionBarActivity {
     private String json_edicao;
     Endereco endereco;
     ArrayList<String> telefones = new ArrayList<String>();
+    private Cep cepAutomatico;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -70,8 +73,6 @@ public class TelaEditarPerfil extends ActionBarActivity {
 
         final EditText campo_cep = (EditText) findViewById(R.id.editCep);
         campo_cep.addTextChangedListener(Mask.insert("#####-###", campo_cep));
-
-        final EditText campo_email = (EditText) findViewById(R.id.editEmail);
 
         final EditText campo_estado = (EditText) findViewById(R.id.editEstado);
         campo_estado.addTextChangedListener(Mask.insert("##", campo_estado));
@@ -111,7 +112,20 @@ public class TelaEditarPerfil extends ActionBarActivity {
         editComplemento.setText(endereco.getComplemento());
         editReferencia.setText(endereco.getReferencia());
 
+        Button bt_cep = (Button) findViewById(R.id.bt_buscar_cep);
 
+        bt_cep.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Cep cepPesquisa = buscarCep(campo_cep.getText().toString());
+                if (cepPesquisa != null) {
+                    editCidade.setText(cepPesquisa.getCity());
+                    editEstado.setText(cepPesquisa.getState());
+                    editBairro.setText(cepPesquisa.getDistrict());
+                    editRua.setText(cepPesquisa.getAddress());
+                }
+            }
+        });
     }
 
     //Inicialização de campos da tela
@@ -230,5 +244,31 @@ public class TelaEditarPerfil extends ActionBarActivity {
                 return;
             }
         }
+    }
+
+    public Cep buscarCep(String cep){
+
+        try {
+            gson = new Gson();
+
+            if (!cep.equals("")) {
+                link = "http://apps.widenet.com.br/busca-cep/api/cep/" + cep + ".json";
+                ConnectionHttp conection = new ConnectionHttp(TelaEditarPerfil.this);
+                conection.execute(link);
+                Log.i("CONECTION", conection.toString());
+                String json = conection.get();
+                Cep cepJson = gson.fromJson(json,Cep.class);
+
+                cepAutomatico = new Cep(cepJson.getStatus(),cepJson.getCode(),cepJson.getState(),cepJson.getCity(),cepJson.getDistrict(),cepJson.getAddress());
+
+                Log.i("RESULTADOCADASTRO",String.valueOf(conection.get()));
+                Log.i("CEP",String.valueOf(cepJson));
+            }
+        }catch (InterruptedException e1) {
+            e1.printStackTrace();
+        }catch (ExecutionException e1) {
+            e1.printStackTrace();
+        }
+        return cepAutomatico;
     }
 }
