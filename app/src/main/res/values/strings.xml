@@ -134,21 +134,21 @@
     <string name="validade_produto">Validade do produto:</string>
 
     <!--Campos de edição-->
-    <string name="campo_email">campo e-mail</string>
-    <string name="campo_senha">campo senha</string>
-    <string name="campo_ano_nascimento">campo ano de nascimento</string>
-    <string name="campo_cpf">campo cpf</string>
-    <string name="campo_nome_completo">campo nome completo</string>
-    <string name="campo_telefone1">campo telefone 1</string>
-    <string name="campo_telefone2">campo telefone 2</string>
-    <string name="campo_cep">campo cep</string>
-    <string name="campo_cidade">campo cidade</string>
-    <string name="campo_estado">campo estado</string>
-    <string name="campo_bairro">campo bairro</string>
-    <string name="campo_rua">campo rua</string>
-    <string name="campo_numero">campo número</string>
-    <string name="campo_complemento">campo complemento</string>
-    <string name="campo_referencia">campo referência</string>
+    <string name="campo_email">digite seu e-mail</string>
+    <string name="campo_senha">digite sua senha</string>
+    <string name="campo_ano_nascimento">digite seu ano de nascimento</string>
+    <string name="campo_cpf">digite seu cpf</string>
+    <string name="campo_nome_completo">digite seu nome completo</string>
+    <string name="campo_telefone1">digite seu primeiro telefone</string>
+    <string name="campo_telefone2">digite seu segundo telefone</string>
+    <string name="campo_cep">digite o cep de sua região</string>
+    <string name="campo_cidade">digite sua cidade</string>
+    <string name="campo_estado">digite seu estado</string>
+    <string name="campo_bairro">digite seu bairro</string>
+    <string name="campo_rua">digite sua rua</string>
+    <string name="campo_numero">digite o número de sua residência</string>
+    <string name="campo_complemento">digite um complemento</string>
+    <string name="campo_referencia">digite uma referência</string>
     <string name="campo_quantidade_produto">Quantidade do produto: </string>
     <string name="title_activity_visualizar_perfil">Visualizar Perfil</string>
     <string name="digite_email">Digite seu e-mail</string>
