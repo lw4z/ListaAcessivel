@@ -177,13 +177,22 @@
 
     </LinearLayout>
 
+    <Button
+        android:id="@+id/btEditarLista"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:onClick="editarLista"
+        android:text="@string/bt_maisDetalhes"
+        android:layout_weight="1"
+        android:visibility="invisible"/>
+
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:gravity="bottom"
         android:orientation="horizontal"
-        android:layout_weight="2">
+        android:layout_weight="1">
 
         <!--<Button-->
             <!--android:id="@+id/btImprimirLista"-->
@@ -192,13 +201,7 @@
             <!--android:onClick="imprimirLista"-->
             <!--android:text="@string/bt_imprimir" />-->
 
-        <Button
-            android:id="@+id/btEditarLista"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:onClick="editarLista"
-            android:text="@string/bt_editar"
-            android:visibility="invisible"/>
+
 
         <Button
             android:id="@+id/btSolicitarEntrega"
@@ -206,6 +209,7 @@
             android:layout_height="wrap_content"
             android:onClick="solicitarEntrega"
             android:text="@string/bt_solicitar_entrega"
+            android:layout_weight="1"
             android:visibility="invisible"/>
 
         <Button
@@ -213,6 +217,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:onClick="removerLista"
+            android:layout_weight="1"
             android:text="@string/bt_remover_lista" />
 
     </LinearLayout>

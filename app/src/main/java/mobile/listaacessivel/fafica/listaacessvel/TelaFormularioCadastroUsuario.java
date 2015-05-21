@@ -79,11 +79,13 @@ public class TelaFormularioCadastroUsuario extends ActionBarActivity {
             @Override
             public void onClick(View v) {
                 Cep cepPesquisa = buscarCep(campo_cep.getText().toString());
-                if(cepPesquisa != null){
+                if(cepPesquisa != null && cepPesquisa.getStatus() != 0){
                     editCidade.setText(cepPesquisa.getCity());
                     editEstado.setText(cepPesquisa.getState());
                     editBairro.setText(cepPesquisa.getDistrict());
                     editRua.setText(cepPesquisa.getAddress());
+                }else{
+                    Toast.makeText(TelaFormularioCadastroUsuario.this,"O CEP não foi encontrado!", Toast.LENGTH_LONG).show();
                 }
             }
         });
@@ -217,9 +219,14 @@ public class TelaFormularioCadastroUsuario extends ActionBarActivity {
                 link = "http://apps.widenet.com.br/busca-cep/api/cep/" + cep + ".json";
                 ConnectionHttp conection = new ConnectionHttp(TelaFormularioCadastroUsuario.this);
                 conection.execute(link);
+
+                Cep cepJson = new Cep();
                 Log.i("CONECTION", conection.toString());
                 String json = conection.get();
-                Cep cepJson = gson.fromJson(json,Cep.class);
+
+                Log.i("RESULTADOCEP",json);
+
+                cepJson = gson.fromJson(json,Cep.class);
 
                 cepAutomatico = new Cep(cepJson.getStatus(),cepJson.getCode(),cepJson.getState(),cepJson.getCity(),cepJson.getDistrict(),cepJson.getAddress());
 

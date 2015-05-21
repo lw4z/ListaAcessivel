@@ -62,6 +62,12 @@ public class TelaCriarListaPasso2 extends ActionBarActivity {
         //final ArrayList<Estabelecimento> filtro = new ArrayList<Estabelecimento>();
         items = estabelecimentosSession.getListaEstabelecimentos();
 
+        if(items.size() == 0){
+            Toast.makeText(TelaCriarListaPasso2.this, "Nenhum estabelecimento encontrado em sua Cidade!", Toast.LENGTH_LONG).show();
+        }
+
+        Log.i("TAMANHOITENS",String.valueOf(items.size()));
+
         ClienteSession clienteSession = new ClienteSession();
         final Cliente cliente = clienteSession.getCliente();
 
@@ -74,20 +80,30 @@ public class TelaCriarListaPasso2 extends ActionBarActivity {
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 if (isChecked) {
                     estabelecimentosFiltrados.clear();
-                    for(int i = 0; i < items.size();i++){
-                        if(cliente.getEndereco().getBairro().equals(items.get(i).getEndereco().getBairro())){
+                    for (int i = 0; i < items.size(); i++) {
+                        if (cliente.getEndereco().getBairro().equals(items.get(i).getEndereco().getBairro())) {
                             estabelecimentosFiltrados.add(items.get(i));
+
                         }
                     }
+                    if (estabelecimentosFiltrados.size() == 0) {
+                        Toast.makeText(TelaCriarListaPasso2.this, "Nenhum estabelecimento encontrado no seu Bairro!", Toast.LENGTH_LONG).show();
+                    }
+                    Log.i("TAMANHOFILTRADOS", String.valueOf(estabelecimentosFiltrados.size()));
                 } else {
                     estabelecimentosFiltrados.clear();
-                    for(int i = 0; i < items.size();i++) {
+                    for (int i = 0; i < items.size(); i++) {
                         estabelecimentosFiltrados.add(items.get(i));
                     }
                 }
             }
         });
 
+
+
+        if(estabelecimentosFiltrados.size() == 0){
+            Toast.makeText(TelaCriarListaPasso2.this, "Nenhum estabelecimento encontrado!", Toast.LENGTH_LONG).show();
+        }
 
         try {
             final MyArrayAdapterCriarListaPasso2 adapter = new MyArrayAdapterCriarListaPasso2(this,estabelecimentosFiltrados);
@@ -156,6 +172,5 @@ public class TelaCriarListaPasso2 extends ActionBarActivity {
         }
         return produtos;
     }
-
 
 }

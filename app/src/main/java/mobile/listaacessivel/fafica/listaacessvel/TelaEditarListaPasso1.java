@@ -52,7 +52,7 @@ public class TelaEditarListaPasso1 extends ActionBarActivity {
     ArrayList<Produto> produtosPesquisa = new ArrayList<Produto>();
     ArrayList<Produto> produtosTemporarios = new ArrayList<Produto>();
     TextView txtNomeProduto;
-    Button btPesquisar;
+    Button btPesquisar, bt_FinalizarLista, bt_adicionarProdutos;
     LinearLayout layout;
     private int noOfBtns;
     private Button[] btns;
@@ -88,6 +88,15 @@ public class TelaEditarListaPasso1 extends ActionBarActivity {
         Log.e("Metodo TesteGson", p.getDescricao() + ", " + p.getValidade());
 
         Log.i("TAMANHOPRODUTOS", String.valueOf(produtos.size()));
+
+        ListaSession listaSession = new ListaSession();
+        Lista lista = listaSession.getLista();
+
+        if(lista.getSituacao().equals("atendida") || lista.getSituacao().equals("criada")){
+            bt_adicionarProdutos.setVisibility(View.VISIBLE);
+            bt_FinalizarLista.setVisibility(View.VISIBLE);
+        }
+
 
         //Carregamento da lista de produtos inicial
         if(produtos != null) {

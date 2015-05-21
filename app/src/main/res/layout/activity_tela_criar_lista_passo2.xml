@@ -30,7 +30,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textOff="Filtrar por Bairro"
-        android:textOn="Filtrar Por Cidade"
+        android:textOn="Filtrar por Cidade"
         android:layout_gravity="center"
         android:id="@+id/btFiltrarPorBairro"
         android:layout_weight="1"

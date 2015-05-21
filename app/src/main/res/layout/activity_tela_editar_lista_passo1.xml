@@ -81,6 +81,7 @@
         android:text="@string/bt_adicionar_novos_produtos"
         android:onClick="adicionarMaisProdutos"
         android:layout_gravity="center"
+        android:visibility="invisible"
         android:layout_weight="1"/>
 
         <!--Botão Finalizar Edição-->
@@ -90,6 +91,7 @@
             android:id="@+id/bt_FinalizarLista"
             android:text="@string/bt_finalizar_edicao"
             android:onClick="finalizarEdicao"
+            android:visibility="invisible"
             android:layout_gravity="center"
             android:layout_weight="1"/>
     </LinearLayout>
