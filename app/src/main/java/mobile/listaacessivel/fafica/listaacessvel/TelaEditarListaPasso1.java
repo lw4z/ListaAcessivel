@@ -532,7 +532,7 @@ public class TelaEditarListaPasso1 extends ActionBarActivity {
             ArrayListProdutosNaoSelecionadosEditarPasso2 listaProdutos = new ArrayListProdutosNaoSelecionadosEditarPasso2(converteArray(json));
 
             startActivity(it);
-            finish();
+
         }catch (InterruptedException e1) {
             e1.printStackTrace();
         } catch (ExecutionException e1) {
