@@ -304,7 +304,6 @@ public class TelaCriarListaPasso3 extends ActionBarActivity {
                 Intent it = new Intent(TelaCriarListaPasso3.this,TelaFinalizarLista.class);
                 //ArrayListProdutosSession listProdutosSession = new ArrayListProdutosSession(produtosTemporarios);
                 startActivity(it);
-                finish();
             }
         });
         //define um botão como negativo.

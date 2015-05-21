@@ -118,11 +118,13 @@ public class TelaEditarPerfil extends ActionBarActivity {
             @Override
             public void onClick(View v) {
                 Cep cepPesquisa = buscarCep(campo_cep.getText().toString());
-                if (cepPesquisa != null) {
+                if(cepPesquisa != null && cepPesquisa.getStatus() != 0){
                     editCidade.setText(cepPesquisa.getCity());
                     editEstado.setText(cepPesquisa.getState());
                     editBairro.setText(cepPesquisa.getDistrict());
                     editRua.setText(cepPesquisa.getAddress());
+                }else{
+                    Toast.makeText(TelaEditarPerfil.this,"O CEP não foi encontrado!", Toast.LENGTH_LONG).show();
                 }
             }
         });
