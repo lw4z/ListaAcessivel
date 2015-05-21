@@ -7,7 +7,7 @@ public enum ipConection {
 
     IP {
         public String toString(){
-            return "172.16.3.213";
+            return "192.168.0.105";
         }
     }
 }

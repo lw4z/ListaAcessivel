@@ -92,6 +92,9 @@ public class TelaEditarListaPasso1 extends ActionBarActivity {
         ListaSession listaSession = new ListaSession();
         Lista lista = listaSession.getLista();
 
+        bt_FinalizarLista = (Button) findViewById(R.id.bt_FinalizarLista);
+        bt_adicionarProdutos = (Button) findViewById(R.id.bt_adicionarProdutos);
+
         if(lista.getSituacao().equals("atendida") || lista.getSituacao().equals("criada")){
             bt_adicionarProdutos.setVisibility(View.VISIBLE);
             bt_FinalizarLista.setVisibility(View.VISIBLE);
