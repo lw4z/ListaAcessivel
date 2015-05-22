@@ -69,7 +69,6 @@ public class TelaDetalhesDoProdutoEditar extends ActionBarActivity {
             adicionarProduto.setVisibility(View.VISIBLE);
         }
 
-
         //Botão remover produto
         removerProduto = (Button) findViewById(R.id.bt_remover_produto);
         removerProduto.setOnClickListener(new Button.OnClickListener(){
