@@ -218,7 +218,8 @@
             android:layout_height="wrap_content"
             android:onClick="removerLista"
             android:layout_weight="1"
-            android:text="@string/bt_remover_lista" />
+            android:text="@string/bt_remover_lista"
+            android:visibility="invisible"/>
 
     </LinearLayout>
 

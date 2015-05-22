@@ -36,7 +36,7 @@ public class TelaDetalhesLista extends ActionBarActivity {
             txtBairroEstabelecimento, txtRuaEstabelecimento, txtTelefone1Estabelecimento,
             txtTelefone2Estabelecimento, txtQuantidadeTotalProdutos, txtValorTotalLista;
 
-    Button bt_editar, bt_solicitar;
+    Button bt_editar, bt_solicitar, bt_remover;
     private String link, json_lista;
     private String ip = ipConection.IP.toString();
     Gson gson;
@@ -62,6 +62,7 @@ public class TelaDetalhesLista extends ActionBarActivity {
         if(lista.getSituacao().equals("atendida") || lista.getSituacao().equals("criada")){
             //bt_editar.setVisibility(View.VISIBLE);
             bt_solicitar.setVisibility(View.VISIBLE);
+            bt_remover.setVisibility(View.VISIBLE);
         }
 
         txtDescricaoLista.setText(lista.getDescricao());
@@ -90,6 +91,7 @@ public class TelaDetalhesLista extends ActionBarActivity {
         txtValorTotalLista = (TextView) findViewById(R.id.txtValorTotalLista);
         bt_editar = (Button) findViewById(R.id.btEditarLista);
         bt_solicitar = (Button) findViewById(R.id.btSolicitarEntrega);
+        bt_remover = (Button) findViewById(R.id.btRemoverLista);
     }
 
     //Métodos dos botões
