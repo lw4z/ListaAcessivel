@@ -16,6 +16,7 @@ import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.gson.Gson;
 
@@ -94,7 +95,7 @@ public class TelaCriarListaPasso3 extends ActionBarActivity {
         Log.i("TAMANHOPRODUTOS",String.valueOf(produtos.size()));
 
         //Carregamento da lista de produtos inicial
-        if(produtos != null) {
+        if(produtos.size() > 0) {
             for(int i = 0; i < produtos.size(); i++){
                 produtosPesquisa.add(produtos.get(i));
             }
@@ -119,6 +120,8 @@ public class TelaCriarListaPasso3 extends ActionBarActivity {
                 listaProdutos.setAdapter(adapter);
             }
             setButtonsForPagination();
+        }else{
+            Toast.makeText(this,"Não existem produtos neste estabelecimento!", Toast.LENGTH_LONG).show();
         }
 
         //Métodos do botão pesquisar
