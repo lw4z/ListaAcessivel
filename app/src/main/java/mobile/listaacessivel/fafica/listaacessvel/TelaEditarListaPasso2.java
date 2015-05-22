@@ -83,11 +83,11 @@ public class TelaEditarListaPasso2 extends ActionBarActivity {
         produtos = listaProdutosJson.getListaProdutos();
 
         TOTAL_LIST_ITEMS = produtos.size();
-        Produto p = produtos.get(0);
-        Log.e("Metodo TesteGson", p.getDescricao() + ", " + p.getValidade());
-
-
-        Log.i("TAMANHOPRODUTOS",String.valueOf(produtos.size()));
+//        Produto p = produtos.get(0);
+//        Log.e("Metodo TesteGson", p.getDescricao() + ", " + p.getValidade());
+//
+//
+//        Log.i("TAMANHOPRODUTOS",String.valueOf(produtos.size()));
 
         //Carregamento da lista de produtos inicial
         if(produtos.size() > 0) {
