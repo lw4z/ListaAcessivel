@@ -159,6 +159,7 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:onClick="adicionarProdutoLista"
+        android:visibility="invisible"
         android:text="@string/bt_adicionar_produto"/>
 
 </LinearLayout>

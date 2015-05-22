@@ -257,9 +257,18 @@ public class TelaEditarPerfil extends ActionBarActivity {
                 link = "http://apps.widenet.com.br/busca-cep/api/cep/" + cep + ".json";
                 ConnectionHttp conection = new ConnectionHttp(TelaEditarPerfil.this);
                 conection.execute(link);
+
+                Cep cepJson = new Cep();
                 Log.i("CONECTION", conection.toString());
                 String json = conection.get();
-                Cep cepJson = gson.fromJson(json,Cep.class);
+
+                Log.i("RESULTADOCEP",json);
+
+                if(json.contains("status")) {
+                    cepJson = gson.fromJson(json, Cep.class);
+                }else{
+                    Toast.makeText(this,"Ocorreu algum problema com a conexão!",Toast.LENGTH_LONG).show();
+                }
 
                 cepAutomatico = new Cep(cepJson.getStatus(),cepJson.getCode(),cepJson.getState(),cepJson.getCity(),cepJson.getDistrict(),cepJson.getAddress());
 

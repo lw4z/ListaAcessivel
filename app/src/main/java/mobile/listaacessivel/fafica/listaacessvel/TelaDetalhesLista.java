@@ -60,7 +60,7 @@ public class TelaDetalhesLista extends ActionBarActivity {
 
         //Condição para botoes editar e solicitar
         if(lista.getSituacao().equals("atendida") || lista.getSituacao().equals("criada")){
-            bt_editar.setVisibility(View.VISIBLE);
+            //bt_editar.setVisibility(View.VISIBLE);
             bt_solicitar.setVisibility(View.VISIBLE);
         }
 

@@ -17,16 +17,18 @@ import android.widget.Toast;
 
 import java.util.ArrayList;
 
+import mobile.listaacessivel.fafica.listaacessvel.entidades.Lista;
 import mobile.listaacessivel.fafica.listaacessvel.entidades.Produto;
 import mobile.listaacessivel.fafica.listaacessvel.util.ArrayListProdutosEditarSession;
 import mobile.listaacessivel.fafica.listaacessvel.util.ArrayListProdutosSelecionadosSession;
 import mobile.listaacessivel.fafica.listaacessvel.util.ArrayListProdutosSession;
+import mobile.listaacessivel.fafica.listaacessvel.util.ListaSession;
 import mobile.listaacessivel.fafica.listaacessvel.util.ProdutoSession;
 
 
 public class TelaDetalhesDoProdutoEditar extends ActionBarActivity {
 
-    Button removerProduto;
+    Button removerProduto, adicionarProduto;
     EditText quantidadeProduto;
     TextView txtNomeProduto, txtMarcaProduto, txtValidadeProduto, txtValorProduto, txtNomeEstabelecimento;
     ProdutoSession produtoSession = new ProdutoSession();
@@ -49,12 +51,23 @@ public class TelaDetalhesDoProdutoEditar extends ActionBarActivity {
         ProdutoSession produtoSession = new ProdutoSession();
         Produto produto = produtoSession.getProduto();
 
+        ListaSession listaSession = new ListaSession();
+        Log.i("LISTASESSAO2",String.valueOf(listaSession));
+        Lista lista = listaSession.getLista();
+
         //Definição dos valores na tela
         txtNomeProduto.setText(produto.getDescricao());
         txtValorProduto.setText(String.valueOf(produto.getValor()));
         txtMarcaProduto.setText(produto.getMarca());
         txtValidadeProduto.setText(produto.getValidade());
         txtNomeEstabelecimento.setText(produto.getEstabelecimento().getNome_fantasia());
+
+        //Visibilidade do botão adicionar
+        adicionarProduto = (Button) findViewById(R.id.bt_adicionarProdutos);
+
+        if(lista.getSituacao().equals("atendida") || lista.getSituacao().equals("criada")){
+            adicionarProduto.setVisibility(View.VISIBLE);
+        }
 
 
         //Botão remover produto
@@ -68,7 +81,9 @@ public class TelaDetalhesDoProdutoEditar extends ActionBarActivity {
 
         //Condição para o botão aparecer
         if(produto.isSelecionado() == true){
-            removerProduto.setVisibility(View.VISIBLE);
+            if(lista.getSituacao().equals("atendida") || lista.getSituacao().equals("criada")) {
+                removerProduto.setVisibility(View.VISIBLE);
+            }
             quantidadeProduto.setText(String.valueOf(produto.getQuantidade()));
         }
 
@@ -77,7 +92,14 @@ public class TelaDetalhesDoProdutoEditar extends ActionBarActivity {
     //Métodos dos botões
     public void adicionarProdutoLista(View view){
         Intent it = new Intent(this,TelaEditarListaPasso1.class);
-        int quantidade = Integer.parseInt(quantidadeProduto.getText().toString());
+        int quantidade = 0;
+
+        if(!quantidadeProduto.getText().toString().equals("")){
+            quantidade = Integer.parseInt(quantidadeProduto.getText().toString());
+        }else{
+            Toast.makeText(this,"Informe a quantidade do produto!", Toast.LENGTH_LONG).show();
+            return;
+        }
 
         ProdutoSession produtoSession = new ProdutoSession();
         Produto produto = produtoSession.getProduto();

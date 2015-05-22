@@ -45,19 +45,6 @@ public class TelaDetalhesDoProduto extends ActionBarActivity {
         //Inicialização de campos da tela
         inicializaObjetos();
 
-//        ArrayListProdutosSession produtosSession = new ArrayListProdutosSession();
-//        ArrayList<Produto> listaProdutos = new ArrayList<Produto>();
-//
-//        listaProdutos = produtosSession.getListaProdutos();
-//
-//        int id_produto = getIntent().getIntExtra("id_produto",0);
-//
-//        for(Produto produto: listaProdutos){
-//            if(produto.getId_produto() == id_produto){
-//                ProdutoSession produtoSession = new ProdutoSession(produto);
-//            }
-//        }
-
         ProdutoSession produtoSession = new ProdutoSession();
         Produto produto = produtoSession.getProduto();
 
@@ -67,7 +54,6 @@ public class TelaDetalhesDoProduto extends ActionBarActivity {
         txtMarcaProduto.setText(produto.getMarca());
         txtValidadeProduto.setText(produto.getValidade());
         txtNomeEstabelecimento.setText(produto.getEstabelecimento().getNome_fantasia());
-
 
         //Botão remover produto
         removerProduto = (Button) findViewById(R.id.bt_remover_produto);
@@ -89,7 +75,14 @@ public class TelaDetalhesDoProduto extends ActionBarActivity {
     //Métodos dos botões
     public void adicionarProdutoLista(View view){
         Intent it = new Intent(this,TelaCriarListaPasso3.class);
-        int quantidade = Integer.parseInt(quantidadeProduto.getText().toString());
+        int quantidade = 0;
+
+        if(!quantidadeProduto.getText().toString().equals("")){
+            quantidade = Integer.parseInt(quantidadeProduto.getText().toString());
+        }else{
+            Toast.makeText(this,"Informe a quantidade do produto!", Toast.LENGTH_LONG).show();
+            return;
+        }
 
         ProdutoSession produtoSession = new ProdutoSession();
         Produto produto = produtoSession.getProduto();

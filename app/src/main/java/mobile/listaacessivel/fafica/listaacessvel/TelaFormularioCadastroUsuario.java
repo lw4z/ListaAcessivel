@@ -226,9 +226,13 @@ public class TelaFormularioCadastroUsuario extends ActionBarActivity {
 
                 Log.i("RESULTADOCEP",json);
 
-                cepJson = gson.fromJson(json,Cep.class);
+                if(json.contains("status")) {
+                    cepJson = gson.fromJson(json, Cep.class);
+                }else{
+                    Toast.makeText(this,"Ocorreu algum problema com a conexão!",Toast.LENGTH_LONG).show();
+                }
 
-                cepAutomatico = new Cep(cepJson.getStatus(),cepJson.getCode(),cepJson.getState(),cepJson.getCity(),cepJson.getDistrict(),cepJson.getAddress());
+                cepAutomatico = new Cep(cepJson.getStatus(), cepJson.getCode(), cepJson.getState(), cepJson.getCity(), cepJson.getDistrict(), cepJson.getAddress());
 
                 Log.i("RESULTADOCADASTRO",String.valueOf(conection.get()));
                 Log.i("CEP",String.valueOf(cepJson));
