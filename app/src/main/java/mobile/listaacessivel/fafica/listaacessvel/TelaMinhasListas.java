@@ -58,7 +58,7 @@ public class TelaMinhasListas extends ActionBarActivity {
             if(criarDados().size() > 0 && criarDados() != null) {
                 adapter = new MyArrayAdapterMinhasLista(this, criarDados());
             }else{
-                Toast.makeText(this, "Não foi encontrada nenhuma lista, retorne para a área do usuário e crie uma lista!", Toast.LENGTH_LONG).show;
+                Toast.makeText(this, "Não foi encontrada nenhuma lista, retorne para a área do usuário e crie uma lista!", Toast.LENGTH_LONG).show();
             }
 
             // 2. Recupera o ListView para o activity_main.xml
