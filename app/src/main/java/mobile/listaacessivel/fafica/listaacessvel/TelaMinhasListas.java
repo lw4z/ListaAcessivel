@@ -9,6 +9,7 @@ import android.view.Menu;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import com.google.gson.Gson;
 
@@ -51,8 +52,14 @@ public class TelaMinhasListas extends ActionBarActivity {
         ClienteSession clienteSession = new ClienteSession();
         cliente = clienteSession.getCliente();
 
+        MyArrayAdapterMinhasLista adapter = null;
+
         try {
-            MyArrayAdapterMinhasLista adapter = new MyArrayAdapterMinhasLista(this, criarDados());
+            if(criarDados().size() > 0 && criarDados() != null) {
+                adapter = new MyArrayAdapterMinhasLista(this, criarDados());
+            }else{
+                Toast.makeText(this, "Não foi encontrada nenhuma lista, retorne para a área do usuário e crie uma lista!", Toast.LENGTH_LONG);
+            }
 
             // 2. Recupera o ListView para o activity_main.xml
             listaListas = (ListView) findViewById(R.id.listDetalhesLista);
