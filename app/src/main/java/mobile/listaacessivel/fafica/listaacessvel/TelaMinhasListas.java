@@ -31,12 +31,13 @@ import mobile.listaacessivel.fafica.listaacessvel.util.ipConection;
 public class TelaMinhasListas extends ActionBarActivity {
 
     ListView listaListas;
-    ArrayList<Lista> listas = new ArrayList<Lista>();
+    ArrayList<Lista> listas = null;
     private ArrayList<Produto> produtos;
     private Cliente cliente;
     private Estabelecimento estabelecimento;
     private String link;
     private Gson gson;
+    private String ip = ipConection.IP.toString();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -55,7 +56,7 @@ public class TelaMinhasListas extends ActionBarActivity {
         MyArrayAdapterMinhasLista adapter = null;
 
         try {
-            if(criarDados().size() > 0 && criarDados() != null) {
+            if(criarDados() != null) {
                 adapter = new MyArrayAdapterMinhasLista(this, criarDados());
             }else{
                 Toast.makeText(this, "Não foi encontrada nenhuma lista, retorne para a área do usuário e crie uma lista!", Toast.LENGTH_LONG).show();
@@ -88,17 +89,32 @@ public class TelaMinhasListas extends ActionBarActivity {
     private ArrayList<Lista> criarDados(){
     Lista[] listasArray;
     String json;
+
+        Log.i("IDCLIENTE", String.valueOf(cliente.getId_usuario()));
     try{
-        link = "http://"+ ipConection.IP.toString()+":8080/ListaAcessivel/MinhasListasMobileServlet?id_cliente=" + cliente.getId_usuario();
+        link = "http://"+ ip +":8080/ListaAcessivel/MinhasListasMobileServlet?id_cliente=" + cliente.getId_usuario();
         ConnectionHttp conection = new ConnectionHttp(TelaMinhasListas.this);
         conection.execute(link);
         json = conection.get();
 
-        gson = new Gson();
-        listasArray = gson.fromJson(json,Lista[].class);
-        for(Lista l : listasArray){
-            listas.add(l);
+        listas = new ArrayList<Lista>();
+
+        if(!json.contains("vazio")){
+            gson = new Gson();
+            listasArray = gson.fromJson(json,Lista[].class);
+
+            for(int i = 0; i < listasArray.length;i ++){
+                listas.add(listasArray[i]);
+                Log.i("TAMANHOLISTAARRAY", String.valueOf(listasArray.length));
+            }
+        }else{
+            Toast.makeText(this, "Não foi encontrada nenhuma lista, retorne para a área do usuário e crie uma lista!", Toast.LENGTH_LONG).show();
         }
+
+        Log.i("TAMANHOLISTA", String.valueOf(listas.size()));
+        Log.i("JSON", json);
+
+
     }catch (InterruptedException e1) {
         e1.printStackTrace();
     }catch (ExecutionException e1) {

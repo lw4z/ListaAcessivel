@@ -221,12 +221,12 @@ public class TelaDetalhesLista extends ActionBarActivity {
             String json = conection.get();
             Log.i("RESULTADORemovida", json.toString());
 
-            if(json.equals("sucesso")){
-                Toast.makeText(this,"Lista excluida com sucesso!", Toast.LENGTH_LONG);
+            if(json.contains("sucesso")){
+                Toast.makeText(this,"Lista excluida com sucesso!", Toast.LENGTH_LONG).show();
                 startActivity(it);
                 finish();
             }else{
-                Toast.makeText(this,"Ocorreu um erro ao excluir a lista!", Toast.LENGTH_LONG);
+                Toast.makeText(this,"Ocorreu um erro ao excluir a lista!", Toast.LENGTH_LONG).show();
                 return;
             }
         }catch (InterruptedException e1) {

@@ -69,21 +69,21 @@ public class TelaUsuario extends ActionBarActivity {
 
     public void visualizarListas(View view){
         Intent listas = new Intent(this,TelaMinhasListas.class);
-        ConnectionHttp conection = new ConnectionHttp(TelaUsuario.this);
-        conection.execute(link);
-
-        Log.i("CONECTION", conection.toString());
-
-        try {
-            String json = conection.get();
-            Log.i("RESULTADOJSON",json.toString());
-            listas.putExtra("listaListas", json);
-
-        }catch (InterruptedException e1) {
-            e1.printStackTrace();
-        } catch (ExecutionException e1) {
-            e1.printStackTrace();
-        }
+//        ConnectionHttp conection = new ConnectionHttp(TelaUsuario.this);
+//        conection.execute(link);
+//
+//        Log.i("CONECTION", conection.toString());
+//
+//        try {
+//            String json = conection.get();
+//            Log.i("RESULTADOJSON",json.toString());
+//            listas.putExtra("listaListas", json);
+//
+//        }catch (InterruptedException e1) {
+//            e1.printStackTrace();
+//        } catch (ExecutionException e1) {
+//            e1.printStackTrace();
+//        }
         startActivity(listas);
     }
 
