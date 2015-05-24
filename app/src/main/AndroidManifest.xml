@@ -93,7 +93,7 @@
         <activity
             android:name=".TelaDetalhesDoProduto"
             android:label="@string/title_activity_detalhes_do_produto"
-            android:parentActivityName=".TelaCriarListaPasso3" >
+            android:parentActivityName=".TelaCriarListaPasso3_2" >
         </activity>
         <activity
             android:name=".TelaDetalhesDoProdutoEditar"
@@ -109,6 +109,12 @@
             android:name=".TelaFinalizarLista"
             android:label="@string/title_activity_tela_finalizar_lista"
             android:parentActivityName=".TelaCriarListaPasso3"
+            >
+        </activity>
+        <activity
+            android:name=".TelaCriarListaPasso3_2"
+            android:label="@string/title_activity_tela_criar_lista_passo3"
+            android:parentActivityName=".TelaCriarListaPasso2"
             >
         </activity>
     </application>

@@ -119,7 +119,7 @@ public class TelaCriarListaPasso2 extends ActionBarActivity {
                 @Override
                 public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                     //Bundle dados = new Bundle();
-                    Intent intent = new Intent(view.getContext(), TelaCriarListaPasso3.class);
+                    Intent intent = new Intent(view.getContext(), TelaCriarListaPasso3_2.class);
                     int id_estabelecimento = estabelecimentosFiltrados.get(position).getId_estabelecimento();
                     link = "http://" + ip + ":8080/ListaAcessivel/CriarListaPasso2MobileServlet?id_estabelecimento=" + id_estabelecimento;
 

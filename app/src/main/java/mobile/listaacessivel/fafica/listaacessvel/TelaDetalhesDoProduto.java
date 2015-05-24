@@ -74,7 +74,7 @@ public class TelaDetalhesDoProduto extends ActionBarActivity {
 
     //Métodos dos botões
     public void adicionarProdutoLista(View view){
-        Intent it = new Intent(this,TelaCriarListaPasso3.class);
+        Intent it = new Intent(this,TelaCriarListaPasso3_2.class);
         int quantidade = 0;
 
         if(!quantidadeProduto.getText().toString().equals("")){
@@ -111,7 +111,7 @@ public class TelaDetalhesDoProduto extends ActionBarActivity {
         //define um botão como positivo
         builder.setPositiveButton("Sim", new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface arg0, int arg1) {
-                Intent it = new Intent(TelaDetalhesDoProduto.this,TelaCriarListaPasso3.class);
+                Intent it = new Intent(TelaDetalhesDoProduto.this,TelaCriarListaPasso3_2.class);
                 ProdutoSession produtoSession = new ProdutoSession();
                 Produto produto = produtoSession.getProduto();
                 produto.setSelecionado(false);
