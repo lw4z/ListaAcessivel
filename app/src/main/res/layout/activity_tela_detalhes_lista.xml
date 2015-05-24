@@ -182,6 +182,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
+        android:focusable="true"
         android:onClick="editarLista"
         android:text="@string/bt_maisDetalhes"
         android:layout_weight="1"
@@ -209,6 +210,7 @@
             android:layout_height="wrap_content"
             android:onClick="solicitarEntrega"
             android:text="@string/bt_solicitar_entrega"
+            android:focusable="true"
             android:layout_weight="1"
             android:visibility="invisible"/>
 
@@ -219,6 +221,7 @@
             android:onClick="removerLista"
             android:layout_weight="1"
             android:text="@string/bt_remover_lista"
+            android:focusable="true"
             android:visibility="invisible"/>
 
     </LinearLayout>

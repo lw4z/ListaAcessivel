@@ -11,9 +11,9 @@
     <string name="visualizar_listas">Visualizar Listas</string>
     <string name="direitos">\@TechBin. Todos os direitos reservados</string>
     <string name="area_usuario">Área do Usuário</string>
-    <string name="categoria">Selecione a categoria do Estabelecimento</string>
-    <string name="selecione_estabelecimento">Selecione o Estabelecimento</string>
-    <string name="selecione_produto">Selecione os Produtos</string>
+    <string name="categoria">Selecione entre as categorias de Estabelecimentos abaixo</string>
+    <string name="selecione_estabelecimento">Selecione um dos Estabelecimentos abaixo</string>
+    <string name="selecione_produto">Selecione os Produtos abaixo</string>
     <string name="criarlista1">Criar Lista Passo 1</string>
     <string name="cadastro">Cadastro</string>
     <string name="perfil">Perfil do Usuário</string>
@@ -79,7 +79,7 @@
     <string name="selecionar_produto">Marque aqui para selecionar o produto</string>
     <string name="digite_descricao_lista">Digite uma descrição para a lista</string>
     <string name="pesquisar_produto_nome">Digite um nome para pesquisar por um produto</string>
-    <string name="pesquisar_produto">Pesquisar Produto</string>
+    <string name="pesquisar_produto">Campo para Pesquisar Produtos</string>
     <string name="quantidade_produto">Digite aqui a quantidade que desejar do produto selecionado</string>
     <string name="quantidade_produto_detalhes">Quantidade selecionada do produto</string>
     <string name="bt_salvar_perfil">Salvar</string>
@@ -87,7 +87,7 @@
     <string name="valor_0">"0"</string>
     <string name="bt_proximo">Próximo</string>
     <string name="bt_anterior">Anterior</string>
-    <string name="bt_pesquisar">Pesquisar</string>
+    <string name="bt_pesquisar">Pesquisar Produto</string>
     <string name="bt_editar_produto">Editar Produto</string>
     <string name="bt_confirmar_produto">Confirmar Produto</string>
     <string name="bt_remover_produto">Remover Produto</string>
@@ -102,6 +102,7 @@
     <string name="nome_completo">Nome Completo:</string>
     <string name="nome">Nome:</string>
     <string name="email">E-mail:</string>
+    <string name="informe_email">Informe aqui o seu E-mail:</string>
     <string name="ano_nascimento">Ano de Nascimento:</string>
     <string name="cpf">CPF:</string>
     <string name="telefones">Telefones para contato:</string>
@@ -149,11 +150,11 @@
     <string name="campo_numero">digite o número de sua residência</string>
     <string name="campo_complemento">digite um complemento</string>
     <string name="campo_referencia">digite uma referência</string>
-    <string name="campo_quantidade_produto">Quantidade do produto: </string>
+    <string name="campo_quantidade_produto">Informe aqui a quantidade do produto: </string>
     <string name="title_activity_visualizar_perfil">Visualizar Perfil</string>
     <string name="digite_email">Digite seu e-mail</string>
     <string name="digite_senha">Digite sua senha</string>
-    <string name="descricao_lista">Descrição da Lista:</string>
+    <string name="descricao_lista">Descreva aqui um Título para sua Lista:</string>
     <string name="situacao_lista">Situação da Lista:</string>
     <string name="data_criacao_lista">Data de criação:</string>
     <string name="bairro_estabelecimento">Bairro do Estabelecimento:</string>
@@ -174,10 +175,6 @@
     <string name="title_activity_tela_detalhes_do_produto_editar">Detalhes do Produto</string>
     <string name="title_activity_tela_detalhes_do_produto_editar2">Detalhes do Produto</string>
     <string name="title_activity_tela_finalizar_lista">Finalizar Lista</string>
-
-
-
-
 
 
 </resources>

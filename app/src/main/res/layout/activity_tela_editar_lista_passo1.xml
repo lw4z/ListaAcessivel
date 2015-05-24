@@ -38,6 +38,7 @@
         android:id="@+id/btPesquisarProduto"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:focusable="true"
         android:layout_gravity="center"
         android:contentDescription="@string/pesquisar_produto"
         android:text="@string/bt_pesquisar" />
@@ -79,6 +80,7 @@
         android:layout_height="wrap_content"
         android:id="@+id/bt_adicionarProdutos"
         android:text="@string/bt_adicionar_novos_produtos"
+        android:focusable="true"
         android:onClick="adicionarMaisProdutos"
         android:layout_gravity="center"
         android:visibility="invisible"
@@ -91,6 +93,7 @@
             android:id="@+id/bt_FinalizarLista"
             android:text="@string/bt_finalizar_edicao"
             android:onClick="finalizarEdicao"
+            android:focusable="true"
             android:visibility="invisible"
             android:layout_gravity="center"
             android:layout_weight="1"/>

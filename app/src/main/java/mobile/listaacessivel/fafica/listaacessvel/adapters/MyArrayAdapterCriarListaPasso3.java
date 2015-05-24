@@ -42,7 +42,7 @@ public class MyArrayAdapterCriarListaPasso3 extends BaseAdapter{
         TextView marca_produto;
         TextView valor_produto;
         TextView selecao;
-        //EditText quantidade_produto;
+        TextView quantidade_produto;
         //CheckBox selecaoProduto;
         int ref;
     }
@@ -78,7 +78,7 @@ public class MyArrayAdapterCriarListaPasso3 extends BaseAdapter{
             holder.marca_produto = (TextView) convertView.findViewById(R.id.textMarcaProduto);
             holder.valor_produto = (TextView) convertView.findViewById(R.id.textValorProduto);
             holder.selecao = (TextView) convertView.findViewById(R.id.textSelecaoProduto);
-            //holder.quantidade_produto = (EditText) convertView.findViewById(R.id.campoQuantidadeProduto);
+            holder.quantidade_produto = (TextView) convertView.findViewById(R.id.textQuantidade);
             //holder.selecaoProduto = (CheckBox) convertView.findViewById(R.id.checkSelecionarProtudo);
 
             convertView.setTag(holder);
@@ -92,6 +92,7 @@ public class MyArrayAdapterCriarListaPasso3 extends BaseAdapter{
 
             if(produto.isSelecionado() == true){
                 resultado = "selecionado";
+                holder.quantidade_produto.setVisibility(View.VISIBLE);
             }else{
                 resultado = "não selecionado";
             }
@@ -99,6 +100,7 @@ public class MyArrayAdapterCriarListaPasso3 extends BaseAdapter{
             holder.nome_produto.setText(produto.getDescricao());
             holder.marca_produto.setText("Marca: " + produto.getMarca());
             holder.valor_produto.setText("Valor: R$ " + Float.toString(produto.getValor()));
+            holder.quantidade_produto.setText("Quantidade: " + Integer.toString(produto.getQuantidade()));
             holder.selecao.setText(resultado);
         }
 

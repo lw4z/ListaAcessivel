@@ -69,7 +69,6 @@
             android:id="@+id/txtValidadeProduto"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:inputType="date"
             android:text=""/>
     </LinearLayout>
 
@@ -129,28 +128,13 @@
             android:contentDescription="@string/quantidade_produto"/>
     </LinearLayout>
 
-    <!--<LinearLayout-->
-    <!--android:layout_width="wrap_content"-->
-    <!--android:layout_height="wrap_content"-->
-    <!--android:orientation="horizontal">-->
-
-    <!--<TextView-->
-    <!--android:layout_width="wrap_content"-->
-    <!--android:layout_height="wrap_content"-->
-    <!--android:text="@string/bairro_estabelecimento"/>-->
-
-    <!--<TextView-->
-    <!--android:id="@+id/txtBairroEstabelecimento"-->
-    <!--android:layout_width="wrap_content"-->
-    <!--android:layout_height="wrap_content"-->
-    <!--android:text=""/>-->
-    <!--</LinearLayout>-->
     <Button
         android:id="@+id/bt_remover_produto"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:onClick="removerProdutoLista"
+        android:focusable="true"
         android:text="@string/bt_remover_produto"
         android:visibility="invisible"/>
 
@@ -160,6 +144,7 @@
         android:id="@+id/bt_adicionarProdutos"
         android:layout_gravity="center"
         android:onClick="adicionarProdutoLista"
+        android:focusable="true"
         android:visibility="invisible"
         android:text="@string/bt_adicionar_produto"/>
 

@@ -294,6 +294,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/bt_editar_perfil"
+                android:focusable="true"
                 android:id="@+id/bt_editar_perfil"
                 android:onClick="editarPerfil"/>
 

@@ -59,7 +59,7 @@ public class TelaDetalhesDoProdutoEditar2 extends ActionBarActivity {
 
         //Definição dos valores na tela
         txtNomeProduto.setText(produto.getDescricao());
-        txtValorProduto.setText(String.valueOf(produto.getValor()));
+        txtValorProduto.setText("R$ " + String.valueOf(produto.getValor()));
         txtMarcaProduto.setText(produto.getMarca());
         txtValidadeProduto.setText(produto.getValidade());
         txtNomeEstabelecimento.setText(produto.getEstabelecimento().getNome_fantasia());

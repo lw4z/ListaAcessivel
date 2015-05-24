@@ -175,6 +175,7 @@
             android:layout_height="wrap_content"
             android:text="Buscar Cep"
             android:id="@+id/bt_buscar_cep"
+            android:focusable="true"
             android:layout_gravity="center"
             android:onClick="cadastrarUsuario"/>
 

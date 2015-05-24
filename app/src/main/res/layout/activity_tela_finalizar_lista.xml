@@ -28,6 +28,7 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:onClick="finalizarLista"
+        android:focusable="true"
         android:text="@string/bt_finalizar_lista"/>
 
 </LinearLayout>

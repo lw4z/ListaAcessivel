@@ -29,12 +29,13 @@
      <ToggleButton
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textOff="Filtrar por Bairro"
-        android:textOn="Filtrar por Cidade"
+        android:textOff="Filtrar lista de estabelecimentos por Bairro"
+        android:textOn="Filtrar lista estabelecimentos por Cidade"
+        android:focusable="true"
         android:layout_gravity="center"
         android:id="@+id/btFiltrarPorBairro"
         android:layout_weight="1"
-         android:nextFocusDown="@+id/listViewEstabelecimentos"
+        android:nextFocusDown="@+id/listViewEstabelecimentos"
         />
 
     <!--Lista dos estabelecimentos-->
