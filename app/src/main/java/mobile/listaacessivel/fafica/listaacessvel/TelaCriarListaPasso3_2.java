@@ -45,7 +45,7 @@ public class TelaCriarListaPasso3_2 extends ActionBarActivity {
 
     private ListView listaProdutos;
     private MyArrayAdapterCriarListaPasso3 adapter;
-    private ArrayList<Produto> produtos;
+    private ArrayList<Produto> produtos = null;
     private ArrayList<Produto> produtosPesquisa = new ArrayList<Produto>();
     private ArrayList<Produto> produtosTemporarios = new ArrayList<Produto>();
     private TextView txtNomeProduto;
@@ -95,15 +95,13 @@ public class TelaCriarListaPasso3_2 extends ActionBarActivity {
 
         //Declaração de itens da tela
         listaProdutos = (ListView) findViewById(R.id.listViewProdutos);
-        txtNomeProduto = (TextView) findViewById(R.id.campoPesquisaProduto);
+        txtNomeProduto = (EditText) findViewById(R.id.campoPesquisaProduto);
         btPesquisar = (Button) findViewById(R.id.btPesquisarProduto);
         //layout = (LinearLayout) findViewById(R.id.buttonLayout);
-        btn_prev     = (Button)findViewById(R.id.prev);
-        btn_next     = (Button)findViewById(R.id.next);
+        btn_prev = (Button)findViewById(R.id.prev);
+        btn_next = (Button)findViewById(R.id.next);
 
         btn_prev.setEnabled(false);
-
-
 
         //Teste de criação da lista
 
@@ -179,20 +177,22 @@ public class TelaCriarListaPasso3_2 extends ActionBarActivity {
 
                 String charText = Acentuacao.limparAcentuacao(nomeProduto);
                 produtosPesquisa.clear();
-
+                Log.i("NOMEPESQUISADO",nomeProduto);
                 for(Produto p: produtos){
                     String produto = Acentuacao.limparAcentuacao(p.getDescricao());
                     Log.i("PRODUTOPESQUISA",produto);
                     if (produto.contains(charText)) {
-                        produtosPesquisa.add(p);
+                            produtosPesquisa.add(p);
                     }else{
-                        TOTAL_LIST_ITEMS = produtos.size();
-
-                        int val = TOTAL_LIST_ITEMS % NUM_ITEMS_PAGE;
-                        val = val==0?0:1;
-                        pageCount = TOTAL_LIST_ITEMS/NUM_ITEMS_PAGE+val;
-                        loadListForSearch(0);
-                        carregarBotoes();
+                        if(charText != null) {
+                            TOTAL_LIST_ITEMS = produtos.size();
+                            increment = 0;
+                            int val = TOTAL_LIST_ITEMS % NUM_ITEMS_PAGE;
+                            val = val == 0 ? 0 : 1;
+                            pageCount = TOTAL_LIST_ITEMS / NUM_ITEMS_PAGE + val;
+                            loadListForSearch(0);
+                            carregarBotoes();
+                        }
                     }
                 }
 

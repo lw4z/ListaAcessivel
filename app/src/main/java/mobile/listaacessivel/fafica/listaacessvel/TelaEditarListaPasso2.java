@@ -48,7 +48,7 @@ public class TelaEditarListaPasso2 extends ActionBarActivity {
 
     ListView listaProdutos;
     MyArrayAdapterCriarListaPasso3 adapter;
-    ArrayList<Produto> produtos = new ArrayList<Produto>();
+    ArrayList<Produto> produtos = null;
     ArrayList<Produto> produtosPesquisa = new ArrayList<Produto>();
     ArrayList<Produto> produtosTemporarios = new ArrayList<Produto>();
     TextView txtNomeProduto;
@@ -168,19 +168,22 @@ public class TelaEditarListaPasso2 extends ActionBarActivity {
 
                 String charText = Acentuacao.limparAcentuacao(nomeProduto);
                 produtosPesquisa.clear();
-
-                for (Produto p : produtos) {
+                Log.i("NOMEPESQUISADO", nomeProduto);
+                for(Produto p: produtos){
                     String produto = Acentuacao.limparAcentuacao(p.getDescricao());
+                    Log.i("PRODUTOPESQUISA",produto);
                     if (produto.contains(charText)) {
                         produtosPesquisa.add(p);
-                    } else {
-                        TOTAL_LIST_ITEMS = produtos.size();
-
-                        int val = TOTAL_LIST_ITEMS % NUM_ITEMS_PAGE;
-                        val = val == 0 ? 0 : 1;
-                        pageCount = TOTAL_LIST_ITEMS / NUM_ITEMS_PAGE + val;
-                        loadListForSearch(0);
-                        carregarBotoes();
+                    }else{
+                        if(charText != null) {
+                            TOTAL_LIST_ITEMS = produtos.size();
+                            increment = 0;
+                            int val = TOTAL_LIST_ITEMS % NUM_ITEMS_PAGE;
+                            val = val == 0 ? 0 : 1;
+                            pageCount = TOTAL_LIST_ITEMS / NUM_ITEMS_PAGE + val;
+                            loadListForSearch(0);
+                            carregarBotoes();
+                        }
                     }
                 }
 
@@ -438,7 +441,7 @@ public class TelaEditarListaPasso2 extends ActionBarActivity {
 
     public void inicializacao(){
         listaProdutos = (ListView) findViewById(R.id.listViewProdutos);
-        txtNomeProduto = (TextView) findViewById(R.id.campoPesquisaProduto);
+        txtNomeProduto = (EditText) findViewById(R.id.campoPesquisaProduto);
         btPesquisar = (Button) findViewById(R.id.btPesquisarProduto);
         layout = (LinearLayout) findViewById(R.id.buttonLayout);
     }
