@@ -51,8 +51,8 @@ public class TelaCriarListaPasso3_2 extends ActionBarActivity {
     private TextView txtNomeProduto;
     private Button btPesquisar;
     //private LinearLayout layout;
-    private int noOfBtns;
-    private Button[] btns;
+    //private int noOfBtns;
+    //private Button[] btns;
     boolean flag = false;
 //    public int TOTAL_LIST_ITEMS;
 //    public int NUM_ITEMS_PAGE = 3;
@@ -142,6 +142,12 @@ public class TelaCriarListaPasso3_2 extends ActionBarActivity {
             TOTAL_LIST_ITEMS = tamanho;
             //layout.removeAllViews();
             flag = true;
+            if (pageCount <= 1){
+                btn_next.setEnabled(false);
+                btn_prev.setEnabled(false);
+            }else{
+                btn_next.setEnabled(true);
+            }
             //produtosTemporarios.clear();
 
 //            if(produtosPesquisa.size() < NUM_ITEMS_PAGE){
@@ -180,7 +186,6 @@ public class TelaCriarListaPasso3_2 extends ActionBarActivity {
                     if (produto.contains(charText)) {
                         produtosPesquisa.add(p);
                     }else{
-                        Toast.makeText(TelaCriarListaPasso3_2.this,"Nenhum produto encontrado!", Toast.LENGTH_LONG).show();
                         TOTAL_LIST_ITEMS = produtos.size();
 
                         int val = TOTAL_LIST_ITEMS % NUM_ITEMS_PAGE;
@@ -192,6 +197,9 @@ public class TelaCriarListaPasso3_2 extends ActionBarActivity {
                 }
 
                 int tamanho = produtosPesquisa.size();
+                if(produtosPesquisa.size() == 0){
+                    Toast.makeText(TelaCriarListaPasso3_2.this,"Nenhum produto encontrado!", Toast.LENGTH_SHORT).show();
+                }
                 TOTAL_LIST_ITEMS = tamanho;
                 //layout.removeAllViews();
                 int val = TOTAL_LIST_ITEMS % NUM_ITEMS_PAGE;
