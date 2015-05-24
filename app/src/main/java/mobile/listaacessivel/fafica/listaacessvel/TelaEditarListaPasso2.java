@@ -64,20 +64,7 @@ public class TelaEditarListaPasso2 extends ActionBarActivity {
     private Button btn_prev;
     private Button btn_next;
     private int pageCount ;
-
-    /**
-     * Using this increment value we can move the listview items
-     */
     private int increment = 0;
-
-    /**
-     * Here set the values, how the ListView to be display
-     *
-     * Be sure that you must set like this
-     *
-     * TOTAL_LIST_ITEMS > NUM_ITEMS_PAGE
-     */
-
     public int TOTAL_LIST_ITEMS;
     public int NUM_ITEMS_PAGE = 3;
 
@@ -112,15 +99,6 @@ public class TelaEditarListaPasso2 extends ActionBarActivity {
         val = val==0?0:1;
         pageCount = TOTAL_LIST_ITEMS/NUM_ITEMS_PAGE+val;
 
-//        produtos = listaProdutosJson.getListaProdutos();
-//
-//        TOTAL_LIST_ITEMS = produtos.size();
-//        Produto p = produtos.get(0);
-//        Log.e("Metodo TesteGson", p.getDescricao() + ", " + p.getValidade());
-//
-//
-//        Log.i("TAMANHOPRODUTOS",String.valueOf(produtos.size()));
-
         //Carregamento da lista de produtos inicial
         if(produtos.size() > 0) {
             for(int i = 0; i < produtos.size(); i++){
@@ -137,22 +115,6 @@ public class TelaEditarListaPasso2 extends ActionBarActivity {
             }else{
                 btn_next.setEnabled(true);
             }
-//            produtosTemporarios.clear();
-//
-//            if(produtosPesquisa.size() < NUM_ITEMS_PAGE){
-//                for(int i =0; i < produtosPesquisa.size(); i ++){
-//                    produtosTemporarios.add(produtosPesquisa.get(i));
-//                }
-//                adapter = new MyArrayAdapterCriarListaPasso3(getApplicationContext(),produtosTemporarios);
-//                listaProdutos.setAdapter(adapter);
-//            }else{
-//                for(int i =0 ; i < NUM_ITEMS_PAGE; i++){
-//                    produtosTemporarios.add(produtosPesquisa.get(i));
-//                }
-//                adapter = new MyArrayAdapterCriarListaPasso3(getApplicationContext(),produtosTemporarios);
-//                listaProdutos.setAdapter(adapter);
-//            }
-//            setButtonsForPagination();
             loadListForSearch(0);
             carregarBotoes();
         }else{
@@ -203,26 +165,6 @@ public class TelaEditarListaPasso2 extends ActionBarActivity {
                     btn_next.setEnabled(true);
                 }
 
-//                int tamanho = produtosPesquisa.size();
-//                TOTAL_LIST_ITEMS = tamanho;
-//                layout.removeAllViews();
-//                flag = true;
-//                produtosTemporarios.clear();
-//
-//                if(produtosPesquisa.size() < NUM_ITEMS_PAGE){
-//                    for(int i =0; i < produtosPesquisa.size(); i ++){
-//                        produtosTemporarios.add(produtosPesquisa.get(i));
-//                    }
-//                    adapter = new MyArrayAdapterCriarListaPasso3(getApplicationContext(),produtosTemporarios);
-//                    listaProdutos.setAdapter(adapter);
-//                }else{
-//                    for(int i =0 ; i < NUM_ITEMS_PAGE; i++){
-//                        produtosTemporarios.add(produtosPesquisa.get(i));
-//                    }
-//                    adapter = new MyArrayAdapterCriarListaPasso3(getApplicationContext(),produtosTemporarios);
-//                    listaProdutos.setAdapter(adapter);
-//                }
-//                setButtonsForPagination();
                 loadListForSearch(0);
                 carregarBotoesPesquisa();
 
@@ -254,77 +196,6 @@ public class TelaEditarListaPasso2 extends ActionBarActivity {
         carregarBotoes();
     }
 
-    //Método que gera os botões de paginação
-//    @SuppressLint("InlinedApi")
-//    private void setButtonsForPagination() {
-//
-//        int val = TOTAL_LIST_ITEMS % NUM_ITEMS_PAGE;
-//
-//        if (val == 0) {
-//            val = 0;
-//        } else {
-//            val = 1;
-//        }
-//        noOfBtns = TOTAL_LIST_ITEMS / NUM_ITEMS_PAGE + val;
-//
-//        btns = new Button[noOfBtns];
-//
-//        for (int i = 0; i < noOfBtns; i++) {
-//            btns[i] = new Button(this);
-//            btns[i].setBackgroundColor(getResources().getColor(
-//                    android.R.color.transparent));
-//            btns[i].setText("" + (i + 1));
-//
-//            LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(
-//                    ActionBar.LayoutParams.WRAP_CONTENT, ActionBar.LayoutParams.WRAP_CONTENT);
-//            layout.addView(btns[i], lp);
-//
-//            final int j = i;
-//
-//
-//            // verificação dos cliques nos botões
-//            btns[j].setOnClickListener(new View.OnClickListener() {
-//
-//                public void onClick(View v) {
-//                        loadListForSearch(j);
-//
-//                    CheckBtnBackGroud(j);
-//                }
-//            });
-//        }
-//
-//    }
-
-    //Checagem dos cliques dos botões para modificação de cores e geração da assistência
-//    private void CheckBtnBackGroud(int index) {
-//
-//        for (int i = 0; i < noOfBtns; i++) {
-//            if (i == index) {
-//                btns[index].setBackgroundColor(getResources().getColor(
-//                        android.R.color.darker_gray));
-//                btns[i].setTextColor(getResources().getColor(
-//                        android.R.color.white));
-//                btns[i].setWidth(2);
-//                btns[i].setContentDescription("Página atual de produtos numero: " + (i + 1));
-//            } else if(i < index){
-//                btns[i].setBackgroundColor(getResources().getColor(
-//                        android.R.color.transparent));
-//                btns[i].setTextColor(getResources().getColor(
-//                        android.R.color.black));
-//                btns[i].setWidth(2);
-//                btns[i].setContentDescription("Voltar para a página anterior de produtos numero: " + (i + 1));
-//            }else{
-//                btns[i].setBackgroundColor(getResources().getColor(
-//                        android.R.color.transparent));
-//                btns[i].setTextColor(getResources().getColor(
-//                        android.R.color.black));
-//                btns[i].setWidth(2);
-//                btns[i].setContentDescription("avançar para próxima página de produtos numero: " + (i + 1));
-//            }
-//        }
-//
-//    }
-
     public void carregarBotoes(){
         //loadListForSearch(0);
 
@@ -350,7 +221,6 @@ public class TelaEditarListaPasso2 extends ActionBarActivity {
     }
 
     public void carregarBotoesPesquisa(){
-        //loadListForSearch(0);
 
         btn_next.setOnClickListener(new View.OnClickListener() {
 
@@ -373,7 +243,6 @@ public class TelaEditarListaPasso2 extends ActionBarActivity {
         });
     }
 
-    //Carregamento da lista de busca
     //Carregamento da lista de pesquisa
     private void loadListForSearch(int number) {
         int start = number * NUM_ITEMS_PAGE;
