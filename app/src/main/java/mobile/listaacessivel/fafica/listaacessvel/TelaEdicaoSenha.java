@@ -81,11 +81,10 @@ public class TelaEdicaoSenha extends ActionBarActivity {
 
         gson = new Gson();
         email = email_usuario.getText().toString();
-        email = gson.toJson(email);
         Log.i("EMAIL", email);
 
         try{
-            if(email != null) {
+            if(email != null && !email.equals("")) {
                 link = "http://" + ip + ":8080/ListaAcessivel/RecuperarSenhaPasso1MobileServlet?email=" + email;
                 Log.i("LINK", link);
 

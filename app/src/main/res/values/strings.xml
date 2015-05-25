@@ -1,7 +1,7 @@
 <resources>
 
     <!--Versão do aplicativo-->
-    <string name="versao">Versão 0.2</string>
+    <string name="versao">Versão 0.2.2</string>
 
     <!--Título das telas-->
     <string name="app_name">Lista Acessível</string>
