@@ -5,6 +5,7 @@
 
     <!--Título das telas-->
     <string name="app_name">Lista Acessível</string>
+    <string name="login">Tela de Login, informe seu e-mail e senha abaixo, para entrar na aplicação</string>
     <string name="tela_usuario">Tela Área do Usuário, escolha uma das opções abaixo</string>
     <string name="inicio">Início</string>
     <string name="criar_lista">Criar Lista</string>
