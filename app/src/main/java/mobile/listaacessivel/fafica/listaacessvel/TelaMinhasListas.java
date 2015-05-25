@@ -14,7 +14,6 @@ import android.widget.Toast;
 import com.google.gson.Gson;
 
 import java.util.ArrayList;
-import java.util.List;
 import java.util.concurrent.ExecutionException;
 
 import mobile.listaacessivel.fafica.listaacessvel.adapters.MyArrayAdapterMinhasLista;
@@ -25,7 +24,7 @@ import mobile.listaacessivel.fafica.listaacessvel.entidades.Produto;
 import mobile.listaacessivel.fafica.listaacessvel.util.ClienteSession;
 import mobile.listaacessivel.fafica.listaacessvel.util.ConnectionHttp;
 import mobile.listaacessivel.fafica.listaacessvel.util.ListaSession;
-import mobile.listaacessivel.fafica.listaacessvel.util.ipConection;
+import mobile.listaacessivel.fafica.listaacessvel.util.IpConection;
 
 
 public class TelaMinhasListas extends ActionBarActivity {
@@ -37,7 +36,7 @@ public class TelaMinhasListas extends ActionBarActivity {
     private Estabelecimento estabelecimento;
     private String link;
     private Gson gson;
-    private String ip = ipConection.IP.toString();
+    private String ip = IpConection.IP.toString();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

@@ -28,7 +28,7 @@ import mobile.listaacessivel.fafica.listaacessvel.util.ArrayListProdutosSession;
 import mobile.listaacessivel.fafica.listaacessvel.util.ClienteSession;
 import mobile.listaacessivel.fafica.listaacessvel.util.ConnectionHttp;
 import mobile.listaacessivel.fafica.listaacessvel.util.EstabelecimentoSession;
-import mobile.listaacessivel.fafica.listaacessvel.util.ipConection;
+import mobile.listaacessivel.fafica.listaacessvel.util.IpConection;
 
 
 public class TelaCriarListaPasso2 extends ActionBarActivity {
@@ -40,7 +40,7 @@ public class TelaCriarListaPasso2 extends ActionBarActivity {
     private Endereco endereco;
     private String link;
     private Gson gson;
-    private String ip = ipConection.IP.toString();
+    private String ip = IpConection.IP.toString();
     private int state = 0;
 
     @Override

@@ -7,9 +7,6 @@ import android.content.pm.ActivityInfo;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.Menu;
-import android.view.MenuItem;
-import android.view.SurfaceHolder;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
@@ -24,20 +21,19 @@ import mobile.listaacessivel.fafica.listaacessvel.entidades.Estabelecimento;
 import mobile.listaacessivel.fafica.listaacessvel.entidades.Lista;
 import mobile.listaacessivel.fafica.listaacessvel.entidades.Produto;
 import mobile.listaacessivel.fafica.listaacessvel.util.ArrayListProdutosSelecionadosSession;
-import mobile.listaacessivel.fafica.listaacessvel.util.ArrayListProdutosSession;
 import mobile.listaacessivel.fafica.listaacessvel.util.ClienteSession;
 import mobile.listaacessivel.fafica.listaacessvel.util.ConnectionHttp;
 import mobile.listaacessivel.fafica.listaacessvel.util.EstabelecimentoSession;
 import mobile.listaacessivel.fafica.listaacessvel.util.ListaSession;
 import mobile.listaacessivel.fafica.listaacessvel.util.SituacaoLista;
-import mobile.listaacessivel.fafica.listaacessvel.util.ipConection;
+import mobile.listaacessivel.fafica.listaacessvel.util.IpConection;
 
 
 public class TelaFinalizarLista extends ActionBarActivity {
 
     private EditText campoDescricao;
     private String json_lista = "";
-    private String ip = ipConection.IP.toString();
+    private String ip = IpConection.IP.toString();
     private Gson gson;
     private String link;
 

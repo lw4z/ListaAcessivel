@@ -86,6 +86,8 @@
     <string name="bt_recuperar_senha">Recuperar senha</string>
     <string name="valor_0">"0"</string>
     <string name="bt_proximo">Próximo</string>
+    <string name="bt_proxima_pagina">Próxima Página</string>
+    <string name="bt_pagina_anterior">Página Anterior</string>
     <string name="bt_anterior">Anterior</string>
     <string name="bt_pesquisar">Pesquisar Produto</string>
     <string name="bt_editar_produto">Editar Produto</string>

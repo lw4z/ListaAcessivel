@@ -1,38 +1,22 @@
 package mobile.listaacessivel.fafica.listaacessvel;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
-import android.view.Window;
-import android.view.WindowManager;
 import android.widget.EditText;
 import android.widget.Toast;
 
 import com.google.gson.Gson;
 
-import org.json.JSONException;
-import org.json.JSONObject;
-
-import java.io.BufferedReader;
-import java.io.DataOutputStream;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.net.HttpURLConnection;
-import java.net.URL;
-import java.net.URLEncoder;
 import java.util.concurrent.ExecutionException;
 
 import mobile.listaacessivel.fafica.listaacessvel.entidades.Cliente;
 import mobile.listaacessivel.fafica.listaacessvel.util.ClienteSession;
 import mobile.listaacessivel.fafica.listaacessvel.util.ConnectionHttp;
-import mobile.listaacessivel.fafica.listaacessvel.util.ipConection;
+import mobile.listaacessivel.fafica.listaacessvel.util.IpConection;
 
 
 public class TelaLogin extends ActionBarActivity {
@@ -41,7 +25,7 @@ public class TelaLogin extends ActionBarActivity {
     private String email, senha;
     private String link;
     private Gson gson;
-    private String ip = ipConection.IP.toString();
+    private String ip = IpConection.IP.toString();
 
 
     @Override

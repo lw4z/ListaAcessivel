@@ -9,7 +9,6 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
-import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -18,15 +17,13 @@ import com.google.gson.Gson;
 import java.util.ArrayList;
 import java.util.concurrent.ExecutionException;
 
-import mobile.listaacessivel.fafica.listaacessvel.adapters.MyArrayAdapterDetalhesLista;
 import mobile.listaacessivel.fafica.listaacessvel.entidades.Lista;
 import mobile.listaacessivel.fafica.listaacessvel.entidades.Produto;
 import mobile.listaacessivel.fafica.listaacessvel.util.ArrayListProdutosEditarSession;
-import mobile.listaacessivel.fafica.listaacessvel.util.ArrayListProdutosNaoSelecionadosEditarPasso2;
 import mobile.listaacessivel.fafica.listaacessvel.util.ConnectionHttp;
 import mobile.listaacessivel.fafica.listaacessvel.util.ListaSession;
 import mobile.listaacessivel.fafica.listaacessvel.util.SituacaoLista;
-import mobile.listaacessivel.fafica.listaacessvel.util.ipConection;
+import mobile.listaacessivel.fafica.listaacessvel.util.IpConection;
 
 
 public class TelaDetalhesLista extends ActionBarActivity {
@@ -38,7 +35,7 @@ public class TelaDetalhesLista extends ActionBarActivity {
 
     Button bt_editar, bt_solicitar, bt_remover;
     private String link, json_lista;
-    private String ip = ipConection.IP.toString();
+    private String ip = IpConection.IP.toString();
     Gson gson;
 
     @Override
@@ -186,12 +183,12 @@ public class TelaDetalhesLista extends ActionBarActivity {
             String json = conection.get();
             Log.i("RESULTADOSolicitada", json.toString());
 
-            if(json.equals("sucesso")){
-                Toast.makeText(this,"Lista solicitada com sucesso!", Toast.LENGTH_LONG);
+            if(json.contains("sucesso")){
+                Toast.makeText(this,"Lista solicitada com sucesso!", Toast.LENGTH_LONG).show();
                 startActivity(it);
                 finish();
             }else{
-                Toast.makeText(this,"Ocorreu um erro ao solicitar a lista!", Toast.LENGTH_LONG);
+                Toast.makeText(this,"Ocorreu um erro ao solicitar a lista!", Toast.LENGTH_LONG).show();
                 return;
             }
         }catch (InterruptedException e1) {

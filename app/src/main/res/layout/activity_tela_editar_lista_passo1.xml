@@ -57,18 +57,20 @@
         android:id="@+id/buttonLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal" >
+        android:orientation="horizontal"
+        android:layout_gravity="center">
         <Button
             android:id="@+id/prev"
-            android:text="Página Anterior"
+            android:text="@string/bt_pagina_anterior"
             android:layout_weight="1"
+            android:layout_marginRight="5dp"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             />
 
         <Button
             android:id="@+id/next"
-            android:text="Próxima Página"
+            android:text="@string/bt_proxima_pagina"
             android:layout_weight="1"
             android:layout_width="0dp"
             android:layout_height="wrap_content"

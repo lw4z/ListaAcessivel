@@ -6,7 +6,6 @@ import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
 import android.widget.Toast;
 
@@ -20,14 +19,14 @@ import mobile.listaacessivel.fafica.listaacessvel.entidades.Estabelecimento;
 import mobile.listaacessivel.fafica.listaacessvel.util.ArrayListEstabelecimentosSession;
 import mobile.listaacessivel.fafica.listaacessvel.util.ClienteSession;
 import mobile.listaacessivel.fafica.listaacessvel.util.ConnectionHttp;
-import mobile.listaacessivel.fafica.listaacessvel.util.ipConection;
+import mobile.listaacessivel.fafica.listaacessvel.util.IpConection;
 
 
 public class TelaCriarListaPasso1 extends ActionBarActivity {
 
     private String link;
     private int id_cliente;
-    private String ip = ipConection.IP.toString();
+    private String ip = IpConection.IP.toString();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

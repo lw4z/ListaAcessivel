@@ -1,7 +1,5 @@
 package mobile.listaacessivel.fafica.listaacessvel;
 
-import android.annotation.SuppressLint;
-import android.app.ActionBar;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -34,14 +32,11 @@ import mobile.listaacessivel.fafica.listaacessvel.util.ArrayListProdutosAdiciona
 import mobile.listaacessivel.fafica.listaacessvel.util.ArrayListProdutosEditarSession;
 import mobile.listaacessivel.fafica.listaacessvel.util.ArrayListProdutosNaoSelecionadosEditarPasso2;
 import mobile.listaacessivel.fafica.listaacessvel.util.ArrayListProdutosSelecionadosSession;
-import mobile.listaacessivel.fafica.listaacessvel.util.ArrayListProdutosSession;
-import mobile.listaacessivel.fafica.listaacessvel.util.ClienteSession;
 import mobile.listaacessivel.fafica.listaacessvel.util.ConnectionHttp;
-import mobile.listaacessivel.fafica.listaacessvel.util.EstabelecimentoSession;
 import mobile.listaacessivel.fafica.listaacessvel.util.ListaSession;
 import mobile.listaacessivel.fafica.listaacessvel.util.ProdutoSession;
 import mobile.listaacessivel.fafica.listaacessvel.util.SituacaoLista;
-import mobile.listaacessivel.fafica.listaacessvel.util.ipConection;
+import mobile.listaacessivel.fafica.listaacessvel.util.IpConection;
 
 
 public class TelaEditarListaPasso1 extends ActionBarActivity {
@@ -57,7 +52,7 @@ public class TelaEditarListaPasso1 extends ActionBarActivity {
     boolean flag = false;
     private int id_lista;
     private String link, json_lista;
-    private String ip = ipConection.IP.toString();
+    private String ip = IpConection.IP.toString();
     Gson gson;
 
     //Opções para novo metodo

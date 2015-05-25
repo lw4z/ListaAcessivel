@@ -256,7 +256,6 @@ public class TelaCriarListaPasso3 extends ActionBarActivity {
         }
         adapter = new MyArrayAdapterCriarListaPasso3(getApplicationContext(),produtosTemporarios);
         listaProdutos.setAdapter(adapter);
-
     }
 
     //Método dos Botões

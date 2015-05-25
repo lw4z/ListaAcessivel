@@ -7,8 +7,6 @@ import android.content.pm.ActivityInfo;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -27,7 +25,7 @@ import mobile.listaacessivel.fafica.listaacessvel.entidades.Endereco;
 import mobile.listaacessivel.fafica.listaacessvel.util.ClienteSession;
 import mobile.listaacessivel.fafica.listaacessvel.util.ConnectionHttp;
 import mobile.listaacessivel.fafica.listaacessvel.util.Mask;
-import mobile.listaacessivel.fafica.listaacessvel.util.ipConection;
+import mobile.listaacessivel.fafica.listaacessvel.util.IpConection;
 
 
 public class TelaEditarPerfil extends ActionBarActivity {
@@ -37,7 +35,7 @@ public class TelaEditarPerfil extends ActionBarActivity {
             editComplemento, editReferencia;
     private int id_cliente;
     private String link, senha;
-    private String ip = ipConection.IP.toString();
+    private String ip = IpConection.IP.toString();
     private Gson gson;
     private String json_edicao;
     Endereco endereco;

@@ -17,7 +17,6 @@ import com.google.gson.Gson;
 import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
 import java.util.ArrayList;
-import java.util.List;
 import java.util.concurrent.ExecutionException;
 
 import mobile.listaacessivel.fafica.listaacessvel.entidades.Cep;
@@ -25,7 +24,7 @@ import mobile.listaacessivel.fafica.listaacessvel.entidades.Cliente;
 import mobile.listaacessivel.fafica.listaacessvel.entidades.Endereco;
 import mobile.listaacessivel.fafica.listaacessvel.util.ConnectionHttp;
 import mobile.listaacessivel.fafica.listaacessvel.util.Mask;
-import mobile.listaacessivel.fafica.listaacessvel.util.ipConection;
+import mobile.listaacessivel.fafica.listaacessvel.util.IpConection;
 
 
 public class TelaFormularioCadastroUsuario extends ActionBarActivity {
@@ -38,7 +37,7 @@ public class TelaFormularioCadastroUsuario extends ActionBarActivity {
     private String link;
     private String jsonCadastro = "";
     private Gson gson;
-    private String ip = ipConection.IP.toString();
+    private String ip = IpConection.IP.toString();
     private Cep cepAutomatico;
 
     @Override
