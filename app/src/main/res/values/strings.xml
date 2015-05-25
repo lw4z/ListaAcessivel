@@ -19,7 +19,7 @@
     <string name="perfil">Tela com o Perfil do Usuário, abaixo você encontrará todas as informações do seu perfil</string>
     <string name="bt_voltar">Voltar</string>
     <string name="title_activity_tela_sobre">Tela Sobre o aplicativo, abaixo você saberá a versão do lista acessível que você está utilizando</string>
-    <string name="title_activity_tela_criar_lista_passo1">Tela Criar Lista Passo 1, nesta tela você terá de escolher a categoria de estabelecimento que deseja compor sua lista</string>
+    <string name="title_activity_tela_criar_lista_passo1">Tela Criar Lista Passo 1, nesta tela você terá de escolher a categoria de estabelecimento que desejar para compor sua lista</string>
     <string name="title_activity_tela_formulario_cadastro_usuario">Tela Cadastro do Usuário, informe seus dados abaixo para fazer seu cadastro</string>
     <string name="title_activity_tela_perfil_usuario">Tela Perfil do Usuário, abaixo você encontrará todas as informações do seu perfil</string>
     <string name="title_activity_tela_detalhes_lista">Tela com os Detalhes da Lista, abaixo você terá as principais informações da sua lista de produtos</string>
@@ -173,7 +173,7 @@
     <string name="title_activity_tela_login">TelaLogin</string>
     <string name="title_activity_item_produto_unico_passo3">ItemProdutoUnicoPasso3</string>
     <string name="title_activity_tela_splash">TelaSplash</string>
-    <string name="title_activity_detalhes_do_produto">Tela Detalhes do Produto, aqui vocẽ terá informações sobre o produto e o campo de quantidade</string>
+    <string name="title_activity_detalhes_do_produto">Tela Detalhes do Produto, aqui você terá informações sobre o produto e o campo de quantidade</string>
     <string name="title_activity_tela_detalhes_do_produto_editar">Tela Detalhes do Produto, aqui você terá informações sobre o produto e o campo de quantidade</string>
     <string name="title_activity_tela_detalhes_do_produto_editar2">Tela Detalhes do Produto, aqui você terá informações sobre o produto e o campo de quantidade</string>
     <string name="title_activity_tela_finalizar_lista">Tela Finalizar Lista, indique abaixo um título para sua lista</string>
