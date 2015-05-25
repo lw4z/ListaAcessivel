@@ -60,7 +60,7 @@ public class TelaEdicaoSenha extends ActionBarActivity {
         //define um botão como positivo
         builder.setPositiveButton("Sim", new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface arg0, int arg1) {
-
+                recupecar();
             }
         });
         //define um botão como negativo.
