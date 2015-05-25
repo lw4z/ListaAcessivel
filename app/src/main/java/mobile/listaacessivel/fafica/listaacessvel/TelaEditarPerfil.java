@@ -51,6 +51,7 @@ public class TelaEditarPerfil extends ActionBarActivity {
         getSupportActionBar().setHomeAsUpIndicator(R.mipmap.ic_logo_listaacessivel);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setHomeActionContentDescription(R.string.bt_voltar);
+        getSupportActionBar().setTitle("Editar Perfil");
         //A janela da aplicação deverá ficar apenas no formato vertical
         this.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
 
@@ -200,7 +201,7 @@ public class TelaEditarPerfil extends ActionBarActivity {
 
                     gson = new Gson();
                     json_edicao = gson.toJson(cliente);
-                    json_edicao = json_edicao.replaceAll(" ","<;>");
+                    //json_edicao = json_edicao.replaceAll(" ","<;>");
                     Log.i("USUARIO",json_edicao);
 
                     if (!cliente.getNome().equals("")) {

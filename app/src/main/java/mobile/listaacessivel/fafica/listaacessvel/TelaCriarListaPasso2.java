@@ -51,6 +51,7 @@ public class TelaCriarListaPasso2 extends ActionBarActivity {
         getSupportActionBar().setHomeAsUpIndicator(R.mipmap.ic_logo_listaacessivel);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setHomeActionContentDescription(R.string.bt_voltar);
+        getSupportActionBar().setTitle("Criar Lista passo 2");
         //A janela da aplicação deverá ficar apenas no formato vertical
         this.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
 

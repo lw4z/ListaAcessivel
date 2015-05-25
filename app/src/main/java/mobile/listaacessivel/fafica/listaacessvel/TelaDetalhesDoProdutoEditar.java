@@ -44,6 +44,7 @@ public class TelaDetalhesDoProdutoEditar extends ActionBarActivity {
         getSupportActionBar().setHomeAsUpIndicator(R.mipmap.ic_logo_listaacessivel);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setHomeActionContentDescription(R.string.bt_voltar);
+        getSupportActionBar().setTitle("Detalhes do Produto");
 
         //Inicialização de campos da tela
         inicializaObjetos();

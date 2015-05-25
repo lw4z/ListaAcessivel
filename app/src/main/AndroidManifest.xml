@@ -111,12 +111,6 @@
             android:parentActivityName=".TelaCriarListaPasso3"
             >
         </activity>
-        <activity
-            android:name=".TelaCriarListaPasso3"
-            android:label="@string/title_activity_tela_criar_lista_passo3"
-            android:parentActivityName=".TelaCriarListaPasso2"
-            >
-        </activity>
     </application>
 
 </manifest>

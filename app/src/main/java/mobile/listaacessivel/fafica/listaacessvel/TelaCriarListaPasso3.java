@@ -56,6 +56,7 @@ public class TelaCriarListaPasso3 extends ActionBarActivity {
         getSupportActionBar().setHomeAsUpIndicator(R.mipmap.ic_logo_listaacessivel);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setHomeActionContentDescription(R.string.bt_voltar);
+        getSupportActionBar().setTitle("Criar Lista passo 3");
 
         //Declaração de itens da tela
         listaProdutos = (ListView) findViewById(R.id.listViewProdutos);

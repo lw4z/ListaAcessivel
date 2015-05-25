@@ -48,6 +48,7 @@ public class TelaFinalizarLista extends ActionBarActivity {
         getSupportActionBar().setHomeAsUpIndicator(R.mipmap.ic_logo_listaacessivel);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setHomeActionContentDescription(R.string.bt_voltar);
+        getSupportActionBar().setTitle("Finalizar Lista");
 
         //Inicialização de objetos
         campoDescricao = (EditText) findViewById(R.id.campoDescricaoLista);

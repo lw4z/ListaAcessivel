@@ -33,6 +33,8 @@ public class TelaUsuario extends ActionBarActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_tela_usuario);
 
+        getSupportActionBar().setTitle("Área do Usuário");
+
         //A janela da aplicação deverá ficar apenas no formato vertical
         this.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
     }
