@@ -89,6 +89,16 @@ public class TelaDetalhesDoProdutoEditar2 extends ActionBarActivity {
             quantidadeProduto.setText(String.valueOf(produto.getQuantidade()));
         }
 
+        if(produto.isSelecionado() == true){
+            adicionarProduto.setText("Alterar a Quantidade");
+            adicionarProduto.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    getMessageAlterar("Deseja alterar a quantidade do produto?");
+                }
+            });
+        }
+
     }
 
     //Métodos dos Botões
@@ -151,6 +161,52 @@ public class TelaDetalhesDoProdutoEditar2 extends ActionBarActivity {
         alerta = builder.create();
         alerta.show();
     }
+
+    public void getMessageAlterar(String mensagem) {
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+
+        //builder.setTitle(titulo);
+        builder.setMessage(mensagem);
+        //define um botão como positivo
+        builder.setPositiveButton("Sim", new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface arg0, int arg1) {
+                Intent it = new Intent(TelaDetalhesDoProdutoEditar2.this,TelaEditarListaPasso2.class);
+                int quantidade = 0;
+
+                if(!quantidadeProduto.getText().toString().equals("")){
+                    quantidade = Integer.parseInt(quantidadeProduto.getText().toString());
+                }else{
+                    Toast.makeText(TelaDetalhesDoProdutoEditar2.this,"Informe a quantidade do produto!", Toast.LENGTH_LONG).show();
+                    return;
+                }
+
+                ProdutoSession produtoSession = new ProdutoSession();
+                Produto produto = produtoSession.getProduto();
+                produto.setSelecionado(true);
+                produto.setQuantidade(quantidade);
+
+                if(quantidade >= 1){
+                    setProduto(produto);
+                    Log.i("QUANTIDADEPRODUTO",String.valueOf(quantidade));
+                    startActivity(it);
+                    finish();
+                }else{
+                    Toast.makeText(TelaDetalhesDoProdutoEditar2.this,"A quantidade do produto precisa ser mais que 0", Toast.LENGTH_LONG).show();
+                    return;
+                }
+            }
+        });
+        //define um botão como negativo.
+        builder.setNegativeButton("Não", new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface arg0, int arg1) {
+                return;
+            }
+        });
+        //cria o AlertDialog e exibe na tela
+        alerta = builder.create();
+        alerta.show();
+    }
+
 
     public void inicializaObjetos(){
         quantidadeProduto = (EditText) findViewById(R.id.campoQuantidadeProduto);

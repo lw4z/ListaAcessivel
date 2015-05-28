@@ -12,6 +12,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
+import android.widget.VideoView;
 
 import java.util.ArrayList;
 
@@ -23,7 +24,7 @@ import mobile.listaacessivel.fafica.listaacessvel.util.ProdutoSession;
 
 public class TelaDetalhesDoProduto extends ActionBarActivity {
 
-    Button removerProduto;
+    Button removerProduto, adicionarProduto;
     EditText quantidadeProduto;
     TextView txtNomeProduto, txtMarcaProduto, txtValidadeProduto, txtValorProduto, txtNomeEstabelecimento;
     ProdutoSession produtoSession = new ProdutoSession();
@@ -67,6 +68,16 @@ public class TelaDetalhesDoProduto extends ActionBarActivity {
         if(produto.isSelecionado() == true){
             removerProduto.setVisibility(View.VISIBLE);
             quantidadeProduto.setText(String.valueOf(produto.getQuantidade()));
+        }
+
+        if(produto.isSelecionado() == true){
+            adicionarProduto.setText("Alterar a Quantidade");
+            adicionarProduto.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    getMessageAlterar("Deseja alterar a quantidade do produto?");
+                }
+            });
         }
 
     }
@@ -131,6 +142,51 @@ public class TelaDetalhesDoProduto extends ActionBarActivity {
         alerta.show();
     }
 
+    public void getMessageAlterar(String mensagem) {
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+
+        //builder.setTitle(titulo);
+        builder.setMessage(mensagem);
+        //define um botão como positivo
+        builder.setPositiveButton("Sim", new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface arg0, int arg1) {
+                Intent it = new Intent(TelaDetalhesDoProduto.this,TelaCriarListaPasso3.class);
+                int quantidade = 0;
+
+                if(!quantidadeProduto.getText().toString().equals("")){
+                    quantidade = Integer.parseInt(quantidadeProduto.getText().toString());
+                }else{
+                    Toast.makeText(TelaDetalhesDoProduto.this,"Informe a quantidade do produto!", Toast.LENGTH_LONG).show();
+                    return;
+                }
+
+                ProdutoSession produtoSession = new ProdutoSession();
+                Produto produto = produtoSession.getProduto();
+                produto.setSelecionado(true);
+                produto.setQuantidade(quantidade);
+
+                if(quantidade >= 1){
+                    setProduto(produto);
+                    Log.i("QUANTIDADEPRODUTO",String.valueOf(quantidade));
+                    startActivity(it);
+                    finish();
+                }else{
+                    Toast.makeText(TelaDetalhesDoProduto.this,"A quantidade do produto precisa ser mais que 0", Toast.LENGTH_LONG).show();
+                    return;
+                }
+            }
+        });
+        //define um botão como negativo.
+        builder.setNegativeButton("Não", new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface arg0, int arg1) {
+                return;
+            }
+        });
+        //cria o AlertDialog e exibe na tela
+        alerta = builder.create();
+        alerta.show();
+    }
+
     public void inicializaObjetos(){
         quantidadeProduto = (EditText) findViewById(R.id.campoQuantidadeProduto);
         txtNomeProduto = (TextView) findViewById(R.id.txtNomeProduto);
@@ -138,6 +194,7 @@ public class TelaDetalhesDoProduto extends ActionBarActivity {
         txtMarcaProduto = (TextView) findViewById(R.id.txtMarcaProduto);
         txtValorProduto = (TextView) findViewById(R.id.txtValorProduto);
         txtNomeEstabelecimento = (TextView) findViewById(R.id.txtNomeEstabelecimento);
+        adicionarProduto = (Button) findViewById(R.id.bt_adicionarProdutos);
     }
 
     public void setProduto(Produto produto){
