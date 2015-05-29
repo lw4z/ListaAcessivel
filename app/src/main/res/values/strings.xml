@@ -19,7 +19,7 @@
     <string name="perfil">Tela com o Perfil do Usuário, abaixo você encontrará todas as informações do seu perfil</string>
     <string name="bt_voltar">Voltar</string>
     <string name="title_activity_tela_sobre">Tela Sobre o aplicativo, abaixo você saberá a versão do lista acessível que você está utilizando</string>
-    <string name="title_activity_tela_criar_lista_passo1">Tela Criar Lista Passo 1, nesta tela você terá de escolher a categoria de estabelecimento que desejar para compor sua lista</string>
+    <string name="title_activity_tela_criar_lista_passo1">Tela Criar Lista Passo 1, nesta tela você terá que escolher a categoria do estabelecimento que desejar, para a criação de sua lista</string>
     <string name="title_activity_tela_formulario_cadastro_usuario">Tela Cadastro do Usuário, informe seus dados abaixo para fazer seu cadastro</string>
     <string name="title_activity_tela_perfil_usuario">Tela Perfil do Usuário, abaixo você encontrará todas as informações do seu perfil</string>
     <string name="title_activity_tela_detalhes_lista">Tela com os Detalhes da Lista, abaixo você terá as principais informações da sua lista de produtos</string>
@@ -28,7 +28,7 @@
     <string name="title_activity_tela_criar_lista_passo3">Tela Criar Lista Passo 3, aqui você selecionará os produtos que deseja, no início da tela terá o campo de busca para pesquisar por um produto mais rapidamente, clicando duas vezes no produto você terá mais detalhes</string>
     <string name="title_activity_tela_editar_perfil">Tela Editar Perfil, sigua os campos abaixo para modificar alguma informação que desejar</string>
     <string name="title_activity_tela_edicao_senha">Tela para recuperação de senha, sigua os passos abaixo para recuperar sua senha</string>
-    <string name="title_activity_tela_editar_lista_passo1">Tela Editar Lista Passo 1, aqui você poderá modificar a quantidade de um produto, ou remover ele da sua lista, caso queira adicionar mais produtos terá o botão no final da tela</string>
+    <string name="title_activity_tela_editar_lista_passo1">Tela Editar Lista Passo 1, aqui você poderá modificar a quantidade de um produto, ou remover ele da sua lista, caso queira adicionar mais produtos terá o botão para adicionar no final da tela</string>
     <string name="title_activity_tela_editar_lista_passo2">Tela Editar Lista Passo 2, aqui você encontrará os produtos que não estão em sua lista, escolha os produtos que desejar e adicione em sua lista</string>
 
 
