@@ -95,6 +95,8 @@ public class TelaFinalizarLista extends ActionBarActivity {
     public void enviarJson(){
 
             Intent it = new Intent(TelaFinalizarLista.this,TelaDetalhesLista.class);
+            it.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+            it.putExtra("EXIT", true);
             String descricao = campoDescricao.getText().toString();
             String situacao = SituacaoLista.CRIADA.toString();
 
@@ -142,10 +144,11 @@ public class TelaFinalizarLista extends ActionBarActivity {
                     Lista listaJson = gson2.fromJson(json,Lista.class);
 
                     ListaSession listaSession = new ListaSession(listaJson);
-                    Log.i("LISTASESSAO1",String.valueOf(listaSession));
+                    Log.i("LISTASESSAO1", String.valueOf(listaSession));
 
-                    startActivity(it);
-                    finish();
+                startActivity(it);
+
+                finish();
             }else{
                 Toast.makeText(this,"Não foi selecionado nenhum produto!", Toast.LENGTH_LONG).show();
                 return;

@@ -335,4 +335,15 @@ public class TelaCriarListaPasso3 extends ActionBarActivity {
         }
     }
 
+    @Override
+    protected void onResume(){
+        super.onResume();
+
+        Boolean resultado = getIntent().getBooleanExtra("EXIT",false);
+
+        if (resultado == true) {
+            finish();
+        }
+    }
+
 }
