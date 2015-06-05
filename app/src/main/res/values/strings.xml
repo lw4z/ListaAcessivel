@@ -1,7 +1,7 @@
 <resources>
 
     <!--Versão do aplicativo-->
-    <string name="versao">Versão 0.2.2</string>
+    <string name="versao">Versão 0.2.5</string>
 
     <!--Título das telas-->
     <string name="app_name">Lista Acessível</string>
@@ -166,7 +166,7 @@
     <string name="valor_total_lista">Valor total da lista: </string>
 
     <!--Ícones e Imagens-->
-    <string name="ic_carinho">Ícone de um carrinho de supermercado</string>
+    <string name="ic_lista">Ícone de uma lista</string>
     <string name="ic_estabelecimento">Ícone de um estabelecimento</string>
     <string name="ic_lista_acessivel">Ícone do programa Lista acessível</string>
     <string name="ic_produto">Ícone de um produto</string>

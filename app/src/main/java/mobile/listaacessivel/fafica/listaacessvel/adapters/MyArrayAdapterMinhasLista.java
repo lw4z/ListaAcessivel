@@ -40,10 +40,12 @@ public class MyArrayAdapterMinhasLista extends ArrayAdapter<Lista>{
         // 3. Recupera o texto das duas linhas do rowView
         TextView labelView = (TextView) rowView.findViewById(R.id.text1);
         TextView valueView = (TextView) rowView.findViewById(R.id.text2);
+        TextView valorTotal = (TextView) rowView.findViewById(R.id.text3);
 
         // 4. Define o texto para cada textView
         labelView.setText("Nome: " + itemsArrayList.get(position).getDescricao());
         valueView.setText("Situação: " + itemsArrayList.get(position).getSituacao());
+        valorTotal.setText("Valor da lista: R$ " + itemsArrayList.get(position).getValor_total());
 
         // 5. retorna a rowView
         return rowView;
